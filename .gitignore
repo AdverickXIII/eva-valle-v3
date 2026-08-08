@@ -21,3 +21,6 @@ htmlcov/
 config_base.py
 config_app.py
 crear_estructura.py
+
+# Archivos locales / legacy (seguridad)
+.vscode/
