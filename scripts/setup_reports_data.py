@@ -1,4 +1,7 @@
-"""Calculos compartidos para los reportes por municipio."""
+"""Reescribe core/reports/data.py con proyeccion y CAGR por municipio."""
+from pathlib import Path
+
+DATA = '''"""Calculos compartidos para los reportes por municipio."""
 from __future__ import annotations
 
 import numpy as np
@@ -87,3 +90,8 @@ def cagr_municipality(df_m: pd.DataFrame, min_prod_inicial: float = 50.0) -> pd.
         return d.reset_index()
     d["cagr_pct"] = ((d["prod_fin"] / d["prod_inicio"]) ** (1 / n) - 1) * 100
     return d.sort_values("cagr_pct", ascending=False).reset_index()
+'''
+
+Path("core/reports/data.py").write_text(DATA, encoding="utf-8")
+print("[OK] core/reports/data.py (v2: +forecast +CAGR)")
+print("Sigue: python scripts\\setup_reports_pdf.py")

@@ -1,4 +1,7 @@
-"""Reporte PDF formal por municipio (reportlab) v2."""
+"""Reescribe pdf_report.py con grafico de proyeccion y tabla CAGR."""
+from pathlib import Path
+
+PDF = '''"""Reporte PDF formal por municipio (reportlab) v2."""
 from __future__ import annotations
 
 import io
@@ -76,7 +79,8 @@ def build_municipality_pdf(df: pd.DataFrame, municipio: str) -> bytes:
 
     # 1. Indicadores
     story.append(Paragraph("1. Indicadores principales", st_["Heading2"]))
-    kdata = [["Indicador", "Valor"]] +             [[str(a), str(b)] for a, b in kpis(df_m, df).items()]
+    kdata = [["Indicador", "Valor"]] + \
+            [[str(a), str(b)] for a, b in kpis(df_m, df).items()]
     t = Table(kdata, hAlign="LEFT")
     t.setStyle(_style())
     story.append(t)
@@ -155,3 +159,8 @@ def build_municipality_pdf(df: pd.DataFrame, municipio: str) -> bytes:
 
     doc.build(story)
     return buf.getvalue()
+'''
+
+Path("core/reports/pdf_report.py").write_text(PDF, encoding="utf-8")
+print("[OK] core/reports/pdf_report.py (v2: +grafico proyeccion +CAGR)")
+print("\nEjecuta: streamlit run app.py  y descarga el PDF de nuevo.")
