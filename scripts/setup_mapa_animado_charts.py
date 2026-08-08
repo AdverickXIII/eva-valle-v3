@@ -1,4 +1,7 @@
-"""Mapa coropletico de municipios del Valle del Cauca."""
+"""Reescribe ui/charts/spatial_map.py para aceptar rango_color (animacion comparable)."""
+from pathlib import Path
+
+SPATIAL = '''"""Mapa coropletico de municipios del Valle del Cauca."""
 from __future__ import annotations
 
 import json
@@ -68,3 +71,8 @@ def plot_choropleth_municipios(
         height=620,
     )
     return fig
+'''
+
+Path("ui/charts/spatial_map.py").write_text(SPATIAL, encoding="utf-8")
+print("[OK] ui/charts/spatial_map.py (v2: rango_color)")
+print("Sigue: python scripts\\setup_mapa_animado_page.py")

@@ -1,4 +1,7 @@
-"""Pagina 8: Mapa - Coropletico estatico y animado por ano."""
+"""Reescribe ui/pages/8_Mapa.py con vista estatica y animada por ano."""
+from pathlib import Path
+
+PAGE = '''"""Pagina 8: Mapa - Coropletico estatico y animado por ano."""
 from __future__ import annotations
 
 import numpy as np
@@ -13,7 +16,7 @@ from ui.components.loading_states import render_empty_state
 from ui.components.download_section import render_download_button
 from ui.charts.spatial_map import plot_choropleth_municipios
 
-st.set_page_config(page_title="Mapa | EVA Valle", page_icon="\U0001F5FA\uFE0F", layout="wide")
+st.set_page_config(page_title="Mapa | EVA Valle", page_icon="\\U0001F5FA\\uFE0F", layout="wide")
 
 METRICAS = {
     "Produccion (t)": "produccion_t",
@@ -56,7 +59,7 @@ def _rango_anim(df_x: pd.DataFrame, metrica: str) -> tuple:
 
 
 def main() -> None:
-    st.title("\U0001F5FA\uFE0F Mapa Coropletico - Valle del Cauca")
+    st.title("\\U0001F5FA\\uFE0F Mapa Coropletico - Valle del Cauca")
     st.caption("Intensidad de la metrica por municipio, estatica o animada por ano")
 
     df = load_dataset()
@@ -101,14 +104,19 @@ def main() -> None:
     st.plotly_chart(fig, use_container_width=True)
 
     if modo == "Por ano (animado)":
-        st.caption("\U0001F3AC Mueve el slider para animar la evolucion. "
+        st.caption("\\U0001F3AC Mueve el slider para animar la evolucion. "
                    "La escala de color es fija, asi los colores son comparables entre anos.")
 
     # Ranking de apoyo
-    st.subheader("\U0001F3C6 Ranking de Municipios")
+    st.subheader("\\U0001F3C6 Ranking de Municipios")
     rank = _valor_muni(df_map, metrica).sort_values("valor", ascending=False)
     st.dataframe(rank, use_container_width=True, height=350)
     render_download_button(rank, f"mapa_{metrica}.csv")
 
 
 main()
+'''
+
+Path("ui/pages/8_Mapa.py").write_text(PAGE, encoding="utf-8")
+print("[OK] ui/pages/8_Mapa.py (modo animado)")
+print("\nEjecuta: streamlit run app.py")
