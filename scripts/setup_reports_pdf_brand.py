@@ -1,4 +1,7 @@
-"""Reporte PDF formal por municipio con firma profesional."""
+"""Reescribe pdf_report.py con autoria y pie de pagina profesional."""
+from pathlib import Path
+
+PDF = '''"""Reporte PDF formal por municipio con firma profesional."""
 from __future__ import annotations
 
 import io
@@ -91,7 +94,8 @@ def build_municipality_pdf(df: pd.DataFrame, municipio: str) -> bytes:
 
     # 1. Indicadores
     story.append(Paragraph("1. Indicadores principales", st_["Heading2"]))
-    kdata = [["Indicador", "Valor"]] +             [[str(a), str(b)] for a, b in kpis(df_m, df).items()]
+    kdata = [["Indicador", "Valor"]] + \
+            [[str(a), str(b)] for a, b in kpis(df_m, df).items()]
     t = Table(kdata, hAlign="LEFT")
     t.setStyle(_style())
     story.append(t)
@@ -170,3 +174,9 @@ def build_municipality_pdf(df: pd.DataFrame, municipio: str) -> bytes:
 
     doc.build(story, onFirstPage=_footer, onLaterPages=_footer)
     return buf.getvalue()
+'''
+
+if __name__ == "__main__":
+    Path("core/reports/pdf_report.py").write_text(PDF, encoding="utf-8")
+    print("[OK] core/reports/pdf_report.py (firma + pie de pagina)")
+    print("\nEjecuta: streamlit run app.py y descarga Excel y PDF.")
