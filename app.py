@@ -40,6 +40,7 @@ pg = st.navigation([
     st.Page("ui/pages/5_Auditoria.py", title="Auditoria", icon="\U0001F50D"),
     st.Page("ui/pages/6_Configuracion.py", title="Configuracion", icon="\u2699\uFE0F"),
     st.Page("ui/pages/7_Cultivos.py", title="Cultivos", icon="\U0001F331"),
+    st.Page("ui/pages/8_Mapa.py", title="Mapa", icon="\U0001F5FA\uFE0F"),
 ])
 
 pg.run()
