@@ -65,7 +65,7 @@ def plot_choropleth_municipios(
     # Encuadrar solo el Valle del Cauca
     fig.update_geos(fitbounds="locations", visible=False)
     fig.update_layout(
-        template="plotly_dark",
+        template="plotly_white",
         margin=dict(l=10, r=10, t=50, b=10),
         title=dict(text=titulo, x=0.5),
         height=620,

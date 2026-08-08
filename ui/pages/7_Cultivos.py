@@ -89,12 +89,12 @@ def main() -> None:
             with gc1:
                 fig_p = go.Figure(go.Bar(x=df_cm["periodo"], y=df_cm["produccion_t"],
                     marker_color=PALETTE[0]))
-                fig_p.update_layout(template="plotly_dark", title="Produccion por Periodo", yaxis_title="t")
+                fig_p.update_layout(template="plotly_white", title="Produccion por Periodo", yaxis_title="t")
                 st.plotly_chart(fig_p, use_container_width=True)
             with gc2:
                 fig_r = go.Figure(go.Scatter(x=df_cm["periodo"], y=df_cm["rendimiento_t_ha"],
                     mode="lines+markers", line=dict(color=PALETTE[1], width=3)))
-                fig_r.update_layout(template="plotly_dark", title="Rendimiento por Periodo", yaxis_title="t/ha")
+                fig_r.update_layout(template="plotly_white", title="Rendimiento por Periodo", yaxis_title="t/ha")
                 st.plotly_chart(fig_r, use_container_width=True)
 
             # ── TABLA A: Historico del municipio ─────────────

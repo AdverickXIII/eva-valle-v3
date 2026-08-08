@@ -72,7 +72,7 @@ def main() -> None:
     st.subheader("\U0001F3AF Importancia de Variables")
     imp = res_reg["importancia"]
     fig_imp = px.bar(imp.reset_index(), x=imp.name, y=imp.index.tolist(),
-        orientation="h", template="plotly_dark", height=350)
+        orientation="h", template="plotly_white", height=350)
     st.plotly_chart(fig_imp, use_container_width=True)
     st.markdown("---")
     st.subheader("\U0001F4CA Real vs Predicho")
@@ -83,7 +83,7 @@ def main() -> None:
     max_val = max(df_res["Real_t"].max(), df_res["Pred_t"].max())
     fig_scatter.add_trace(go.Scatter(x=[0, max_val], y=[0, max_val],
         mode="lines", line=dict(color="red", dash="dash"), name="Linea 45"))
-    fig_scatter.update_layout(template="plotly_dark",
+    fig_scatter.update_layout(template="plotly_white",
         title=f"Real vs Predicho (R2 = {metricas['R2']:.3f})")
     st.plotly_chart(fig_scatter, use_container_width=True)
     render_download_button(df_res, "predicciones_regresion.csv")
@@ -102,7 +102,7 @@ def main() -> None:
             fig_f.add_trace(go.Scatter(x=df_future["periodo"],
                 y=df_future["produccion_predicha"], mode="lines+markers",
                 name="Pronostico 2025", line=dict(color="red", dash="dash")))
-        fig_f.update_layout(template="plotly_dark",
+        fig_f.update_layout(template="plotly_white",
             title="Proyeccion de Produccion Total")
         st.plotly_chart(fig_f, use_container_width=True)
         render_download_button(df_proy, "proyeccion_macro.csv")

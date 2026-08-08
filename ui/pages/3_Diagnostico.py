@@ -69,7 +69,7 @@ def main() -> None:
             st.info(res["conclusion"])
             df_box = df_f[["ciclo_del_cultivo","rendimiento_t_ha"]].dropna()
             fig = px.box(df_box, x="ciclo_del_cultivo", y="rendimiento_t_ha",
-                color="ciclo_del_cultivo", template="plotly_dark")
+                color="ciclo_del_cultivo", template="plotly_white")
             st.plotly_chart(fig, use_container_width=True)
     with tab3:
         st.subheader("6.3 Segmentacion de Municipios (K-Means)")
@@ -80,7 +80,7 @@ def main() -> None:
             st.success(f"k optimo: {res_seg['k_optimo']} clusters")
             fig = px.scatter(df_clusters, x="area_total", y="rendimiento_medio",
                 color="Perfil", hover_name="municipio", log_x=True,
-                size="diversidad", template="plotly_dark")
+                size="diversidad", template="plotly_white")
             st.plotly_chart(fig, use_container_width=True)
             st.dataframe(df_clusters, use_container_width=True)
             render_download_button(df_clusters, "perfiles_municipios.csv")
@@ -92,7 +92,7 @@ def main() -> None:
             imp_df = res_arbol["importancia_df"]
             st.metric("R2", f"{res_arbol['r2_score']:.3f}")
             fig = px.bar(imp_df.reset_index(), x="importancia", y="index",
-                orientation="h", template="plotly_dark")
+                orientation="h", template="plotly_white")
             st.plotly_chart(fig, use_container_width=True)
     with tab5:
         st.subheader("6.5 Shock 2020")
@@ -106,7 +106,7 @@ def main() -> None:
             fig.add_trace(go.Bar(x=df_hist["ano"], y=df_hist["var_area"],
                 name="Var. Area (%)", marker_color="orange"))
             fig.add_hline(y=0, line_color="white")
-            fig.update_layout(barmode="group", template="plotly_dark")
+            fig.update_layout(barmode="group", template="plotly_white")
             st.plotly_chart(fig, use_container_width=True)
 
 run_safe(main)

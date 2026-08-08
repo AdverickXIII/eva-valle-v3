@@ -46,7 +46,7 @@ def main() -> None:
         fig_sev = px.pie(values=sev_counts.values, names=sev_counts.index, hole=0.4,
             color=sev_counts.index,
             color_discrete_map={"ERROR":"#F56565","ADVERTENCIA":"#ECC94B","INFO":"#4299E1"},
-            template="plotly_dark")
+            template="plotly_white")
         st.plotly_chart(fig_sev, use_container_width=True)
     with col2:
         st.subheader("Detalle de Hallazgos")

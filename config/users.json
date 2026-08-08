@@ -1,0 +1,12 @@
+{
+  "admin": {
+    "salt": "269c04a4fc4397a2",
+    "hash": "96a1917addf618c120de86b44d9ac920aa9cc16d953d2b1c262e35126967900f",
+    "role": "admin"
+  },
+  "usuario": {
+    "salt": "6337cc0ab94f38c9",
+    "hash": "a9951b0dfc65fb2d44d3c02d78c7910a14a7b08a9581714a4a81a389fc6b48c9",
+    "role": "usuario"
+  }
+}
