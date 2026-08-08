@@ -1,5 +1,6 @@
 # EVA Valle v3.0
 
+[![Tests](https://github.com/AdverickXIII/eva-valle-v3/actions/workflows/tests.yml/badge.svg)](https://github.com/AdverickXIII/eva-valle-v3/actions)
 Dashboard analitico de produccion agricola del Valle del Cauca (UPRA).
 
 ## Quick Start
