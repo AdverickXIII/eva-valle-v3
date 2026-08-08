@@ -1,0 +1,199 @@
+/* ═══════════════════════════════════════════════════════════
+   EVA Valle v3.0 - Tema Profesional Oscuro
+   Inspirado en: Power BI, Tableau, Looker Studio
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Variables de tema ─────────────────────────────────── */
+:root {
+    --eva-primary: #2E8B57;
+    --eva-primary-light: #3DA86C;
+    --eva-primary-dark: #1F6B42;
+    --eva-bg: #0E1117;
+    --eva-bg-secondary: #1A1F2E;
+    --eva-bg-card: #1E2536;
+    --eva-text: #FAFAFA;
+    --eva-text-muted: #A0AEC0;
+    --eva-border: #2D3748;
+    --eva-success: #48BB78;
+    --eva-warning: #ECC94B;
+    --eva-danger: #F56565;
+    --eva-info: #4299E1;
+    --eva-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --eva-radius: 12px;
+}
+
+/* ── Fondo y tipografia global ─────────────────────────── */
+.stApp {
+    background-color: var(--eva-bg);
+    color: var(--eva-text);
+}
+
+.stApp > header {
+    background-color: var(--eva-bg);
+}
+
+/* ── Cards de metricas (KPI) ───────────────────────────── */
+.eva-metric-card {
+    background: linear-gradient(135deg, var(--eva-bg-card) 0%, var(--eva-bg-secondary) 100%);
+    border: 1px solid var(--eva-border);
+    border-radius: var(--eva-radius);
+    padding: 1.25rem 1.5rem;
+    box-shadow: var(--eva-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+}
+
+.eva-metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border-color: var(--eva-primary);
+}
+
+.eva-metric-card .metric-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--eva-text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.eva-metric-card .metric-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--eva-text);
+    line-height: 1.2;
+}
+
+.eva-metric-card .metric-delta {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-top: 0.35rem;
+}
+
+.eva-metric-card .metric-delta.positive { color: var(--eva-success); }
+.eva-metric-card .metric-delta.negative { color: var(--eva-danger); }
+.eva-metric-card .metric-delta.neutral  { color: var(--eva-text-muted); }
+
+.eva-metric-card .metric-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ── Secciones y encabezados ───────────────────────────── */
+.eva-section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 2rem 0 1rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--eva-primary);
+}
+
+.eva-section-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--eva-text);
+}
+
+.eva-section-header .section-icon {
+    font-size: 1.4rem;
+}
+
+/* ── Tabs personalizados ───────────────────────────────── */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 4px;
+    border-bottom: 2px solid var(--eva-border);
+}
+
+.stTabs [data-baseweb="tab"] {
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px 8px 0 0;
+    font-weight: 500;
+    color: var(--eva-text-muted);
+}
+
+.stTabs [aria-selected="true"] {
+    color: var(--eva-primary) !important;
+    border-bottom: 3px solid var(--eva-primary);
+    background-color: rgba(46, 139, 87, 0.08);
+}
+
+/* ── Expanders ─────────────────────────────────────────── */
+.streamlit-expanderHeader {
+    background-color: var(--eva-bg-card) !important;
+    border-radius: var(--eva-radius) !important;
+    border: 1px solid var(--eva-border) !important;
+}
+
+/* ── Tablas y dataframes ───────────────────────────────── */
+.stDataFrame {
+    border-radius: var(--eva-radius);
+    overflow: hidden;
+    border: 1px solid var(--eva-border);
+}
+
+/* ── Botones ───────────────────────────────────────────── */
+.stButton > button {
+    background: linear-gradient(135deg, var(--eva-primary) 0%, var(--eva-primary-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.stButton > button:hover {
+    background: linear-gradient(135deg, var(--eva-primary-light) 0%, var(--eva-primary) 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(46, 139, 87, 0.4);
+}
+
+/* ── Sidebar ───────────────────────────────────────────── */
+section[data-testid="stSidebar"] {
+    background-color: var(--eva-bg-secondary);
+    border-right: 1px solid var(--eva-border);
+}
+
+section[data-testid="stSidebar"] .stMarkdown h1,
+section[data-testid="stSidebar"] .stMarkdown h2,
+section[data-testid="stSidebar"] .stMarkdown h3 {
+    color: var(--eva-text);
+}
+
+/* ── Alertas e info boxes ──────────────────────────────── */
+.stAlert {
+    border-radius: var(--eva-radius);
+    border: 1px solid var(--eva-border);
+}
+
+/* ── Footer ────────────────────────────────────────────── */
+.eva-footer {
+    text-align: center;
+    padding: 2rem 0 1rem 0;
+    color: var(--eva-text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--eva-border);
+    margin-top: 3rem;
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .eva-metric-card .metric-value {
+        font-size: 1.4rem;
+    }
+    .eva-section-header h2 {
+        font-size: 1.2rem;
+    }
+}
+
+/* ── Scrollbar personalizado ───────────────────────────── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--eva-bg); }
+::-webkit-scrollbar-thumb {
+    background: var(--eva-border);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--eva-primary); }

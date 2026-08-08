@@ -1,0 +1,5 @@
+﻿pair,n,correlation,r_squared,x_var,y_var
+area_cosechada_ha vs produccion_t,8875,0.825174318199645,0.680912655416249,area_cosechada_ha,produccion_t
+area_cosechada_ha vs rendimiento_t_ha,8875,0.003860005567103681,1.489964297807141e-05,area_cosechada_ha,rendimiento_t_ha
+area_sembrada_ha vs area_cosechada_ha,8807,0.9775980831968809,0.9556980122702157,area_sembrada_ha,area_cosechada_ha
+ano vs produccion_t,8875,-0.019651644922077185,0.000386187148143402,ano,produccion_t

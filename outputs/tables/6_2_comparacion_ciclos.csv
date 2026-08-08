@@ -1,0 +1,2 @@
+﻿estadistico_U,p_value,CV_Transitorio,CV_Permanente,media_Transitorio,mediana_Transitorio,n_Transitorio,media_Permanente,mediana_Permanente,n_Permanente,conclusion,diferencia_significativa
+8464283.5,7.225290941092607e-38,112.59631967773973,134.39021551678417,12.636388395500296,8.0,5067,19.850703656998743,11.0,3965,Si hay diferencia estadisticamente significativa en rendimiento.,True

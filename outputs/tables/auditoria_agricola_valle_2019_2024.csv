@@ -1,0 +1,15 @@
+﻿codigo,severidad,descripcion,detalle,timestamp
+AUD-001,INFO,Todas las columnas esperadas presentes,Total: 18,2026-08-07T19:31:45.996975
+AUD-003,INFO,Sin valores nulos,"Registros: 9,032",2026-08-07T19:31:45.998980
+AUD-DUP-002,INFO,Sin duplicados por clave natural,,2026-08-07T19:31:46.010084
+AUD-TER-001,INFO,Todos los registros tienen codigo DANE 76,,2026-08-07T19:31:46.010753
+AUD-TER-002,INFO,Nombre de departamento unico y correcto: 'Valle del Cauca',,2026-08-07T19:31:46.011262
+AUD-TER-003,INFO,Relacion codigo-nombre municipio 1:1 consistente,42 municipios unicos,2026-08-07T19:31:46.012634
+AUD-TEM-001,INFO,Rango de anos dentro de lo esperado: 2019-2024,,2026-08-07T19:31:46.014986
+AUD-TEM-003,ADVERTENCIA,"Periodos con formato inesperado: ['2019', '2020', '2021', '2022', '2023', '2024']","Formato esperado: YYYY[A|B] (ej: 2023A, 2023B)",2026-08-07T19:31:46.015505
+AUD-OUT-AREA_SEM,ADVERTENCIA,"'area_sembrada_ha': 1,096 outliers (12.1%)",Limite 3xIQR: 175.1000,2026-08-07T19:31:46.023391
+AUD-OUT-AREA_COS,ADVERTENCIA,"'area_cosechada_ha': 1,093 outliers (12.1%)",Limite 3xIQR: 152.9000,2026-08-07T19:31:46.024821
+AUD-OUT-PRODUCCI,ADVERTENCIA,'produccion_t': 980 outliers (10.9%),Limite 3xIQR: 1915.4300,2026-08-07T19:31:46.026203
+AUD-OUT-RENDIMIE,ADVERTENCIA,'rendimiento_t_ha': 351 outliers (3.9%),Limite 3xIQR: 64.0000,2026-08-07T19:31:46.027562
+AUD-LOG-001,ERROR,346 registros con area cosechada > sembrada,Maxima diferencia: 660.00 ha,2026-08-07T19:31:46.031079
+AUD-LOG-002,INFO,Rendimiento consistente con prod/area en todos los registros (tolerancia <= 5.0%),,2026-08-07T19:31:46.036357

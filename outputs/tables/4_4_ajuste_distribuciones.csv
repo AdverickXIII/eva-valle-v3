@@ -1,0 +1,4 @@
+﻿distribucion,statistic_ks,p_value,rechaza_H0 (alpha=0.05)
+Normal,0.22670416378099023,0.0,True
+Log-Normal,0.11548763754016,1.4086288035521995e-103,True
+Gamma,0.0873740466218299,2.1220441327135116e-59,True
