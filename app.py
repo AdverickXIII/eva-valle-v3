@@ -81,6 +81,7 @@ pages = [
     st.Page("ui/pages/10_Reportes.py", title="Reportes", icon="\U0001F4C4"),
     st.Page("ui/pages/11_Comparador.py", title="Comparador", icon="\u2696\uFE0F"),
     st.Page("ui/pages/12_Alertas.py", title="Alertas", icon="\U0001F6A8"),
+    st.Page("ui/pages/13_Treemap.py", title="Treemap", icon="\U0001F333"),
 ]
 
 if role == "admin":
