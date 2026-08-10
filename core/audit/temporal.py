@@ -43,7 +43,7 @@ def audit_temporal(df: pd.DataFrame) -> list[AuditFinding]:
             codigo="AUD-TEM-001",
             severidad="ADVERTENCIA",
             descripcion=f"Rango de anos inesperado: {ano_min}-{ano_max}",
-            detalle="Esperado: 2019-2024",
+            detalle="Esperado: 2019-2025",
         ))
 
     # Anos faltantes

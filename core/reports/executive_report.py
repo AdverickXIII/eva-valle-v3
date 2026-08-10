@@ -90,7 +90,7 @@ def build_executive_pdf(df: pd.DataFrame) -> bytes:
     story = []
 
     story.append(Paragraph("Resumen Ejecutivo - Valle del Cauca", title))
-    story.append(Paragraph(f"<i>{meta.firma()} | UPRA 2019-2024 | "
+    story.append(Paragraph(f"<i>{meta.firma()} | UPRA 2019-2025 | "
                            "Estandar profesional (UPRA/CEPAL)</i>", st_["Normal"]))
     story.append(Spacer(1, 0.4 * cm))
 
@@ -129,7 +129,7 @@ def build_executive_pdf(df: pd.DataFrame) -> bytes:
     d4 = [["Ano", "Produccion (t)", "Rendimiento (t/ha)"]] +          [[str(int(r["ano"])), f"{r['produccion']:,.0f}", f"{r['rendimiento']:.2f}"]
           for _, r in s["tendencia"].iterrows()]
     d4b = [["Cultivo", "CAGR"]] +           [[r["cultivo"], f"+{r['cagr']:.1f}%"] for _, r in s["crecen"].iterrows()] +           [[r["cultivo"], f"{r['cagr']:.1f}%"] for _, r in s["declinan"].iterrows()]
-    b = [Paragraph("4. Tendencias y dinamica (2019-2024)", st_["Heading2"]),
+    b = [Paragraph("4. Tendencias y dinamica (2019-2025)", st_["Heading2"]),
          _tabla(d4), Spacer(1, 0.2 * cm), _tabla(d4b), Spacer(1, 0.4 * cm)]
     story.append(KeepTogether(b))
 

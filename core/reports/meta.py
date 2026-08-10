@@ -4,7 +4,7 @@ from __future__ import annotations
 AUTOR = "Moises Zúñiga Grueso"
 CARGO = "Data Analyst"
 SISTEMA = "EVA Valle v3.0"
-FUENTE = "UPRA - Encuestas de Valuacion Agropecuaria (EVA) 2019-2024"
+FUENTE = "UPRA - Encuestas de Valuacion Agropecuaria (EVA) 2019-2025"
 
 
 def firma() -> str:

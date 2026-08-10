@@ -62,7 +62,7 @@ class AnalyticsPort(Protocol):
         ...
 
     def cagr_by_crop(self, df: pd.DataFrame) -> pd.DataFrame:
-        """4.13: CAGR por cultivo 2019-2024."""
+        """4.13: CAGR por cultivo 2019-2025."""
         ...
 
     def ex_cana_analysis(self, df: pd.DataFrame) -> dict[str, Any]:

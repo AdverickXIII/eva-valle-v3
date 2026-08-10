@@ -53,10 +53,10 @@ def main() -> None:
         col = st.selectbox("Color", ["Produccion (t)", "Rendimiento (t/ha)", "CAGR (%)"], 0)
     with c3:
         anos = sorted(df["ano"].dropna().unique().tolist())
-        vista = st.selectbox("Periodo", ["Todo (2019-2024)"] + [str(int(a)) for a in anos], 0)
+        vista = st.selectbox("Periodo", ["Todo (2019-2025)"] + [str(int(a)) for a in anos], 0)
 
     df_f = df.copy()
-    if vista != "Todo (2019-2024)":
+    if vista != "Todo (2019-2025)":
         df_f = df_f[df_f["ano"] == int(vista)]
 
     agg = (df_f.groupby(["grupo_cultivo", "cultivo"])

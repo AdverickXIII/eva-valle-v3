@@ -84,7 +84,7 @@ def quality(df: pd.DataFrame) -> dict:
         "pct_anomalia": round(anom / total * 100, 2),
         "pct_nulos": round(nulos / total * 100, 2),
         "fuente": "UPRA - EVA (autodeclaracion municipal)",
-        "cobertura": "42 municipios, 2019-2024",
+        "cobertura": "42 municipios, 2019-2025",
     }
 
 

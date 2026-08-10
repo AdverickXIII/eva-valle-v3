@@ -2,7 +2,7 @@
 from __future__ import annotations
 import streamlit as st
 
-st.title("\U0001F33E EVA Agricola 2019-2024 - Valle del Cauca")
+st.title("\U0001F33E EVA Agricola 2019-2025 - Valle del Cauca")
 st.markdown(
     "Dashboard analitico de produccion agricola basado en datos de la UPRA.  \n"
     "**42 municipios** | **97 desagregaciones de cultivo** | **6 anos de datos**"

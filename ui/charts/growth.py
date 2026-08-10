@@ -21,6 +21,6 @@ def plot_cagr_divergente(df: pd.DataFrame, min_prod: float = 1000) -> go.Figure:
         marker_color=colors,text=[f"{v:.1f}%" for v in cagr_df["cagr"]],
         textposition="outside"))
     fig.add_vline(x=0,line_color="white",line_width=1)
-    fig.update_xaxes(title_text="CAGR (%) 2019-2024")
+    fig.update_xaxes(title_text="CAGR (%) 2019-2025")
     fig.update_layout(height=600)
     return apply_theme(fig, f"CAGR por Cultivo (Filtro: > {min_prod:,.0f} t)")

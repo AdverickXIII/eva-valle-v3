@@ -12,7 +12,7 @@ from typing import Any
 MAPA_CONCEPTUAL: dict[str, Any] = {
     "titulo": "MAPA CONCEPTUAL LOGICO - EVA AGRICOLA VALLE DEL CAUCA",
     "fuente": "UPRA",
-    "periodo": "2019-2024",
+    "periodo": "2019-2025",
     "alcance": "42 municipios",
     "entidad_central": {
         "nombre": "REGISTRO EVA",

@@ -25,7 +25,7 @@ def load_dataset() -> pd.DataFrame:
 
 def main() -> None:
     st.title("\U0001F4CA Dashboard - EVA Valle del Cauca")
-    st.caption("Vista general de la produccion agricola 2019-2024")
+    st.caption("Vista general de la produccion agricola 2019-2025")
     df = load_dataset()
     if df.empty:
         render_empty_state("Dataset no encontrado",

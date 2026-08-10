@@ -56,7 +56,7 @@ def _pareto_fig(p: pd.DataFrame, titulo: str) -> go.Figure:
 
 def main() -> None:
     st.title("\U0001F4CB Resumen Ejecutivo")
-    st.caption("Vista de alto nivel - UPRA 2019-2024 - estandar profesional")
+    st.caption("Vista de alto nivel - UPRA 2019-2025 - estandar profesional")
 
     df = load_dataset()
     if df.empty:

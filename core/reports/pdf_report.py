@@ -84,7 +84,7 @@ def build_municipality_pdf(df: pd.DataFrame, municipio: str) -> bytes:
     story = []
 
     story.append(Paragraph("EVA Valle v3.0 - Reporte Agricola Municipal", title))
-    story.append(Paragraph(f"<b>Municipio:</b> {municipio} | UPRA 2019-2024",
+    story.append(Paragraph(f"<b>Municipio:</b> {municipio} | UPRA 2019-2025",
                            st_["Normal"]))
     story.append(Paragraph(f"<i>{meta.firma()}</i>", st_["Normal"]))
     story.append(Spacer(1, 0.5 * cm))

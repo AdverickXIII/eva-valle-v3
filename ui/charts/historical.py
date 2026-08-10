@@ -27,7 +27,7 @@ def plot_historico_cruces(df: pd.DataFrame) -> go.Figure:
     fig.update_layout(legend=dict(orientation="h",yanchor="bottom",y=1.02,xanchor="right",x=1))
     fig.update_yaxes(title_text="Hectareas (ha)", secondary_y=False)
     fig.update_yaxes(title_text="Toneladas (t)", secondary_y=True)
-    return apply_theme(fig, "Evolucion Historica del Valle del Cauca (2019-2024)")
+    return apply_theme(fig, "Evolucion Historica del Valle del Cauca (2019-2025)")
 
 def plot_rendimiento_historico(df: pd.DataFrame) -> go.Figure:
     hist = df.groupby("ano").agg(
