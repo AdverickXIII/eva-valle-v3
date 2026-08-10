@@ -1,4 +1,7 @@
-"""
+"""Reescribe app.py con las 3 mejoras de seguridad integradas."""
+from pathlib import Path
+
+APP = r'''"""
 EVA Valle v3.0 - Dashboard con autenticacion y roles.
 Seguridad: rate limiting + session timeout + input validation.
 """
@@ -112,3 +115,8 @@ if role == "admin":
 
 pg = st.navigation(pages)
 pg.run()
+'''
+
+Path("app.py").write_text(APP, encoding="utf-8")
+print("[OK] app.py (rate limiting + session timeout + validacion)")
+print("\nEjecuta: streamlit run app.py")
