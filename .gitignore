@@ -24,3 +24,6 @@ crear_estructura.py
 
 # Archivos locales / legacy (seguridad)
 .vscode/
+# Excel pesado EVA 2019-2025
+data/external/eva_2019_2025_valle_del_cauca.xlsx
+outputs/fichas_cultivos/
