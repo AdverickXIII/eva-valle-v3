@@ -55,22 +55,24 @@ def _tabla(data) -> Table:
     return t
 
 
-def _pareto_sin_cana(df: pd.DataFrame) -> Drawing:
-    p = pareto(df, True, 8)
-    d = Drawing(460, 170)
+def _pareto(df: pd.DataFrame, exclude_cana: bool, color=VERDE,
+            width: float = 230, height: float = 140) -> Drawing:
+    """Pareto horizontal compacto (con o sin cana)."""
+    p = pareto(df, exclude_cana, 8)
+    d = Drawing(width, height)
     bc = HorizontalBarChart()
-    bc.x = 110
-    bc.y = 10
-    bc.height = 150
-    bc.width = 330
+    bc.x = 80
+    bc.y = 6
+    bc.height = height - 16
+    bc.width = width - 88
     bc.data = [list(p["share"])]
     bc.categoryAxis.categoryNames = list(p["cultivo"])
     bc.categoryAxis.labels.fontName = "Helvetica"
-    bc.categoryAxis.labels.fontSize = 7
+    bc.categoryAxis.labels.fontSize = 6
     bc.valueAxis.valueMin = 0
-    bc.valueAxis.labels.fontSize = 7
-    bc.bars[0].fillColor = VERDE
-    bc.barWidth = 12
+    bc.valueAxis.labels.fontSize = 6
+    bc.bars[0].fillColor = color
+    bc.barWidth = 9
     d.add(bc)
     return d
 
@@ -107,13 +109,21 @@ def build_executive_pdf(df: pd.DataFrame) -> bytes:
           ["Top 1 (%)", f"{cc['top1_pct']:.1f} ({cc['top1']})",
            f"{sc['top1_pct']:.1f} ({sc['top1']})"],
           ["Cultivos que explican 80%", str(cc["n80"]), str(sc["n80"])]]
+    graf_cana = _pareto(df, False, color=VERDE)
+    graf_sin = _pareto(df, True, color=colors.HexColor("#DD6B20"))
+    tabla_grafs = Table(
+        [[Paragraph("<b>Pareto CON cana (%)</b>", st_["Normal"]),
+          Paragraph("<b>Pareto SIN cana (%)</b>", st_["Normal"])],
+         [graf_cana, graf_sin]],
+        colWidths=[234, 234])
+    tabla_grafs.setStyle(TableStyle([
+        ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+    ]))
     b = [Paragraph("2. Concentracion productiva: con cana vs sin cana",
                    st_["Heading2"]),
-         _tabla(d2), Spacer(1, 0.2 * cm),
-         Paragraph("Pareto sin cana (% de la produccion no-canera):", st_["Normal"]),
-         _pareto_sin_cana(df), Spacer(1, 0.4 * cm)]
+         _tabla(d2), Spacer(1, 0.2 * cm), tabla_grafs, Spacer(1, 0.4 * cm)]
     story.append(KeepTogether(b))
-
     # 3. Territorial
     d3 = [["Indicador", "Valor"],
           ["Gini territorial", f"{ter['gini']:.2f}"],
@@ -126,13 +136,23 @@ def build_executive_pdf(df: pd.DataFrame) -> bytes:
     story.append(KeepTogether(b))
 
     # 4. Tendencias y dinamica
-    d4 = [["Ano", "Produccion (t)", "Rendimiento (t/ha)"]] +          [[str(int(r["ano"])), f"{r['produccion']:,.0f}", f"{r['rendimiento']:.2f}"]
-          for _, r in s["tendencia"].iterrows()]
-    d4b = [["Cultivo", "CAGR"]] +           [[r["cultivo"], f"+{r['cagr']:.1f}%"] for _, r in s["crecen"].iterrows()] +           [[r["cultivo"], f"{r['cagr']:.1f}%"] for _, r in s["declinan"].iterrows()]
-    b = [Paragraph("4. Tendencias y dinamica (2019-2025)", st_["Heading2"]),
-         _tabla(d4), Spacer(1, 0.2 * cm), _tabla(d4b), Spacer(1, 0.4 * cm)]
-    story.append(KeepTogether(b))
-
+    d4 = [["Ano", "Produccion (t)", "Rendimiento (t/ha)"]]
+    for _, r in s["tendencia"].iterrows():
+        d4.append([str(int(r["ano"])), f"{r['produccion']:,.0f}",
+                   f"{r['rendimiento']:.2f}"])
+    t4 = Table(d4, hAlign="LEFT", colWidths=[3 * cm, 5 * cm, 5 * cm])
+    t4.setStyle(_style())
+    d4b = [["Dinamica", "Cultivo", "CAGR"]]
+    for _, r in s["crecen"].iterrows():
+        d4b.append(["Crecen", r["cultivo"], f"+{r['cagr']:.1f}%"])
+    for _, r in s["declinan"].iterrows():
+        d4b.append(["Declinan", r["cultivo"], f"{r['cagr']:.1f}%"])
+    t4b = Table(d4b, hAlign="LEFT", colWidths=[3 * cm, 7 * cm, 3 * cm])
+    t4b.setStyle(_style())
+    story.append(KeepTogether([
+        Paragraph("4. Tendencias y dinamica (2019-2025)", st_["Heading2"]),
+        t4, Spacer(1, 0.2 * cm)]))
+    story.append(KeepTogether([t4b, Spacer(1, 0.4 * cm)]))
     # 5. Calidad del dato
     d5 = [["Aspecto", "Detalle"],
           ["Fuente", q["fuente"]],
