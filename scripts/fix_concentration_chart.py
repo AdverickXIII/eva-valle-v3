@@ -1,4 +1,7 @@
-"""Graficos de concentracion: Pareto y donas ex-cana (adaptativas al filtro)."""
+"""Reescribe ui/charts/concentration.py con donuts adaptativos al filtro."""
+from pathlib import Path
+
+MOD = '''"""Graficos de concentracion: Pareto y donas ex-cana (adaptativas al filtro)."""
 from __future__ import annotations
 import pandas as pd
 import plotly.graph_objects as go
@@ -77,3 +80,8 @@ def plot_ex_cana_donuts(df: pd.DataFrame) -> go.Figure:
         xref="paper", yref="paper", x=0.5, y=-0.05, showarrow=False,
         font=dict(size=10, color="#666666"))
     return fig
+'''
+
+Path("ui/charts/concentration.py").write_text(MOD, encoding="utf-8")
+print("[OK] ui/charts/concentration.py (donuts adaptativos)")
+print("Recarga: Ctrl+R en el navegador")
