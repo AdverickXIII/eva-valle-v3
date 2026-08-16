@@ -135,7 +135,7 @@ def build_executive_pdf(df: pd.DataFrame) -> bytes:
          _tabla(d3), Spacer(1, 0.4 * cm)]
     story.append(KeepTogether(b))
 
-    # 4. Tendencias y dinamica
+    # 4. Tendencias y dinamica (2019-2025)
     d4 = [["Ano", "Produccion (t)", "Rendimiento (t/ha)"]]
     for _, r in s["tendencia"].iterrows():
         d4.append([str(int(r["ano"])), f"{r['produccion']:,.0f}",
@@ -144,17 +144,17 @@ def build_executive_pdf(df: pd.DataFrame) -> bytes:
     t4.setStyle(_style())
     story.append(KeepTogether([
         Paragraph("4. Tendencias y dinamica (2019-2025)", st_["Heading2"]),
-        t4, Spacer(1, 0.2*cm)]))
+        t4, Spacer(1, 0.3*cm)]))
 
-    # Tabla de dinamica de cultivos
     d4b = [["Dinamica", "Cultivo", "CAGR"]]
     for _, r in s["crecen"].iterrows():
         d4b.append(["Crecen", r["cultivo"], f"+{r['cagr']:.1f}%"])
     for _, r in s["declinan"].iterrows():
         d4b.append(["Declinan", r["cultivo"], f"{r['cagr']:.1f}%"])
-    t4b = Table(d4b, hAlign="LEFT", colWidths=[3*cm, 7*cm, 3*cm])
+    t4b = Table(d4b, hAlign="LEFT", colWidths=[3*cm, 9*cm, 4.5*cm])
     t4b.setStyle(_style())
     story.append(KeepTogether([t4b, Spacer(1, 0.4*cm)]))
+
     # 5. Calidad del dato
     d5 = [["Aspecto", "Detalle"],
           ["Fuente", q["fuente"]],
