@@ -1,4 +1,7 @@
-"""Pagina 18: Validacion Satelital Optico + Radar (Sentinel-2 + Sentinel-1)."""
+"""Actualiza la pagina de Validacion Satelital con datos optico + radar."""
+from pathlib import Path
+
+PAGE_CODE = '''"""Pagina 18: Validacion Satelital Optico + Radar (Sentinel-2 + Sentinel-1)."""
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -111,3 +114,9 @@ st.dataframe(
 
 st.markdown("---")
 st.caption("Fuentes: Sentinel-2 (optico) + Sentinel-1 (radar) via Google Earth Engine. Procesado por EVA Valle v3.0.")
+'''
+
+out_path = Path("ui/pages/18_Satelite.py")
+out_path.write_text(PAGE_CODE, encoding="utf-8")
+print(f"[OK] Pagina actualizada: {out_path}")
+print("Recarga Streamlit (Ctrl+R) para ver los 2 graficos (optico + radar).")
