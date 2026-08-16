@@ -1,4 +1,4 @@
-"""Pagina 18: Validacion Satelital v3."""
+"""Pagina 18: Validacion Satelital v4 (mosaico estetico)."""
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -24,8 +24,8 @@ anomalias = int(df["coherencia_final"].str.contains("Anomal", na=False).sum())
 cobertura = (df["fuente"] != "Ninguna").mean() * 100
 
 c1, c2, c3 = st.columns(3)
-c1.metric("Cobertura satelital", f"{cobertura:.0f}%", help="273/273 registros con dato satelital")
-c2.metric("Coherencia con UPRA", f"{coherentes/total*100:.1f}%", help="Registros donde el satelite confirma lo reportado")
+c1.metric("Cobertura satelital", f"{cobertura:.0f}%")
+c2.metric("Coherencia con UPRA", f"{coherentes/total*100:.1f}%")
 c3.metric("Anomalias detectadas", str(anomalias))
 
 if anomalias == 0:
@@ -48,8 +48,8 @@ vf = df["fuente"].value_counts()
 colA, colB = st.columns(2)
 with colA:
     fig_donut = px.pie(names=vc.index, values=vc.values, hole=0.55, color=vc.index,
-                       color_discrete_map={"Coherente": "#2E8B57", "Indeterminado": "#FFA500",
-                                           "Anomalia": "#DC143C", "Sin datos": "#999999"})
+                       color_discrete_map={"Coherente": "#52B788", "Indeterminado": "#F4A261",
+                                           "Anomalia": "#E63946", "Sin datos": "#ADB5BD"})
     fig_donut.add_annotation(text=f"<b>{coherentes/total*100:.1f}%</b><br>coherente",
                              x=0.5, y=0.5, showarrow=False,
                              font=dict(size=22, color="#2E8B57"))
@@ -59,15 +59,20 @@ with colA:
     st.plotly_chart(fig_donut, use_container_width=True)
 with colB:
     fig_bar = px.bar(x=vf.index, y=vf.values, color=vf.index,
-                     color_discrete_map={"Optico": "#2E8B57", "Radar": "#4682B4",
-                                         "Ninguna": "#999999"})
+                     color_discrete_map={"Optico": "#52B788", "Radar": "#5FA8DC",
+                                         "Ninguna": "#ADB5BD"})
     fig_bar.update_layout(title="Fuente de datos por registro", height=340, showlegend=False,
-                          yaxis_title="Registros",
-                          margin=dict(t=40, b=10, l=10, r=10))
+                          yaxis_title="Registros", margin=dict(t=40, b=10, l=10, r=10))
     st.plotly_chart(fig_bar, use_container_width=True)
 
-# ---------- 3. MOSAICO DE VALIDACION SIN HUECOS ----------
+# ---------- 3. MOSAICO TILES (sin barra de color) ----------
 st.subheader("Mapa de validacion: cada municipio-ano fue confirmado por un satelite")
+st.markdown(
+    "<span style='color:#52B788;font-size:16px'>⬤</span> **Confirmado optico** &nbsp;&nbsp; "
+    "<span style='color:#5FA8DC;font-size:16px'>⬤</span> **Confirmado radar (nubes)** &nbsp;&nbsp; "
+    "<span style='color:#F4A261;font-size:16px'>⬤</span> **Indeterminado** &nbsp;&nbsp; "
+    "<span style='color:#CED4DA;font-size:16px'>⬤</span> **Sin datos**",
+    unsafe_allow_html=True)
 
 def estado(row):
     c = str(row["coherencia_final"])
@@ -79,9 +84,7 @@ def estado(row):
 
 df["estado"] = df.apply(estado, axis=1)
 piv = df.pivot_table(index="municipio", columns="ano", values="estado", aggfunc="first")
-orden = (df.assign(v=df["ndvi_mean"].fillna(0))
-         .groupby("municipio")["v"].mean().sort_values(ascending=False))
-piv = piv.reindex([m for m in orden.index if m in piv.index])
+piv = piv.reindex(sorted(piv.index))  # alfabetico
 
 COD = {"Sin datos": 0, "Indeterminado": 1, "Radar confirmo": 2, "Optico confirmo": 3, "Anomalia": 4}
 z = piv.replace(COD)
@@ -92,18 +95,18 @@ fig_mos = go.Figure(go.Heatmap(
     y=piv.index.tolist(),
     customdata=piv.values,
     hovertemplate="%{y} · %{x}<br>%{customdata}<extra></extra>",
-    zmin=0, zmax=5,
-    colorscale=[[0, "#E0E0E0"], [0.2, "#E0E0E0"], [0.2, "#FFA500"], [0.4, "#FFA500"],
-                [0.4, "#4682B4"], [0.6, "#4682B4"], [0.6, "#2E8B57"], [0.8, "#2E8B57"],
-                [0.8, "#DC143C"], [1, "#DC143C"]],
-    colorbar=dict(tickvals=[0, 1, 2, 3, 4],
-                  ticktext=["Sin datos", "Indeterminado", "Radar", "Optico", "Anomalia"])))
-fig_mos.update_layout(height=1100, xaxis_title="Ano", yaxis_title="Municipio",
-                      margin=dict(t=20, b=10, l=10, r=10))
-fig_mos.update_yaxes(autorange="reversed", tickfont=dict(size=9))
+    zmin=0, zmax=5, showscale=False,
+    xgap=3, ygap=3,
+    colorscale=[[0, "#E9ECEF"], [0.2, "#E9ECEF"], [0.2, "#F4A261"], [0.4, "#F4A261"],
+                [0.4, "#5FA8DC"], [0.6, "#5FA8DC"], [0.6, "#52B788"], [0.8, "#52B788"],
+                [0.8, "#E63946"], [1, "#E63946"]]))
+fig_mos.update_layout(height=1000, xaxis_title="Ano", yaxis_title="",
+                      plot_bgcolor="white", paper_bgcolor="white",
+                      margin=dict(t=10, b=10, l=10, r=10))
+fig_mos.update_yaxes(autorange="reversed", tickfont=dict(size=8), showgrid=False)
+fig_mos.update_xaxes(tickfont=dict(size=10), showgrid=False)
 st.plotly_chart(fig_mos, use_container_width=True)
-st.caption("Verde = confirmado por optico (Sentinel-2). Azul = confirmado por radar "
-           "(Sentinel-1, atraviesa nubes). **Sin celdas grises = cobertura 100%.**")
+st.caption("Cada celda es un municipio-ano. Sin celdas grises = cobertura satelital 100%.")
 
 # ---------- 4. IMAGEN DE EXHIBICION ----------
 img_path = Path("outputs/palmira_canaverales_sentinel2.png")
@@ -128,8 +131,8 @@ with st.expander("🔬 Detalle tecnico: NDVI y dispersiones"):
         fig_o = px.scatter(df_o, x="area_cosechada_eva", y="ndvi_mean", color="cat",
                            hover_name="municipio", hover_data=["ano"],
                            title="Optico: NDVI vs area reportada",
-                           color_discrete_map={"Coherente": "#2E8B57",
-                                               "Indeterminado": "#FFA500", "Anomalia": "#DC143C"})
+                           color_discrete_map={"Coherente": "#52B788",
+                                               "Indeterminado": "#F4A261", "Anomalia": "#E63946"})
         fig_o.add_hline(y=0.4, line_dash="dash", line_color="gray")
         st.plotly_chart(fig_o, use_container_width=True)
     df_r = df[df["fuente"] == "Radar"].dropna(subset=["vh_db", "area_cosechada_eva"])
@@ -137,8 +140,8 @@ with st.expander("🔬 Detalle tecnico: NDVI y dispersiones"):
         fig_r = px.scatter(df_r, x="area_cosechada_eva", y="vh_db", color="cat",
                            hover_name="municipio", hover_data=["ano"],
                            title="Radar: VH (dB) vs area reportada",
-                           color_discrete_map={"Coherente": "#4682B4",
-                                               "Indeterminado": "#FFA500", "Anomalia": "#DC143C"})
+                           color_discrete_map={"Coherente": "#5FA8DC",
+                                               "Indeterminado": "#F4A261", "Anomalia": "#E63946"})
         fig_r.add_hline(y=-18, line_dash="dash", line_color="gray")
         st.plotly_chart(fig_r, use_container_width=True)
 
