@@ -100,6 +100,7 @@ pages = [
     st.Page("ui/pages/15_Ejecutivo.py", title="Resumen Ejecutivo", icon="\U0001F4CB"),
     st.Page("ui/pages/16_Mapa_Cultivos.py", title="Mapa Cultivos", icon="\U0001F5FA\uFE0F"),
     st.Page("ui/pages/18_Satelite.py", title="Validacion Satelital", icon="\U0001F6F0\uFE0F"),
+    st.Page("ui/pages/19_Zonas.py", title="Zonas", icon="\U0001F5FA️"),
 ]
 
 if role == "admin":
