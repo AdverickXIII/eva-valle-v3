@@ -1,4 +1,7 @@
-"""Resumen Ejecutivo PDF - Valle del Cauca 2019-2025 (3 paginas, estandar UPRA/CEPAL)."""
+"""Reconstruye core/reports/executive_report.py + generador del Resumen Ejecutivo."""
+from pathlib import Path
+
+MODULE = '''"""Resumen Ejecutivo PDF - Valle del Cauca 2019-2025 (3 paginas, estandar UPRA/CEPAL)."""
 from __future__ import annotations
 
 import io
@@ -257,3 +260,27 @@ def build_executive_pdf(df: pd.DataFrame) -> bytes:
 
     doc.build(story, onFirstPage=_footer, onLaterPages=_footer)
     return buf.getvalue()
+'''
+
+RUNNER = '''"""Genera el Resumen Ejecutivo PDF (standalone)."""
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+import pandas as pd
+from config.settings import settings
+from core.reports.executive_report import build_executive_pdf
+
+df = pd.read_csv(settings.DATA_MODEL_PATH / "eva_agricola_valle_modelo_conceptual.csv",
+                 low_memory=False)
+out = Path("outputs/resumen_ejecutivo.pdf")
+out.write_bytes(build_executive_pdf(df))
+print(f"[OK] Resumen Ejecutivo generado: {out}")
+print(f"     Tamano: {out.stat().st_size / 1024:.1f} KB")
+'''
+
+Path("core/reports/executive_report.py").write_text(MODULE, encoding="utf-8")
+Path("scripts/generar_resumen_ejecutivo.py").write_text(RUNNER, encoding="utf-8")
+print("[OK] core/reports/executive_report.py (con Seccion 4 corregida)")
+print("[OK] scripts/generar_resumen_ejecutivo.py")
+print("\nGenera el PDF: python scripts\\generar_resumen_ejecutivo.py")
