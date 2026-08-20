@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 VERDE = "#2E8B57"
 AZUL = "#5FA8DC"
-ROJO = "#D62728"
+NARANJA = "#F4A261"
 
 
 def serie_png(agg) -> bytes:
@@ -25,17 +25,22 @@ def serie_png(agg) -> bytes:
     return buf.getvalue()
 
 
-def motor_png(diag) -> bytes:
-    vals = [diag["cagr_prod"], diag["cagr_area"], diag["cagr_rend"]]
-    labs = ["CAGR produccion", "CAGR area", "CAGR rendimiento"]
-    cols = [VERDE if v >= 0 else ROJO for v in vals]
-    fig, ax = plt.subplots(figsize=(8.5, 2.6))
-    ax.barh(labs, vals, color=cols)
-    for i, v in enumerate(vals):
-        ax.text(v + (0.3 if v >= 0 else -0.3), i, f"{v:+.1f}%",
-                va="center", ha="left" if v >= 0 else "right", fontsize=9)
-    ax.axvline(0, color="gray", lw=0.8)
-    ax.set_title("Motor del crecimiento (%)")
+def indice_png(agg) -> bytes:
+    base_p = float(agg.p.iloc[0])
+    base_a = float(agg.a.iloc[0])
+    base_r = float((agg.p / agg.c).iloc[0])
+    fig, ax = plt.subplots(figsize=(8.5, 4.2))
+    ax.plot(agg.index, agg.p / base_p * 100, marker="o", color=VERDE, lw=2,
+            label="Produccion")
+    ax.plot(agg.index, agg.a / base_a * 100, marker="o", color=NARANJA, lw=2,
+            label="Area sembrada")
+    ax.plot(agg.index, (agg.p / agg.c) / base_r * 100, marker="o", color=AZUL, lw=2,
+            label="Rendimiento")
+    ax.axhline(100, color="gray", ls="--", lw=0.8)
+    ax.set_title("Motor del crecimiento (indice 2019=100)")
+    ax.set_ylabel("Indice (2019=100)")
+    ax.legend(loc="upper left", fontsize=8)
+    ax.grid(alpha=0.3)
     fig.tight_layout()
     buf = io.BytesIO()
     fig.savefig(buf, format="png", dpi=150)

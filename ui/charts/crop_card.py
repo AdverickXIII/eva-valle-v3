@@ -105,3 +105,26 @@ def plot_top_municipios(sub: pd.DataFrame, cultivo: str):
     fig.update_layout(margin=dict(t=40, b=10, l=10), height=420,
                       xaxis_title="Produccion acumulada (t)", showlegend=False)
     return apply_theme(fig, f"Top 10 municipios en {cultivo}")
+
+
+def plot_crop_indice(diag: dict, titulo: str):
+    """Lineas indexadas 2019=100: produccion vs area vs rendimiento."""
+    agg = diag["agg"]
+    base_p = float(agg.p.iloc[0])
+    base_a = float(agg.a.iloc[0])
+    base_r = float((agg.p / agg.c).iloc[0])
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=agg.index, y=agg.p / base_p * 100,
+                             mode="lines+markers", name="Produccion",
+                             line=dict(color="#2E8B57", width=3)))
+    fig.add_trace(go.Scatter(x=agg.index, y=agg.a / base_a * 100,
+                             mode="lines+markers", name="Area sembrada",
+                             line=dict(color="#F4A261", width=2)))
+    fig.add_trace(go.Scatter(x=agg.index, y=(agg.p / agg.c) / base_r * 100,
+                             mode="lines+markers", name="Rendimiento",
+                             line=dict(color="#5FA8DC", width=2)))
+    fig.add_hline(y=100, line_dash="dash", line_color="gray")
+    fig.update_layout(yaxis_title="Indice (2019=100)", height=460,
+                      legend=dict(orientation="h", y=-0.15),
+                      hovermode="x unified", margin=dict(t=40, b=10))
+    return apply_theme(fig, titulo)
