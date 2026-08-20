@@ -1,4 +1,7 @@
-"""Pagina 10: Centro de Reportes (ejecutivos + municipales + paquetes de datos)."""
+"""Transforma 10_Reportes en Centro de Reportes con 3 tabs."""
+from pathlib import Path
+
+NEW_PAGE = '''"""Pagina 10: Centro de Reportes (ejecutivos + municipales + paquetes de datos)."""
 from __future__ import annotations
 
 import streamlit as st
@@ -263,3 +266,8 @@ def main() -> None:
 
 
 main()
+'''
+
+Path("ui/pages/10_Reportes.py").write_text(NEW_PAGE, encoding="utf-8")
+print("[OK] 10_Reportes.py transformado en Centro de Reportes con 3 tabs")
+print("Reinicia Streamlit y explora los 3 tabs")

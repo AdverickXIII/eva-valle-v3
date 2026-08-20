@@ -1,4 +1,7 @@
-"""Generacion de alertas inteligentes v2: motor multi-indicador."""
+"""Centro de Alertas v2: motor multi-indicador + filtros + radar + tabla + CSV."""
+from pathlib import Path
+
+ENGINE = '''"""Generacion de alertas inteligentes v2: motor multi-indicador."""
 from __future__ import annotations
 
 import numpy as np
@@ -156,86 +159,129 @@ def generate_alerts(df: pd.DataFrame) -> list:
     except Exception:
         pass
 
-    # 7) Ventaja competitiva cultivo-municipio (rendimiento vs promedio del cultivo)
-    gmc = (df.groupby(["municipio", "cultivo"])
-           .agg(p=("produccion_t", "sum"), c=("area_cosechada_ha", "sum"))
-           .reset_index())
-    gmc["rend"] = gmc["p"] / gmc["c"].replace(0, 1)
-    gc = (df.groupby("cultivo")
-          .agg(p=("produccion_t", "sum"), c=("area_cosechada_ha", "sum"))
-          .reset_index())
-    gc["rend_d"] = gc["p"] / gc["c"].replace(0, 1)
-    mg = gmc.merge(gc[["cultivo", "rend_d"]], on="cultivo")
-    for _, r in mg.iterrows():
-        if r["p"] >= 20000 and r["rend_d"] > 0 and r["rend"] >= 1.5 * r["rend_d"]:
-            alerts.append(dict(severidad="DESTAQUE", tipo="Competitividad",
-                               municipio=r["municipio"], cultivo=r["cultivo"],
-                               titulo=f"{r['municipio']}: ventaja competitiva en {r['cultivo']}",
-                               detalle=f"Rendimiento {r['rend']:.1f} t/ha vs "
-                                       f"{r['rend_d']:.1f} t/ha del cultivo "
-                                       f"({r['rend']/r['rend_d']:.1f}x)."))
-
-    # 8) Agricultura marginal en declive (municipios pequenos que caen)
-    gm2 = df.groupby(["municipio", "ano"])["produccion_t"].sum().reset_index()
-    for m, sub in gm2.groupby("municipio"):
-        sub = sub.sort_values("ano")
-        prod_tot = float(sub["produccion_t"].sum())
-        if prod_tot >= 5000 or len(sub) < 2:
-            continue
-        ini = float(sub["produccion_t"].iloc[0])
-        fin = float(sub["produccion_t"].iloc[-1])
-        if ini > 0 and fin > 0:
-            n = len(sub) - 1
-            cagr_m = ((fin / ini) ** (1 / n) - 1) * 100
-            if cagr_m <= -5:
-                alerts.append(dict(severidad="AVISO", tipo="Marginal",
-                                   municipio=m, cultivo="-",
-                                   titulo=f"{m}: agricultura marginal en declive",
-                                   detalle=f"{prod_tot:,.0f} t totales con CAGR "
-                                           f"{cagr_m:.1f}%. Economia agricola minima "
-                                           f"y en contraccion."))
-
     orden = {"ALERTA": 0, "AVISO": 1, "DESTAQUE": 2}
     alerts.sort(key=lambda x: orden[x["severidad"]])
     return alerts
+'''
+
+PAGE = '''"""Pagina 12: Centro de Alertas (filtros, radar, tabla y exportacion)."""
+from __future__ import annotations
+
+import pandas as pd
+import plotly.graph_objects as go
+import streamlit as st
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from config.settings import settings
+from core.analytics.alerts import generate_alerts
+from ui.components.loading_states import render_empty_state
+
+st.set_page_config(page_title="Alertas | EVA Valle", page_icon="🚨", layout="wide")
 
 
-def indice_riesgo_municipal(df: pd.DataFrame) -> pd.DataFrame:
-    """Indice compuesto 0-100 de riesgo territorial por municipio."""
-    def _cl(x: float) -> float:
-        return max(0.0, min(100.0, x))
+@st.cache_data(ttl=3600)
+def load_dataset() -> pd.DataFrame:
+    path = settings.DATA_MODEL_PATH / "eva_agricola_valle_modelo_conceptual.csv"
+    if not path.exists():
+        return pd.DataFrame()
+    return pd.read_csv(path, low_memory=False)
 
-    anos = sorted(int(a) for a in df["ano"].dropna().unique())
-    filas = []
-    for m, sub in df.groupby("municipio"):
-        g = sub.groupby("cultivo")["produccion_t"].sum()
-        g = g[g > 0]
-        prod = float(g.sum())
-        if prod <= 0:
-            continue
-        p = g / g.sum()
-        shannon = float(-(p * np.log(p)).sum())
-        top_share = float(g.max() / g.sum() * 100)
-        an = sub.groupby("ano")["produccion_t"].sum().sort_index()
-        cagr = 0.0
-        if len(an) >= 2 and an.iloc[0] > 0 and an.iloc[-1] > 0:
-            cagr = ((an.iloc[-1] / an.iloc[0]) ** (1 / (len(an) - 1)) - 1) * 100
-        caida = 0.0
-        if len(anos) >= 2:
-            va = an.reindex([anos[-2], anos[-1]]).dropna()
-            if len(va) == 2 and va.iloc[0] > 0:
-                caida = (va.iloc[1] / va.iloc[0] - 1) * 100
-        dep = _cl(top_share)
-        div = _cl(100 - shannon * 40)
-        dec = _cl(50 - cagr * 5)
-        cai = _cl(50 - caida * 2.5)
-        filas.append({"municipio": m,
-                      "score": round((dep + div + dec + cai) / 4, 1),
-                      "dependencia": round(dep, 1),
-                      "baja_diversidad": round(div, 1),
-                      "declive": round(dec, 1),
-                      "caida": round(cai, 1),
-                      "produccion_t": prod})
-    return (pd.DataFrame(filas)
-            .sort_values("score", ascending=False)
-            .reset_index(drop=True))
+
+@st.cache_data(ttl=3600)
+def get_alerts(df: pd.DataFrame) -> list:
+    return generate_alerts(df)
+
+
+def main() -> None:
+    st.title("🚨 Centro de Alertas")
+    st.caption("Monitoreo automatico: riesgos, dependencias y oportunidades del agro vallecaucano")
+
+    df = load_dataset()
+    if df.empty:
+        render_empty_state("Dataset no encontrado",
+            hint="Ejecuta: python scripts/run_pipeline.py --skip-download")
+        return
+
+    alerts = get_alerts(df)
+    df_a = pd.DataFrame(alerts)
+
+    n_a = sum(1 for x in alerts if x["severidad"] == "ALERTA")
+    n_v = sum(1 for x in alerts if x["severidad"] == "AVISO")
+    n_d = sum(1 for x in alerts if x["severidad"] == "DESTAQUE")
+
+    k1, k2, k3, k4 = st.columns(4)
+    k1.metric("🚨 Total", len(alerts))
+    k2.metric("🔴 Alertas", n_a)
+    k3.metric("🟡 Avisos", n_v)
+    k4.metric("🟢 Destacados", n_d)
+    st.markdown("---")
+
+    # ---------- FILTROS ----------
+    f1, f2, f3 = st.columns(3)
+    with f1:
+        sev_sel = st.multiselect("Severidad",
+                                 ["ALERTA", "AVISO", "DESTAQUE"],
+                                 default=["ALERTA", "AVISO", "DESTAQUE"])
+    with f2:
+        tip_sel = st.multiselect("Tipo de alerta",
+                                 sorted(df_a["tipo"].unique().tolist()),
+                                 default=sorted(df_a["tipo"].unique().tolist()))
+    with f3:
+        munis_con = sorted(set(df_a["municipio"]) - {"-"})
+        mun_sel = st.selectbox("Municipio", ["Todos"] + munis_con)
+
+    df_f = df_a[df_a["severidad"].isin(sev_sel) & df_a["tipo"].isin(tip_sel)]
+    if mun_sel != "Todos":
+        df_f = df_f[(df_f["municipio"] == mun_sel) | (df_f["municipio"] == "-")]
+
+    st.caption(f"{len(df_f)} alertas tras filtros.")
+
+    # ---------- RADAR municipio x tipo ----------
+    d_rad = df_f[df_f["municipio"] != "-"]
+    if not d_rad.empty:
+        piv = (d_rad.pivot_table(index="municipio", columns="tipo",
+                                 values="titulo", aggfunc="size", fill_value=0))
+        fig = go.Figure(go.Heatmap(
+            z=piv.values, x=piv.columns.tolist(), y=piv.index.tolist(),
+            colorscale="YlOrRd", xgap=2, ygap=2,
+            hovertemplate="%{y} · %{x}: %{z} alerta(s)<extra></extra>",
+            colorbar=dict(title="Alertas")))
+        fig.update_layout(height=420, margin=dict(t=40, b=10, l=10, r=10),
+                          title="Radar territorial: donde se acumulan las alertas")
+        st.plotly_chart(fig, use_container_width=True)
+    else:
+        st.info("Sin alertas municipales con los filtros actuales "
+                "(las departamentales aparecen abajo).")
+
+    # ---------- TABLA + CSV ----------
+    st.subheader("📋 Detalle de alertas")
+    show = df_f[["severidad", "tipo", "municipio", "cultivo", "titulo", "detalle"]]
+    st.dataframe(show, use_container_width=True, height=380, hide_index=True)
+    st.download_button("⬇️ Descargar alertas (CSV)",
+                       data=show.to_csv(index=False).encode("utf-8"),
+                       file_name="alertas_eva_valle.csv", mime="text/csv")
+
+    st.markdown("---")
+
+    # ---------- TARJETAS ----------
+    st.subheader("🔔 Narrativa de alertas")
+    for _, x in df_f.iterrows():
+        msg = f"**{x['titulo']}**\\n\\n{x['detalle']}"
+        if x["severidad"] == "ALERTA":
+            st.error(msg)
+        elif x["severidad"] == "AVISO":
+            st.warning(msg)
+        else:
+            st.success(msg)
+
+
+main()
+'''
+
+Path("core/analytics/alerts.py").write_text(ENGINE, encoding="utf-8")
+Path("ui/pages/12_Alertas.py").write_text(PAGE, encoding="utf-8")
+print("[OK] core/analytics/alerts.py v2 (7 familias de reglas)")
+print("[OK] ui/pages/12_Alertas.py v2 (filtros + radar + tabla + CSV)")
+print("Reinicia Streamlit y abre Alertas")

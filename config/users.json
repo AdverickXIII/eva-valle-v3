@@ -1,12 +1,17 @@
 {
   "admin": {
-    "salt": "c231ce634c01976d",
-    "hash": "b1a0ae2f4afbecb2564c66016d642206695e3fd78021e7f1896218706d7435f0",
+    "salt": "86cc16471a35f771",
+    "hash": "9c7ee2b5bf2a26e96c5c071bc53477322a00431a40f431c618821cc607501b5c",
     "role": "admin"
   },
   "usuario": {
     "salt": "6337cc0ab94f38c9",
     "hash": "a9951b0dfc65fb2d44d3c02d78c7910a14a7b08a9581714a4a81a389fc6b48c9",
     "role": "usuario"
+  },
+  "analista": {
+    "salt": "8bf3b42c22c4f4d7",
+    "hash": "9eba0a14cb685801d6996d14001ee85b4eb7d9e3c462c6b039f073d1eba0595f",
+    "role": "analista"
   }
 }
