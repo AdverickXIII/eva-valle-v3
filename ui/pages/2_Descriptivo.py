@@ -15,6 +15,7 @@ from ui.components.download_section import render_download_button
 from ui.charts.distributions import plot_distribuciones_log
 from ui.charts.concentration import plot_ex_cana_donuts
 from ui.charts.growth import plot_cagr_divergente
+from ui.charts.ts_charts import (plot_serie_produccion, plot_shocks, plot_estacionalidad_ab)
 from ui.charts.spatial import plot_lq_heatmap, plot_shannon_barras
 from core.analytics.descriptive import calculate_descriptive_statistics
 from core.analytics.distributions import fit_distributions
@@ -23,6 +24,7 @@ from core.analytics.concentration import calculate_concentration
 from core.analytics.time_series import analyze_time_series
 from core.analytics.seasonality import test_seasonality_ab
 from core.analytics.spatial import calculate_location_quotient, calculate_shannon_diversity
+from core.analytics.lq_table import lq_top
 from core.analytics.elasticity import calculate_elasticity
 from core.analytics.inferential import run_inferential_test
 from core.analytics.growth import calculate_cagr
@@ -137,17 +139,54 @@ def main() -> None:
             df_stl = cached_time_series(df_f)
         if not df_stl.empty:
             st.dataframe(df_stl, use_container_width=True)
+            st.caption("Dickey-Fuller con p > 0.05 = serie **no estacionaria**: tiene "
+                       "tendencia propia (crecimiento estructural), por eso se modela aparte.")
+        colA, colB = st.columns(2)
+        with colA:
+            st.plotly_chart(plot_serie_produccion(df_f), use_container_width=True)
+        with colB:
+            st.plotly_chart(plot_shocks(df_f), use_container_width=True)
+        st.caption("Rojo = ano que se desvio >2% de la tendencia (candidato a shock: "
+                   "clima, paro, plaga). Verde = comportamiento normal.")
+
         st.subheader("4.8 Estacionalidad A vs B")
         with st.spinner("Ejecutando Wilcoxon..."):
             df_est = cached_seasonality(df_f)
         if not df_est.empty:
+            st.plotly_chart(plot_estacionalidad_ab(df_est), use_container_width=True)
+            st.caption("Verde = diferencia significativa entre semestres (p < 0.05): "
+                       "cultivo con estacionalidad marcada. Gris = no significativa.")
             st.dataframe(df_est.head(15), use_container_width=True)
             render_download_button(df_est, "estacionalidad_ab.csv")
+
     with tab5:
         st.subheader("4.9 Location Quotient")
-        st.plotly_chart(plot_lq_heatmap(df_f, top_n=15), use_container_width=True)
+        sin_cana = st.checkbox("Analizar sin cana (economia agricola real)", value=True,
+                               help="Con cana, los LQ se inflan: la cana aplasta los porcentajes departamentales.")
+        st.plotly_chart(plot_lq_heatmap(df_f, top_n=15, excluye_cana=sin_cana), use_container_width=True)
+        st.markdown("**Top 20 especializaciones (LQ)** — municipios vs grupos de cultivo:")
+        solo_pesadas = st.checkbox("Solo vocaciones con peso (participacion municipal >= 5%)", value=True)
+        df_lq = lq_top(df_f, 200, excluye_cana=sin_cana)
+        if solo_pesadas:
+            df_lq = df_lq[df_lq['share_municipio_pct'] >= 5].head(20)
+        else:
+            df_lq = df_lq.head(20)
+        st.dataframe(df_lq.round(2), use_container_width=True, hide_index=True)
+        st.caption("LQ = (% del grupo en el municipio) / (% del grupo en el Valle). "
+                   "LQ > 1 = especializacion; LQ >= 4 = vocacion fuerte.")
+
         st.subheader("4.10 Shannon-Wiener")
         st.plotly_chart(plot_shannon_barras(df_f, min_area=1000), use_container_width=True)
+        st.markdown("""
+**Matriz de decision (LQ x Shannon):**
+| Combinacion | Lectura | Accion sugerida |
+|---|---|---|
+| LQ alto + Shannon bajo | Especializado y dependiente | Proteger la cadena + diversificar marginalmente |
+| LQ alto + Shannon alto | Especializado con colchon | Fortalecer la vocacion |
+| LQ bajo + Shannon alto | Diversificado sin vocacion clara | Detectar cadenas emergentes |
+| LQ bajo + Shannon bajo | Sin vocacion y concentrado | Prioridad de inversion publica |
+""")
+
     with tab6:
         st.subheader("4.13 CAGR por Cultivo")
         st.plotly_chart(plot_cagr_divergente(df_f, min_prod=1000), use_container_width=True)
