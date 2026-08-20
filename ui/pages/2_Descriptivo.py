@@ -16,7 +16,8 @@ from ui.charts.distributions import plot_distribuciones_log
 from ui.charts.concentration import plot_ex_cana_donuts
 from ui.charts.growth import plot_cagr_divergente
 from ui.charts.crop_card import crop_diagnostic, plot_crop_serie, plot_crop_motor
-from ui.charts.growth_decomp import descomponer_crecimiento, plot_cuadrantes
+from ui.charts.growth_decomp import (descomponer_crecimiento, plot_cuadrantes,
+                                      plot_motor_barras)
 from ui.charts.ts_charts import (plot_serie_produccion, plot_shocks, plot_estacionalidad_ab)
 from ui.charts.spatial import plot_lq_heatmap, plot_shannon_barras
 from core.analytics.descriptive import calculate_descriptive_statistics
