@@ -200,8 +200,8 @@ def main() -> None:
             st.info(f"Un 1% de aumento en area genera ~{elast['elasticidad']:.2f}% en produccion.")
         st.subheader("4.14 Descomposicion del crecimiento: area vs rendimiento")
         df_dec = descomponer_crecimiento(df_f)
-        st.plotly_chart(plot_cuadrantes(df_dec), use_container_width=True)
-        st.dataframe(df_dec.sort_values("cagr_prod", ascending=False).head(25),
+        st.plotly_chart(plot_motor_barras(df_dec), use_container_width=True)
+        st.dataframe(df_dec.sort_values("prod_total", ascending=False).head(25),
                      use_container_width=True, hide_index=True)
         st.caption("Cuadrante superior-derecho = expansion con tecnologia (virtuoso). "
                    "Derecha-abajo = extensivo puro. Arriba-izquierda = intensificacion sin "
