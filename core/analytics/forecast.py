@@ -145,13 +145,18 @@ def proyectar_con_ic(serie: pd.Series, n_steps: int = 3,
     if res["modelo"] is None:
         return res
     pred = _proyectar(res["modelo"], n_steps)
-    residuos = res["residuos"]
+    residuos = np.asarray(res["residuos"], dtype=float)
+    # Centrar residuos: quita el sesgo sistematico del ajuste in-sample para que
+    # el IC y los escenarios abracen al tendencial (P10 <= 0 <= P90)
+    if len(residuos) and float(np.std(residuos)) > 0:
+        residuos = residuos - float(np.mean(residuos))
     cuantiles = {f"P{int(p*100)}": float(np.quantile(residuos, p)) for p in niveles}
+    # Piso en cero: la produccion negativa no existe
     escenarios = {
-        "conservador": pred + cuantiles["P10"],
-        "tendencial": pred,
-        "optimista": pred + cuantiles["P90"],
-        "ic_bajo": pred + cuantiles["P25"],
-        "ic_alto": pred + cuantiles["P75"],
+        "conservador": np.maximum(0.0, pred + cuantiles["P10"]),
+        "tendencial": np.maximum(0.0, pred),
+        "optimista": np.maximum(0.0, pred + cuantiles["P90"]),
+        "ic_bajo": np.maximum(0.0, pred + cuantiles["P25"]),
+        "ic_alto": np.maximum(0.0, pred + cuantiles["P75"]),
     }
     return {**res, "prediccion": pred, "escenarios": escenarios, "cuantiles": cuantiles}
