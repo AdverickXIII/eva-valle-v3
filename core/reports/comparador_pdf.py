@@ -86,6 +86,25 @@ def _mariposa_png(groups, va, vb, a, b) -> bytes:
     return _png(fig)
 
 
+
+
+def _rend_png(df_ab, a, b) -> bytes:
+    rend = (df_ab.groupby(["ano", "municipio"])
+            .agg(prod=("produccion_t", "sum"), cos=("area_cosechada_ha", "sum"))
+            .reset_index())
+    rend["rend"] = rend["prod"] / rend["cos"].replace(0, 1)
+    fig, ax = plt.subplots(figsize=(8.5, 4.0))
+    for m, col in ((a, VERDE), (b, NARANJA)):
+        d = rend[rend["municipio"] == m].sort_values("ano")
+        ax.plot(d["ano"], d["rend"], "o-", color=col, lw=2, label=m)
+    ax.set_ylabel("t/ha", fontsize=8)
+    ax.set_title("Rendimiento por ano (t/ha)", fontsize=10)
+    ax.legend(fontsize=8)
+    ax.grid(alpha=0.3)
+    fig.tight_layout()
+    return _png(fig)
+
+
 def build_comparador_pdf(a, b, sin_cana, comp_df, sa, sb, df_ab) -> bytes:
     buf = io.BytesIO()
     doc = SimpleDocTemplate(buf, pagesize=letter, title="Comparativa municipal")
@@ -151,6 +170,9 @@ def build_comparador_pdf(a, b, sin_cana, comp_df, sa, sb, df_ab) -> bytes:
     story.append(Paragraph("<b>Cara a cara por grupo de cultivo</b>", body))
     _add_png(story, _mariposa_png(groups, [piv.loc[x, a] for x in groups],
                                   [piv.loc[x, b] for x in groups], a, b))
+
+    story.append(Paragraph("<b>Rendimiento por ano (t/ha)</b>", body))
+    _add_png(story, _rend_png(df_ab, a, b))
 
     story.append(Paragraph(
         f"Fuente: UPRA - EVA 2019-2025. {meta.firma()}.",

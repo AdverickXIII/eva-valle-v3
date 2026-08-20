@@ -139,13 +139,19 @@ def main() -> None:
     # ---------- TABLA CON GANADOR ----------
     st.markdown("---")
     filas = []
+    PREC = {"Produccion total (t)": 0, "Area sembrada (ha)": 0,
+            "Rendimiento (t/ha)": 1, "Cultivos activos": 0,
+            "% del departamento": 1, "Diversidad (Shannon)": 1,
+            "CAGR 2019-2025 (%)": 1}
     for k in ["Produccion total (t)", "Area sembrada (ha)", "Rendimiento (t/ha)",
               "Cultivos activos", "% del departamento", "Diversidad (Shannon)",
               "CAGR 2019-2025 (%)"]:
-        va, vb = sa[k], sb[k]
-        win = "🤝 Empate" if abs(va - vb) < 1e-9 else (f"🅰️ {a}" if va > vb else f"🅱️ {b}")
-        filas.append({"Indicador": k, f"A · {a}": f"{va:,.1f}",
-                      f"B · {b}": f"{vb:,.1f}", "Gana": win})
+        prec = PREC[k]
+        va = round(sa[k], prec)
+        vb = round(sb[k], prec)
+        win = "🤝 Empate" if va == vb else (f"🅰️ {a}" if va > vb else f"🅱️ {b}")
+        filas.append({"Indicador": k, f"A · {a}": f"{va:,.{prec}f}",
+                      f"B · {b}": f"{vb:,.{prec}f}", "Gana": win})
     filas.append({"Indicador": "Top cultivo", f"A · {a}": sa["Top cultivo"],
                   f"B · {b}": sb["Top cultivo"], "Gana": "—"})
     comp_df = pd.DataFrame(filas)
