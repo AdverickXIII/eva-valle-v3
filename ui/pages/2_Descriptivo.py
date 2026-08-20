@@ -15,6 +15,8 @@ from ui.components.download_section import render_download_button
 from ui.charts.distributions import plot_distribuciones_log
 from ui.charts.concentration import plot_ex_cana_donuts
 from ui.charts.growth import plot_cagr_divergente
+from ui.charts.crop_card import crop_diagnostic, plot_crop_serie, plot_crop_motor
+from ui.charts.growth_decomp import descomponer_crecimiento, plot_cuadrantes
 from ui.charts.ts_charts import (plot_serie_produccion, plot_shocks, plot_estacionalidad_ab)
 from ui.charts.spatial import plot_lq_heatmap, plot_shannon_barras
 from core.analytics.descriptive import calculate_descriptive_statistics
@@ -195,5 +197,14 @@ def main() -> None:
         if "error" not in elast:
             st.metric("Elasticidad", f"{elast['elasticidad']:.3f}")
             st.info(f"Un 1% de aumento en area genera ~{elast['elasticidad']:.2f}% en produccion.")
+        st.subheader("4.14 Descomposicion del crecimiento: area vs rendimiento")
+        df_dec = descomponer_crecimiento(df_f)
+        st.plotly_chart(plot_cuadrantes(df_dec), use_container_width=True)
+        st.dataframe(df_dec.sort_values("cagr_prod", ascending=False).head(25),
+                     use_container_width=True, hide_index=True)
+        st.caption("Cuadrante superior-derecho = expansion con tecnologia (virtuoso). "
+                   "Derecha-abajo = extensivo puro. Arriba-izquierda = intensificacion sin "
+                   "expandir area. Abajo-izquierda = colapso. Tamano de burbuja = volumen total.")
+
 
 run_safe(main)
