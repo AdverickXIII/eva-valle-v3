@@ -18,6 +18,7 @@ st.set_page_config(page_title="Mapa | EVA Valle", page_icon="\U0001F5FA\uFE0F", 
 METRICAS = {
     "Produccion (t)": "produccion_t",
     "Area Sembrada (ha)": "area_sembrada_ha",
+    "Area Cosechada (ha)": "area_cosechada_ha",
     "Rendimiento (t/ha)": "rendimiento_t_ha",
 }
 
@@ -103,6 +104,16 @@ def main() -> None:
     if modo == "Por ano (animado)":
         st.caption("\U0001F3AC Mueve el slider para animar la evolucion. "
                    "La escala de color es fija, asi los colores son comparables entre anos.")
+
+    # KPIs del filtro actual (absorbidos de Mapa Cultivos)
+    st.markdown("---")
+    k1, k2, k3, k4 = st.columns(4)
+    k1.metric("Municipios", df_map["municipio"].nunique())
+    k2.metric("Produccion", f"{df_map['produccion_t'].sum():,.0f} t")
+    k3.metric("Area sembrada", f"{df_map['area_sembrada_ha'].sum():,.0f} ha")
+    cos = df_map["area_cosechada_ha"].sum()
+    k4.metric("Rendimiento",
+              f"{df_map['produccion_t'].sum()/cos:.2f} t/ha" if cos else "-")
 
     # Ranking de apoyo
     st.subheader("\U0001F3C6 Ranking de Municipios")
