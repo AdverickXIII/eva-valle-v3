@@ -30,6 +30,35 @@ def plot_pareto_concentracion(df: pd.DataFrame, top_n: int = 10) -> go.Figure:
     return apply_theme(fig, "Concentracion de la Produccion: Diagrama de Pareto")
 
 
+_PALETA = ["#2E8B57", "#1F77B4", "#FF7F0E", "#9467BD", "#D62728",
+           "#17BECF", "#BCBD22", "#8C564B", "#E377C2", "#7F7F7F"]
+_COLOR_FIJO = {"Cana de azucar": "#2E8B57", "Frutales": "#1F77B4",
+               "Hortalizas": "#FF7F0E", "Cereales": "#9467BD"}
+
+
+def _fix_colores_y_etiquetas(fig):
+    """Colores consistentes por etiqueta entre donas; etiquetas <1% solo en hover."""
+    usados = {}
+    n = 0
+    for tr in fig.data:
+        if tr.type != "pie":
+            continue
+        vals = [float(v) for v in tr.values]
+        tot = sum(vals) or 1.0
+        cols, pos = [], []
+        for lab, v in zip(tr.labels, vals):
+            key = str(lab)
+            if key not in usados:
+                usados[key] = _COLOR_FIJO.get(key, _PALETA[n % len(_PALETA)])
+                n += 1
+            cols.append(usados[key])
+            share = v / tot * 100
+            pos.append("none" if share < 5 else ("inside" if share >= 10 else "outside"))
+        tr.marker.colors = cols
+        tr.textposition = pos
+    return fig
+
+
 def plot_ex_cana_donuts(df: pd.DataFrame) -> go.Figure:
     tiene_cana = (df["cultivo"] == CULTIVO_CANA).any()
     multi_grupo = df["grupo_cultivo"].nunique() > 1
@@ -80,6 +109,7 @@ def plot_ex_cana_donuts(df: pd.DataFrame) -> go.Figure:
     fig.add_trace(go.Pie(labels=sin_plot.index, values=sin_plot.values, hole=0.4,
                          name="Sin Cana", marker=dict(colors=_colors(len(sin_plot))),
                          textinfo="label+percent"), row=1, col=2)
+    fig = _fix_colores_y_etiquetas(fig)
     fig = apply_theme(fig, "Analisis Ex-Cana: Revelando la Matriz Oculta del Valle")
     fig.add_annotation(
         text="Nota: HHI, Gini y Top 1 se calculan por CULTIVO; las donas agregan por "
