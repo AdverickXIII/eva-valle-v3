@@ -95,12 +95,14 @@ with colD:
     st.plotly_chart(fig4, use_container_width=True)
 
 # ---------- 4. COMPARATIVA DUAL (siempre visible) ----------
+st.caption("Nota: Pacifico = 1 municipio (Buenaventura) -> Gini territorial = 0 "
+                   "por definicion (sin desigualdad interna posible).")
 st.subheader("Comparativa dual: con cana vs sin cana")
 ic = indicadores_por_zona(df_f, excluye_cana=False)
 isn = indicadores_por_zona(df_f, excluye_cana=True)
 comp = pd.DataFrame({
-    "Prod. con cana (t)": ic["produccion_t"].round(0),
-    "Prod. sin cana (t)": isn["produccion_t"].round(0),
+    "Prod. con cana (t)": ic["produccion_t"].map("{:,.0f}".format),
+    "Prod. sin cana (t)": isn["produccion_t"].map("{:,.0f}".format),
     "Rend. con cana": ic["rendimiento_t_ha"].round(1),
     "Rend. sin cana": isn["rendimiento_t_ha"].round(1),
     "Gini cult. con": ic["gini_cultivos"].round(2),
