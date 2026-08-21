@@ -35,7 +35,7 @@ def _add_png(story, png):
     story += [img, Spacer(1, 0.4 * cm)]
 
 
-def build_ficha_pdf(cultivo, ambito, agg, diag, figs=None) -> bytes:
+def build_ficha_pdf(cultivo, ambito, agg, diag, figs=None, comp=None, **kwargs) -> bytes:
     buf = io.BytesIO()
     doc = SimpleDocTemplate(buf, pagesize=letter, title="Ficha Tecnica")
     st_ = getSampleStyleSheet()
@@ -72,6 +72,23 @@ def build_ficha_pdf(cultivo, ambito, agg, diag, figs=None) -> bytes:
         _add_png(story, motor_png(diag))
     except Exception as e:
         story.append(Paragraph(f"(Graficos no disponibles: {e})", body))
+
+    if comp is not None:
+        try:
+            story.append(Paragraph("<b>Comparativa vs Departamento</b>", body))
+            cols = list(comp.columns)[:8]
+            rows = [cols]
+            for _, r in comp.head(12).iterrows():
+                fila = []
+                for col in cols:
+                    v = r[col]
+                    fila.append(f"{v:,.1f}" if isinstance(v, float) else str(v))
+                rows.append(fila)
+            t3 = Table(rows, hAlign="LEFT")
+            t3.setStyle(_style())
+            story += [t3, Spacer(1, 0.4 * cm)]
+        except Exception:
+            pass
 
     story += [Paragraph("<b>Interpretacion</b>", body),
               Paragraph(diag["narrativa"].replace("**", ""), body),
