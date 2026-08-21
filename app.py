@@ -85,42 +85,43 @@ with st.sidebar:
     st.markdown("---")
     st.caption("UPRA - Unidad de Planificacion Rural y Agropecuaria")
 
-# --- Navegacion por rol (3 perfiles) ----------------------------------
-# Grupo 1: USUARIO (8) - productos y descargas
-PAGINAS_USUARIO = [
-    st.Page("ui/pages/0_Home.py", title="Inicio", icon="\U0001F3E0", default=True),
-    st.Page("ui/pages/1_Dashboard.py", title="Dashboard", icon="\U0001F4CA"),
-    st.Page("ui/pages/8_Mapa.py", title="Mapa", icon="\U0001F5FA\uFE0F"),
-    st.Page("ui/pages/7_Cultivos.py", title="Cultivos", icon="\U0001F331"),
-    st.Page("ui/pages/11_Comparador.py", title="Comparador", icon="\u2696\uFE0F"),
-    st.Page("ui/pages/13_Treemap.py", title="Treemap", icon="\U0001F333"),
-    st.Page("ui/pages/10_Reportes.py", title="Reportes", icon="\U0001F4C4"),
-    st.Page("ui/pages/15_Ejecutivo.py", title="Resumen Ejecutivo", icon="\U0001F4CB"),
-]
+# --- Navegacion por nivel analitico (mismo control de roles) ----------
+# Orden del sidebar: Panorama -> 1 Descriptivo -> 2 Diagnostico ->
+# 3 Predictivo -> 4 Prescriptivo -> Entregables -> Gobernanza.
+def _build_navigation(role: str):
+    nivel = {"user": 0, "analista": 1, "admin": 2}[role]
+    todas = [
+        # (seccion, rol minimo, pagina)
+        ("🏠 Panorama", 0, st.Page("ui/pages/0_Home.py", title="Inicio", icon="🏠", default=True)),
+        ("🏠 Panorama", 0, st.Page("ui/pages/15_Ejecutivo.py", title="Resumen Ejecutivo", icon="📋")),
+        ("🏠 Panorama", 0, st.Page("ui/pages/1_Dashboard.py", title="Dashboard", icon="📊")),
 
-# Grupo 2: ANALISTA (+6) - analisis sensible interno
-PAGINAS_ANALISTA = [
-    st.Page("ui/pages/2_Descriptivo.py", title="Descriptivo", icon="\U0001F4C8"),
-    st.Page("ui/pages/12_Alertas.py", title="Alertas", icon="\U0001F6A8"),
-    st.Page("ui/pages/19_Zonas.py", title="Zonas", icon="\U0001F5FA\uFE0F"),
-    st.Page("ui/pages/18_Satelite.py", title="Validacion Satelital", icon="\U0001F6F0\uFE0F"),
-    st.Page("ui/pages/3_Diagnostico.py", title="Diagnostico", icon="\U0001F52C"),
-    st.Page("ui/pages/4_Predictivo.py", title="Predictivo", icon="\U0001F916"),
-]
+        ("📊 1 · Descriptivo — ¿que paso?", 0, st.Page("ui/pages/7_Cultivos.py", title="Cultivos", icon="🌱")),
+        ("📊 1 · Descriptivo — ¿que paso?", 0, st.Page("ui/pages/13_Treemap.py", title="Treemap", icon="🌳")),
+        ("📊 1 · Descriptivo — ¿que paso?", 0, st.Page("ui/pages/8_Mapa.py", title="Mapa", icon="🗺️")),
+        ("📊 1 · Descriptivo — ¿que paso?", 0, st.Page("ui/pages/11_Comparador.py", title="Comparador", icon="⚖️")),
+        ("📊 1 · Descriptivo — ¿que paso?", 1, st.Page("ui/pages/2_Descriptivo.py", title="Descriptivo", icon="📈")),
 
-# Grupo 3: ADMIN (+4) - sala de maquinas del sistema
-PAGINAS_ADMIN = [
-    st.Page("ui/pages/5_Auditoria.py", title="Auditoria", icon="\U0001F50D"),
-    st.Page("ui/pages/6_Configuracion.py", title="Configuracion", icon="\u2699\uFE0F"),
-    st.Page("ui/pages/9_Admin.py", title="Panel Admin", icon="\U0001F510"),
-]
+        ("🔬 2 · Diagnostico — ¿por que paso?", 1, st.Page("ui/pages/3_Diagnostico.py", title="Diagnostico", icon="🔬")),
 
-if role == "admin":
-    pages = PAGINAS_USUARIO + PAGINAS_ANALISTA + PAGINAS_ADMIN
-elif role == "analista":
-    pages = PAGINAS_USUARIO + PAGINAS_ANALISTA
-else:
-    pages = PAGINAS_USUARIO
+        ("🔮 3 · Predictivo — ¿que pasara?", 1, st.Page("ui/pages/4_Predictivo.py", title="Predictivo", icon="🤖")),
+        ("🔮 3 · Predictivo — ¿que pasara?", 1, st.Page("ui/pages/12_Alertas.py", title="Alertas", icon="🚨")),
 
-pg = st.navigation(pages)
+        ("🎯 4 · Prescriptivo — ¿que hacer?", 1, st.Page("ui/pages/19_Zonas.py", title="Zonas", icon="🎯")),
+
+        ("📦 Entregables", 0, st.Page("ui/pages/10_Reportes.py", title="Reportes", icon="📄")),
+
+        ("🛡️ Gobernanza del dato", 1, st.Page("ui/pages/18_Satelite.py", title="Validacion Satelital", icon="🛰️")),
+        ("🛡️ Gobernanza del dato", 2, st.Page("ui/pages/5_Auditoria.py", title="Auditoria", icon="🔍")),
+        ("🛡️ Gobernanza del dato", 2, st.Page("ui/pages/6_Configuracion.py", title="Configuracion", icon="⚙️")),
+        ("🛡️ Gobernanza del dato", 2, st.Page("ui/pages/9_Admin.py", title="Panel Admin", icon="🔐")),
+    ]
+    nav = {}
+    for seccion, min_rol, page in todas:
+        if min_rol <= nivel:
+            nav.setdefault(seccion, []).append(page)
+    return nav
+
+
+pg = st.navigation(_build_navigation(role))
 pg.run()
