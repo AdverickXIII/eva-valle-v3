@@ -103,7 +103,6 @@ PAGINAS_ANALISTA = [
     st.Page("ui/pages/2_Descriptivo.py", title="Descriptivo", icon="\U0001F4C8"),
     st.Page("ui/pages/12_Alertas.py", title="Alertas", icon="\U0001F6A8"),
     st.Page("ui/pages/19_Zonas.py", title="Zonas", icon="\U0001F5FA\uFE0F"),
-    st.Page("ui/pages/20_Ficha_Cultivo.py", title="Ficha Cultivo", icon="\U0001F331", url_path="ficha-cultivo"),
     st.Page("ui/pages/18_Satelite.py", title="Validacion Satelital", icon="\U0001F6F0\uFE0F"),
     st.Page("ui/pages/3_Diagnostico.py", title="Diagnostico", icon="\U0001F52C"),
     st.Page("ui/pages/4_Predictivo.py", title="Predictivo", icon="\U0001F916"),
