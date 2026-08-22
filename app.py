@@ -36,7 +36,7 @@ def render_login() -> None:
     _, col, _ = st.columns([1, 1.4, 1])
     with col:
         st.markdown(
-            "<h1 style='text-align:center; color:#2E8B57;'>\U0001F33E EVA Valle v3.0</h1>",
+            "<h1 style='text-align:center; color:#2E8B57;'>EVA Valle v3.0</h1>",
             unsafe_allow_html=True,
         )
         st.markdown(
