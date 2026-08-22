@@ -6,6 +6,7 @@ from datetime import date
 from pathlib import Path
 
 import pandas as pd
+from core.reports.branding import pagina_con_logo
 from reportlab.graphics.charts.barcharts import HorizontalBarChart
 from reportlab.graphics.shapes import Drawing
 from reportlab.lib import colors
@@ -64,7 +65,7 @@ def _tabla(data, col_widths=None):
 def build_storytelling(df: pd.DataFrame) -> bytes:
     """Genera el informe ejecutivo narrativo (10 capitulos)."""
     buf = io.BytesIO()
-    doc = SimpleDocTemplate(buf, pagesize=letter,
+    doc = SimpleDocTemplate(buf, onPage=pagina_con_logo, pagesize=letter,
                             title="Informe Ejecutivo Narrativo")
     st_ = getSampleStyleSheet()
     title = ParagraphStyle("T", parent=st_["Title"], textColor=VERDE, fontSize=24)

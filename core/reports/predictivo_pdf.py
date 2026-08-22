@@ -6,6 +6,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from core.reports.branding import pagina_con_logo
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -73,7 +74,7 @@ def _forecast_png(serie, res) -> bytes:
 
 def build_predictivo_pdf(cultivo, muni, serie, res, horizonte) -> bytes:
     buf = io.BytesIO()
-    doc = SimpleDocTemplate(buf, pagesize=letter, title="Proyeccion Agricola")
+    doc = SimpleDocTemplate(buf, onPage=pagina_con_logo, pagesize=letter, title="Proyeccion Agricola")
     st_ = getSampleStyleSheet()
     h1 = ParagraphStyle("H1", parent=st_["Title"], textColor=VERDE_RL, fontSize=15)
     body = ParagraphStyle("Body", parent=st_["Normal"], leading=11, fontSize=9)

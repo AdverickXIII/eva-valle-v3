@@ -2,6 +2,7 @@
 import io
 
 import pandas as pd
+from core.reports.branding import pagina_con_logo
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -28,7 +29,7 @@ def _style():
 def build_satellite_pdf(df: pd.DataFrame) -> bytes:
     """Genera PDF de validacion satelital 100% (Sentinel-2 + Sentinel-1)."""
     buf = io.BytesIO()
-    doc = SimpleDocTemplate(buf, pagesize=letter, title="Validacion Satelital")
+    doc = SimpleDocTemplate(buf, onPage=pagina_con_logo, pagesize=letter, title="Validacion Satelital")
     st_ = getSampleStyleSheet()
     h1 = ParagraphStyle("H1", parent=st_["Title"], textColor=VERDE, fontSize=16)
     body = ParagraphStyle("Body", parent=st_["Normal"], leading=11, fontSize=9)

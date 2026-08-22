@@ -4,6 +4,7 @@ from __future__ import annotations
 import io
 
 import pandas as pd
+from core.reports.branding import pagina_con_logo
 from reportlab.graphics.charts.barcharts import VerticalBarChart
 from reportlab.graphics.shapes import Drawing
 from reportlab.lib import colors
@@ -79,7 +80,7 @@ def _production_chart(f: dict) -> Drawing:
 def build_municipality_pdf(df: pd.DataFrame, municipio: str) -> bytes:
     df_m = filter_municipio(df, municipio)
     buf = io.BytesIO()
-    doc = SimpleDocTemplate(buf, pagesize=letter, title=f"Reporte {municipio}")
+    doc = SimpleDocTemplate(buf, onPage=pagina_con_logo, pagesize=letter, title=f"Reporte {municipio}")
     st_ = getSampleStyleSheet()
     title = ParagraphStyle("T", parent=st_["Title"], textColor=VERDE)
     story = []

@@ -5,6 +5,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
+from core.reports.branding import pagina_con_logo
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -107,7 +108,7 @@ def _rend_png(df_ab, a, b) -> bytes:
 
 def build_comparador_pdf(a, b, sin_cana, comp_df, sa, sb, df_ab) -> bytes:
     buf = io.BytesIO()
-    doc = SimpleDocTemplate(buf, pagesize=letter, title="Comparativa municipal")
+    doc = SimpleDocTemplate(buf, onPage=pagina_con_logo, pagesize=letter, title="Comparativa municipal")
     st_ = getSampleStyleSheet()
     h1 = ParagraphStyle("H1", parent=st_["Title"], textColor=VERDE_RL, fontSize=16)
     body = ParagraphStyle("Body", parent=st_["Normal"], leading=11, fontSize=9)

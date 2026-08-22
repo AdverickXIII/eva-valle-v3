@@ -4,6 +4,7 @@ from __future__ import annotations
 import io
 
 import pandas as pd
+from core.reports.branding import pagina_con_logo
 from reportlab.graphics.charts.barcharts import HorizontalBarChart
 from reportlab.graphics.shapes import Drawing
 from reportlab.lib import colors
@@ -100,7 +101,7 @@ def _pareto(sub: pd.DataFrame, titulo: str) -> Drawing:
 
 def build_executive_pdf(df: pd.DataFrame) -> bytes:
     buf = io.BytesIO()
-    doc = SimpleDocTemplate(buf, pagesize=letter,
+    doc = SimpleDocTemplate(buf, onPage=pagina_con_logo, pagesize=letter,
                             title="Resumen Ejecutivo - Valle del Cauca")
     st_ = getSampleStyleSheet()
     h1 = ParagraphStyle("H1", parent=st_["Title"], textColor=VERDE, fontSize=18)

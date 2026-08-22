@@ -6,6 +6,7 @@ from datetime import date
 from pathlib import Path
 
 import pandas as pd
+from core.reports.branding import pagina_con_logo
 from reportlab.graphics.charts.barcharts import HorizontalBarChart
 from reportlab.graphics.shapes import Drawing
 from reportlab.lib import colors
@@ -89,7 +90,7 @@ def _pct(new, old):
 def build_informe(df: pd.DataFrame) -> bytes:
     """Genera el informe tecnico completo."""
     buf = io.BytesIO()
-    doc = SimpleDocTemplate(buf, pagesize=letter,
+    doc = SimpleDocTemplate(buf, onPage=pagina_con_logo, pagesize=letter,
                             title="Informe Tecnico EVA Valle 2019-2025")
     st_ = getSampleStyleSheet()
     title = ParagraphStyle("T", parent=st_["Title"], textColor=VERDE, fontSize=22)

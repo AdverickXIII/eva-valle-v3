@@ -5,6 +5,7 @@ import io
 from datetime import date
 
 import pandas as pd
+from core.reports.branding import pagina_con_logo
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -70,7 +71,7 @@ def build_crop_excel(df: pd.DataFrame, cultivo: str) -> bytes:
 def build_crop_pdf(df: pd.DataFrame, cultivo: str) -> bytes:
     df_c = filter_cultivo(df, cultivo)
     buf = io.BytesIO()
-    doc = SimpleDocTemplate(buf, pagesize=letter, title=f"Ficha {cultivo}")
+    doc = SimpleDocTemplate(buf, onPage=pagina_con_logo, pagesize=letter, title=f"Ficha {cultivo}")
     st_ = getSampleStyleSheet()
     title = ParagraphStyle("T", parent=st_["Title"], textColor=VERDE)
     story = []

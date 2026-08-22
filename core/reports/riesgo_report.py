@@ -2,6 +2,7 @@
 import io
 
 import pandas as pd
+from core.reports.branding import pagina_con_logo
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -34,7 +35,7 @@ def _color_score(score: float):
 
 def build_riesgo_pdf(df_ir: pd.DataFrame) -> bytes:
     buf = io.BytesIO()
-    doc = SimpleDocTemplate(buf, pagesize=letter,
+    doc = SimpleDocTemplate(buf, onPage=pagina_con_logo, pagesize=letter,
                             title="Indice de Riesgo Territorial")
     st_ = getSampleStyleSheet()
     h1 = ParagraphStyle("H1", parent=st_["Title"], textColor=VERDE, fontSize=15)

@@ -2,6 +2,7 @@
 import io
 
 import pandas as pd
+from core.reports.branding import pagina_con_logo
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -37,7 +38,7 @@ def _add_png(story, png):
 
 def build_ficha_pdf(cultivo, ambito, agg, diag, figs=None, comp=None, **kwargs) -> bytes:
     buf = io.BytesIO()
-    doc = SimpleDocTemplate(buf, pagesize=letter, title="Ficha Tecnica")
+    doc = SimpleDocTemplate(buf, onPage=pagina_con_logo, pagesize=letter, title="Ficha Tecnica")
     st_ = getSampleStyleSheet()
     h1 = ParagraphStyle("H1", parent=st_["Title"], textColor=VERDE, fontSize=16)
     body = ParagraphStyle("Body", parent=st_["Normal"], leading=11, fontSize=9)

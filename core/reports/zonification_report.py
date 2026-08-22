@@ -3,6 +3,7 @@ import io
 import unicodedata
 
 import pandas as pd
+from core.reports.branding import pagina_con_logo
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -52,7 +53,7 @@ def build_zonification_pdf(df: pd.DataFrame) -> bytes:
         df["zona"] = df["municipio"].apply(asignar_zona)
 
     buf = io.BytesIO()
-    doc = SimpleDocTemplate(buf, pagesize=letter, title="Zonificacion Oficial")
+    doc = SimpleDocTemplate(buf, onPage=pagina_con_logo, pagesize=letter, title="Zonificacion Oficial")
     st_ = getSampleStyleSheet()
     h1 = ParagraphStyle("H1", parent=st_["Title"], textColor=VERDE, fontSize=16)
     body = ParagraphStyle("Body", parent=st_["Normal"], leading=11, fontSize=9)
