@@ -90,7 +90,7 @@ with st.sidebar:
 # Orden del sidebar: Panorama -> 1 Descriptivo -> 2 Diagnostico ->
 # 3 Predictivo -> 4 Prescriptivo -> Entregables -> Gobernanza.
 def _build_navigation(role: str):
-    nivel = {"user": 0, "analista": 1, "admin": 2}[role]
+    nivel = {"user": 0, "usuario": 0, "analista": 1, "admin": 2}.get(role, 0)
     todas = [
         # (seccion, rol minimo, pagina)
         ("🏠 Panorama", 0, st.Page("ui/pages/0_Home.py", title="Inicio", icon="🏠", default=True)),
@@ -109,7 +109,9 @@ def _build_navigation(role: str):
         ("🔮 3 · Predictivo — ¿que pasara?", 1, st.Page("ui/pages/12_Alertas.py", title="Alertas", icon="🚨")),
 
         ("🎯 4 · Prescriptivo — ¿que hacer?", 1, st.Page("ui/pages/19_Zonas.py", title="Zonas", icon="🎯")),
+        ("\U0001F3AF 4 \u00b7 Prescriptivo \u2014 \u00bfque hacer?", 1, st.Page("ui/pages/22_Recomendador.py", title="Recomendador", icon="\U0001F3AF")),
 
+        ("💬 Asistente", 0, st.Page("ui/pages/21_Asistente.py", title="Asistente", icon="💬")),
         ("📦 Entregables", 0, st.Page("ui/pages/10_Reportes.py", title="Reportes", icon="📄")),
 
         ("🛡️ Gobernanza del dato", 1, st.Page("ui/pages/18_Satelite.py", title="Validacion Satelital", icon="🛰️")),

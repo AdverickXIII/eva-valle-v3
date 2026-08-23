@@ -126,6 +126,22 @@ def main() -> None:
 
         st.markdown("---")
 
+        st.markdown("#### \U0001F331 Identidad oficial: Ficha Tecnica + Presentacion Ejecutiva")
+        st.markdown("**Contenido:** ficha en estandar BID (que es, problema, como funciona, "
+                    "ODS, estandares abiertos) + presentacion de 10 laminas para sustentacion.")
+        st.markdown("**Audiencia:** Secretaria de Agricultura, Gobernacion, catalogo BID.")
+        from core.reports.presentacion_oficial import (build_ficha_tecnica_pdf,
+                                                        build_presentacion_pdf)
+        _c1, _c2 = st.columns(2)
+        _c1.download_button("\u2b07\ufe0f Ficha Tecnica (PDF)",
+                            data=build_ficha_tecnica_pdf(),
+                            file_name="ficha_tecnica_EVA_Valle.pdf",
+                            mime="application/pdf")
+        _c2.download_button("\u2b07\ufe0f Presentacion Ejecutiva (PDF)",
+                            data=build_presentacion_pdf(),
+                            file_name="presentacion_ejecutiva_EVA_Valle.pdf",
+                            mime="application/pdf")
+
         # Modelo Económico (placeholder)
         st.markdown("#### 💼 Modelo Económico EVA")
         st.markdown("""
