@@ -89,7 +89,9 @@ def _entities(q, df):
     cult, _ = _match_norm(qn, cult_names)
     ma = re.search(r"20(1[9]|2[0-8])", q)
     ano = int(ma.group(0)) if ma else None
-    return (munis[0] if munis else None), cult, ano, munis
+    ry = re.search(r"\b\d{4}\b", q)
+    raw = int(ry.group(0)) if ry else None
+    return (munis[0] if munis else None), cult, ano, munis, raw
 
 
 def _intent(q) -> str:
@@ -175,13 +177,24 @@ def _ranking_cultivo(df, cult, muni=None, q=""):
 def ask(q: str, ctx=None) -> dict:
     ctx = dict(ctx or {})
     df = load_df()
-    muni, cult, ano, munis = _entities(q, df)
+    muni, cult, ano, munis, raw = _entities(q, df)
     muni = muni or ctx.get("muni")
     cult = cult or ctx.get("cult")
     if muni:
         ctx["muni"] = muni
     if cult:
         ctx["cult"] = cult
+    if raw is not None and (raw > 2028 or raw < 2019):
+        if raw > 2028:
+            out = {"texto": f"Mi horizonte de proyeccion llega a 2028 (3 anos, con credibilidad "
+                            f"declarada por backtesting). Para {raw} la incertidumbre supera el "
+                            f"limite metodologico: prefiero no extrapolar. Prueba con 2026-2028.",
+                   "pagina": "Predictivo"}
+        else:
+            out = {"texto": f"La serie oficial EVA arranca en 2019; no tengo datos para {raw}.",
+                   "pagina": "Descriptivo"}
+        out["ctx"] = ctx
+        return out
     intent = _intent(q)
     out = {}
 
