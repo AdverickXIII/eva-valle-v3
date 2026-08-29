@@ -12,7 +12,7 @@ st.caption("IRS = 40% especializacion (LQ) + 30% momentum (CAGR) + 20% eficienci
            "activo en el ultimo ano.")
 
 
-@st.cache_data(show_spinner=False)
+@st.cache_data(show_spinner=False, ttl=3600)
 def get_irs():
     return build_irs(load_df())
 
