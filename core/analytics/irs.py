@@ -8,6 +8,22 @@ try:
 except Exception:
     from config.settings import settings
 
+def _cargar_zonas():
+    try:
+        import core.analytics.zonas as _Z
+    except Exception:
+        return {}
+    for _n in dir(_Z):
+        _o = getattr(_Z, _n)
+        if isinstance(_o, dict) and _o and all(
+            isinstance(v, (list, tuple, set)) and all(isinstance(x, str) for x in v)
+            for v in _o.values()):
+            return {m: z for z, ms in _o.items() for m in ms}
+    return {}
+
+
+_ZONA_MUNICIPIO = _cargar_zonas()
+
 PESOS = {"lq": 0.40, "cagr": 0.30, "eff": 0.20, "div": 0.10}
 
 
@@ -26,7 +42,7 @@ def build_irs(df: pd.DataFrame) -> pd.DataFrame:
     if "zona" in df.columns:
         zona = df.drop_duplicates("municipio").set_index("municipio")["zona"]
     else:
-        zona = pd.Series(dtype=str)
+        zona = pd.Series(_ZONA_MUNICIPIO)
 
     m_tot = acc.groupby("municipio")["produccion_t"].sum()
     c_tot = acc.groupby("cultivo")["produccion_t"].sum()
