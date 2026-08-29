@@ -43,6 +43,7 @@ def _style():
 
 
 def _footer(canvas, doc):
+    pagina_con_logo(canvas, doc)
     w, _ = letter
     canvas.saveState()
     canvas.setStrokeColor(colors.HexColor("#E2E8F0"))

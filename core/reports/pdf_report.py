@@ -40,6 +40,7 @@ def _style() -> TableStyle:
 
 
 def _footer(canvas, doc) -> None:
+    pagina_con_logo(canvas, doc)
     """Pie de pagina profesional en cada hoja."""
     w, _ = letter
     canvas.saveState()

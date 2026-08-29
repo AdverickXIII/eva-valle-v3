@@ -37,6 +37,7 @@ def _style() -> TableStyle:
 
 
 def _footer(canvas, doc) -> None:
+    pagina_con_logo(canvas, doc)
     w, _ = letter
     canvas.saveState()
     canvas.setStrokeColor(colors.HexColor("#E2E8F0"))
