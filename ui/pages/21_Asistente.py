@@ -11,7 +11,14 @@ st.title("\U0001F4AC Asistente del Agro Vallecaucano")
 st.caption("Preguntas en lenguaje natural; respuestas con el dato oficial UPRA-EVA 2019-2025. "
            "Sin invencion: cada cifra sale del dataset.")
 
-if "chat_history" not in st.session_state:
+_ident = "|".join(str(st.session_state.get(k)) for k in
+                 ("usuario", "user", "role", "logged_in"))
+if st.session_state.get("chat_owner") != _ident:
+    st.session_state.chat_history = []
+    st.session_state.chat_ctx = {}
+    st.session_state.pending = None
+    st.session_state.chat_owner = _ident
+elif "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 if "pending" not in st.session_state:
     st.session_state.pending = None
