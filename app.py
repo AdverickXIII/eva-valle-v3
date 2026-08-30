@@ -110,6 +110,7 @@ def _build_navigation(role: str):
 
         ("🎯 4 · Prescriptivo — ¿que hacer?", 1, st.Page("ui/pages/19_Zonas.py", title="Zonas", icon="🎯")),
         ("\U0001F3AF 4 \u00b7 Prescriptivo \u2014 \u00bfque hacer?", 1, st.Page("ui/pages/22_Recomendador.py", title="Recomendador", icon="\U0001F3AF")),
+        ("💰 5 · Económico — ¿cuánto vale?", 1, st.Page("ui/pages/23_Valor_Economico.py", title="Valor Economico", icon="💰")),
 
         ("💬 Asistente", 0, st.Page("ui/pages/21_Asistente.py", title="Asistente", icon="💬")),
         ("📦 Entregables", 0, st.Page("ui/pages/10_Reportes.py", title="Reportes", icon="📄")),
