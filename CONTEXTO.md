@@ -22,6 +22,11 @@ Stack: Streamlit + Plotly + reportlab. 3 roles (usuario/analista/admin).
 Sevilla #1 platano (81,630 t en 2025) | Alcala #34 (276,012 t)
 Cana = 95.3% | 4 zonas Ord. 513 | Proyeccion Alcala 2026: 39,196 t (MAPE 4.2%)
 
+## Modelo economico (2026-08-30)
+- Pagina 23 Valor Economico: PIB agro 5.93 billones COP (2025)
+- Precios v1 oficiales: tabla PRECIO_OFICIAL_V1 calibrada con Boletines UPRA Primer Mercado 2025, trazabilidad por cultivo
+- Fuentes SIPSA_P (DANE mayoristas) y Primer Mercado UPRA no tienen descarga programatica; se calibra manualmente desde boletines PDF
+
 ## Estado (2026-08-27)
 - Cloud: eva-valle-v3.streamlit.app (cuenta usuario/usuario123 verificada)
 - Secretario (Don Hector) retoma esta semana; mensaje-guia enviado; demo 15 min propuesta.

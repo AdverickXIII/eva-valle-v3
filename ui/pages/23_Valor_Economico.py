@@ -8,8 +8,9 @@ st.set_page_config(page_title="Valor economico | EVA Valle", page_icon="\U0001F4
                    layout="wide")
 
 st.title("\U0001F4B0 Valor economico del agro vallecaucano")
-st.caption("PIB agro = produccion x precio de referencia v0. Supuesto metodologico "
-           "declarado, pendiente de validacion con Precios de Primer Mercado (UPRA).")
+st.caption("PIB agro = produccion x precio oficial primer mercado (UPRA 2025). "
+           "Calibrado con Boletines de Precios en Primer Mercado UPRA. "
+           "Trazabilidad completa en core/analytics/economic.py (PRECIO_OFICIAL_V1).")
 
 c1, _ = st.columns([1, 3])
 with c1:

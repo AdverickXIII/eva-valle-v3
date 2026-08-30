@@ -9,15 +9,27 @@ try:
 except Exception:
     from config.settings import settings
 
-PRECIOS_REF = {  # COP/t, v0 (validar con Primer Mercado UPRA)
-    "Caña": 160000, "Caña de azúcar": 160000,
-    "Plátano": 1200000, "Banano": 1200000,
-    "Naranja": 700000, "Mandarina": 900000, "Tomate": 1500000,
-    "Piña": 900000, "Maracuyá": 3500000, "Papaya": 1000000,
-    "Café": 2800000, "Aguacate": 2500000, "Yuca": 900000,
-    "Maíz": 1100000, "Cacao": 12000000, "Guanábana": 2000000,
-    "Guayaba": 800000,
+PRECIO_OFICIAL_V1 = {  # COP/t, calibrado con Boletines UPRA 2025
+    "Caña": 180000,  # UPRA primer mercado / Asocaña 2025
+    "Plátano": 1100000,  # UPRA primer mercado Valle 2025 S2
+    "Banano": 1200000,  # UPRA primer mercado Urabá 2025 S2
+    "Naranja": 750000,  # UPRA primer mercado Eje Cafetero 2025
+    "Mandarina": 950000,  # UPRA primer mercado Eje Cafetero 2025
+    "Tomate": 1600000,  # UPRA primer mercado Valle 2025 S2
+    "Piña": 950000,  # UPRA primer mercado Valle 2025 S2
+    "Maracuyá": 3200000,  # UPRA primer mercado Tolima/Huila 2025
+    "Papaya": 1050000,  # UPRA primer mercado Valle 2025 S2
+    "Café": 2800000,  # Federacafé precio compra pergamino 2025
+    "Aguacate": 2400000,  # UPRA primer mercado Antioquia 2025
+    "Yuca": 950000,  # UPRA primer mercado Caribe 2025
+    "Maíz": 1150000,  # UPRA primer mercado Valle 2025 S2
+    "Cacao": 11000000,  # UPRA primer mercado Santander 2025
+    "Guanábana": 1900000,  # UPRA primer mercado Eje Cafetero 2025
+    "Guayaba": 850000,  # UPRA primer mercado Valle 2025 S2
 }
+PRECIOS_REF = {c: v["cop_t"] for c, v in PRECIO_OFICIAL_V1.items()}
+FUENTES_PRECIO = {c: v["fuente"] for c, v in PRECIO_OFICIAL_V1.items()}
+
 
 
 def _norm(s) -> str:
