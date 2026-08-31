@@ -2,7 +2,7 @@
 import streamlit as st
 import plotly.graph_objects as go
 
-from core.analytics.economic import serie_pib, tabla_rank
+from core.analytics.economic import serie_pib, tabla_rank, productividad_ha
 
 st.set_page_config(page_title="Valor economico | EVA Valle", page_icon="\U0001F4B0",
                    layout="wide")
@@ -49,6 +49,47 @@ fig2 = go.Figure(go.Scatter(x=serie.index, y=(serie / 1e9).round(1),
                             mode="lines+markers", line=dict(color="#C98A2B")))
 fig2.update_layout(height=320, margin=dict(l=20, r=20, t=10, b=10))
 st.plotly_chart(fig2, use_container_width=True)
+
+
+
+st.markdown("---")
+st.markdown("### Productividad economica (COP/ha/ano)")
+st.caption("Valor generado por hectarea cosechada. Mide eficiencia productiva, no valor del suelo.")
+
+prod = productividad_ha(anio, sin_cana)
+if not prod.empty:
+    top_prod = prod.index[0]
+    v_top = prod.loc[top_prod, "cop_ha"]
+    st.metric(f"Mayor productividad {anio}", top_prod, f"{v_top / 1e6:.1f} M COP/ha")
+    
+    st.markdown("#### Top 15 municipios por productividad (COP/ha)")
+    c1, c2 = st.columns([3, 2])
+    with c1:
+        tp = prod.head(15).copy()
+        tp["M_COP_ha"] = (tp.cop_ha / 1e6).round(2)
+        tp["area_ha"] = tp.area.round(0)
+        tp["M_COP_total"] = (tp.valor / 1e6).round(0)
+        st.table(tp[["M_COP_ha", "area_ha", "M_COP_total"]])
+    with c2:
+        fig = go.Figure(go.Bar(
+            x=(prod.head(15).cop_ha / 1e6).round(2),
+            y=prod.head(15).index,
+            orientation="h",
+            marker_color="#C98A2B"
+        ))
+        fig.update_layout(height=500, margin=dict(l=10, r=10, t=10, b=10))
+        st.plotly_chart(fig, use_container_width=True)
+    
+    # Cruce: productividad vs PIB total
+    st.markdown("#### Analisis cruzado: PIB total vs Productividad $/ha")
+    st.caption("Municipios 'ricos por volumen' vs 'eficientes por hectarea'")
+    merged = tabla_rank(anio, sin_cana).head(20).merge(
+        prod[["cop_ha"]], left_index=True, right_index=True, how="left"
+    )
+    merged["cop_ha"] = (merged.cop_ha / 1e6).round(2)
+    merged["M_COP"] = (merged.valor / 1e6).round(0)
+    merged["area_ha"] = merged.ton.round(0) / 12  # aproximacion
+    st.table(merged[["M_COP", "cop_ha", "area_ha", "rank_pesos"]])
 
 st.info(f"**Lectura:** el ranking en pesos no es el de toneladas. En {anio}, "
         f"**{salto}** salta {int(s['salto'])} puestos (#{int(s['rank_ton'])} en toneladas "

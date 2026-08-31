@@ -75,3 +75,20 @@ def serie_pib(excluye_cana=False):
     if excluye_cana:
         d = d[~d.cultivo.map(_es_cana)]
     return d.groupby("ano")["valor"].sum()
+
+
+def productividad_ha(anio=2025, excluye_cana=False):
+    """COP/ha/año: PIB agro municipal / area cosechada total."""
+    import unicodedata
+    def _es_cana(nombre):
+        return "cana" in "".join(c for c in unicodedata.normalize("NFD", str(nombre).lower())
+                                  if unicodedata.category(c) != "Mn")
+    df = load_df()
+    d = valorizar(df)
+    d = d[d.ano == anio]
+    if excluye_cana:
+        d = d[~d.cultivo.map(_es_cana)]
+    g = d.groupby("municipio").agg(valor=("valor", "sum"), area=("area_cosechada_ha", "sum"))
+    g = g[(g.valor > 0) & (g.area > 10)]
+    g["cop_ha"] = g.valor / g.area
+    return g.sort_values("cop_ha", ascending=False)
