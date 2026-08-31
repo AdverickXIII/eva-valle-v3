@@ -31,6 +31,13 @@ Cana = 95.3% | 4 zonas Ord. 513 | Proyeccion Alcala 2026: 39,196 t (MAPE 4.2%)
 - Cloud: eva-valle-v3.streamlit.app (cuenta usuario/usuario123 verificada)
 - Secretario (Don Hector) retoma esta semana; mensaje-guia enviado; demo 15 min propuesta.
 
+## Curso de Deep Learning (2026-09-01)
+- Modulo 1 (MLPs): MLP desde cero supera Promedio Movil 3A en Alcala
+  - MAPE MLP: 2.82% vs MAPE PM3A: 9.92% (reduccion 72%)
+  - 4 folds leave-one-out (2022-2025), MLP gana 3 de 4
+  - Artefactos: core/ml/results/m1_alcala_*.json, m1_alcala_predicciones.csv
+  - Notebook: notebooks/curso/01_mlp_backprop.ipynb
+
 ## Temas pausados
 1. Logo en PDF municipal (diagnostico: type core\reports\branding.py)
 2. Revision pestana a pestana (Dashboard, Mapa, Predictivo...)
