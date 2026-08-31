@@ -31,7 +31,15 @@ Cana = 95.3% | 4 zonas Ord. 513 | Proyeccion Alcala 2026: 39,196 t (MAPE 4.2%)
 - Cloud: eva-valle-v3.streamlit.app (cuenta usuario/usuario123 verificada)
 - Secretario (Don Hector) retoma esta semana; mensaje-guia enviado; demo 15 min propuesta.
 
-## Curso de Deep Learning (2026-09-01)
+## Curso de Deep Learning (continuacion 2026-09-01)
+- Modulo 1 (MLPs): MLP desde cero supera PM3A en Alcala (MAPE 2.82% vs 4.2%)
+- Modulo 2 (RNN/LSTM): LSTM global v1 MAPE 50.38%, v2 con regularizacion MAPE 67.73%
+  - Lesson: un modelo global no supera a modelos locales en paneles heterogeneos
+  - Gradient checks pasan, vanishing gradient resuelto, pero la arquitectura
+    carece de embeddings/contexto para discriminar entre dinamicas opuestas
+  - Artefactos: core/ml/results/m2_*.json, core/ml/lstm_v2.py
+  - Notebook: notebooks/curso/02_rnn_series_temporales.ipynb
+
 - Modulo 1 (MLPs): MLP desde cero supera Promedio Movil 3A en Alcala
   - MAPE MLP: 2.82% vs MAPE PM3A: 9.92% (reduccion 72%)
   - 4 folds leave-one-out (2022-2025), MLP gana 3 de 4
