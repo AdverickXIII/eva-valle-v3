@@ -27,8 +27,8 @@ PRECIO_OFICIAL_V1 = {  # COP/t, calibrado con Boletines UPRA 2025
     "Guanábana": 1900000,  # UPRA primer mercado Eje Cafetero 2025
     "Guayaba": 850000,  # UPRA primer mercado Valle 2025 S2
 }
-PRECIOS_REF = {c: v["cop_t"] for c, v in PRECIO_OFICIAL_V1.items()}
-FUENTES_PRECIO = {c: v["fuente"] for c, v in PRECIO_OFICIAL_V1.items()}
+PRECIOS_REF = {c: (v["cop_t"] if isinstance(v, dict) else v) for c, v in PRECIO_OFICIAL_V1.items()}
+FUENTES_PRECIO = {c: (v.get("fuente", "UPRA 2025") if isinstance(v, dict) else "UPRA 2025") for c, v in PRECIO_OFICIAL_V1.items()}
 
 
 
