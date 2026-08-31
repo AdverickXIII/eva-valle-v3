@@ -20,3 +20,11 @@ def save_csv(name, df):
     df.to_csv(p, index=False)
     print(f"[OK] guardado: {p}")
     return p
+
+
+def save_png(name, fig):
+    RESULTS.mkdir(parents=True, exist_ok=True)
+    p = RESULTS / name
+    fig.savefig(p, dpi=120, bbox_inches="tight")
+    print(f"[OK] guardado: {p}")
+    return p

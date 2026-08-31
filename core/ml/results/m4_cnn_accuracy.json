@@ -1,0 +1,8 @@
+{
+  "cnn_train": 1.0,
+  "cnn_test": 0.9166666666666666,
+  "baseline_train": 0.7333333333333333,
+  "baseline_test": 0.8333333333333334,
+  "n_train": 30,
+  "n_test": 12
+}

@@ -33,6 +33,12 @@ Cana = 95.3% | 4 zonas Ord. 513 | Proyeccion Alcala 2026: 39,196 t (MAPE 4.2%)
 
 ## Curso de Deep Learning (continuacion 2026-09-01)
 - Modulo 1 (MLPs): MLP desde cero supera PM3A en Alcala (MAPE 2.82% vs 4.2%)
+- Modulo 4 (CNN): clasificacion de vocacion productiva (imagenes 12x7)
+  - CNN acc test 91.67% vs baseline 83.33% (+8.33%), n=42 municipios
+  - Hallazgo: Filtro 1 es detector especializado de vocacion bananera (activa 2.77 vs 0.3-0.5)
+  - Limitacion: desbalance de clases (Banano 1 train / 0 test) infla el accuracy
+  - Artefactos: core/ml/cnn_scratch.py, notebooks/curso/04_cnn_patrones_espaciales.ipynb,
+    core/ml/results/m4_*.json/csv/png
 - Modulo 3 (Bandits): torneo de seleccion de modelos (3,170 rondas, 10 semillas)
   - Regret final: fijo PM3A 121,106 | eps-greedy 50,389 (-58.4%) | UCB1 54,071 | Thompson 70,763
   - APE medio: Naive 54.1 < PM3A 61.3 < Trend 82.1 ≈ PM5A 82.4
