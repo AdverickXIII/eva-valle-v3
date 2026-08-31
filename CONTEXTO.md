@@ -33,6 +33,12 @@ Cana = 95.3% | 4 zonas Ord. 513 | Proyeccion Alcala 2026: 39,196 t (MAPE 4.2%)
 
 ## Curso de Deep Learning (continuacion 2026-09-01)
 - Modulo 1 (MLPs): MLP desde cero supera PM3A en Alcala (MAPE 2.82% vs 4.2%)
+- Modulo 3 (Bandits): torneo de seleccion de modelos (3,170 rondas, 10 semillas)
+  - Regret final: fijo PM3A 121,106 | eps-greedy 50,389 (-58.4%) | UCB1 54,071 | Thompson 70,763
+  - APE medio: Naive 54.1 < PM3A 61.3 < Trend 82.1 ≈ PM5A 82.4
+  - Diebold-Mariano: PM3A mejor que Trend (DM=-2.03, p=0.042) al 95% confianza
+  - Leccion: explorar (eps=0.1) reduce regret 58% vs status quo; colas pesadas favorecen eps-greedy
+  - Artefactos: core/ml/results/m3_*.json/csv; core/ml/bandits.py
 - Modulo 2 (RNN/LSTM): LSTM global v1 MAPE 50.38%, v2 con regularizacion MAPE 67.73%
   - Lesson: un modelo global no supera a modelos locales en paneles heterogeneos
   - Gradient checks pasan, vanishing gradient resuelto, pero la arquitectura
