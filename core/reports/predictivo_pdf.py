@@ -142,8 +142,8 @@ def build_predictivo_pdf(cultivo, muni, serie, res, horizonte) -> bytes:
     story += [t3, Spacer(1, 0.4 * cm)]
 
     story.append(Paragraph(
-        "<b>Metodologia:</b> Se prueban 5 candidatos (tendencia lineal, "
-        "promedio movil 2 y 3 anos, Holt con dos sets de hiperparametros). "
+        "<b>Metodologia:</b> Se prueban 6 candidatos (tendencia lineal, "
+        "promedio movil 2 y 3 anos, Holt con dos sets de hiperparametros, y un MLP 5-8-4-1 entrenado desde cero). "
         "Se ocultan los ultimos 2 anos, se entrena con el resto y se mide "
         "MAPE. El de menor error gana y se reentrena con toda la serie para "
         "proyectar. Los intervalos son percentiles de los residuos del "
