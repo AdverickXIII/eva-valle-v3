@@ -14,6 +14,9 @@ from ui.services.auth import (
     current_role, is_authenticated, login, logout, verify,
 )
 
+# Correo institucional de contacto (editar si cambia)
+CONTACTO_EMAIL = "contacto.eva@upra.gov.co"
+
 st.set_page_config(
     page_title="EVA Valle del Cauca",
     page_icon=str(Path(__file__).parent / "ui" / "assets" / "img" / "logo.png"),
@@ -32,6 +35,22 @@ if css_path.exists():
 
 def render_login() -> None:
     """Pantalla de login centrada con rate limiting y validacion."""
+    # Oculta el sidebar residual (la ultima navegacion queda congelada
+    # en el frontend cuando este run no llama st.navigation)
+    st.markdown(
+        "<style>section[data-testid='stSidebar']{display:none;}"
+        "[data-testid='stSidebarCollapsedControl']{display:none;}</style>",
+        unsafe_allow_html=True,
+    )
+    # Contacto institucional discreto, solo en la pantalla de acceso
+    st.markdown(
+        "<div style='position:fixed; bottom:0.9rem; right:1.4rem; "
+        "font-size:0.78rem; color:#718096; z-index:999;'>"
+        "&#191;Problemas de acceso? "
+        f"<a href='mailto:{CONTACTO_EMAIL}?subject=Acceso%20EVA%20Valle%20v3.0'>"
+        "Cont&#225;ctenos</a> &nbsp;&middot;&nbsp; v3.0 &middot; UPRA</div>",
+        unsafe_allow_html=True,
+    )
     st.markdown("<div style='height:8vh'></div>", unsafe_allow_html=True)
     _, col, _ = st.columns([1, 1.4, 1])
     with col:
