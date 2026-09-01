@@ -1,8 +1,11 @@
 """MLP 5-8-4-1 desde cero para forecasting de series agricolas cortas.
 Features: [ano, area, rendimiento, prod_t-1, prod_t-2] -> prod_t.
-Entrenamiento leave-one-out; proyeccion recursiva multi-paso."""
+AUD-MLP-002: residuos leave-one-out trazables (loo_fitted_) reemplazan el
+bucle de re-entrenamiento degenerado; clip [0, 3x max historico] (AUD-MLP-001)."""
 import numpy as np
 import pandas as pd
+
+MLP_CAP_MULTIPLIER = 3.0
 
 
 class MLPForecast:
@@ -12,6 +15,7 @@ class MLPForecast:
         self.b1 = self.b2 = self.b3 = None
         self.X_min = self.X_max = None
         self.y_min = self.y_max = None
+        self.loo_fitted_ = {}
 
     def _build_features(self, s):
         area_avg = float(np.mean(s)) if len(s) > 0 else 1.0
@@ -29,6 +33,7 @@ class MLPForecast:
 
     def fit(self, serie, epochs=2000, lr=0.05):
         s = serie.dropna().astype(float).values
+        self.loo_fitted_ = {}
         if len(s) < 4:
             return np.inf
         X_raw, y_raw = self._build_features(s)
@@ -39,6 +44,7 @@ class MLPForecast:
         Xn = (X_raw - self.X_min) / (self.X_max - self.X_min + 1e-8)
         self.y_min, self.y_max = float(y_raw.min()), float(y_raw.max())
         yn = (y_raw - self.y_min) / (self.y_max - self.y_min + 1e-8)
+        cap = MLP_CAP_MULTIPLIER * float(np.max(s))
 
         rng = np.random.RandomState(self.seed)
         self.W1 = rng.randn(5, 8) * np.sqrt(2.0 / 13)
@@ -67,6 +73,8 @@ class MLPForecast:
                 self.W3 -= lr * dW3; self.b3 -= lr * db3
             p_norm = float(self._forward(X_te).flatten()[0])
             p_real = p_norm * (self.y_max - self.y_min) + self.y_min
+            p_real = float(np.clip(p_real, 0.0, cap))
+            self.loo_fitted_[fold + 2] = p_real
             real = float(y_raw[fold])
             if real > 1e-8:
                 mapes.append(abs(p_real - real) / real * 100)
@@ -79,7 +87,7 @@ class MLPForecast:
         if len(s) < 2:
             return np.full(n_steps, np.nan)
         area_avg = float(np.mean(s))
-        cap = 3.0 * float(np.max(s))
+        cap = MLP_CAP_MULTIPLIER * float(np.max(s))
         preds, hist = [], list(s[-2:])
         n = len(s)
         for _ in range(n_steps):
@@ -96,20 +104,15 @@ class MLPForecast:
 
 
 def modelo_mlp(serie):
-    """Wrapper compatible con forecast.py. Devuelve dict de modelo o None."""
     mlp = MLPForecast(seed=42)
     mape = mlp.fit(serie, epochs=2000, lr=0.05)
     if not np.isfinite(mape):
         return None
     s = serie.dropna().astype(float).values
     fitted = np.full_like(s, np.nan, dtype=float)
-    for i in range(2, len(s)):
-        sub = pd.Series(s[:i])
-        tmp = MLPForecast(seed=42)
-        tmp.fit(sub, epochs=1000, lr=0.05)
-        p = tmp.predict(sub, n_steps=1)
-        if len(p) and not np.isnan(p[0]):
-            fitted[i] = p[0]
+    for idx, val in mlp.loo_fitted_.items():
+        if idx < len(fitted):
+            fitted[idx] = val
     return {"nombre": "MLP (5-8-4-1)", "mlp": mlp, "fitted": fitted,
             "mape_train": mape, "serie_train": serie.copy()}
 
