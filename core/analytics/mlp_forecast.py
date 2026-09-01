@@ -79,6 +79,7 @@ class MLPForecast:
         if len(s) < 2:
             return np.full(n_steps, np.nan)
         area_avg = float(np.mean(s))
+        cap = 3.0 * float(np.max(s))
         preds, hist = [], list(s[-2:])
         n = len(s)
         for _ in range(n_steps):
@@ -87,6 +88,7 @@ class MLPForecast:
             fn = (feat - self.X_min) / (self.X_max - self.X_min + 1e-8)
             p = float(self._forward(fn.T).flatten()[0])
             p = p * (self.y_max - self.y_min) + self.y_min
+            p = float(np.clip(p, 0.0, cap))
             preds.append(p)
             hist.append(p)
             n += 1

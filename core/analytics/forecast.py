@@ -145,6 +145,13 @@ def proyectar_con_ic(serie: pd.Series, n_steps: int = 3,
         return res
     pred = _proyectar(res["modelo"], n_steps, serie)
     residuos = np.asarray(res["residuos"], dtype=float)
+    residuos = residuos[np.isfinite(residuos)]
+    if len(residuos):
+        med = float(np.median(np.abs(residuos)))
+        if med > 1e-8:
+            residuos = residuos[np.abs(residuos) <= 10.0 * med]
+    if not len(residuos):
+        residuos = np.array([0.0])
     if len(residuos) and float(np.std(residuos)) > 0:
         residuos = residuos - float(np.mean(residuos))
     cuantiles = {f"P{int(p*100)}": float(np.quantile(residuos, p)) for p in niveles}
