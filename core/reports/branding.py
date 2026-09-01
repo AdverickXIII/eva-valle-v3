@@ -58,3 +58,15 @@ def pagina_con_logo(canvas, doc):
         log.warning("AUD-BRAND-004: no se pudo estampar el logo (%s)", e)
     finally:
         canvas.restoreState()
+
+
+def build_con_logo(doc, flowables, **kw):
+    """AUD-BRAND-005: build() con callbacks de pagina donde reportlab los ejecuta.
+
+    Respeta un callback custom si el generador lo dejo en el constructor
+    (atributo doc.onPage); si no, usa pagina_con_logo.
+    """
+    cb = getattr(doc, "onPage", None) or pagina_con_logo
+    kw.setdefault("onFirstPage", cb)
+    kw.setdefault("onLaterPages", cb)
+    doc.build(flowables, **kw)

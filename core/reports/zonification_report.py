@@ -3,7 +3,7 @@ import io
 import unicodedata
 
 import pandas as pd
-from core.reports.branding import pagina_con_logo
+from core.reports.branding import pagina_con_logo, build_con_logo
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -118,5 +118,5 @@ def build_zonification_pdf(df: pd.DataFrame) -> bytes:
         f"Ordenanza 513 de 2019. {meta.firma()}.",
         ParagraphStyle("Pie", parent=st_["Italic"], fontSize=8)))
 
-    doc.build(story)
+    build_con_logo(doc, story)
     return buf.getvalue()

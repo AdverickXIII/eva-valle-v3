@@ -5,7 +5,7 @@ import io
 from datetime import date
 
 import pandas as pd
-from core.reports.branding import pagina_con_logo
+from core.reports.branding import pagina_con_logo, build_con_logo
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -119,5 +119,5 @@ def build_crop_pdf(df: pd.DataFrame, cultivo: str) -> bytes:
 
     story.append(Spacer(1, 0.6 * cm))
     story.append(Paragraph(f"Fuente: {meta.FUENTE}. {meta.firma()}.", st_["Italic"]))
-    doc.build(story, onFirstPage=_footer, onLaterPages=_footer)
+    build_con_logo(doc, story, onFirstPage=_footer, onLaterPages=_footer)
     return buf.getvalue()

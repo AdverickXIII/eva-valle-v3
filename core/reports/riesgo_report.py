@@ -2,7 +2,7 @@
 import io
 
 import pandas as pd
-from core.reports.branding import pagina_con_logo
+from core.reports.branding import pagina_con_logo, build_con_logo
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -77,5 +77,5 @@ def build_riesgo_pdf(df_ir: pd.DataFrame) -> bytes:
         f"Filas coloreadas por nivel de riesgo (verde = sano, rojo = riesgo). "
         f"{meta.firma()}.",
         ParagraphStyle("Pie", parent=st_["Italic"], fontSize=7.5)))
-    doc.build(story)
+    build_con_logo(doc, story)
     return buf.getvalue()

@@ -5,7 +5,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
-from core.reports.branding import pagina_con_logo
+from core.reports.branding import pagina_con_logo, build_con_logo
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -178,5 +178,5 @@ def build_comparador_pdf(a, b, sin_cana, comp_df, sa, sb, df_ab) -> bytes:
     story.append(Paragraph(
         f"Fuente: UPRA - EVA 2019-2025. {meta.firma()}.",
         ParagraphStyle("Pie", parent=st_["Italic"], fontSize=8)))
-    doc.build(story)
+    build_con_logo(doc, story)
     return buf.getvalue()

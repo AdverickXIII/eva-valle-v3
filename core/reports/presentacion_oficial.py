@@ -7,7 +7,7 @@ from reportlab.platypus import (Image as RLImage, PageBreak, Paragraph,
                                 SimpleDocTemplate, Spacer, Table, TableStyle)
 
 from core.reports import meta
-from core.reports.branding import LOGO, pagina_con_logo
+from core.reports.branding import LOGO, pagina_con_logo, build_con_logo
 
 VERDE = colors.HexColor("#2E8B57")
 VERDE_OSC = colors.HexColor("#1F5B41")
@@ -141,7 +141,7 @@ def build_ficha_tecnica_pdf() -> bytes:
         ("LINEBELOW", (0, 0), (-1, -1), 0.5, colors.HexColor("#E2E8F0")),
         ("TOPPADDING", (0, 0), (-1, -1), 4), ("BOTTOMPADDING", (0, 0), (-1, -1), 4)]))
     story.append(ev)
-    doc.build(story)
+    build_con_logo(doc, story)
     return buf.getvalue()
 
 
@@ -220,5 +220,5 @@ def build_presentacion_pdf() -> bytes:
         story += s
         if i < len(slides) - 1:
             story.append(PageBreak())
-    doc.build(story)
+    build_con_logo(doc, story)
     return buf.getvalue()

@@ -4,7 +4,7 @@ from __future__ import annotations
 import io
 
 import pandas as pd
-from core.reports.branding import pagina_con_logo
+from core.reports.branding import pagina_con_logo, build_con_logo
 from reportlab.graphics.charts.barcharts import HorizontalBarChart
 from reportlab.graphics.shapes import Drawing
 from reportlab.lib import colors
@@ -257,5 +257,5 @@ def build_executive_pdf(df: pd.DataFrame) -> bytes:
         f"Elaborado por {meta.AUTOR} - {meta.CARGO}.",
         ParagraphStyle("Pie", parent=st_["Italic"], fontSize=8, textColor=GRIS)))
 
-    doc.build(story, onFirstPage=_footer, onLaterPages=_footer)
+    build_con_logo(doc, story, onFirstPage=_footer, onLaterPages=_footer)
     return buf.getvalue()
