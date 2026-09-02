@@ -44,7 +44,7 @@ def render_login() -> None:
     )
     # Contacto institucional discreto, solo en la pantalla de acceso
     st.markdown(
-        "<div style='position:fixed; bottom:0.9rem; right:1.4rem; "
+        "<div style='position:fixed; bottom:0.9rem; left:1.4rem; "
         "font-size:0.78rem; color:#718096; z-index:999;'>"
         "&#191;Problemas de acceso? "
         f"<a href='mailto:{CONTACTO_EMAIL}?subject=Acceso%20EVA%20Valle%20v3.0'>"

@@ -1,4 +1,19 @@
-"""Genera el notebook completo del Modulo 4 (CNN sobre imagenes municipio x cultivo)."""
+"""Genera el notebook completo del Modulo 4 (CNN sobre imagenes municipio x cultivo).
+
+Cambios respecto a la version original:
+- kmeans() ahora retorna tambien la inercia real (antes se imprimia un valor sin sentido).
+- Las imagenes ya no rellenan con 0.0 silenciosamente cuando falta un cultivo-anio;
+  el municipio se excluye y se reporta explicitamente (evita contaminar los z-scores).
+- Se eliminó el bloque muerto ("top cultivos por filtro") que no imprimia nada y
+  partia de una premisa incorrecta (un kernel 3x3 no corresponde a "un cultivo").
+  Se reemplazo por una interpretacion correcta: fuerza de activacion por filtro
+  y la region (vecindario cultivo x anio) donde cada filtro responde mas fuerte.
+- vmin/vmax de los heatmaps ahora usan max(abs(.)) para evitar vmin > vmax
+  cuando todos los pesos de un filtro son negativos.
+- label_map ahora desambigua nombres de cluster repetidos (mismo cultivo dominante).
+- Split train/test ahora es estratificado por clase para garantizar que las 3
+  vocaciones esten representadas en entrenamiento.
+"""
 import json
 from pathlib import Path
 
@@ -45,7 +60,11 @@ md(r"""## 4.1 Construcción de imágenes (12 cultivos top × 7 años)
 
 Seleccionamos los 12 cultivos con mayor producción total en el Valle (caña, plátano, etc.).
 Cada municipio = una imagen 12×7 normalizada por cultivo (z-score).
-Así la CNN ve **cómo se mueve cada cultivo respecto a su propio promedio histórico**.""")
+Así la CNN ve **cómo se mueve cada cultivo respecto a su propio promedio histórico**.
+
+Un municipio solo entra al dataset si tiene los 7 años **para cada uno** de los 12
+cultivos top; de lo contrario se excluye explícitamente (no se rellena con 0, que
+en z-score significaría "exactamente el promedio histórico" y contaminaría la señal).""")
 
 code(r"""total_por_cultivo = df.groupby("cultivo").produccion_t.sum().sort_values(ascending=False)
 TOP12 = total_por_cultivo.head(12).index.tolist()
@@ -62,25 +81,29 @@ sds = g.groupby("cultivo").produccion_t.transform("std").clip(lower=1e-6)
 g["z"] = (g.produccion_t - medias) / sds
 
 # Pivotar: cada municipio -> matriz (12, 7) con anos 2019-2025
-anos = list(range(2019, 2026))
+ANIOS = list(range(2019, 2026))
 muns = sorted(g.municipio.unique())
 imagenes = {}
-faltan = []
+excluidos = {}
 for m in muns:
     sub = g[g.municipio == m]
-    if sub.ano.nunique() < 7:
-        faltan.append(m)
-        continue
-    M = np.full((len(TOP12), 7), 0.0)
+    M = np.full((len(TOP12), 7), np.nan)
     for i, c in enumerate(TOP12):
-        s = sub[sub.cultivo == c].sort_values("ano")
-        if len(s) == 7:
-            M[i] = s["z"].values
+        s = sub[(sub.cultivo == c) & (sub.ano.isin(ANIOS))].sort_values("ano")
+        s = s.drop_duplicates("ano")
+        for _, row in s.iterrows():
+            M[i, ANIOS.index(row.ano)] = row.z
+    n_faltantes = int(np.isnan(M).sum())
+    if n_faltantes > 0:
+        excluidos[m] = n_faltantes
+        continue
     imagenes[m] = M
 
-print(f"\nMunicipios con imagen completa: {len(imagenes)} / {len(muns)}")
-if faltan:
-    print("Sin serie completa:", faltan)""")
+print(f"\nMunicipios con imagen completa (12 cultivos x 7 anos): {len(imagenes)} / {len(muns)}")
+if excluidos:
+    print(f"Excluidos por datos incompletos ({len(excluidos)}):")
+    for m, n in sorted(excluidos.items(), key=lambda kv: -kv[1])[:10]:
+        print(f"  {m}: faltan {n} celdas cultivo-anio")""")
 
 md(r"""## 4.2 K-means desde cero para descubrir vocaciones (k=3)
 Inicializacion k-means++, 50 iteraciones, 10 restarts.""")
@@ -93,32 +116,42 @@ code(r"""def kmeans(X, k, n_restart=10, n_iter=50, seed=0):
         # k-means++
         cent = [X[rng.randint(n)]]
         for _ in range(1, k):
-            D = np.min(np.stack([np.sum((X - c)**2, 1) for c in cent], 1), 0)
+            D = np.min(np.stack([np.sum((X - c) ** 2, 1) for c in cent], 1), 0)
             prob = D / D.sum()
             cent.append(X[rng.choice(n, p=prob)])
         C = np.array(cent)
+        L = None
         for _ in range(n_iter):
             D = np.sqrt(((X[:, None] - C[None]) ** 2).sum(2))
             L = D.argmin(1)
             new_C = np.array([X[L == j].mean(0) if (L == j).any() else C[j] for j in range(k)])
-            if np.allclose(C, new_C): break
+            if np.allclose(C, new_C):
+                break
             C = new_C
-        inertia = sum(np.sum((X[L == j] - C[j])**2) for j in range(k))
+        inertia = sum(np.sum((X[L == j] - C[j]) ** 2) for j in range(k))
         if inertia < best_inertia:
-            best_inertia, best = (L, C), inertia
-    return best
+            best_inertia, best = inertia, (L, C)
+    labels, centroids = best
+    return labels, centroids, best_inertia
 
 X = np.array([imagenes[m].flatten() for m in muns if m in imagenes])
-labels, centroids = kmeans(X, k=3, seed=42)
-print(f"Vocaciones descubiertas: k=3, inercia {float(centroids.mean()):.2f}")
-voc = {m: int(labels[i]) for i, m in enumerate(m for m in muns if m in imagenes)}
+labels, centroids, inertia = kmeans(X, k=3, seed=42)
+print(f"Vocaciones descubiertas: k=3, inercia total = {inertia:.2f}")
+mun_orden = [m for m in muns if m in imagenes]
+voc = {m: int(labels[i]) for i, m in enumerate(mun_orden)}
 
-# Renombrar clusters por el cultivo dominante de cada uno
+# Renombrar clusters por el cultivo dominante de cada uno (desambiguando repetidos)
 centroids_reshaped = centroids.reshape(-1, len(TOP12), 7)
 nombres = {}
+usados = {}
 for k, c in enumerate(centroids_reshaped):
     media_anual = c.mean(1)
     cult_dom = TOP12[int(np.argmax(media_anual))]
+    if cult_dom in usados:
+        usados[cult_dom] += 1
+        cult_dom = f"{cult_dom} ({usados[cult_dom]})"
+    else:
+        usados[cult_dom] = 1
     nombres[k] = cult_dom
 print("Vocaciones renombradas por cultivo dominante:")
 for k, n in nombres.items():
@@ -127,22 +160,36 @@ for k, n in nombres.items():
 voc_n = {m: nombres[voc[m]] for m in voc}
 save_json("m4_clusters_vocacion.json", {
     "municipios": voc_n, "centroids_z_mean": centroids_reshaped.mean((1, 2)).tolist(),
-    "nombres": nombres})""")
+    "nombres": nombres, "inercia": float(inertia)})""")
 
 md(r"""## 4.3 Entrenamiento de la CNN (3 clases de vocación)
 Imagen: (1, 12, 7). Arquitectura: Conv3x3(1→4) → ReLU → MaxPool2 → Dense → 3.
-Split: 30 train / resto test, 40 epochs, lr 0.01.""")
+Split estratificado: 30 train / resto test (garantiza las 3 clases en ambos sets),
+40 epochs, lr 0.01.""")
 
 code(r"""rng = np.random.RandomState(0)
-muns_train = rng.choice(list(voc.keys()), size=30, replace=False).tolist()
+label_map = {n: i for i, n in enumerate(nombres.values())}
+
+muns_by_clase = {}
+for m in voc:
+    muns_by_clase.setdefault(voc[m], []).append(m)
+
+N_TRAIN = 30
+muns_train = []
+for clase, ms in muns_by_clase.items():
+    n_clase_train = max(1, round(N_TRAIN * len(ms) / len(voc)))
+    elegidos = rng.choice(ms, size=min(n_clase_train, len(ms)), replace=False).tolist()
+    muns_train.extend(elegidos)
+muns_train = muns_train[:N_TRAIN] if len(muns_train) > N_TRAIN else muns_train
 muns_test = [m for m in voc if m not in muns_train]
 print(f"train: {len(muns_train)} | test: {len(muns_test)}")
+print("Distribucion train por clase:", {k: sum(1 for m in muns_train if voc[m] == k)
+                                         for k in muns_by_clase})
 
-label_map = {n: i for i, n in enumerate(nombres.values())}
-y_train = np.array([label_map[voc[m]] for m in muns_train])
-y_test  = np.array([label_map[voc[m]] for m in muns_test])
+y_train = np.array([label_map[voc_n[m]] for m in muns_train])
+y_test  = np.array([label_map[voc_n[m]] for m in muns_test])
 
-net = CNN(C=1, F=4, n_classes=3, seed=42)
+net = CNN(C=1, F=4, n_classes=len(label_map), seed=42)
 for ep in range(40):
     order = rng.permutation(len(muns_train))
     tot = 0.0; ok = 0
@@ -178,45 +225,58 @@ save_json("m4_cnn_accuracy.json", {
     "n_train": len(muns_train), "n_test": len(muns_test)})""")
 
 md(r"""## 4.5 Visualización de filtros — leyendo la CNN
-Cada filtro (4 en total) es una matriz 1×3×3 = 12×3 si aplanamos el canal de cultivos.
-**Interpretación:** qué patrón de cultivos-años vecinos hace activar el filtro.
-Mostramos los 4 filtros como heatmaps con etiquetas de cultivos.""")
+El kernel de la capa conv tiene forma `(F, 1, 3, 3)`: cada uno de los `F` filtros
+es una ventana de **3×3 local** sobre la imagen 12×7 (3 cultivos consecutivos ×
+3 años consecutivos), no "un cultivo completo". Por eso no tiene sentido asignarle
+un único cultivo a cada filtro; en su lugar mostramos el heatmap del kernel y,
+para cada filtro, la posición (cultivos/años) donde su activación es más fuerte
+sobre las imágenes reales.""")
 
 code(r"""fig, axs = plt.subplots(1, 4, figsize=(16, 4))
 for f, ax in enumerate(axs):
-    filt = net.conv.K[f, 0]   # (3, 3) sobre los 12 cultivos x 7 anos
-    im = ax.imshow(filt, cmap="RdBu_r", vmin=-filt.max(), vmax=filt.max())
+    filt = net.conv.K[f, 0]   # (3, 3)
+    vmax = np.abs(filt).max()
+    vmax = vmax if vmax > 0 else 1.0
+    im = ax.imshow(filt, cmap="RdBu_r", vmin=-vmax, vmax=vmax)
     ax.set_title(f"Filtro {f+1}")
-    ax.set_xticks(range(filt.shape[1])); ax.set_xticklabels(range(7), fontsize=8)
-    ax.set_yticks([]);
+    ax.set_xticks(range(filt.shape[1])); ax.set_xticklabels(range(filt.shape[1]), fontsize=8)
+    ax.set_yticks([])
     for i in range(filt.shape[0]):
         for j in range(filt.shape[1]):
-            ax.text(j, i, f"{filt[i,j]:+.1f}", ha="center", va="center", fontsize=6)
-plt.suptitle("Filtros aprendidos (1 canal × 12 cultivos × 7 anos, kernel 3x3)", fontsize=11)
+            ax.text(j, i, f"{filt[i, j]:+.1f}", ha="center", va="center", fontsize=6)
+plt.suptitle("Filtros aprendidos (1 canal x 12 cultivos x 7 anos, kernel 3x3 local)", fontsize=11)
 plt.colorbar(im, ax=axs, fraction=0.02, pad=0.02)
-plt.tight_layout(); plt.show()
-
+plt.tight_layout()
 save_png("m4_filtros_cnn.png", fig)
+plt.show()
 
-# Que cultivos tienen pesos mas altos (en valor absoluto) por filtro
-print("\nTop 3 cultivos por filtro (peso maximo absoluto):")
-K_full = net.conv.K[:, 0]   # (4, 12, 7) — pero el kernel es 3x3 sobre 12x7
-K = net.conv.K[:, 0]        # F x H x W; kernel 3x3 sobre imagen 12x7
-for f in range(K.shape[0]):
-    # para cada filtro, el maximo sobre anos de cada cultivo
-    max_por_cult = np.abs(K[f]).max(1) if K.ndim == 3 else np.abs(K[f]).max(1)
-    # aqui K[f] es (12, 3) en la implementacion actual? Verificar:
-    pass
-# Lo hacemos mas robusto: kernel shape es (F, C, kh, kw) con C=1, kh=3, kw=3
-# pero la imagen es (1, 12, 7) — entonces Conv2D aplica kernel 3x3 sobre 12x7.
-# El K es (F, 1, 3, 3): cada filtro es 3x3 sobre la imagen. NO sobre 12.
-# => interpretacion: patrones locales 3x3 en la imagen (cultivos x anos).
-print("Kernel shape:", net.conv.K.shape, "=> cada filtro es 3x3 local en la imagen 12x7")""")
+# Para cada filtro: en que municipio y en que posicion (cultivo, anio) de la
+# imagen produce la activacion mas fuerte (antes de ReLU/pool), usando el set completo.
+print("\nActivacion maxima por filtro (municipio y ventana cultivo/anio de origen):")
+kh, kw = net.conv.K.shape[-2:]
+for f in range(net.conv.K.shape[0]):
+    mejor = (None, -np.inf, None)
+    for m, img in imagenes.items():
+        H, W = img.shape
+        for i in range(H - kh + 1):
+            for j in range(W - kw + 1):
+                ventana = img[i:i + kh, j:j + kw]
+                act = float((ventana * net.conv.K[f, 0]).sum())
+                if act > mejor[1]:
+                    mejor = (m, act, (i, j))
+    m, act, (i, j) = mejor
+    cult_ini = TOP12[i] if i < len(TOP12) else "?"
+    print(f"  Filtro {f+1}: max activacion {act:+.2f} en {m}, "
+          f"ventana cultivos[{i}:{i+kh}] (~{cult_ini}...) x anios[{ANIOS[j]}:{ANIOS[j]+kw-1}]")""")
 
 md(r"""## 4.6 Interpretación
-- La CNN aprende a clasificar vocación con accuracy X% vs baseline Y% (con n=42 municipios).
-- Los filtros muestran **patrones locales** (vecindarios 3×3 de cultivo×año) que activan la red.
-- Limitación honesta: con solo 42 muestras, la CNN no supera a un baseline fuerte por potencia estadística.
+- La CNN aprende a clasificar vocación con la accuracy reportada arriba vs el baseline
+  de clase mayoritaria (con n≈42 municipios, y menos tras excluir los que tenían
+  datos incompletos — ver conteo en 4.1).
+- Los filtros muestran **patrones locales** (vecindarios 3×3 de cultivo×año) que activan la red;
+  la celda anterior identifica en qué municipio y ventana concreta se activa más cada filtro.
+- Limitación honesta: con pocas decenas de muestras, la CNN no necesariamente supera a un
+  baseline fuerte por potencia estadística.
 - La lección científica: **CNN es la arquitectura correcta para patrones espaciales**;
   necesita más datos (panel nacional) o transferencia desde otro dataset para brillar.
 - En el Módulo 5 (Transformers) usaremos **atención** que no requiere vecindarios fijos
@@ -229,4 +289,4 @@ nb = {"cells": cells,
       "nbformat": 4, "nbformat_minor": 5}
 Path("notebooks/curso/04_cnn_patrones_espaciales.ipynb").write_text(
     json.dumps(nb, ensure_ascii=False, indent=1), encoding="utf-8")
-print("[OK] notebooks/curso/04_cnn_patrones_espaciales.ipynb (version completa)")
+print("[OK] notebooks/curso/04_cnn_patrones_espaciales.ipynb (version optimizada)")
