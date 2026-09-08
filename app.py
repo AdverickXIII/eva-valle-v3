@@ -15,7 +15,8 @@ from ui.services.auth import (
 )
 
 # Correo institucional de contacto (editar si cambia)
-CONTACTO_EMAIL = "contacto.eva@upra.gov.co"
+CONTACTO_EMAIL = "moises.zuniga.grueso@gmail.com"
+CONTACTO_TELEFONO = "+57 3167197764"
 
 st.set_page_config(
     page_title="EVA Valle del Cauca",
@@ -42,13 +43,25 @@ def render_login() -> None:
         "[data-testid='stSidebarCollapsedControl']{display:none;}</style>",
         unsafe_allow_html=True,
     )
-    # Contacto institucional discreto, solo en la pantalla de acceso
+        # Contacto institucional (v2): correo + telefono + WhatsApp
     st.markdown(
-        "<div style='position:fixed; bottom:0.9rem; left:1.4rem; "
-        "font-size:0.78rem; color:#718096; z-index:999;'>"
-        "&#191;Problemas de acceso? "
-        f"<a href='mailto:{CONTACTO_EMAIL}?subject=Acceso%20EVA%20Valle%20v3.0'>"
-        "Cont&#225;ctenos</a> &nbsp;&middot;&nbsp; v3.0 &middot; UPRA</div>",
+        """
+        <!-- CONTACTO_V2 -->
+        <style>
+        #eva-contacto {
+            position: fixed; bottom: 14px; left: 14px; z-index: 999;
+            font-size: 0.85rem; line-height: 1.6; background: rgba(255,255,255,0.95);
+            padding: 8px 12px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        #eva-contacto a { color: #0f6cbd; text-decoration: none; font-weight: 600; }
+        #eva-contacto a:hover { text-decoration: underline; }
+        </style>
+        <div id="eva-contacto">
+          📧 <a href="mailto:moises.zuniga.grueso@gmail.com?subject=Acceso%20EVA%20Valle%20v3.0">Escríbenos</a><br>
+          📞 <a href="tel:+573167197764">+57 3167197764</a><br>
+          💬 <a href="https://wa.me/573167197764" target="_blank">WhatsApp</a>
+        </div>
+        """,
         unsafe_allow_html=True,
     )
     st.markdown("<div style='height:8vh'></div>", unsafe_allow_html=True)
