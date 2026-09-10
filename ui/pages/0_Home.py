@@ -33,11 +33,17 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+from ui.components.metrics_cards import render_kpi_row
+
 st.title("\U0001F33E EVA Agricola 2019-2025 - Valle del Cauca")
-st.markdown(
-    "Dashboard analitico de produccion agricola basado en datos de la UPRA.  \n"
-    "**42 municipios** | **78 cultivos** | **7 anos de datos (2019-2025)**"
-)
+st.markdown("Dashboard analitico de produccion agricola basado en datos de la UPRA.")
+
+render_kpi_row([
+    {"label": "Municipios", "value": "42", "icon": "\U0001F4CD"},
+    {"label": "Cultivos", "value": "78", "icon": "\U0001F33F"},
+    {"label": "Años de datos", "value": "7", "icon": "\U0001F4C5"},
+], cols=3)
+
 st.markdown("---")
 
 col1, col2, col3 = st.columns(3)
