@@ -152,20 +152,14 @@ section[data-testid="stSidebar"] { background: var(--eva-bg-secondary); }
 
 
 /* ---------- Login institucional (Paso 4) ---------- */
-.eva-login-wrap {
-    display: flex;
-    min-height: 88vh;
-    border-radius: var(--eva-radius);
-    overflow: hidden;
-    box-shadow: var(--eva-shadow-hover);
-    margin-top: 1rem;
-}
 .eva-login-brand {
     flex: 1.1;
     background: linear-gradient(135deg, rgba(15,50,35,0.92) 0%, rgba(15,50,35,0.55) 100%),
         var(--eva-login-bg, none) center / cover no-repeat;
     color: #fff;
     padding: 3rem 2.5rem;
+    min-height: 480px;
+    border-radius: var(--eva-radius);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -205,6 +199,5 @@ section[data-testid="stSidebar"] { background: var(--eva-bg-secondary); }
     color: var(--eva-muted); font-size: .75rem; text-align: center; margin-top: 1rem;
 }
 @media (max-width: 900px) {
-    .eva-login-wrap { flex-direction: column; min-height: unset; }
     .eva-login-brand { padding: 2rem 1.5rem; }
 }

@@ -35,15 +35,12 @@ if css_path.exists():
 
 
 def render_login() -> None:
-    """Pantalla de login centrada con rate limiting y validacion."""
-    # Oculta el sidebar residual (la ultima navegacion queda congelada
-    # en el frontend cuando este run no llama st.navigation)
+    """Pantalla de login institucional con rate limiting y validacion."""
     st.markdown(
         "<style>section[data-testid='stSidebar']{display:none;}"
         "[data-testid='stSidebarCollapsedControl']{display:none;}</style>",
         unsafe_allow_html=True,
     )
-        # Contacto institucional (v2): correo + telefono + WhatsApp
     st.markdown(
         """
         <!-- CONTACTO_V2 -->
@@ -55,36 +52,87 @@ def render_login() -> None:
         """,
         unsafe_allow_html=True,
     )
-    st.markdown("<div style='height:8vh'></div>", unsafe_allow_html=True)
-    _, col, _ = st.columns([1, 1.4, 1])
-    with col:
+
+    # Fondo del panel de marca: reutiliza hero.png si existe (mismo asset del Home)
+    import base64 as _b64
+    _hero = Path(__file__).parent / "ui" / "assets" / "img" / "hero.png"
+    if _hero.exists():
+        _img = _b64.b64encode(_hero.read_bytes()).decode()
         st.markdown(
-            "<h1 style='text-align:center; color:#2E8B57;'>EVA Valle v3.0</h1>",
+            f"<style>:root{{--eva-login-bg: url('data:image/png;base64,{_img}');}}</style>",
             unsafe_allow_html=True,
         )
+
+    logo_path = Path(__file__).parent / "ui" / "assets" / "img" / "logo.png"
+    logo_b64 = ""
+    if logo_path.exists():
+        import base64 as _b64_logo
+        logo_b64 = _b64_logo.b64encode(logo_path.read_bytes()).decode()
+
+    col_brand, col_form = st.columns([1.1, 1], gap="small")
+
+    with col_brand:
+        logo_html = (
+            f'<img src="data:image/png;base64,{logo_b64}" width="56" />'
+            if logo_b64 else ""
+        )
         st.markdown(
-            "<p style='text-align:center; color:#4A5568;'>"
-            "Dashboard Analitico UPRA - Valle del Cauca</p>",
+            f"""
+            <div class="eva-login-brand">
+                <div class="eva-brand-top">
+                    {logo_html}
+                    <h1>EVA Valle</h1>
+                    <p>Inteligencia Agrícola Territorial</p>
+                </div>
+                <div class="eva-brand-quote">
+                    "El dato oficial, al servicio de quien siembra"
+                </div>
+                <div>
+                    <div class="eva-brand-stats">
+                        <span>42 municipios</span>
+                        <span>78 cultivos</span>
+                        <span>2019–2025</span>
+                    </div>
+                    <div class="eva-brand-version" style="margin-top:.8rem;">
+                        Plataforma analítica · UPRA · EVA 2019-2025 &nbsp;·&nbsp; v3.0
+                    </div>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    with col_form:
+        st.markdown(
+            "<div style='margin-bottom:1.5rem;'>"
+            "<div style='font-size:1.3rem; font-weight:700; color:var(--eva-text); margin-bottom:.3rem;'>"
+            "Acceso a la plataforma</div>"
+            "<p class='eva-login-sub' style='margin:0;'>Ingresa tus credenciales institucionales.</p>"
+            "</div>",
             unsafe_allow_html=True,
         )
         with st.form("login_form"):
             usuario = st.text_input("Usuario")
-            password = st.text_input("Contrase\u00f1a", type="password")
+            password = st.text_input("Contraseña", type="password")
             entrar = st.form_submit_button("Ingresar", use_container_width=True)
         if entrar:
             u = sanitize_username(usuario)
             p = sanitize_password(password)
             if not u or not p:
-                st.error("\u26a0\ufe0f Usuario o contrase\u00f1a invalidos.")
+                st.error("⚠️ Usuario o contraseña invalidos.")
             elif not login_limiter.is_allowed(u):
-                st.error("\u26a0\ufe0f Demasiados intentos fallidos. Espera 15 minutos.")
+                st.error("⚠️ Demasiados intentos fallidos. Espera 15 minutos.")
             elif verify(u, p):
                 login_limiter.reset(u)
                 login(u)
                 st.rerun()
             else:
-                st.error("\u26d4 Usuario o contrase\u00f1a incorrectos.")
-
+                st.error("⛔ Usuario o contraseña incorrectos.")
+        st.markdown(
+            "<div class='eva-login-security'>🔒 Conexión protegida · datos oficiales UPRA</div>"
+            "<div class='eva-login-footer'>EVA Valle v3.0 · Valle del Cauca, Colombia</div>",
+            unsafe_allow_html=True,
+        )
 
 # --- Gate de autenticacion --------------------------------------------
 if not is_authenticated():
