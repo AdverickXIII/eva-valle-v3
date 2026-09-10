@@ -1,16 +1,39 @@
-/* EVA Valle v3.0 - Tema Claro Profesional (Boceto A) */
+/* EVA Valle v3.0 - Sistema de Diseño Institucional */
 :root {
     --eva-primary: #2E8B57;
+    --eva-primary-dark: #1F5F3D;
     --eva-bg: #F8F9FA;
     --eva-bg-secondary: #EDF2F7;
     --eva-card: #FFFFFF;
     --eva-text: #1A202C;
     --eva-muted: #4A5568;
     --eva-border: #E2E8F0;
+    --eva-info: #0F6CBD;
+    --eva-warning: #B7791F;
+    --eva-warning-bg: #FFFBEB;
+    --eva-success: #2F855A;
+    --eva-success-bg: #F0FFF4;
+    --eva-danger: #C53030;
     --eva-radius: 12px;
+    --eva-radius-sm: 8px;
     --eva-shadow: 0 2px 8px rgba(26,32,44,0.08);
+    --eva-shadow-hover: 0 4px 16px rgba(26,32,44,0.12);
 }
+
 .stApp { background-color: var(--eva-bg); color: var(--eva-text); }
+
+/* ---------- Card genérica reutilizable (Paso 18) ---------- */
+.eva-card {
+    background: var(--eva-card);
+    border: 1px solid var(--eva-border);
+    border-radius: var(--eva-radius);
+    padding: 1.25rem 1.5rem;
+    box-shadow: var(--eva-shadow);
+    transition: box-shadow .15s ease, transform .15s ease;
+}
+.eva-card:hover { box-shadow: var(--eva-shadow-hover); transform: translateY(-1px); }
+
+/* ---------- KPI Card (ya existente, se conserva y se completa) ---------- */
 .eva-metric-card {
     background: var(--eva-card);
     border: 1px solid var(--eva-border);
@@ -18,18 +41,111 @@
     padding: 1.25rem 1.5rem;
     box-shadow: var(--eva-shadow);
     height: 100%;
+    transition: box-shadow .15s ease;
 }
+.eva-metric-card:hover { box-shadow: var(--eva-shadow-hover); }
+.eva-metric-card .metric-icon { font-size: 1.6rem; margin-bottom: .35rem; line-height: 1; }
 .eva-metric-card .metric-label { color: var(--eva-muted); font-size:.8rem;
     text-transform: uppercase; letter-spacing:.05em; font-weight:600; }
 .eva-metric-card .metric-value { color: var(--eva-text); font-size:1.8rem; font-weight:700; }
-.eva-metric-card .metric-delta.positive { color:#2F855A; }
-.eva-metric-card .metric-delta.negative { color:#C53030; }
+.eva-metric-card .metric-delta.positive { color: var(--eva-success); }
+.eva-metric-card .metric-delta.negative { color: var(--eva-danger); }
 .eva-metric-card .metric-delta.neutral { color: var(--eva-muted); }
+
+/* ---------- Header de sección (Paso 6 / Paso 18) ---------- */
+.eva-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding-bottom: .5rem; margin-bottom: 1rem;
+    border-bottom: 1px solid var(--eva-border);
+}
+.eva-header h1 { margin: 0; font-size: 1.5rem; color: var(--eva-text); }
+.eva-header .eva-header-meta { color: var(--eva-muted); font-size: .85rem; }
+
+/* ---------- Bloque de sección con contexto ejecutivo (Paso 14) ---------- */
+.eva-section {
+    background: var(--eva-bg-secondary);
+    border-left: 3px solid var(--eva-primary);
+    border-radius: var(--eva-radius-sm);
+    padding: .9rem 1.2rem;
+    margin: 0 0 1.25rem;
+    color: var(--eva-muted);
+    font-size: .95rem;
+}
+
+/* ---------- Insight card (hallazgos clave, Paso 8/13) ---------- */
+.eva-insight {
+    background: var(--eva-card);
+    border: 1px solid var(--eva-border);
+    border-left: 4px solid var(--eva-primary);
+    border-radius: var(--eva-radius-sm);
+    padding: .9rem 1.2rem;
+    margin-bottom: .75rem;
+    font-size: .95rem;
+    color: var(--eva-text);
+}
+
+/* ---------- Estados: advertencia / éxito (Paso 12) ---------- */
+.eva-warning {
+    background: var(--eva-warning-bg);
+    border: 1px solid #F6E05E;
+    border-left: 4px solid var(--eva-warning);
+    border-radius: var(--eva-radius-sm);
+    padding: .8rem 1.1rem;
+    color: #7B5B12;
+    font-size: .9rem;
+}
+.eva-success {
+    background: var(--eva-success-bg);
+    border: 1px solid #9AE6B4;
+    border-left: 4px solid var(--eva-success);
+    border-radius: var(--eva-radius-sm);
+    padding: .8rem 1.1rem;
+    color: #22543D;
+    font-size: .9rem;
+}
+
+/* ---------- Sidebar ---------- */
 section[data-testid="stSidebar"] { background: var(--eva-bg-secondary); }
+
+/* ---------- Botones ---------- */
 .stButton > button {
     background: var(--eva-primary); color:#fff; border:none; border-radius:8px;
     padding:.6rem 1.5rem; font-weight:600;
+    transition: background .15s ease;
 }
-.stButton > button:hover { background:#276749; }
-.eva-footer { text-align:center; color:var(--eva-muted); padding:2rem 0 1rem;
-    border-top:1px solid var(--eva-border); margin-top:3rem; font-size:.85rem; }
+.stButton > button:hover { background: var(--eva-primary-dark); }
+
+/* ---------- Footer institucional (Paso 23) ---------- */
+.eva-footer {
+    text-align:center; color:var(--eva-muted); padding:2rem 0 1rem;
+    border-top:1px solid var(--eva-border); margin-top:3rem; font-size:.85rem;
+    line-height: 1.6;
+}
+
+/* ---------- Sidebar: jerarquía de secciones (Paso 5) ---------- */
+.eva-sidebar-user {
+    background: var(--eva-card);
+    border: 1px solid var(--eva-border);
+    border-radius: var(--eva-radius-sm);
+    padding: .6rem .8rem;
+    margin-bottom: .5rem;
+    font-size: .85rem;
+}
+.eva-sidebar-section {
+    color: var(--eva-muted);
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin: 1.1rem 0 .2rem;
+    padding: 0 .2rem;
+}
+
+/* ---------- Widget de contacto (movido desde app.py inline) ---------- */
+#eva-contacto {
+    position: fixed; bottom: 14px; left: 14px; z-index: 999;
+    font-size: 0.85rem; line-height: 1.6; background: rgba(255,255,255,0.95);
+    padding: 8px 12px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+#eva-contacto a { color: var(--eva-info); text-decoration: none; font-weight: 600; }
+#eva-contacto a:hover { text-decoration: underline; }
