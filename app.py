@@ -47,15 +47,6 @@ def render_login() -> None:
     st.markdown(
         """
         <!-- CONTACTO_V2 -->
-        <style>
-        #eva-contacto {
-            position: fixed; bottom: 14px; left: 14px; z-index: 999;
-            font-size: 0.85rem; line-height: 1.6; background: rgba(255,255,255,0.95);
-            padding: 8px 12px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        #eva-contacto a { color: #0f6cbd; text-decoration: none; font-weight: 600; }
-        #eva-contacto a:hover { text-decoration: underline; }
-        </style>
         <div id="eva-contacto">
           📧 <a href="mailto:moises.zuniga.grueso@gmail.com?subject=Acceso%20EVA%20Valle%20v3.0">Escríbenos</a><br>
           📞 <a href="tel:+573167197764">+57 3167197764</a><br>
@@ -111,8 +102,12 @@ with st.sidebar:
     role = current_role()
     role_icon = {"admin": "\U0001F451", "analista": "\U0001F9ED", "user": "\U0001F464"}.get(role, "\U0001F464")
     role_label = {"admin": "Admin", "analista": "Analista", "user": "Usuario"}.get(role, role)
-    st.caption(f"{role_icon} {st.session_state.get('username')} ({role_label})")
-    if st.button("\U0001F6AA Cerrar sesion"):
+    st.markdown(
+        f'<div class="eva-sidebar-user">{role_icon} <b>{st.session_state.get("username")}</b>'
+        f'<br><span style="color:var(--eva-muted);">{role_label}</span></div>',
+        unsafe_allow_html=True,
+    )
+    if st.button("\U0001F6AA Cerrar sesion", use_container_width=True):
         logout()
         st.rerun()
     st.markdown("---")

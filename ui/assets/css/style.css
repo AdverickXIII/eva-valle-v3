@@ -149,3 +149,62 @@ section[data-testid="stSidebar"] { background: var(--eva-bg-secondary); }
 }
 #eva-contacto a { color: var(--eva-info); text-decoration: none; font-weight: 600; }
 #eva-contacto a:hover { text-decoration: underline; }
+
+
+/* ---------- Login institucional (Paso 4) ---------- */
+.eva-login-wrap {
+    display: flex;
+    min-height: 88vh;
+    border-radius: var(--eva-radius);
+    overflow: hidden;
+    box-shadow: var(--eva-shadow-hover);
+    margin-top: 1rem;
+}
+.eva-login-brand {
+    flex: 1.1;
+    background: linear-gradient(135deg, rgba(15,50,35,0.92) 0%, rgba(15,50,35,0.55) 100%),
+        var(--eva-login-bg, none) center / cover no-repeat;
+    color: #fff;
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.eva-login-brand .eva-brand-top h1 {
+    font-size: 1.9rem; margin: .8rem 0 .2rem; color: #fff;
+}
+.eva-login-brand .eva-brand-top p {
+    color: #DFF3E7; font-size: .95rem; margin: 0;
+}
+.eva-login-brand .eva-brand-quote {
+    font-size: 1.05rem; font-style: italic; color: #fff;
+    border-left: 3px solid var(--eva-primary); padding-left: 1rem;
+    margin: 1.5rem 0;
+}
+.eva-login-brand .eva-brand-stats {
+    display: flex; gap: 1.5rem; font-size: .85rem; color: #DFF3E7;
+}
+.eva-login-brand .eva-brand-version {
+    font-size: .75rem; color: #A9D8BE; letter-spacing: .05em;
+}
+.eva-login-form {
+    flex: 1;
+    background: var(--eva-card);
+    padding: 3rem 2.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.eva-login-form h2 { margin: 0 0 .3rem; font-size: 1.3rem; color: var(--eva-text); }
+.eva-login-form .eva-login-sub { color: var(--eva-muted); font-size: .88rem; margin-bottom: 1.5rem; }
+.eva-login-security {
+    display: flex; align-items: center; gap: .4rem;
+    color: var(--eva-muted); font-size: .78rem; margin-top: 1.2rem;
+}
+.eva-login-footer {
+    color: var(--eva-muted); font-size: .75rem; text-align: center; margin-top: 1rem;
+}
+@media (max-width: 900px) {
+    .eva-login-wrap { flex-direction: column; min-height: unset; }
+    .eva-login-brand { padding: 2rem 1.5rem; }
+}
