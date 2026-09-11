@@ -5,12 +5,16 @@ from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from ui.services.error_handler import run_safe
+from ui.services.auth import current_role, is_authenticated
 
 from config.settings import settings
 
 st.set_page_config(page_title="Configuracion | EVA Valle", page_icon="\u2699\uFE0F", layout="wide")
 
 def main() -> None:
+    if not is_authenticated() or current_role() != "admin":
+        st.error("⛔ Acceso restringido: requiere rol de administrador.")
+        st.stop()
     st.title("\u2699\uFE0F Configuracion del Sistema")
     st.caption("Estado del pipeline, descargas y parametros")
     st.markdown("---")
