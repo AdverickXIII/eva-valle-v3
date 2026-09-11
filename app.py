@@ -144,7 +144,6 @@ if not check_session_timeout():
 # --- Sidebar con usuario y cierre de sesion ---------------------------
 with st.sidebar:
     st.image(str(Path(__file__).parent / "ui" / "assets" / "img" / "logo.png"), width=110)
-    st.title("EVA Valle")
     role = current_role()
     role_icon = {"admin": "\U0001F451", "analista": "\U0001F9ED", "user": "\U0001F464"}.get(role, "\U0001F464")
     role_label = {"admin": "Admin", "analista": "Analista", "user": "Usuario"}.get(role, role)
