@@ -227,3 +227,10 @@ section[data-testid="stSidebar"] { background: var(--eva-bg-secondary); }
     letter-spacing: .05em; font-weight: 600;
 }
 .eva-nav-card .nav-card-desc { color: var(--eva-text); font-size: 1rem; font-weight: 500; margin-top: .1rem; }
+
+/* ---------- Logo sidebar centrado (Paso 5) ---------- */
+section[data-testid="stSidebar"] [data-testid="stImage"] {
+    display: flex;
+    justify-content: center;
+    margin-bottom: .3rem;
+}
