@@ -33,23 +33,11 @@ if css_path.exists():
         unsafe_allow_html=True,
     )
 
-
 def render_login() -> None:
     """Pantalla de login institucional con rate limiting y validacion."""
     st.markdown(
         "<style>section[data-testid='stSidebar']{display:none;}"
         "[data-testid='stSidebarCollapsedControl']{display:none;}</style>",
-        unsafe_allow_html=True,
-    )
-    st.markdown(
-        """
-        <!-- CONTACTO_V2 -->
-        <div id="eva-contacto">
-          📧 <a href="mailto:moises.zuniga.grueso@gmail.com?subject=Acceso%20EVA%20Valle%20v3.0">Escríbenos</a><br>
-          📞 <a href="tel:+573167197764">+57 3167197764</a><br>
-          💬 <a href="https://wa.me/573167197764" target="_blank">WhatsApp</a>
-        </div>
-        """,
         unsafe_allow_html=True,
     )
 
@@ -134,6 +122,15 @@ def render_login() -> None:
             unsafe_allow_html=True,
         )
 
+    st.markdown(
+        "<div class='eva-login-support'>"
+        "¿Problemas para ingresar? "
+        "<a href='mailto:moises.zuniga.grueso@gmail.com?subject=Acceso%20EVA%20Valle%20v3.0'>Contacta a soporte</a>"
+        " · <a href='tel:+573167197764'>+57 316 719 7764</a>"
+        "</div>",
+        unsafe_allow_html=True,
+    )
+
 # --- Gate de autenticacion --------------------------------------------
 if not is_authenticated():
     render_login()
@@ -201,7 +198,6 @@ def _build_navigation(role: str):
         if min_rol <= nivel:
             nav.setdefault(seccion, []).append(page)
     return nav
-
 
 pg = st.navigation(_build_navigation(role))
 pg.run()

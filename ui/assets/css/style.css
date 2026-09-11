@@ -142,15 +142,6 @@ section[data-testid="stSidebar"] { background: var(--eva-bg-secondary); }
 }
 
 /* ---------- Widget de contacto (movido desde app.py inline) ---------- */
-#eva-contacto {
-    position: fixed; bottom: 14px; left: 14px; z-index: 999;
-    font-size: 0.85rem; line-height: 1.6; background: rgba(255,255,255,0.95);
-    padding: 8px 12px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-#eva-contacto a { color: var(--eva-info); text-decoration: none; font-weight: 600; }
-#eva-contacto a:hover { text-decoration: underline; }
-
-
 /* ---------- Login institucional (Paso 4) ---------- */
 .eva-login-brand {
     flex: 1.1;
@@ -201,3 +192,15 @@ section[data-testid="stSidebar"] { background: var(--eva-bg-secondary); }
 @media (max-width: 900px) {
     .eva-login-brand { padding: 2rem 1.5rem; }
 }
+
+/* ---------- Soporte institucional en login (Paso 23) ---------- */
+.eva-login-support {
+    text-align: center;
+    font-size: .78rem;
+    color: var(--eva-muted);
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--eva-border);
+}
+.eva-login-support a { color: var(--eva-info); text-decoration: none; font-weight: 500; }
+.eva-login-support a:hover { text-decoration: underline; }
