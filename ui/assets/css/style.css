@@ -204,3 +204,26 @@ section[data-testid="stSidebar"] { background: var(--eva-bg-secondary); }
 }
 .eva-login-support a { color: var(--eva-info); text-decoration: none; font-weight: 500; }
 .eva-login-support a:hover { text-decoration: underline; }
+
+/* ---------- Home: cards de navegación clicables (Paso 12/13) ---------- */
+.eva-nav-card [data-testid="stPageLink"] {
+    background: var(--eva-card);
+    border: 1px solid var(--eva-border);
+    border-radius: var(--eva-radius);
+    padding: 1.1rem 1.3rem;
+    box-shadow: var(--eva-shadow);
+    transition: box-shadow .15s ease, transform .15s ease;
+    display: block;
+    text-decoration: none;
+}
+.eva-nav-card [data-testid="stPageLink"]:hover {
+    box-shadow: var(--eva-shadow-hover);
+    transform: translateY(-1px);
+    border-color: var(--eva-primary);
+}
+.eva-nav-card .nav-card-icon { font-size: 1.6rem; margin-bottom: .35rem; line-height: 1; }
+.eva-nav-card .nav-card-label {
+    color: var(--eva-muted); font-size: .8rem; text-transform: uppercase;
+    letter-spacing: .05em; font-weight: 600;
+}
+.eva-nav-card .nav-card-desc { color: var(--eva-text); font-size: 1rem; font-weight: 500; margin-top: .1rem; }
