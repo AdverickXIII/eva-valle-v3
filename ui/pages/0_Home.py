@@ -66,8 +66,25 @@ st.markdown(
 
 from ui.components.metrics_cards import render_kpi_row
 
-st.title("\U0001F33E EVA Agricola 2019-2025 - Valle del Cauca")
-st.markdown("Dashboard analitico de produccion agricola basado en datos de la UPRA.")
+_logo_path = _Path(__file__).parent.parent / "assets" / "img" / "logo.png"
+_logo_html = ""
+if _logo_path.exists():
+    _logo_b64 = _b64.b64encode(_logo_path.read_bytes()).decode()
+    _logo_html = f'<img src="data:image/png;base64,{_logo_b64}" width="42" style="vertical-align:middle; margin-right:.6rem;" />'
+
+st.markdown(
+    f"""<div class="eva-header" style="border-bottom:none; margin-bottom:.2rem;">
+    <h1 style="display:flex; align-items:center; gap:.5rem;">
+        {_logo_html}EVA Agrícola 2019-2025 - Valle del Cauca
+    </h1>
+    </div>""",
+    unsafe_allow_html=True,
+)
+st.markdown(
+    '<p style="color:var(--eva-muted); margin-top:0;">'
+    'Dashboard analítico de producción agrícola basado en datos de la UPRA.</p>',
+    unsafe_allow_html=True,
+)
 
 render_kpi_row([
     {"label": "Municipios", "value": "42", "icon": "\U0001F4CD"},
