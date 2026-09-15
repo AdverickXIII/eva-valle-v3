@@ -282,20 +282,36 @@ def ask(q: str, ctx=None) -> dict:
         tb = df[df["municipio"] == b]["produccion_t"].sum()
         ca = df[df["municipio"] == a]["cultivo"].nunique()
         cb = df[df["municipio"] == b]["cultivo"].nunique()
-        out = {"texto": f"{a}: {_fmt(ta)} t y {ca} cultivos. {b}: {_fmt(tb)} t y {cb} cultivos. "
-                        f"Ratio {max(ta, tb) / min(ta, tb):.1f}x a favor de {a if ta > tb else b}.",
-               "pagina": "Comparador"}
+        if min(ta, tb) <= 0:
+            out = {"texto": f"{a}: {_fmt(ta)} t y {ca} cultivos. {b}: {_fmt(tb)} t y {cb} cultivos. "
+                            f"No hay ratio comparativo: uno de los dos no registra produccion.",
+                   "pagina": "Comparador"}
+        else:
+            out = {"texto": f"{a}: {_fmt(ta)} t y {ca} cultivos. {b}: {_fmt(tb)} t y {cb} cultivos. "
+                            f"Ratio {max(ta, tb) / min(ta, tb):.1f}x a favor de {a if ta > tb else b}.",
+                   "pagina": "Comparador"}
 
     elif cult and muni and ano:
-        v = df[(df["municipio"] == muni) & (df["cultivo"] == cult) & (df["ano"] == ano)]["produccion_t"].sum()
-        out = {"texto": f"{muni} produjo {_fmt(v)} t de {cult} en {ano}.",
-               "pagina": "Cultivos", "serie": _serie(df, muni, cult)}
+        fa = df[(df["municipio"] == muni) & (df["cultivo"] == cult) & (df["ano"] == ano)]
+        if fa.empty:
+            out = {"texto": f"No tengo registros de {cult} en {muni} para {ano}. "
+                            f"La serie EVA cubre 2019-2025.",
+                   "pagina": "Cultivos"}
+        else:
+            v = fa["produccion_t"].sum()
+            out = {"texto": f"{muni} produjo {_fmt(v)} t de {cult} en {ano}.",
+                   "pagina": "Cultivos", "serie": _serie(df, muni, cult)}
 
     elif cult and muni:
         g = _agg(df, muni, cult)
-        out = {"texto": f"{cult} en {muni}: {_fmt(g['p'].sum())} t acumuladas; ultimo ano "
-                        f"{_fmt(g['p'].iloc[-1])} t (rendimiento {_div(g['p'].iloc[-1], g['c'].iloc[-1]):.1f} t/ha).",
-               "pagina": "Cultivos", "serie": _serie(df, muni, cult)}
+        if g.empty:
+            out = {"texto": f"No tengo registros de {cult} en {muni} dentro de la serie "
+                            f"EVA 2019-2025. Prueba con otro cultivo o con el resumen del municipio.",
+                   "pagina": "Cultivos"}
+        else:
+            out = {"texto": f"{cult} en {muni}: {_fmt(g['p'].sum())} t acumuladas; ultimo ano "
+                            f"{_fmt(g['p'].iloc[-1])} t (rendimiento {_div(g['p'].iloc[-1], g['c'].iloc[-1]):.1f} t/ha).",
+                   "pagina": "Cultivos", "serie": _serie(df, muni, cult)}
 
     elif cult:
         out = {"texto": _ranking_cultivo(df, cult, q=q), "pagina": "Cultivos"}
