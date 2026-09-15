@@ -1,5 +1,7 @@
-"""MLP 5-8-4-1 desde cero para forecasting de series agricolas cortas.
-Features: [ano, area, rendimiento, prod_t-1, prod_t-2] -> prod_t.
+"""MLP 3-8-4-1 desde cero para forecasting de series agricolas cortas.
+AUD-MLP-003: features [ano, prod_t-1, prod_t-2] -> prod_t. Se eliminan
+'rendimiento' (fuga: target/constante) y 'area' (columna muerta tras
+normalizar); capa de entrada reducida de 5 a 3 (nombre acorde en AUD-ML-006).
 AUD-MLP-002: residuos leave-one-out trazables (loo_fitted_) reemplazan el
 bucle de re-entrenamiento degenerado; clip [0, 3x max historico] (AUD-MLP-001)."""
 import numpy as np
@@ -18,11 +20,10 @@ class MLPForecast:
         self.loo_fitted_ = {}
 
     def _build_features(self, s):
-        area_avg = float(np.mean(s)) if len(s) > 0 else 1.0
+        # AUD-MLP-003: sin rend (fuga: target/cte) ni area_avg (columna muerta).
         X, y = [], []
         for i in range(2, len(s)):
-            rend = s[i] / area_avg if area_avg > 0 else 0.0
-            X.append([2019 + i, area_avg, rend, s[i - 1], s[i - 2]])
+            X.append([2019 + i, s[i - 1], s[i - 2]])
             y.append(s[i])
         return np.array(X), np.array(y)
 
@@ -47,7 +48,7 @@ class MLPForecast:
         cap = MLP_CAP_MULTIPLIER * float(np.max(s))
 
         rng = np.random.RandomState(self.seed)
-        self.W1 = rng.randn(5, 8) * np.sqrt(2.0 / 13)
+        self.W1 = rng.randn(3, 8) * np.sqrt(2.0 / 11)
         self.W2 = rng.randn(8, 4) * np.sqrt(2.0 / 12)
         self.W3 = rng.randn(4, 1) * np.sqrt(2.0 / 5)
         self.b1, self.b2, self.b3 = (np.zeros((8, 1)), np.zeros((4, 1)), np.zeros((1, 1)))
@@ -86,13 +87,11 @@ class MLPForecast:
         s = serie.dropna().astype(float).values
         if len(s) < 2:
             return np.full(n_steps, np.nan)
-        area_avg = float(np.mean(s))
         cap = MLP_CAP_MULTIPLIER * float(np.max(s))
         preds, hist = [], list(s[-2:])
         n = len(s)
         for _ in range(n_steps):
-            rend = hist[-1] / area_avg if area_avg > 0 else 0.0
-            feat = np.array([[2019 + n, area_avg, rend, hist[-1], hist[-2]]])
+            feat = np.array([[2019 + n, hist[-1], hist[-2]]])
             fn = (feat - self.X_min) / (self.X_max - self.X_min + 1e-8)
             p = float(self._forward(fn.T).flatten()[0])
             p = p * (self.y_max - self.y_min) + self.y_min
@@ -113,7 +112,7 @@ def modelo_mlp(serie):
     for idx, val in mlp.loo_fitted_.items():
         if idx < len(fitted):
             fitted[idx] = val
-    return {"nombre": "MLP (5-8-4-1)", "mlp": mlp, "fitted": fitted,
+    return {"nombre": "MLP (3-8-4-1)", "mlp": mlp, "fitted": fitted,
             "mape_train": mape, "serie_train": serie.copy()}
 
 

@@ -26,6 +26,11 @@ def load_dataset() -> pd.DataFrame:
     return pd.read_csv(path, low_memory=False)
 
 
+@st.cache_data(ttl=3600, show_spinner="Calculando proyeccion (ensemble + MLP)...")
+def _proyectar_cacheado(serie: pd.Series, horizonte: int) -> dict:
+    return proyectar_con_ic(serie, n_steps=horizonte)
+
+
 def main() -> None:
     st.title("\U0001F916 Analisis Predictivo")
     st.caption("Proyeccion 2026-2028 con seleccion automatica de modelo y backtesting")
@@ -62,7 +67,7 @@ def main() -> None:
         return
 
     # ---------- PROYECCION ----------
-    res = proyectar_con_ic(serie, n_steps=horizonte)
+    res = _proyectar_cacheado(serie, horizonte)
     modelo = res["modelo"]
     if modelo is None:
         st.error("No se pudo ajustar ningun modelo.")

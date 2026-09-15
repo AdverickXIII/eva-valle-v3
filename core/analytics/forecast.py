@@ -1,6 +1,6 @@
 """Motor de forecasting robusto para series agricolas cortas (n>=4).
 
-Seis modelos compiten por serie (lineal, PM2A, PM3A, Holt x2, MLP 5-8-4-1);
+Seis modelos compiten por serie (lineal, PM2A, PM3A, Holt x2, MLP 3-8-4-1);
 el backtesting elige el mejor (menor MAPE).
 Devuelve proyeccion con intervalos de confianza por percentiles de residuos.
 """
@@ -42,12 +42,12 @@ def modelo_holt(t, s, alpha: float = 0.3, beta: float = 0.1):
     L = float(s[0])
     T = float(s[1] - s[0]) if len(s) > 1 else 0.0
     fitted = np.empty_like(s, dtype=float)
-    fitted[0] = L
+    fitted[0] = np.nan  # no hay pronostico de un paso para el primer punto
     for i in range(1, len(s)):
+        fitted[i] = L + T  # pronostico de un paso: L_{i-1} + T_{i-1} (pre-update)
         L_new = alpha * s[i] + (1 - alpha) * (L + T)
         T_new = beta * (L_new - L) + (1 - beta) * T
         L, T = L_new, T_new
-        fitted[i] = L + T if i < len(s) - 1 else L
     return {"nombre": "Suavizado exponencial (Holt)", "alpha": alpha, "beta": beta,
             "L": L, "T": T, "fitted": fitted}
 
@@ -68,7 +68,7 @@ def _proyectar(modelo: dict, n_steps: int, serie_original=None) -> np.ndarray:
         return modelo["a"] + modelo["b"] * t_future
     if nombre.startswith("Promedio movil"):
         return np.full(n_steps, modelo["last_mean"])
-    if nombre == "MLP (5-8-4-1)":
+    if nombre == "MLP (3-8-4-1)":
         base = modelo.get("serie_train", serie_original)
         return proyectar_mlp(modelo, n_steps, base)
     # Holt
@@ -79,8 +79,10 @@ def _proyectar(modelo: dict, n_steps: int, serie_original=None) -> np.ndarray:
 def backtest(serie: pd.Series, n_out: int = 2) -> list[dict]:
     """Oculta los ultimos n_out valores, entrena y mide MAPE por modelo."""
     t, s = _preparar(serie)
-    if len(s) - n_out < 3:
+    if len(s) < 4:
         return []
+    if len(s) - n_out < 3:
+        n_out = max(1, len(s) - 3)  # series de 4 anos: holdout de 1 (docstring n>=4)
     t_train, s_train = t[:-n_out], s[:-n_out]
     s_real = s[-n_out:]
     candidatos = [
@@ -106,6 +108,7 @@ def backtest(serie: pd.Series, n_out: int = 2) -> list[dict]:
         resultados.append({
             "modelo": m, "mape": mape,
             "residuos": residuos if len(residuos) > 0 else np.array([0.0]),
+            "holdout": n_out,
         })
     return resultados
 
@@ -123,7 +126,7 @@ def elegir_mejor(serie: pd.Series, n_out: int = 2) -> dict:
         modelo_full = modelo_lineal(t_full, s_full)
     elif nombre.startswith("Promedio movil"):
         modelo_full = modelo_promedio(t_full, s_full, mejor["modelo"]["ventana"])
-    elif nombre == "MLP (5-8-4-1)":
+    elif nombre == "MLP (3-8-4-1)":
         modelo_full = modelo_mlp(serie)
     else:
         modelo_full = modelo_holt(t_full, s_full,
@@ -135,6 +138,7 @@ def elegir_mejor(serie: pd.Series, n_out: int = 2) -> dict:
         "residuos": mejor["residuos"],
         "ganador": nombre,
         "ranking": sorted(bt, key=lambda x: x["mape"]),
+        "n_out_efectivo": mejor.get("holdout", n_out),
     }
 
 
