@@ -138,7 +138,7 @@ def main() -> None:
             "IC 50% (oficial)": f"{res_estable['escenarios']['ic_bajo'][i]:,.0f} - "
                                 f"{res_estable['escenarios']['ic_alto'][i]:,.0f}",
             "Referencia (tendencial)": f"{res_ensemble['escenarios']['tendencial'][i]:,.0f}",
-            "Diferencia": f"{res_ensemble['escenarios']['tendencial'][i] - res_estable['escenarios']['tendencial'][i]:+.0f}",
+            "Diferencia": f"{res_ensemble['escenarios']['tendencial'][i] - res_estable['escenarios']['tendencial'][i]:+,.0f}",
         })
     st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
 
@@ -179,7 +179,7 @@ def main() -> None:
     with d2:
         st.download_button(
             "⬇️ Descargar proyeccion (PDF)",
-            data=build_predictivo_pdf(cultivo, muni, serie, res, horizonte),
+            data=build_predictivo_pdf(cultivo, muni, serie, res_ensemble, horizonte),
             file_name=f"proyeccion_{cultivo}_{muni}.pdf".lower().replace(" ", "_"),
             mime="application/pdf", use_container_width=True)
 
