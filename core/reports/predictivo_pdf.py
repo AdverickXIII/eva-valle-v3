@@ -49,24 +49,23 @@ def _add_png(story, png):
     story += [img, Spacer(1, 0.4 * cm)]
 
 
-def _forecast_png(serie, res) -> bytes:
+def _forecast_png(serie, res_estable, res_ensemble) -> bytes:
+    """AUD-UI-024: grafica del PDF identica a la de la pagina: oficial + IC + referencia."""
     fig, ax = plt.subplots(figsize=(8.5, 4.5))
     ax.plot(serie.index, serie.values, "o-", color=VERDE, lw=2.5, label="Historico")
     anos = serie.index.values
     ultimo = int(anos[-1])
-    n_steps = len(res["prediccion"])
+    n_steps = len(res_estable["prediccion"])
     fut = np.arange(ultimo + 1, ultimo + 1 + n_steps)
-    ic_bajo = res["escenarios"]["ic_bajo"]
-    ic_alto = res["escenarios"]["ic_alto"]
-    ax.fill_between(fut, ic_bajo, ic_alto, alpha=0.25, color="#5FA8DC", label="IC 50%")
-    ax.plot(fut, res["escenarios"]["tendencial"], "o-", color=NARANJA, lw=2.5,
-            label="Tendencial")
-    ax.plot(fut, res["escenarios"]["conservador"], "--", color=NARANJA, lw=1.2,
-            label="Conservador (P10)")
-    ax.plot(fut, res["escenarios"]["optimista"], "--", color=VERDE, lw=1.2,
-            label="Optimista (P90)")
+    ax.fill_between(fut, res_estable["escenarios"]["ic_bajo"],
+                    res_estable["escenarios"]["ic_alto"], alpha=0.25,
+                    color="#5FA8DC", label="IC 50% (oficial)")
+    ax.plot(fut, res_estable["escenarios"]["tendencial"], "o-", color=VERDE, lw=2.5,
+            label="Oficial (estable)")
+    ax.plot(fut, res_ensemble["escenarios"]["tendencial"], "s--", color=NARANJA, lw=1.8,
+            label="Referencia (tendencial)")
     ax.set_ylabel("Produccion (t)", fontsize=9)
-    ax.set_title("Proyeccion con intervalos de confianza", fontsize=10)
+    ax.set_title("Proyeccion oficial vs referencia con IC", fontsize=10)
     ax.legend(fontsize=7, loc="upper left")
     ax.grid(alpha=0.3)
     fig.tight_layout()
@@ -125,20 +124,20 @@ def build_predictivo_pdf(cultivo, muni, serie, res, horizonte) -> bytes:
     story.append(Spacer(1, 0.3 * cm))
 
     story.append(Paragraph("<b>Proyeccion con intervalos</b>", body))
-    _add_png(story, _forecast_png(serie, res))
+    _add_png(story, _forecast_png(serie, res_estable, res_ensemble))
 
-    story.append(Paragraph("<b>Tabla de escenarios</b>", body))
-    rows2 = [["Ano", "Conservador (P10)", "Tendencial", "Optimista (P90)",
-              "IC 50%"]]
+    story.append(Paragraph("<b>Tabla de escenarios (oficial vs referencia)</b>", body))
+    rows2 = [["Ano", "Oficial (estable)", "IC 50% (oficial)",
+              "Referencia (tendencial)", "Diferencia"]]
     anos_fut = np.arange(ultimo + 1, ultimo + 1 + horizonte)
     for i, an in enumerate(anos_fut):
         rows2.append([
             str(int(an)),
-            f"{res['escenarios']['conservador'][i]:,.0f}",
-            f"{res['escenarios']['tendencial'][i]:,.0f}",
-            f"{res['escenarios']['optimista'][i]:,.0f}",
-            f"{res['escenarios']['ic_bajo'][i]:,.0f} - "
-            f"{res['escenarios']['ic_alto'][i]:,.0f}",
+            f"{res_estable['escenarios']['tendencial'][i]:,.0f}",
+            f"{res_estable['escenarios']['ic_bajo'][i]:,.0f} - "
+            f"{res_estable['escenarios']['ic_alto'][i]:,.0f}",
+            f"{res_ensemble['escenarios']['tendencial'][i]:,.0f}",
+            f"{res_ensemble['escenarios']['tendencial'][i] - res_estable['escenarios']['tendencial'][i]:+,.0f}",
         ])
     t2 = Table(rows2, hAlign="LEFT")
     t2.setStyle(_style())
@@ -161,6 +160,13 @@ def build_predictivo_pdf(cultivo, muni, serie, res, horizonte) -> bytes:
         "MAPE. El de menor error gana el ensemble. La proyeccion oficial "
         "usa naive (ultimo valor) con IC ensanchado con sqrt(t); el ensemble "
         "se muestra como referencia tendencial (AUD-UI-022, Gate 3).", body))
+    story.append(Paragraph(
+        "<b>Evaluacion de modelos fundacionales (TimesFM):</b> TimesFM 2.5 "
+        "(Google, 200M parametros) se evaluo en el mismo holdout 2024-2025 "
+        "(Gates 1 y 2): WAPE mediano por serie en anual 17.3% vs 11.1% del "
+        "naive y 16.5% del ensemble local; en semestral 39.5% vs 33.3% y "
+        "37.3%. Al no superar al baseline en ninguna rama, no se exhibe como "
+        "pronostico: se documenta como resultado negativo en la auditoria.", body))
     story.append(Spacer(1, 0.3 * cm))
     story.append(Paragraph(
         f"Fuente: UPRA - EVA 2019-2025. {meta.firma()}.",

@@ -152,6 +152,11 @@ def main() -> None:
         f"La proyeccion oficial usa el ultimo valor observado porque el ensemble "
         f"no supera al naive en el holdout 2024-2025 (Gate 3)."
     )
+    st.caption(
+        "TimesFM 2.5 (modelo fundacional, Google) fue evaluado en el mismo holdout "
+        "y no supero al naive (WAPE mediano anual 17.3% vs 11.1%; semestral 39.5% "
+        "vs 33.3%). Se documenta como resultado negativo en la auditoria."
+    )
 
     # ---------- RANKING DE MODELOS (backtest del ensemble) ----------
     with st.expander("🔬 Comparativa de modelos (backtest del ensemble)"):
