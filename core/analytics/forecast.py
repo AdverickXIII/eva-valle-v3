@@ -208,3 +208,43 @@ def proyectar_con_ic(serie: pd.Series, n_steps: int = 3,
         "ic_alto": np.maximum(0.0, pred + cuantiles["P75"]),
     }
     return {**res, "prediccion": pred, "escenarios": escenarios, "cuantiles": cuantiles}
+
+def proyectar_estable_con_ic(serie: pd.Series, n_steps: int = 3) -> dict:
+    """AUD-UI-022: proyeccion oficial = naive (ultimo valor) con IC de residuos.
+
+    La regla pre-registrada del Gate 3 activa este escenario como oficial.
+    El ensemble local queda como referencia tendencial.
+    El IC se ensancha con sqrt(t) (propiedad de random walks).
+    """
+    s = serie.dropna().astype(float).values
+    if len(s) < 3:
+        return {"modelo": None, "mape": np.nan, "ganador": "Datos insuficientes",
+                "prediccion": np.full(n_steps, np.nan),
+                "escenarios": {"conservador": np.full(n_steps, np.nan),
+                               "tendencial": np.full(n_steps, np.nan),
+                               "optimista": np.full(n_steps, np.nan),
+                               "ic_bajo": np.full(n_steps, np.nan),
+                               "ic_alto": np.full(n_steps, np.nan)}}
+
+    ultimo = float(s[-1])
+    residuos = np.diff(s)
+    p10, p25, p75, p90 = np.percentile(residuos, [10, 25, 75, 90])
+
+    # Ensanchamiento de incertidumbre (random walk: desviacion crece con sqrt(t))
+    factores = np.sqrt(np.arange(1, n_steps + 1))
+
+    prediccion = np.full(n_steps, ultimo)
+    return {
+        "modelo": {"nombre": "Naive (ultimo valor)", "ultimo": ultimo},
+        "mape": np.nan,  # No aplica para naive por construccion
+        "ganador": "Escenario estable (naive)",
+        "prediccion": prediccion,
+        "escenarios": {
+            "conservador": prediccion + p10 * factores,
+            "tendencial": prediccion,
+            "optimista": prediccion + p90 * factores,
+            "ic_bajo": prediccion + p25 * factores,
+            "ic_alto": prediccion + p75 * factores,
+        },
+        "residuos": residuos,
+    }

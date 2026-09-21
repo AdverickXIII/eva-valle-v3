@@ -480,8 +480,8 @@ def main():
         return rollback_or_fail("autotest: proyeccion no es ultimo valor", backups)
     print("[OK] autotest: proyeccion estable = ultimo valor")
 
-    ic = res["escenarios"]["ic_alto"]
-    if not (ic[2] - ic[1] > ic[1] - ic[0] > 0):
+    ancho = res["escenarios"]["ic_alto"] - res["escenarios"]["ic_bajo"]
+    if not (np.all(ancho > 0) and np.all(np.diff(ancho) > 0)):
         return rollback_or_fail("autotest: IC no se ensancha con sqrt(t)", backups)
     print("[OK] autotest: IC ensanchado con sqrt(t)")
 

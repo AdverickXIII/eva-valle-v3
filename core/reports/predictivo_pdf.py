@@ -15,6 +15,7 @@ from reportlab.platypus import (Image as RLImage, Paragraph, SimpleDocTemplate,
                                 Spacer, Table, TableStyle)
 
 from core.reports import meta
+from core.analytics.forecast import proyectar_estable_con_ic
 
 VERDE = "#2E8B57"
 NARANJA = "#DD6B20"
@@ -85,32 +86,43 @@ def build_predictivo_pdf(cultivo, muni, serie, res, horizonte) -> bytes:
                   f"{int(serie.index.min())}-{int(serie.index.max())} | "
                   f"Horizonte: {horizonte} anos", body),
         Spacer(1, 0.4 * cm),
-        Paragraph("<b>Resultado del modelo</b>", body),
+        Paragraph("<b>Proyeccion oficial (escenario estable)</b>", body),
     ]
 
-    mape = res["mape"]
+    res_estable = proyectar_estable_con_ic(serie, n_steps=horizonte)
+    res_ensemble = res
+
     ultimo = int(serie.index[-1])
     ultimo_v = float(serie.iloc[-1])
-    proy_final = float(res["prediccion"][-1])
-    var_pct = (proy_final / ultimo_v - 1) * 100 if ultimo_v else 0
-    nivel = "alta" if mape < 10 else ("moderada" if mape < 20 else "baja")
+    proy_oficial = float(res_estable["prediccion"][-1])
+    proy_ref = float(res_ensemble["prediccion"][-1])
+    var_pct_oficial = (proy_oficial / ultimo_v - 1) * 100 if ultimo_v else 0
+    var_pct_ref = (proy_ref / ultimo_v - 1) * 100 if ultimo_v else 0
 
     rows = [
-        ["Indicador", "Valor"],
-        ["Modelo seleccionado (menor MAPE)", res["ganador"]],
-        ["MAPE del backtest", f"{mape:.1f}%"],
-        ["Credibilidad del forecast", nivel.capitalize()],
-        [f"Ultimo ano registrado ({ultimo})", f"{ultimo_v:,.0f} t"],
-        [f"Proyeccion tendencial ({ultimo + horizonte})", f"{proy_final:,.0f} t"],
-        ["Variacion proyectada", f"{var_pct:+.1f}%"],
-        [f"Escenario conservador (P10) {ultimo + horizonte}",
-         f"{float(res['escenarios']['conservador'][-1]):,.0f} t"],
-        [f"Escenario optimista (P90) {ultimo + horizonte}",
-         f"{float(res['escenarios']['optimista'][-1]):,.0f} t"],
+        ["Indicador", "Oficial (estable)", "Referencia (ensemble)"],
+        ["Modelo", res_estable["ganador"], res_ensemble["ganador"]],
+        ["MAPE backtest", "N/A (naive)", f"{res_ensemble['mape']:.1f}%"],
+        [f"Proyeccion {ultimo + horizonte}", f"{proy_oficial:,.0f} t", f"{proy_ref:,.0f} t"],
+        ["Variacion vs ultimo ano", f"{var_pct_oficial:+.1f}%", f"{var_pct_ref:+.1f}%"],
+        [f"IC 50% bajo ({ultimo + horizonte})",
+         f"{float(res_estable['escenarios']['ic_bajo'][-1]):,.0f} t",
+         f"{float(res_ensemble['escenarios']['ic_bajo'][-1]):,.0f} t"],
+        [f"IC 50% alto ({ultimo + horizonte})",
+         f"{float(res_estable['escenarios']['ic_alto'][-1]):,.0f} t",
+         f"{float(res_ensemble['escenarios']['ic_alto'][-1]):,.0f} t"],
     ]
-    t = Table(rows, hAlign="LEFT", colWidths=[9 * cm, 7 * cm])
+    t = Table(rows, hAlign="LEFT", colWidths=[5 * cm, 5.5 * cm, 5.5 * cm])
     t.setStyle(_style())
     story += [t, Spacer(1, 0.4 * cm)]
+
+    story.append(Paragraph(
+        "<b>Nota metodologica (Gate 3):</b> La proyeccion oficial usa el escenario "
+        "estable (naive = ultimo valor) porque el ensemble local no supera al naive "
+        "en el holdout 2024-2025 (WAPE mediano 16.5% vs 11.1%). El intervalo de "
+        "confianza oficial se ensancha con sqrt(t) (propiedad de random walks). "
+        "El ensemble se mantiene como referencia tendencial para series con tendencia real.", body))
+    story.append(Spacer(1, 0.3 * cm))
 
     story.append(Paragraph("<b>Proyeccion con intervalos</b>", body))
     _add_png(story, _forecast_png(serie, res))
@@ -142,12 +154,13 @@ def build_predictivo_pdf(cultivo, muni, serie, res, horizonte) -> bytes:
     story += [t3, Spacer(1, 0.4 * cm)]
 
     story.append(Paragraph(
-        "<b>Metodologia:</b> Se prueban 6 candidatos (tendencia lineal, "
-        "promedio movil 2 y 3 anos, Holt con dos sets de hiperparametros, y un MLP 3-8-4-1 entrenado desde cero). "
+        "<b>Metodologia:</b> Se prueban 7 candidatos (tendencia lineal, "
+        "promedio movil 2 y 3 anos, Holt con dos sets de hiperparametros, "
+        "naive ultimo valor, y un MLP 3-8-4-1 entrenado desde cero). "
         "Se ocultan los ultimos 2 anos, se entrena con el resto y se mide "
-        "MAPE. El de menor error gana y se reentrena con toda la serie para "
-        "proyectar. Los intervalos son percentiles de los residuos del "
-        "entrenamiento (P10/P25/P75/P90).", body))
+        "MAPE. El de menor error gana el ensemble. La proyeccion oficial "
+        "usa naive (ultimo valor) con IC ensanchado con sqrt(t); el ensemble "
+        "se muestra como referencia tendencial (AUD-UI-022, Gate 3).", body))
     story.append(Spacer(1, 0.3 * cm))
     story.append(Paragraph(
         f"Fuente: UPRA - EVA 2019-2025. {meta.firma()}.",

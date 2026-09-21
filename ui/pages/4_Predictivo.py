@@ -10,7 +10,8 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from config.settings import settings
-from core.analytics.forecast import elegir_mejor, proyectar_con_ic
+from core.analytics.forecast import (elegir_mejor, proyectar_con_ic,
+                                      proyectar_estable_con_ic)
 from core.reports.predictivo_pdf import build_predictivo_pdf
 from ui.components.loading_states import render_empty_state
 from ui.services.error_handler import run_safe
@@ -26,9 +27,13 @@ def load_dataset() -> pd.DataFrame:
     return pd.read_csv(path, low_memory=False)
 
 
-@st.cache_data(ttl=3600, show_spinner="Calculando proyeccion (ensemble + MLP)...")
-def _proyectar_cacheado(serie: pd.Series, horizonte: int) -> dict:
-    return proyectar_con_ic(serie, n_steps=horizonte)
+@st.cache_data(ttl=3600, show_spinner="Calculando proyeccion (estable + tendencial)...")
+def _proyectar_cacheado(serie: pd.Series, horizonte: int) -> tuple:
+    """AUD-UI-022: devuelve (oficial=estable, referencia=ensemble)."""
+    return (
+        proyectar_estable_con_ic(serie, n_steps=horizonte),
+        proyectar_con_ic(serie, n_steps=horizonte),
+    )
 
 
 def main() -> None:
@@ -66,99 +71,99 @@ def main() -> None:
         st.error("Serie demasiado corta (se necesitan al menos 4 anos).")
         return
 
-    # ---------- PROYECCION ----------
-    res = _proyectar_cacheado(serie, horizonte)
-    modelo = res["modelo"]
-    if modelo is None:
-        st.error("No se pudo ajustar ningun modelo.")
+    # ---------- PROYECCION DUAL (AUD-UI-022) ----------
+    res_estable, res_ensemble = _proyectar_cacheado(serie, horizonte)
+    if res_estable["modelo"] is None or res_ensemble["modelo"] is None:
+        st.error("No se pudo calcular la proyeccion.")
         return
 
-    # KPIs
+    # KPIs - oficial = estable (naive), referencia = ensemble
     ultimo = int(serie.index[-1])
     ultimo_v = float(serie.iloc[-1])
-    proy_base = float(res["prediccion"][-1])
-    var_pct = (proy_base / ultimo_v - 1) * 100
-    mape = res["mape"]
+    proy_oficial = float(res_estable["prediccion"][-1])
+    proy_ref = float(res_ensemble["prediccion"][-1])
+    var_pct_oficial = (proy_oficial / ultimo_v - 1) * 100
+    var_pct_ref = (proy_ref / ultimo_v - 1) * 100
+    mape_ensemble = res_ensemble["mape"]
 
     k1, k2, k3, k4, k5 = st.columns(5)
     k1.metric(f"Ultimo ano ({ultimo})", f"{ultimo_v:,.0f} t")
-    k2.metric(f"Proyeccion {ultimo + horizonte}", f"{proy_base:,.0f} t",
-              delta=f"{var_pct:+.1f}%")
-    k3.metric("MAPE backtest", f"{mape:.1f}%",
-              help="Error medio al predecir los ultimos 2 anos desde el resto")
-    k4.metric("Modelo ganador", res["ganador"].replace("Suavizado exponencial ", ""))
-    k5.metric("Conservador", f"{float(res['escenarios']['conservador'][-1]):,.0f} t")
+    k2.metric(f"Oficial {ultimo + horizonte}", f"{proy_oficial:,.0f} t",
+              delta=f"{var_pct_oficial:+.1f}%",
+              help="Escenario estable (naive) - proyeccion oficial")
+    k3.metric("Referencia tendencial", f"{proy_ref:,.0f} t",
+              delta=f"{var_pct_ref:+.1f}%",
+              help="Ensemble local (Holt/lineal/PM/MLP) - referencia")
+    k4.metric("MAPE ensemble", f"{mape_ensemble:.1f}%",
+              help="Error del ensemble en backtest (ultimos 2 anos)")
+    k5.metric("Modelo ensemble", res_ensemble["ganador"].replace("Suavizado exponencial ", ""))
 
-    # ---------- GRAFICO ----------
+    # ---------- GRAFICO DUAL (AUD-UI-022) ----------
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=serie.index, y=serie.values, mode="lines+markers",
                              name="Historico", line=dict(color="#2E8B57", width=3)))
     anos_fut = np.arange(ultimo + 1, ultimo + 1 + horizonte)
-    # IC
+    # IC del escenario oficial (estable/naive) - ensanchado con sqrt(t)
     fig.add_trace(go.Scatter(
         x=np.concatenate([anos_fut, anos_fut[::-1]]),
-        y=np.concatenate([res["escenarios"]["ic_alto"],
-                          res["escenarios"]["ic_bajo"][::-1]]),
+        y=np.concatenate([res_estable["escenarios"]["ic_alto"],
+                          res_estable["escenarios"]["ic_bajo"][::-1]]),
         fill="toself", fillcolor="rgba(94,168,220,0.25)",
-        line=dict(color="rgba(0,0,0,0)"), name="IC 50%", showlegend=True))
-    # Escenarios
-    fig.add_trace(go.Scatter(x=anos_fut, y=res["escenarios"]["conservador"],
-                             mode="lines", name="Conservador (P10)",
-                             line=dict(color="#DD6B20", dash="dot", width=1.5)))
-    fig.add_trace(go.Scatter(x=anos_fut, y=res["escenarios"]["tendencial"],
-                             mode="lines+markers", name="Tendencial",
-                             line=dict(color="#DD6B20", width=3)))
-    fig.add_trace(go.Scatter(x=anos_fut, y=res["escenarios"]["optimista"],
-                             mode="lines", name="Optimista (P90)",
-                             line=dict(color="#2E8B57", dash="dot", width=1.5)))
-    # Union historico-proyeccion
+        line=dict(color="rgba(0,0,0,0)"), name="IC 50% (oficial)", showlegend=True))
+    # Escenario oficial: estable (naive) - linea solida
+    fig.add_trace(go.Scatter(x=anos_fut, y=res_estable["escenarios"]["tendencial"],
+                             mode="lines+markers", name="Oficial (estable)",
+                             line=dict(color="#2E8B57", width=4)))
+    # Escenario de referencia: ensemble - linea punteada
+    fig.add_trace(go.Scatter(x=anos_fut, y=res_ensemble["escenarios"]["tendencial"],
+                             mode="lines+markers", name="Referencia (tendencial)",
+                             line=dict(color="#DD6B20", width=2.5, dash="dash")))
+    # Union historico-proyeccion oficial
     fig.add_trace(go.Scatter(
         x=[ultimo, anos_fut[0]],
-        y=[ultimo_v, res["escenarios"]["tendencial"][0]],
-        mode="lines", line=dict(color="#DD6B20", width=3, dash="dash"),
+        y=[ultimo_v, res_estable["escenarios"]["tendencial"][0]],
+        mode="lines", line=dict(color="#2E8B57", width=4, dash="dash"),
         showlegend=False))
     fig.update_layout(template="plotly_white", height=480,
-                      title=f"{cultivo} en {muni} - Proyeccion con IC",
+                      title=f"{cultivo} en {muni} - Proyeccion oficial vs referencia",
                       yaxis_title="Produccion (t)")
     st.plotly_chart(fig, use_container_width=True)
 
-    # ---------- TABLA DE ESCENARIOS ----------
+    # ---------- TABLA DE ESCENARIOS DUAL (AUD-UI-022) ----------
     rows = []
     for i, an in enumerate(anos_fut):
         rows.append({
             "Ano": int(an),
-            "Conservador (P10)": f"{res['escenarios']['conservador'][i]:,.0f}",
-            "Tendencial": f"{res['escenarios']['tendencial'][i]:,.0f}",
-            "Optimista (P90)": f"{res['escenarios']['optimista'][i]:,.0f}",
-            "IC 50%": f"{res['escenarios']['ic_bajo'][i]:,.0f} - "
-                      f"{res['escenarios']['ic_alto'][i]:,.0f}",
+            "Oficial (estable)": f"{res_estable['escenarios']['tendencial'][i]:,.0f}",
+            "IC 50% (oficial)": f"{res_estable['escenarios']['ic_bajo'][i]:,.0f} - "
+                                f"{res_estable['escenarios']['ic_alto'][i]:,.0f}",
+            "Referencia (tendencial)": f"{res_ensemble['escenarios']['tendencial'][i]:,.0f}",
+            "Diferencia": f"{res_ensemble['escenarios']['tendencial'][i] - res_estable['escenarios']['tendencial'][i]:+.0f}",
         })
     st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
 
-    # Interpretacion automatica
-    if mape < 10:
-        nivel = "alta"
-    elif mape < 20:
-        nivel = "moderada"
-    else:
-        nivel = "baja"
-    st.info(f"**Interpretacion:** El modelo **{res['ganador']}** fue seleccionado "
-            f"automaticamente por tener el menor MAPE ({mape:.1f}%) al predecir "
-            f"los ultimos 2 anos. Credibilidad del forecast: **{nivel}**. "
-            f"Escenario tendencial: {proy_base:,.0f} t en {int(anos_fut[-1])} "
-            f"({var_pct:+.1f}% vs {ultimo}).")
+    # Interpretacion automatica (AUD-UI-022)
+    st.info(
+        f"**Proyeccion oficial:** escenario estable (naive) = {proy_oficial:,.0f} t "
+        f"en {int(anos_fut[-1])} ({var_pct_oficial:+.1f}% vs {ultimo}). "
+        f"El intervalo de confianza se ensancha con el tiempo (propiedad de random walks). "
+        f"**Referencia tendencial:** ensemble ({res_ensemble['ganador']}) = {proy_ref:,.0f} t "
+        f"({var_pct_ref:+.1f}% vs {ultimo}, MAPE backtest {mape_ensemble:.1f}%). "
+        f"La proyeccion oficial usa el ultimo valor observado porque el ensemble "
+        f"no supera al naive en el holdout 2024-2025 (Gate 3)."
+    )
 
-    # ---------- RANKING DE MODELOS (backtest) ----------
-    with st.expander("🔬 Comparativa de modelos (backtest)"):
-        st.caption("Se ocultan los ultimos 2 anos, se entrena cada modelo con "
-                   "el resto y se mide el error al predecirlos. "
-                   "El que menos se equivoca, gana.")
+    # ---------- RANKING DE MODELOS (backtest del ensemble) ----------
+    with st.expander("🔬 Comparativa de modelos (backtest del ensemble)"):
+        st.caption("Ranking interno del ensemble (referencia tendencial). "
+                   "Se ocultan los ultimos 2 anos, se entrena cada modelo con "
+                   "el resto y se mide el error al predecirlos.")
         filas = []
-        for r in res["ranking"]:
+        for r in res_ensemble["ranking"]:
             filas.append({
                 "Modelo": r["modelo"]["nombre"],
                 "MAPE (%)": f"{r['mape']:.1f}",
-                "Ganador": "✅" if r is res["ranking"][0] else "",
+                "Ganador": "✅" if r is res_ensemble["ranking"][0] else "",
             })
         st.dataframe(pd.DataFrame(filas), use_container_width=True, hide_index=True)
 
