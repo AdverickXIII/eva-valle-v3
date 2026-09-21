@@ -52,6 +52,16 @@ def modelo_holt(t, s, alpha: float = 0.3, beta: float = 0.1):
             "L": L, "T": T, "fitted": fitted}
 
 
+def modelo_naive(t, s):
+    """Naive: repite el ultimo valor. fitted = lag 1 (residuos = diferencias de un paso)."""
+    if len(s) < 2:
+        return None
+    fitted = np.empty_like(s, dtype=float)
+    fitted[0] = np.nan
+    fitted[1:] = s[:-1]
+    return {"nombre": "Naive (ultimo valor)", "fitted": fitted, "ultimo": float(s[-1])}
+
+
 def _mape(real: np.ndarray, pred: np.ndarray) -> float:
     real = np.asarray(real, dtype=float)
     pred = np.asarray(pred, dtype=float)
@@ -71,6 +81,8 @@ def _proyectar(modelo: dict, n_steps: int, serie_original=None) -> np.ndarray:
     if nombre == "MLP (3-8-4-1)":
         base = modelo.get("serie_train", serie_original)
         return proyectar_mlp(modelo, n_steps, base)
+    if nombre == "Naive (ultimo valor)":
+        return np.full(n_steps, modelo["ultimo"])
     # Holt
     L, T = modelo["L"], modelo["T"]
     return np.array([L + (i + 1) * T for i in range(n_steps)])
@@ -91,6 +103,7 @@ def backtest(serie: pd.Series, n_out: int = 2) -> list[dict]:
         modelo_promedio(t_train, s_train, 3),
         modelo_holt(t_train, s_train, 0.3, 0.1),
         modelo_holt(t_train, s_train, 0.5, 0.2),
+        modelo_naive(t_train, s_train),
         modelo_mlp(pd.Series(s_train)),
     ]
     resultados = []
@@ -113,31 +126,59 @@ def backtest(serie: pd.Series, n_out: int = 2) -> list[dict]:
     return resultados
 
 
-def elegir_mejor(serie: pd.Series, n_out: int = 2) -> dict:
-    """Elige el modelo con menor MAPE y lo reentrena con la serie completa."""
-    bt = backtest(serie, n_out)
-    if not bt:
+def elegir_mejor(serie: pd.Series, n_out: int = 2,
+                 ventanas: tuple = (1, 2)) -> dict:
+    """AUD-ML-007: elige por MEDIANA de MAPE entre varias ventanas de holdout
+    interno (reduce la suerte de colocacion del holdout sobre el choque) y
+    reentrena el ganador con la serie completa."""
+    bt_por_ventana = {w: backtest(serie, w) for w in ventanas}
+    bt_plana = [r for w in ventanas for r in bt_por_ventana[w]]
+    if not bt_plana:
         return {"modelo": None, "mape": np.inf, "residuos": np.array([0.0]),
                 "ganador": "Datos insuficientes", "ranking": []}
-    mejor = min(bt, key=lambda x: x["mape"])
+
+    agg = {}
+    for w in ventanas:
+        for r in bt_por_ventana[w]:
+            agg.setdefault(r["modelo"]["nombre"], {})[w] = r
+
+    def mediana(nombre):
+        return float(np.median([r["mape"] for r in agg[nombre].values()]))
+
+    mejor_nombre = min(agg, key=mediana)
+    por_w = agg[mejor_nombre]
+    w_rep = n_out if n_out in por_w else max(por_w)
+    mejor = por_w[w_rep]
+
+    ranking = []
+    for nombre in sorted(agg, key=mediana):
+        pw = agg[nombre]
+        w2 = n_out if n_out in pw else max(pw)
+        rep = dict(pw[w2])
+        rep["mape"] = mediana(nombre)
+        rep["mapes_por_ventana"] = {w: r["mape"] for w, r in pw.items()}
+        ranking.append(rep)
+
     t_full, s_full = _preparar(serie)
-    nombre = mejor["modelo"]["nombre"]
+    nombre = mejor_nombre
     if nombre == "Tendencia lineal":
         modelo_full = modelo_lineal(t_full, s_full)
     elif nombre.startswith("Promedio movil"):
         modelo_full = modelo_promedio(t_full, s_full, mejor["modelo"]["ventana"])
     elif nombre == "MLP (3-8-4-1)":
         modelo_full = modelo_mlp(serie)
+    elif nombre == "Naive (ultimo valor)":
+        modelo_full = modelo_naive(t_full, s_full)
     else:
         modelo_full = modelo_holt(t_full, s_full,
                                   mejor["modelo"]["alpha"],
                                   mejor["modelo"]["beta"])
     return {
         "modelo": modelo_full,
-        "mape": mejor["mape"],
+        "mape": mediana(mejor_nombre),
         "residuos": mejor["residuos"],
         "ganador": nombre,
-        "ranking": sorted(bt, key=lambda x: x["mape"]),
+        "ranking": ranking,
         "n_out_efectivo": mejor.get("holdout", n_out),
     }
 
