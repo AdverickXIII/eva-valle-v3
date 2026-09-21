@@ -232,5 +232,10 @@ section[data-testid="stSidebar"] { background: var(--eva-bg-secondary); }
 section[data-testid="stSidebar"] [data-testid="stImage"] {
     display: flex;
     justify-content: center;
+    width: 100%;
     margin-bottom: .3rem;
+}
+section[data-testid="stSidebar"] [data-testid="stImage"] img {
+    display: block;
+    margin: 0 auto;
 }
