@@ -1,0 +1,1000 @@
+﻿municipio,cultivo,ciclo,tipo,patron,d_area_pct,d_rend_pct,d_prod_pct,serie_flag
+Alcalá,Aguacate,Permanente,permanente,REVISION_PROPORCIONAL,0.19697964543664565,-15.94905026390283,-15.783487001126527,revision_fuente_real
+Alcalá,Banano,Permanente,permanente,MIXTO_OTRO,30.81510934393638,-15.651201788708766,10.340972610396868,inspeccion_manual
+Alcalá,Cacao,Permanente,permanente,MIXTO_OTRO,41.42857142857143,-20.000000000000007,13.142857142857142,inspeccion_manual
+Alcalá,Café,Permanente,permanente,MIXTO_OTRO,1.5298666846518754,-22.392697073206676,-21.20540880087281,inspeccion_manual
+Alcalá,Frijol,Transitorio,transitorio,REVISION_PROPORCIONAL,-45.82981661935088,-0.8515681839357618,-46.29111266620014,revision_fuente_real
+Alcalá,Guanábana,Permanente,permanente,MIXTO_OTRO,0.0,-21.599372794982354,-21.599372794982358,inspeccion_manual
+Alcalá,Guayaba,Permanente,permanente,MIXTO_OTRO,0.0,-22.103213242453744,-22.103213242453744,inspeccion_manual
+Alcalá,Habichuela,Transitorio,transitorio,REVISION_PROPORCIONAL,-64.72792440534376,-6.253955525028323,-66.93382432578792,revision_fuente_real
+Alcalá,Limón,Permanente,permanente,MIXTO_OTRO,116.95906432748538,-22.825228477942,67.43766219113168,inspeccion_manual
+Alcalá,Lulo,Permanente,permanente,MIXTO_OTRO,0.0,-53.35820895522389,-53.35820895522389,inspeccion_manual
+Alcalá,Mandarina,Permanente,permanente,MIXTO_OTRO,9.874444153805927,19.992937899286588,31.841573540662665,inspeccion_manual
+Alcalá,Maracuyá,Permanente,permanente,MIXTO_OTRO,86.36363636363636,-12.308174130911377,63.42567548330153,inspeccion_manual
+Alcalá,Maíz,Transitorio,transitorio,REVISION_PROPORCIONAL,38.49914965986396,1.0002527780489858,39.88449125191097,revision_fuente_real
+Alcalá,Naranja,Permanente,permanente,MIXTO_OTRO,14.781155332706566,-24.300040944068275,-13.110712409215742,inspeccion_manual
+Alcalá,Papaya,Permanente,permanente,MIXTO_OTRO,55.44554455445544,-46.60251919798042,-16.99599518893985,inspeccion_manual
+Alcalá,Pimentón,Transitorio,transitorio,MIXTO_OTRO,-60.96296296296296,-31.921499680746773,-73.42417061611374,inspeccion_manual
+Alcalá,Piña,Permanente,permanente,SIN_QUIEBRE,-1.9167579408543338,-13.043478260869565,-14.710224296395067,
+Alcalá,Plátano,Permanente,permanente,MIXTO_OTRO,0.0,-21.507064364207224,-21.50706436420722,inspeccion_manual
+Alcalá,Tomate,Transitorio,transitorio,REVISION_PROPORCIONAL,-56.43700561733349,6.035616228561399,-53.80771045872598,revision_fuente_real
+Alcalá,Yuca,Transitorio,transitorio,SIN_QUIEBRE,0.0,7.169891975171232,7.169891975171231,
+Andalucía,Aguacate,Permanente,permanente,SIN_QUIEBRE,-11.11111111111111,0.0,-11.11111111111111,
+Andalucía,Banano,Permanente,permanente,MIXTO_OTRO,-6.666666666666667,40.0,30.666666666666664,inspeccion_manual
+Andalucía,Cacao,Permanente,permanente,SIN_QUIEBRE,12.738853503184714,0.0,12.73885350318471,
+Andalucía,Café,Permanente,permanente,MIXTO_OTRO,-0.9132899433130427,-59.354804534378644,-59.72601301700608,inspeccion_manual
+Andalucía,Caña,Permanente,permanente,SIN_QUIEBRE,1.0774520414124678,0.0,1.0774520414124678,
+Andalucía,Limón,Permanente,permanente,REVISION_PROPORCIONAL,-29.585798816568055,0.036995930447652335,-29.55974842767296,revision_fuente_real
+Andalucía,Mandarina,Permanente,permanente,SIN_QUIEBRE,-2.9364263691087946,-0.005505496320488048,-2.9417702005835777,
+Andalucía,Maracuyá,Permanente,permanente,SIN_QUIEBRE,-12.0,0.0,-12.0,
+Andalucía,Maíz,Transitorio,transitorio,MIXTO_OTRO,75.92592592592592,14.68610374858008,101.76258992805755,inspeccion_manual
+Andalucía,Naranja,Permanente,permanente,MIXTO_OTRO,-2.3669884017568315,25.0,22.04126449780396,inspeccion_manual
+Andalucía,Otras hortalizas,Transitorio,transitorio,MIXTO_OTRO,76.47058823529413,-42.96296296296297,0.6535947712418277,inspeccion_manual
+Andalucía,Papaya,Permanente,permanente,REVISION_PROPORCIONAL,235.72744014732967,3.592978606692269,247.79005524861878,revision_fuente_real
+Andalucía,Plátano,Permanente,permanente,MIXTO_OTRO,-1.483239394838327,31.148178767689537,29.20293731459418,inspeccion_manual
+Andalucía,Tomate,Transitorio,transitorio,REVISION_PROPORCIONAL,139.23444976076559,0.0,139.23444976076556,revision_fuente_real
+Andalucía,Zapote,Permanente,permanente,PATRON_LULO,-10.0,71.42857142857143,54.285714285714285,quiebre_definicion_no_validado
+Ansermanuevo,Aguacate,Permanente,permanente,MIXTO_OTRO,40.1673640167364,50.285572139303504,110.6513249651325,inspeccion_manual
+Ansermanuevo,Banano,Permanente,permanente,SIN_QUIEBRE,8.726003490401396,-14.573613498438979,-7.119304030588984,
+Ansermanuevo,Cacao,Permanente,permanente,SIN_QUIEBRE,15.72327044025156,-3.20652173913043,12.01257861635219,
+Ansermanuevo,Café,Permanente,permanente,MIXTO_OTRO,2.5480637164861206,31.413609822297133,34.76211233270371,inspeccion_manual
+Ansermanuevo,Caña,Permanente,permanente,SIN_QUIEBRE,10.452961672473867,-0.7232933449398669,9.654062751407883,
+Ansermanuevo,Frijol,Transitorio,transitorio,REVISION_PROPORCIONAL,0.0,-15.254237288135606,-15.254237288135597,revision_fuente_real
+Ansermanuevo,Granadilla,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Ansermanuevo,Guanábana,Permanente,permanente,MIXTO_OTRO,11.76470588235294,-44.44444444444444,-37.908496732026144,inspeccion_manual
+Ansermanuevo,Guayaba,Permanente,permanente,MIXTO_OTRO,25.0,44.44444444444444,80.55555555555556,inspeccion_manual
+Ansermanuevo,Limón,Permanente,permanente,MIXTO_OTRO,151.51515151515153,8.900000000000007,173.9,inspeccion_manual
+Ansermanuevo,Lulo,Permanente,permanente,REVISION_PROPORCIONAL,52.63157894736842,0.0,52.63157894736842,revision_fuente_real
+Ansermanuevo,Mandarina,Permanente,permanente,SIN_QUIEBRE,0.0,-0.07137758743755324,-0.07137758743754309,
+Ansermanuevo,Mango,Permanente,permanente,SIN_QUIEBRE,0.0,11.11111111111111,11.11111111111111,
+Ansermanuevo,Maracuyá,Permanente,permanente,REVISION_PROPORCIONAL,200.0,0.0,200.0,revision_fuente_real
+Ansermanuevo,Maíz,Transitorio,transitorio,MIXTO_OTRO,-50.71428571428571,-41.17647058823529,-71.00840336134453,inspeccion_manual
+Ansermanuevo,Mora,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Ansermanuevo,Naranja,Permanente,permanente,SIN_QUIEBRE,0.0,-10.007214814418964,-10.007214814418951,
+Ansermanuevo,Pitahaya,Permanente,permanente,SIN_QUIEBRE,0.0,6.25,6.25,
+Ansermanuevo,Piña,Permanente,permanente,REVISION_PROPORCIONAL,-44.44444444444444,0.0,-44.44444444444444,revision_fuente_real
+Ansermanuevo,Plátano,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Ansermanuevo,Tomate,Transitorio,transitorio,REVISION_PROPORCIONAL,39.130434782608695,-6.504065040650408,30.081300813008134,revision_fuente_real
+Argelia,Aguacate,Permanente,permanente,MIXTO_OTRO,114.15025528811084,16.068047668067056,148.56002038909176,inspeccion_manual
+Argelia,Banano,Permanente,permanente,SIN_QUIEBRE,13.684210526315791,0.0,13.684210526315791,
+Argelia,Cacao,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Argelia,Café,Permanente,permanente,MIXTO_OTRO,5.3138992963538305,-22.865860018557584,-18.76702949683513,inspeccion_manual
+Argelia,Caña,Permanente,permanente,REVISION_PROPORCIONAL,28.57142857142857,0.0,28.57142857142857,revision_fuente_real
+Argelia,Cebolla de rama,Transitorio,transitorio,REVISION_PROPORCIONAL,-33.33333333333333,-6.25,-37.5,revision_fuente_real
+Argelia,Frijol,Transitorio,transitorio,REVISION_PROPORCIONAL,-46.34146341463415,-4.852320675105508,-48.945147679324904,revision_fuente_real
+Argelia,Limón,Permanente,permanente,REVISION_PROPORCIONAL,208.33333333333334,-0.5917159763313651,206.508875739645,revision_fuente_real
+Argelia,Lulo,Permanente,permanente,REVISION_PROPORCIONAL,-33.33333333333333,0.0,-33.33333333333333,revision_fuente_real
+Argelia,Mandarina,Permanente,permanente,REVISION_PROPORCIONAL,73.52941176470587,-0.7299270072992411,72.26277372262776,revision_fuente_real
+Argelia,Maíz,Transitorio,transitorio,REVISION_PROPORCIONAL,-76.78571428571429,-19.974500637484077,-81.42265193370164,revision_fuente_real
+Argelia,Naranja,Permanente,permanente,REVISION_PROPORCIONAL,-39.44773175542407,-0.08445945945946305,-39.49887387387388,revision_fuente_real
+Argelia,Pimentón,Transitorio,transitorio,PATRON_LULO,1.8503717077085944e-14,48.148148148148124,48.14814814814816,quiebre_definicion_no_validado
+Argelia,Plátano,Permanente,permanente,REVISION_PROPORCIONAL,1.2422360248447204,-16.666666666666664,-15.631469979296067,revision_fuente_real
+Argelia,Tomate,Transitorio,transitorio,REVISION_PROPORCIONAL,-24.242424242424242,-16.316981132075465,-36.60377358490566,revision_fuente_real
+Bolívar,Aguacate,Permanente,permanente,REVISION_PROPORCIONAL,96.8822708236389,0.0,96.8822708236389,revision_fuente_real
+Bolívar,Ahuyama,Transitorio,transitorio,REVISION_PROPORCIONAL,-28.57142857142857,0.0,-28.57142857142857,revision_fuente_real
+Bolívar,Ají,Transitorio,transitorio,REVISION_PROPORCIONAL,18.51851851851852,0.0,18.51851851851852,revision_fuente_real
+Bolívar,Arracacha,Transitorio,transitorio,SIN_QUIEBRE,-1.8072289156626504,0.0,-1.8072289156626504,
+Bolívar,Arveja,Transitorio,transitorio,SIN_QUIEBRE,-3.571428571428571,0.018398222448660233,-3.553687428353075,
+Bolívar,Banano,Permanente,permanente,SIN_QUIEBRE,12.625250501002002,0.0,12.625250501002002,
+Bolívar,Cacao,Permanente,permanente,MIXTO_OTRO,123.59550561797752,66.66666666666667,272.65917602996257,inspeccion_manual
+Bolívar,Café,Permanente,permanente,SIN_QUIEBRE,1.0680531021798134,-4.56732947163788,-3.548057873566661,
+Bolívar,Caña,Permanente,permanente,SIN_QUIEBRE,-7.255936675461741,-0.8667425987102592,-8.05978898007034,
+Bolívar,Chontaduro,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Bolívar,Durazno o albaricoque,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Bolívar,Frijol,Transitorio,transitorio,SIN_QUIEBRE,-3.937007874015748,0.0,-3.937007874015748,
+Bolívar,Granadilla,Permanente,permanente,REVISION_PROPORCIONAL,-25.0,0.0,-25.0,revision_fuente_real
+Bolívar,Guanábana,Permanente,permanente,REVISION_PROPORCIONAL,-25.0,1.0101010101010035,-24.24242424242425,revision_fuente_real
+Bolívar,Guayaba,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Bolívar,Habichuela,Transitorio,transitorio,REVISION_PROPORCIONAL,-20.37037037037037,0.0,-20.37037037037037,revision_fuente_real
+Bolívar,Limón,Permanente,permanente,REVISION_PROPORCIONAL,1418.2692307692307,0.09624639076036837,1419.7305101058707,revision_fuente_real
+Bolívar,Lulo,Permanente,permanente,SIN_QUIEBRE,-0.9771986970684038,0.0,-0.9771986970684038,
+Bolívar,Mango,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Bolívar,Maracuyá,Permanente,permanente,SIN_QUIEBRE,-9.45945945945946,0.0,-9.45945945945946,
+Bolívar,Maíz,Transitorio,transitorio,SIN_QUIEBRE,-3.6290322580645165,0.5230125523012602,-3.125,
+Bolívar,Melón,Transitorio,transitorio,REVISION_PROPORCIONAL,-26.666666666666668,0.03175611305176743,-26.643378850428707,revision_fuente_real
+Bolívar,Mora,Permanente,permanente,SIN_QUIEBRE,-9.090909090909092,1.8329938900203637,-7.42455100907239,
+Bolívar,Papaya,Permanente,permanente,SIN_QUIEBRE,-5.0,0.0,-5.0,
+Bolívar,Patilla,Transitorio,transitorio,REVISION_PROPORCIONAL,-37.5,0.0,-37.5,revision_fuente_real
+Bolívar,Pepino Cohombro,Transitorio,transitorio,REVISION_PROPORCIONAL,-16.129032258064516,0.0,-16.129032258064516,revision_fuente_real
+Bolívar,Pimentón,Transitorio,transitorio,SIN_QUIEBRE,-11.11111111111111,4.761904761904762,-6.878306878306878,
+Bolívar,Pitahaya,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Bolívar,Piña,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Bolívar,Plátano,Permanente,permanente,SIN_QUIEBRE,8.583690987124463,0.0,8.583690987124463,
+Bolívar,Sacha inchi,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Bolívar,Sábila,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Bolívar,Tomate,Transitorio,transitorio,SIN_QUIEBRE,-3.6363636363636362,0.0,-3.6363636363636362,
+Bolívar,Tomate de árbol,Permanente,permanente,REVISION_PROPORCIONAL,20.0,0.0,20.0,revision_fuente_real
+Bolívar,Uva,Permanente,permanente,SIN_QUIEBRE,-6.451612903225806,0.0,-6.451612903225806,
+Bolívar,Yuca,Transitorio,transitorio,SIN_QUIEBRE,-2.4096385542168677,0.0,-2.4096385542168677,
+Buenaventura,Arroz,Transitorio,transitorio,REVISION_PROPORCIONAL,-93.75,0.0,-93.75,revision_fuente_real
+Buenaventura,Banano,Permanente,permanente,MIXTO_OTRO,53.09734513274337,-20.0,22.477876106194692,inspeccion_manual
+Buenaventura,Borojó,Permanente,permanente,MIXTO_OTRO,38.2,-80.0,-72.36,inspeccion_manual
+Buenaventura,Cacao,Permanente,permanente,MIXTO_OTRO,-14.814814814814813,-64.28571428571428,-69.57671957671958,inspeccion_manual
+Buenaventura,Caña,Permanente,permanente,MIXTO_OTRO,-18.38235294117647,-70.0,-75.51470588235294,inspeccion_manual
+Buenaventura,Chontaduro,Permanente,permanente,MIXTO_OTRO,48.57898215465962,-90.0,-85.14210178453403,inspeccion_manual
+Buenaventura,Cimarrón,Transitorio,transitorio,MIXTO_OTRO,-50.0,-43.333333333333336,-71.66666666666667,inspeccion_manual
+Buenaventura,Coco,Permanente,permanente,MIXTO_OTRO,2540.0,-71.42857142857143,654.2857142857142,inspeccion_manual
+Buenaventura,Guayaba,Permanente,permanente,MIXTO_OTRO,-29.411764705882355,-84.61538461538461,-89.14027149321268,inspeccion_manual
+Buenaventura,"Malanga, achín, yota, papa china, bore",Transitorio,transitorio,MIXTO_OTRO,-68.70967741935485,28.086695348648433,-59.92125984251968,inspeccion_manual
+Buenaventura,Maíz,Transitorio,transitorio,REVISION_PROPORCIONAL,-79.60526315789474,0.0,-79.60526315789474,revision_fuente_real
+Buenaventura,Piña,Permanente,permanente,MIXTO_OTRO,400.0,300.0,1900.0,inspeccion_manual
+Buenaventura,Yuca,Transitorio,transitorio,REVISION_PROPORCIONAL,-95.38461538461539,0.0,-95.38461538461539,revision_fuente_real
+Bugalagrande,Aguacate,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Bugalagrande,Cacao,Permanente,permanente,PATRON_LULO,0.0,233.33333333333334,233.33333333333334,quiebre_definicion_no_validado
+Bugalagrande,Café,Permanente,permanente,MIXTO_OTRO,6.313195091575731,-20.390598746725015,-15.364701934370428,inspeccion_manual
+Bugalagrande,Caña,Permanente,permanente,REVISION_PROPORCIONAL,0.08384865318100827,16.893172894325318,16.991186245457758,revision_fuente_real
+Bugalagrande,Cilantro,Transitorio,transitorio,SIN_QUIEBRE,1.6666666666666667,0.0,1.6666666666666667,
+Bugalagrande,Frijol,Transitorio,transitorio,SIN_QUIEBRE,12.068965517241379,0.0,12.068965517241379,
+Bugalagrande,Granadilla,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Bugalagrande,Guanábana,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Bugalagrande,Guayaba,Permanente,permanente,REVISION_PROPORCIONAL,60.46511627906976,0.0,60.46511627906976,revision_fuente_real
+Bugalagrande,Habichuela,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Bugalagrande,Limón,Permanente,permanente,SIN_QUIEBRE,0.0,0.0022510861490684926,0.0022510861490648774,
+Bugalagrande,Mandarina,Permanente,permanente,SIN_QUIEBRE,0.0,0.00611234489923613,0.006112344899242623,
+Bugalagrande,Maracuyá,Permanente,permanente,REVISION_PROPORCIONAL,-21.428571428571427,0.0,-21.428571428571427,revision_fuente_real
+Bugalagrande,Maíz,Transitorio,transitorio,SIN_QUIEBRE,-6.369426751592357,11.686344517926456,4.572564612326044,
+Bugalagrande,Naranja,Permanente,permanente,SIN_QUIEBRE,0.0,-0.000991629881010517,-0.0009916298810059372,
+Bugalagrande,Pepino Cohombro,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Bugalagrande,Pimentón,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Bugalagrande,Pitahaya,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Bugalagrande,Plátano,Permanente,permanente,SIN_QUIEBRE,1.9762845849802373,0.0,1.9762845849802373,
+Caicedonia,Aguacate,Permanente,permanente,MIXTO_OTRO,59.87387387387388,14.082670504925005,82.38838475499092,inspeccion_manual
+Caicedonia,Banano,Permanente,permanente,PATRON_LULO,6.157635467980295,66.66666666666666,76.92939244663383,quiebre_definicion_no_validado
+Caicedonia,Cacao,Permanente,permanente,MIXTO_OTRO,18.461538461538463,-28.571428571428566,-15.384615384615385,inspeccion_manual
+Caicedonia,Café,Permanente,permanente,MIXTO_OTRO,4.185429398520416,-77.23515399430963,-76.28234743705957,inspeccion_manual
+Caicedonia,Caña,Permanente,permanente,MIXTO_OTRO,0.0,-27.265427366528428,-27.265427366528428,inspeccion_manual
+Caicedonia,Frijol,Transitorio,transitorio,SIN_QUIEBRE,-2.4,-9.354604786076845,-11.530094271211007,
+Caicedonia,Guanábana,Permanente,permanente,SIN_QUIEBRE,0.0,-9.090909090909092,-9.090909090909092,
+Caicedonia,Limón,Permanente,permanente,MIXTO_OTRO,0.0,24.993974916371844,24.99397491637184,inspeccion_manual
+Caicedonia,Mandarina,Permanente,permanente,PATRON_LULO,0.0,99.99846503346228,99.99846503346227,quiebre_definicion_no_validado
+Caicedonia,Maracuyá,Permanente,permanente,MIXTO_OTRO,30.0,250.0,355.0,inspeccion_manual
+Caicedonia,Maíz,Transitorio,transitorio,MIXTO_OTRO,-10.812737058548853,-25.08983995140334,-33.18967858759621,inspeccion_manual
+Caicedonia,Naranja,Permanente,permanente,PATRON_LULO,0.0,63.63620410288207,63.63620410288207,quiebre_definicion_no_validado
+Caicedonia,Piña,Permanente,permanente,PATRON_LULO,0.0,344.44444444444446,344.44444444444446,quiebre_definicion_no_validado
+Caicedonia,Plátano,Permanente,permanente,SIN_QUIEBRE,3.5473572188719404,-11.11111111111111,-7.957904694336053,
+Caicedonia,Soya,Transitorio,transitorio,SIN_QUIEBRE,26.01626016260163,-13.233634311512416,9.339729119638832,
+Caicedonia,Tomate,Transitorio,transitorio,MIXTO_OTRO,6.50887573964498,22.49631544613303,30.469448404165362,inspeccion_manual
+Caicedonia,Yuca,Transitorio,transitorio,MIXTO_OTRO,0.0,-56.52173913043478,-56.52173913043478,inspeccion_manual
+Calima,Aguacate,Permanente,permanente,SIN_QUIEBRE,2.3129685755303924,-1.89061190679388,0.3786274094471438,
+Calima,Ahuyama,Transitorio,transitorio,REVISION_PROPORCIONAL,130.82942097026603,-8.104215558452852,112.1225071225071,revision_fuente_real
+Calima,Arveja,Transitorio,transitorio,MIXTO_OTRO,-50.0,-64.70588235294117,-82.35294117647058,inspeccion_manual
+Calima,Banano,Permanente,permanente,REVISION_PROPORCIONAL,-43.85964912280701,0.0023549359457385277,-43.85832705350414,revision_fuente_real
+Calima,Café,Permanente,permanente,SIN_QUIEBRE,3.7023826508774413,-14.700509104156593,-11.542395551942104,
+Calima,Caña,Permanente,permanente,SIN_QUIEBRE,-1.0582010582010581,0.0,-1.0582010582010581,
+Calima,Frijol,Transitorio,transitorio,MIXTO_OTRO,2.055279943302629,-47.45439596704447,-46.37443670626792,inspeccion_manual
+Calima,Granadilla,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Calima,Guayaba,Permanente,permanente,REVISION_PROPORCIONAL,25.0,1.6237265442415453e-14,25.00000000000001,revision_fuente_real
+Calima,Habichuela,Transitorio,transitorio,REVISION_PROPORCIONAL,22.247532270311325,-3.948284435604182,17.420851980772422,revision_fuente_real
+Calima,Lulo,Permanente,permanente,REVISION_PROPORCIONAL,-22.339561332250206,-7.036358820866066e-06,-22.33956679671734,revision_fuente_real
+Calima,Mandarina,Permanente,permanente,REVISION_PROPORCIONAL,20.30456852791879,0.0005991351484054704,20.305289314873974,revision_fuente_real
+Calima,Maíz,Transitorio,transitorio,REVISION_PROPORCIONAL,135.02036067481095,7.668170093140336,153.04212168486737,revision_fuente_real
+Calima,Mora,Permanente,permanente,REVISION_PROPORCIONAL,29.126213592233007,0.0007133583484362284,29.12713472485768,revision_fuente_real
+Calima,Naranja,Permanente,permanente,REVISION_PROPORCIONAL,22.513661202185798,0.02634037382257878,22.545931758530173,revision_fuente_real
+Calima,Pepino Cohombro,Transitorio,transitorio,REVISION_PROPORCIONAL,102.3809523809524,-7.530431485851369,87.14079342149127,revision_fuente_real
+Calima,Pimentón,Transitorio,transitorio,MIXTO_OTRO,18.59356376638854,-19.257042234548248,-4.244048895560802,inspeccion_manual
+Calima,Plátano,Permanente,permanente,SIN_QUIEBRE,6.771223237011519,0.0002183845481991643,6.771456408864987,
+Calima,Tomate,Transitorio,transitorio,REVISION_PROPORCIONAL,113.33333333333333,1.296984669375681,116.1002339613348,revision_fuente_real
+Calima,Uchuva,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Calima,Yuca,Transitorio,transitorio,REVISION_PROPORCIONAL,0.0,-18.781064124500933,-18.781064124500922,revision_fuente_real
+Candelaria,Ahuyama,Transitorio,transitorio,REVISION_PROPORCIONAL,-37.5,-22.424242424242426,-51.515151515151516,revision_fuente_real
+Candelaria,Cacao,Permanente,permanente,SIN_QUIEBRE,0.0,-3.5971223021582572,-3.597122302158261,
+Candelaria,Caña,Permanente,permanente,SIN_QUIEBRE,14.323157570151096,-0.2311959056333065,14.058847110658196,
+Candelaria,Cilantro,Transitorio,transitorio,REVISION_PROPORCIONAL,-36.11111111111111,-5.263157894736844,-39.473684210526315,revision_fuente_real
+Candelaria,Guayaba,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Candelaria,Habichuela,Transitorio,transitorio,REVISION_PROPORCIONAL,-28.57142857142857,-3.63636363636364,-31.16883116883117,revision_fuente_real
+Candelaria,Limón,Permanente,permanente,REVISION_PROPORCIONAL,-60.46511627906976,5.340519353258201,-58.35374816266536,revision_fuente_real
+Candelaria,Mandarina,Permanente,permanente,MIXTO_OTRO,0.0,-50.04596996628868,-50.045969966288695,inspeccion_manual
+Candelaria,Maracuyá,Permanente,permanente,MIXTO_OTRO,-11.094674556213018,-32.8182066635196,-40.2718079952297,inspeccion_manual
+Candelaria,Maíz,Transitorio,transitorio,REVISION_PROPORCIONAL,-13.978494623655912,-12.878802281368824,-25.05703422053232,revision_fuente_real
+Candelaria,Naranja,Permanente,permanente,MIXTO_OTRO,-4.5892611289582375,-39.99632836642902,-42.75005354465623,inspeccion_manual
+Candelaria,Pepino Cohombro,Transitorio,transitorio,PATRON_LULO,0.0,47.01986754966887,47.019867549668874,quiebre_definicion_no_validado
+Candelaria,Pimentón,Transitorio,transitorio,MIXTO_OTRO,-25.0,-59.66386554621849,-69.74789915966386,inspeccion_manual
+Candelaria,Plantas aromáticas,Transitorio,transitorio,MIXTO_OTRO,0.0,-50.0,-50.0,inspeccion_manual
+Candelaria,Plátano,Permanente,permanente,MIXTO_OTRO,-4.054054054054063,-33.33333333333333,-36.03603603603604,inspeccion_manual
+Candelaria,Tomate,Transitorio,transitorio,MIXTO_OTRO,25.0,24.590163934426233,55.73770491803278,inspeccion_manual
+Cartago,Aguacate,Permanente,permanente,REVISION_PROPORCIONAL,-44.955044955044954,-20.0,-55.964035964035965,revision_fuente_real
+Cartago,Banano,Permanente,permanente,MIXTO_OTRO,0.0,-33.33333333333333,-33.33333333333333,inspeccion_manual
+Cartago,Cacao,Permanente,permanente,REVISION_PROPORCIONAL,-66.66666666666666,-12.499999999999996,-70.83333333333333,revision_fuente_real
+Cartago,Café,Permanente,permanente,SIN_QUIEBRE,3.8211151995471226,-13.399257689322964,-10.090143561969057,
+Cartago,Caña,Permanente,permanente,MIXTO_OTRO,0.4634349800722958,22.194931785041643,22.761225842809,inspeccion_manual
+Cartago,Frijol,Transitorio,transitorio,MIXTO_OTRO,-84.12698412698413,-66.66666666666666,-94.70899470899471,inspeccion_manual
+Cartago,Guanábana,Permanente,permanente,PATRON_LULO,0.0,212.5,212.5,quiebre_definicion_no_validado
+Cartago,Guayaba,Permanente,permanente,PATRON_LULO,0.0,250.0,250.0,quiebre_definicion_no_validado
+Cartago,Limón,Permanente,permanente,MIXTO_OTRO,94.33962264150945,66.71326716063189,223.98993429330352,inspeccion_manual
+Cartago,Mandarina,Permanente,permanente,MIXTO_OTRO,57.41860465116279,100.01162858305715,214.85551485551483,inspeccion_manual
+Cartago,Maracuyá,Permanente,permanente,PATRON_LULO,0.0,100.0,100.0,quiebre_definicion_no_validado
+Cartago,Maíz,Transitorio,transitorio,REVISION_PROPORCIONAL,-28.188420552501185,-0.2644715172970635,-28.37834172626097,revision_fuente_real
+Cartago,Naranja,Permanente,permanente,MIXTO_OTRO,102.46826061738741,11.107530923867287,124.95748527647994,inspeccion_manual
+Cartago,Plátano,Permanente,permanente,PATRON_LULO,-5.555555555555555,46.62756598240468,38.48159009449331,quiebre_definicion_no_validado
+Cartago,Soya,Transitorio,transitorio,REVISION_PROPORCIONAL,-16.48739765612457,-14.28571428571431,-28.41776941953536,revision_fuente_real
+Dagua,Aguacate,Permanente,permanente,SIN_QUIEBRE,0.0,11.11111111111111,11.11111111111111,
+Dagua,Ahuyama,Transitorio,transitorio,SIN_QUIEBRE,0.0,-1.3333333333333286,-1.3333333333333335,
+Dagua,Ají,Transitorio,transitorio,REVISION_PROPORCIONAL,50.0,0.0,50.0,revision_fuente_real
+Dagua,Banano,Permanente,permanente,PATRON_LULO,0.0,180.0,180.0,quiebre_definicion_no_validado
+Dagua,Cacao,Permanente,permanente,MIXTO_OTRO,25.0,-25.000000000000007,-6.25,inspeccion_manual
+Dagua,Café,Permanente,permanente,MIXTO_OTRO,0.2581106809266406,-19.95766853392461,-19.75107072714797,inspeccion_manual
+Dagua,"Calabacín, calabaza",Transitorio,transitorio,SIN_QUIEBRE,21.428571428571427,-9.677419354838708,9.67741935483871,
+Dagua,Caña,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Dagua,Chontaduro,Permanente,permanente,PATRON_LULO,0.0,42.857142857142854,42.857142857142854,quiebre_definicion_no_validado
+Dagua,Cilantro,Transitorio,transitorio,SIN_QUIEBRE,6.0,-9.090909090909086,-3.6363636363636362,
+Dagua,Cimarrón,Transitorio,transitorio,SIN_QUIEBRE,25.0,-8.333333333333332,14.583333333333334,
+Dagua,Frijol,Transitorio,transitorio,REVISION_PROPORCIONAL,18.461538461538463,0.0,18.461538461538463,revision_fuente_real
+Dagua,Guanábana,Permanente,permanente,MIXTO_OTRO,0.0,40.0,40.0,inspeccion_manual
+Dagua,Guayaba,Permanente,permanente,PATRON_LULO,0.0,125.0,125.0,quiebre_definicion_no_validado
+Dagua,Habichuela,Transitorio,transitorio,SIN_QUIEBRE,12.195121951219512,-0.8334304697517144,11.26005361930295,
+Dagua,Lechuga,Transitorio,transitorio,REVISION_PROPORCIONAL,-6.25,-13.513513513513514,-18.91891891891892,revision_fuente_real
+Dagua,Limón,Permanente,permanente,REVISION_PROPORCIONAL,0.0,-16.53418960888561,-16.53418960888561,revision_fuente_real
+Dagua,Lulo,Permanente,permanente,MIXTO_OTRO,0.0,-35.0,-35.0,inspeccion_manual
+Dagua,Mandarina,Permanente,permanente,SIN_QUIEBRE,0.0,-13.78351318277895,-13.78351318277895,
+Dagua,Maracuyá,Permanente,permanente,MIXTO_OTRO,0.0,-36.0,-36.0,inspeccion_manual
+Dagua,Maíz,Transitorio,transitorio,SIN_QUIEBRE,20.98765432098765,-10.0,8.88888888888889,
+Dagua,Naranja,Permanente,permanente,MIXTO_OTRO,0.0,28.99879966760026,28.998799667600267,inspeccion_manual
+Dagua,Pepino Cohombro,Transitorio,transitorio,MIXTO_OTRO,15.384615384615385,-20.0,-7.6923076923076925,inspeccion_manual
+Dagua,Pimentón,Transitorio,transitorio,SIN_QUIEBRE,6.896551724137931,-3.0360531309297887,3.6511156186612577,
+Dagua,Pitahaya,Permanente,permanente,PATRON_LULO,0.0,200.0,200.0,quiebre_definicion_no_validado
+Dagua,Piña,Permanente,permanente,SIN_QUIEBRE,0.0,0.00019841953428966654,0.00019841953429597245,
+Dagua,Plantas aromáticas,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Dagua,Plátano,Permanente,permanente,PATRON_LULO,0.0,100.0,100.0,quiebre_definicion_no_validado
+Dagua,Sacha inchi,Permanente,permanente,MIXTO_OTRO,0.0,-40.0,-40.0,inspeccion_manual
+Dagua,Sábila,Permanente,permanente,MIXTO_OTRO,0.0,40.0,40.0,inspeccion_manual
+Dagua,Tomate,Transitorio,transitorio,REVISION_PROPORCIONAL,40.55555555555556,7.906859342462291,51.66908563134979,revision_fuente_real
+Dagua,Yuca,Transitorio,transitorio,SIN_QUIEBRE,-23.076923076923077,10.882352941176466,-14.705882352941178,
+El Cairo,Aguacate,Permanente,permanente,SIN_QUIEBRE,1.3347174847990508,6.28844282328522,7.707093253968254,
+El Cairo,Banano,Permanente,permanente,REVISION_PROPORCIONAL,39.285714285714285,0.0,39.285714285714285,revision_fuente_real
+El Cairo,Café,Permanente,permanente,MIXTO_OTRO,2.488743210022559,-60.58648621499528,-59.60558506683968,inspeccion_manual
+El Cairo,Caña,Permanente,permanente,SIN_QUIEBRE,7.741935483870971,0.0,7.741935483870968,
+El Cairo,Frijol,Transitorio,transitorio,REVISION_PROPORCIONAL,-95.0,-9.090909090909099,-95.45454545454545,revision_fuente_real
+El Cairo,Guayaba,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+El Cairo,Limón,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+El Cairo,Lulo,Permanente,permanente,REVISION_PROPORCIONAL,15.853658536585376,-1.4802973661668752e-14,15.85365853658536,revision_fuente_real
+El Cairo,Mandarina,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+El Cairo,Maíz,Transitorio,transitorio,SIN_QUIEBRE,0.0,-6.176700547302573,-6.176700547302573,
+El Cairo,Mora,Permanente,permanente,REVISION_PROPORCIONAL,60.00000000000001,0.0,60.00000000000001,revision_fuente_real
+El Cairo,Naranja,Permanente,permanente,SIN_QUIEBRE,10.548523206751053,-0.010547410610687731,10.536863200084372,
+El Cairo,Plátano,Permanente,permanente,SIN_QUIEBRE,-0.12642225031605564,0.0,-0.12642225031605564,
+El Cairo,Tomate,Transitorio,transitorio,MIXTO_OTRO,66.66666666666666,64.99999999999999,175.0,inspeccion_manual
+El Cairo,Yuca,Transitorio,transitorio,REVISION_PROPORCIONAL,5.88235294117647,-15.000000000000002,-10.0,revision_fuente_real
+El Cerrito,Aguacate,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+El Cerrito,Banano,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+El Cerrito,Café,Permanente,permanente,REVISION_PROPORCIONAL,-2.8351507376523513,-15.56628111712189,-17.960104320857127,revision_fuente_real
+El Cerrito,Caña,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+El Cerrito,Cebolla de bulbo,Transitorio,transitorio,MIXTO_OTRO,-15.644555694618273,60.4150450429015,35.3188239786178,inspeccion_manual
+El Cerrito,Cebolla de rama,Transitorio,transitorio,MIXTO_OTRO,140.0,-15.384615384615385,103.07692307692307,inspeccion_manual
+El Cerrito,Cilantro,Transitorio,transitorio,REVISION_PROPORCIONAL,-24.467824810374363,-17.006802721088434,-37.3134328358209,revision_fuente_real
+El Cerrito,Fresa,Permanente,permanente,REVISION_PROPORCIONAL,0.0,-16.666666666666664,-16.666666666666664,revision_fuente_real
+El Cerrito,Frijol,Transitorio,transitorio,MIXTO_OTRO,-11.286681715575611,-76.65414352752919,-79.28911604135209,inspeccion_manual
+El Cerrito,Limón,Permanente,permanente,SIN_QUIEBRE,0.0,-0.19011406844106396,-0.1901140684410606,
+El Cerrito,Mandarina,Permanente,permanente,SIN_QUIEBRE,0.0,0.03345600535294529,0.0334560053529542,
+El Cerrito,Maracuyá,Permanente,permanente,REVISION_PROPORCIONAL,0.0,-15.0,-15.000000000000002,revision_fuente_real
+El Cerrito,Maíz,Transitorio,transitorio,SIN_QUIEBRE,-2.0100502512562812,0.050276520864764154,-1.9607843137254901,
+El Cerrito,Mora,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+El Cerrito,Naranja,Permanente,permanente,SIN_QUIEBRE,0.0,0.005010271055658842,0.005010271055659554,
+El Cerrito,Repollo,Transitorio,transitorio,MIXTO_OTRO,-18.7125748502994,-24.999999999999993,-39.034431137724546,inspeccion_manual
+El Cerrito,Tomate,Transitorio,transitorio,REVISION_PROPORCIONAL,-12.554927809165099,-13.783201722900214,-24.607658505963588,revision_fuente_real
+El Cerrito,Tomate de árbol,Permanente,permanente,MIXTO_OTRO,0.0,-21.428571428571427,-21.428571428571427,inspeccion_manual
+El Cerrito,Uva,Permanente,permanente,MIXTO_OTRO,0.0,-25.0,-25.0,inspeccion_manual
+El Dovio,Aguacate,Permanente,permanente,REVISION_PROPORCIONAL,59.162473624411625,0.0,59.162473624411625,revision_fuente_real
+El Dovio,Ahuyama,Transitorio,transitorio,SIN_QUIEBRE,-1.0204081632653206,-2.348224513172939,-3.3446712018140463,
+El Dovio,Arracacha,Transitorio,transitorio,SIN_QUIEBRE,-11.90009794319294,7.0754387191498225,-5.666643361532542,
+El Dovio,Banano,Permanente,permanente,SIN_QUIEBRE,10.216718266253883,-1.2688263138573217e-14,10.216718266253867,
+El Dovio,Berenjena,Transitorio,transitorio,REVISION_PROPORCIONAL,-8.658008658008658,-8.815165876777257,-16.70995670995671,revision_fuente_real
+El Dovio,Cacao,Permanente,permanente,REVISION_PROPORCIONAL,31.25,0.0,31.25,revision_fuente_real
+El Dovio,Café,Permanente,permanente,MIXTO_OTRO,0.6114314461514585,-31.231894740155315,-30.811424919674085,inspeccion_manual
+El Dovio,Caña,Permanente,permanente,SIN_QUIEBRE,12.665985699693556,0.0,12.665985699693566,
+El Dovio,Frijol,Transitorio,transitorio,REVISION_PROPORCIONAL,-21.875000000000004,0.0,-21.875000000000004,revision_fuente_real
+El Dovio,Granadilla,Permanente,permanente,SIN_QUIEBRE,3.8461538461538445,0.0,3.8461538461538463,
+El Dovio,Habichuela,Transitorio,transitorio,REVISION_PROPORCIONAL,-22.207446808510625,-4.273504273504301,-25.53191489361703,revision_fuente_real
+El Dovio,Lulo,Permanente,permanente,SIN_QUIEBRE,15.809768637532132,-4.999999999999982,10.019280205655532,
+El Dovio,Maracuyá,Permanente,permanente,REVISION_PROPORCIONAL,-17.508417508417505,0.0,-17.50841750841751,revision_fuente_real
+El Dovio,Maíz,Transitorio,transitorio,SIN_QUIEBRE,-7.430997876857765,-0.00037052956083856036,-7.4313408723748005,
+El Dovio,Pepino Cohombro,Transitorio,transitorio,REVISION_PROPORCIONAL,-42.75929549902152,-2.849002849002868,-44.39008480104371,revision_fuente_real
+El Dovio,Pimentón,Transitorio,transitorio,REVISION_PROPORCIONAL,23.491027732463305,0.0,23.491027732463294,revision_fuente_real
+El Dovio,Pitahaya,Permanente,permanente,REVISION_PROPORCIONAL,34.374999999999986,0.0,34.374999999999986,revision_fuente_real
+El Dovio,Plátano,Permanente,permanente,SIN_QUIEBRE,1.6623376623376565,0.0,1.6623376623376624,
+El Dovio,Repollo,Transitorio,transitorio,REVISION_PROPORCIONAL,-47.28260869565217,-23.564064801178205,-59.70496894409938,revision_fuente_real
+El Dovio,Sábila,Permanente,permanente,SIN_QUIEBRE,-12.328767123287664,0.0,-12.328767123287673,
+El Dovio,Tomate,Transitorio,transitorio,PATRON_LULO,-3.807303807303801,62.04706708317923,55.87744292849719,quiebre_definicion_no_validado
+El Dovio,Yuca,Transitorio,transitorio,SIN_QUIEBRE,-4.466019417475723,-2.2865853658536572,-6.650485436893204,
+El Águila,Aguacate,Permanente,permanente,PATRON_LULO,0.0,54.83870967741935,54.83870967741935,quiebre_definicion_no_validado
+El Águila,Banano,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+El Águila,Cacao,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+El Águila,Café,Permanente,permanente,SIN_QUIEBRE,2.2883139981812097,-6.024131302664259,-3.8736683443507327,
+El Águila,Caña,Permanente,permanente,PATRON_LULO,0.0,233.33333333333334,233.33333333333334,quiebre_definicion_no_validado
+El Águila,Cebolla de rama,Transitorio,transitorio,SIN_QUIEBRE,-9.999999999999998,0.0,-10.0,
+El Águila,Cilantro,Transitorio,transitorio,REVISION_PROPORCIONAL,-19.999999999999996,-1.4802973661668752e-14,-20.000000000000004,revision_fuente_real
+El Águila,Durazno o albaricoque,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+El Águila,Fresa,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+El Águila,Frijol,Transitorio,transitorio,MIXTO_OTRO,-9.999999999999998,-25.0,-32.49999999999999,inspeccion_manual
+El Águila,Granadilla,Permanente,permanente,MIXTO_OTRO,28.000000000000004,125.0,188.0,inspeccion_manual
+El Águila,Limón,Permanente,permanente,PATRON_LULO,0.0,1000.0000000000002,1000.0,quiebre_definicion_no_validado
+El Águila,Lulo,Permanente,permanente,REVISION_PROPORCIONAL,25.0,0.0,25.0,revision_fuente_real
+El Águila,Mandarina,Permanente,permanente,PATRON_LULO,0.0,110.8433734939759,110.8433734939759,quiebre_definicion_no_validado
+El Águila,Maracuyá,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+El Águila,Maíz,Transitorio,transitorio,REVISION_PROPORCIONAL,-19.999999999999996,-3.061224489795921,-22.448979591836732,revision_fuente_real
+El Águila,Mora,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+El Águila,Naranja,Permanente,permanente,SIN_QUIEBRE,0.0,-0.04294610264119451,-0.04294610264119202,
+El Águila,Pitahaya,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+El Águila,Plátano,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+El Águila,Repollo,Transitorio,transitorio,SIN_QUIEBRE,10.000000000000009,0.0,10.0,
+El Águila,Sábila,Permanente,permanente,REVISION_PROPORCIONAL,-33.33333333333333,0.0,-33.33333333333333,revision_fuente_real
+El Águila,Tomate,Transitorio,transitorio,REVISION_PROPORCIONAL,50.0,0.0,50.0,revision_fuente_real
+El Águila,Tomate de árbol,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+El Águila,Yuca,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+El Águila,Zanahoria,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Florida,Aguacate,Permanente,permanente,REVISION_PROPORCIONAL,47.0,-10.0,32.29999999999999,revision_fuente_real
+Florida,Arracacha,Transitorio,transitorio,SIN_QUIEBRE,0.0,-3.1818181818181945,-3.1818181818181945,
+Florida,Arveja,Transitorio,transitorio,MIXTO_OTRO,29.411764705882355,-58.46935466436061,-46.25445897740785,inspeccion_manual
+Florida,Banano,Permanente,permanente,SIN_QUIEBRE,9.26562500000001,-5.0,3.8023437500000057,
+Florida,Cacao,Permanente,permanente,REVISION_PROPORCIONAL,24.062500000000007,0.05037783375314575,24.124999999999996,revision_fuente_real
+Florida,Café,Permanente,permanente,MIXTO_OTRO,1.680924508479671,-22.784105455128227,-21.486164559281665,inspeccion_manual
+Florida,Caña,Permanente,permanente,SIN_QUIEBRE,-0.0054347826086884625,-0.8,-0.8053913043478224,
+Florida,Cilantro,Transitorio,transitorio,REVISION_PROPORCIONAL,-14.705882352941178,-5.555555555555553,-19.444444444444446,revision_fuente_real
+Florida,Curuba,Permanente,permanente,SIN_QUIEBRE,-5.500000000000005,-9.999999999999982,-14.94999999999999,
+Florida,Fresa,Permanente,permanente,SIN_QUIEBRE,-5.000000000000004,0.0,-5.0,
+Florida,Frijol,Transitorio,transitorio,REVISION_PROPORCIONAL,26.093750000000004,-3.0303030303030374,22.272727272727273,revision_fuente_real
+Florida,Granadilla,Permanente,permanente,SIN_QUIEBRE,12.52380952380952,-10.0,1.2714285714285656,
+Florida,Guanábana,Permanente,permanente,SIN_QUIEBRE,-5.3999999999999915,-1.7763568394002505e-14,-5.400000000000006,
+Florida,Guayaba,Permanente,permanente,REVISION_PROPORCIONAL,14.785714285714288,16.666666666666664,33.916666666666664,revision_fuente_real
+Florida,Habichuela,Transitorio,transitorio,REVISION_PROPORCIONAL,35.714285714285715,-3.205741626794257,31.363636363636378,revision_fuente_real
+Florida,Limón,Permanente,permanente,REVISION_PROPORCIONAL,32.72727272727273,-0.07065711113353684,32.63349147067731,revision_fuente_real
+Florida,Macadamia,Permanente,permanente,SIN_QUIEBRE,-5.428571428571427,0.0,-5.428571428571427,
+Florida,Mandarina,Permanente,permanente,REVISION_PROPORCIONAL,21.393034825870632,-5.020251545512677,15.298799118880128,revision_fuente_real
+Florida,Mango,Permanente,permanente,SIN_QUIEBRE,11.818181818181825,0.0,11.81818181818182,
+Florida,Maracuyá,Permanente,permanente,REVISION_PROPORCIONAL,53.624999999999986,-7.14285714285713,42.65178571428572,revision_fuente_real
+Florida,Maíz,Transitorio,transitorio,REVISION_PROPORCIONAL,23.154362416107382,6.0850864443655155,30.648411829134716,revision_fuente_real
+Florida,Mora,Permanente,permanente,REVISION_PROPORCIONAL,22.71641791044776,0.0,22.716417910447753,revision_fuente_real
+Florida,Naranja,Permanente,permanente,SIN_QUIEBRE,-0.4682345429392335,-0.003724454234434304,-0.47194155799241905,
+Florida,Otras hortalizas,Transitorio,transitorio,REVISION_PROPORCIONAL,30.0,7.808857808857808,40.15151515151515,revision_fuente_real
+Florida,Papaya,Permanente,permanente,SIN_QUIEBRE,11.72727272727272,0.0,11.727272727272728,
+Florida,Pepino Cohombro,Transitorio,transitorio,REVISION_PROPORCIONAL,20.0,-2.3720349563046277,17.153558052434462,revision_fuente_real
+Florida,Pitahaya,Permanente,permanente,SIN_QUIEBRE,-6.000000000000005,0.0,-6.000000000000005,
+Florida,Piña,Permanente,permanente,SIN_QUIEBRE,9.697749196141467,-0.8349664170979411,8.781809830041356,
+Florida,Plátano,Permanente,permanente,SIN_QUIEBRE,-4.478417266187047,0.0,-4.478417266187047,
+Florida,Sacha inchi,Permanente,permanente,SIN_QUIEBRE,-5.500000000000005,0.0,-5.500000000000002,
+Florida,Tomate,Transitorio,transitorio,REVISION_PROPORCIONAL,30.42553191489361,0.8106247234348958,31.4827935222672,revision_fuente_real
+Florida,Tomate de árbol,Permanente,permanente,SIN_QUIEBRE,-5.3333333333333375,0.0,-5.3333333333333375,
+Florida,Yuca,Transitorio,transitorio,SIN_QUIEBRE,15.384615384615385,-4.047619047619044,10.714285714285714,
+Ginebra,Aguacate,Permanente,permanente,MIXTO_OTRO,-20.499999999999996,-66.66666666666666,-73.5,inspeccion_manual
+Ginebra,Banano,Permanente,permanente,PATRON_LULO,-8.045977011494253,500.0,451.72413793103453,quiebre_definicion_no_validado
+Ginebra,Café,Permanente,permanente,MIXTO_OTRO,3.0236774744027235,-24.72022973624103,-22.44401227999364,inspeccion_manual
+Ginebra,Caña,Permanente,permanente,MIXTO_OTRO,-39.434075857916916,-40.07402207098533,-63.70527766611153,inspeccion_manual
+Ginebra,Frijol,Transitorio,transitorio,REVISION_PROPORCIONAL,-31.818181818181817,-20.0,-45.45454545454545,revision_fuente_real
+Ginebra,Granadilla,Permanente,permanente,MIXTO_OTRO,-57.14285714285714,200.0,28.57142857142857,inspeccion_manual
+Ginebra,Habichuela,Transitorio,transitorio,MIXTO_OTRO,275.0,-8.571428571428571,242.85714285714283,inspeccion_manual
+Ginebra,Lulo,Permanente,permanente,MIXTO_OTRO,-54.54545454545454,275.0,70.45454545454545,inspeccion_manual
+Ginebra,Maracuyá,Permanente,permanente,MIXTO_OTRO,0.0,-28.57142857142857,-28.57142857142857,inspeccion_manual
+Ginebra,Maíz,Transitorio,transitorio,PATRON_LULO,4.242424242424243,131.00056000135754,140.8005837589909,quiebre_definicion_no_validado
+Ginebra,Mora,Permanente,permanente,MIXTO_OTRO,-18.29268292682927,60.0,30.73170731707317,inspeccion_manual
+Ginebra,Papaya,Permanente,permanente,REVISION_PROPORCIONAL,125.0,1.3333333333333335,128.0,revision_fuente_real
+Ginebra,Plátano,Permanente,permanente,PATRON_LULO,-11.904761904761903,382.3151125401929,324.8966467615985,quiebre_definicion_no_validado
+Ginebra,Tomate,Transitorio,transitorio,MIXTO_OTRO,53.333333333333336,256.43564356435644,446.5346534653466,inspeccion_manual
+Ginebra,Uva,Permanente,permanente,REVISION_PROPORCIONAL,-30.76923076923077,-0.3984063745020012,-31.045050566962917,revision_fuente_real
+Guacarí,Aguacate,Permanente,permanente,REVISION_PROPORCIONAL,8.620689655172415,13.744075829383897,23.549599607779054,revision_fuente_real
+Guacarí,Ají,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Guacarí,Arracacha,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Guacarí,Banano,Permanente,permanente,PATRON_LULO,0.0,100.0,100.0,quiebre_definicion_no_validado
+Guacarí,Cacao,Permanente,permanente,REVISION_PROPORCIONAL,42.857142857142854,0.0,42.857142857142854,revision_fuente_real
+Guacarí,Café,Permanente,permanente,REVISION_PROPORCIONAL,8.17819583251682,-17.732423565404666,-11.004420057917994,revision_fuente_real
+Guacarí,Caña,Permanente,permanente,SIN_QUIEBRE,0.6320541760722348,2.1227502504252636,2.768221358102906,
+Guacarí,Cilantro,Transitorio,transitorio,SIN_QUIEBRE,0.0,-4.705882352941178,-4.705882352941177,
+Guacarí,Frijol,Transitorio,transitorio,MIXTO_OTRO,0.0,-21.316964285714278,-21.316964285714278,inspeccion_manual
+Guacarí,Guanábana,Permanente,permanente,SIN_QUIEBRE,3.389830508474576,-5.478627332931959,-2.2745130052347435,
+Guacarí,Habichuela,Transitorio,transitorio,REVISION_PROPORCIONAL,9.090909090909092,10.000000000000005,20.0,revision_fuente_real
+Guacarí,Limón,Permanente,permanente,SIN_QUIEBRE,0.0,-2.2179363548697957,-2.2179363548698037,
+Guacarí,Lulo,Permanente,permanente,PATRON_LULO,4.444444444444445,316.66666666666663,335.18518518518516,quiebre_definicion_no_validado
+Guacarí,Mandarina,Permanente,permanente,SIN_QUIEBRE,0.0,-6.660177975528373,-6.660177975528374,
+Guacarí,Maracuyá,Permanente,permanente,SIN_QUIEBRE,5.88235294117647,0.0,5.88235294117647,
+Guacarí,Maíz,Transitorio,transitorio,SIN_QUIEBRE,1.3477088948787064,3.8955386528377858,5.295748068644214,
+Guacarí,Mora,Permanente,permanente,MIXTO_OTRO,96.15384615384616,-42.80762564991335,12.185041994400747,inspeccion_manual
+Guacarí,Naranja,Permanente,permanente,SIN_QUIEBRE,0.0,11.119786922082515,11.119786922082527,
+Guacarí,Papaya,Permanente,permanente,MIXTO_OTRO,1117.6470588235293,9.649122807017553,1235.139318885449,inspeccion_manual
+Guacarí,Pepino Cohombro,Transitorio,transitorio,SIN_QUIEBRE,0.0,10.000000000000004,10.0,
+Guacarí,Pimentón,Transitorio,transitorio,SIN_QUIEBRE,5.88235294117647,-8.812260536398455,-3.4482758620689653,
+Guacarí,Plantas aromáticas,Transitorio,transitorio,SIN_QUIEBRE,3.968253968253968,-8.391396546501047,-4.756134504695537,
+Guacarí,Plátano,Permanente,permanente,SIN_QUIEBRE,-5.617977528089887,-8.333333333333332,-13.48314606741573,
+Guacarí,Tomate,Transitorio,transitorio,SIN_QUIEBRE,4.081632653061225,0.0,4.081632653061225,
+Guacarí,Tomate de árbol,Permanente,permanente,REVISION_PROPORCIONAL,173.6842105263158,0.0,173.6842105263158,revision_fuente_real
+Guacarí,Uva,Permanente,permanente,REVISION_PROPORCIONAL,597.1428571428571,0.0,597.1428571428571,revision_fuente_real
+Guacarí,Yuca,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Guadalajara de Buga,Aguacate,Permanente,permanente,MIXTO_OTRO,150.0,66.66666666666666,316.66666666666663,inspeccion_manual
+Guadalajara de Buga,Arracacha,Transitorio,transitorio,SIN_QUIEBRE,0.0,-4.166666666666666,-4.166666666666666,
+Guadalajara de Buga,Arveja,Transitorio,transitorio,MIXTO_OTRO,110.00000000000001,72.6190476190476,262.5,inspeccion_manual
+Guadalajara de Buga,Banano,Permanente,permanente,SIN_QUIEBRE,7.633587786259542,5.263157894736842,13.29851345922057,
+Guadalajara de Buga,Café,Permanente,permanente,SIN_QUIEBRE,1.0009520623729478,-13.755385160633782,-12.89211790971355,
+Guadalajara de Buga,Caña,Permanente,permanente,SIN_QUIEBRE,16.708974167537704,-14.281104944764362,0.041643086713719794,
+Guadalajara de Buga,Cebolla de rama,Transitorio,transitorio,SIN_QUIEBRE,0.0,-13.043478260869565,-13.043478260869565,
+Guadalajara de Buga,Cilantro,Transitorio,transitorio,REVISION_PROPORCIONAL,0.0,16.666666666666664,16.666666666666664,revision_fuente_real
+Guadalajara de Buga,Curuba,Permanente,permanente,SIN_QUIEBRE,0.0,-6.25,-6.25,
+Guadalajara de Buga,Fresa,Permanente,permanente,MIXTO_OTRO,50.0,100.0,200.0,inspeccion_manual
+Guadalajara de Buga,Frijol,Transitorio,transitorio,PATRON_LULO,4.166666666666666,46.838594931080465,52.95686971987548,quiebre_definicion_no_validado
+Guadalajara de Buga,Granadilla,Permanente,permanente,SIN_QUIEBRE,0.0,8.34236186348862,8.342361863488629,
+Guadalajara de Buga,Guayaba,Permanente,permanente,SIN_QUIEBRE,0.0,-14.285714285714285,-14.285714285714285,
+Guadalajara de Buga,Habichuela,Transitorio,transitorio,MIXTO_OTRO,64.28571428571429,91.30434782608697,214.28571428571428,inspeccion_manual
+Guadalajara de Buga,Limón,Permanente,permanente,MIXTO_OTRO,354.54545454545456,-11.999999999999998,300.0,inspeccion_manual
+Guadalajara de Buga,Lulo,Permanente,permanente,REVISION_PROPORCIONAL,16.666666666666664,14.285714285714285,33.33333333333333,revision_fuente_real
+Guadalajara de Buga,Mandarina,Permanente,permanente,SIN_QUIEBRE,0.0,1.165425704111364,1.165425704111361,
+Guadalajara de Buga,Mango,Permanente,permanente,SIN_QUIEBRE,0.0,-1.2898131087128244,-1.2898131087128244,
+Guadalajara de Buga,Maracuyá,Permanente,permanente,SIN_QUIEBRE,0.0,-8.0,-8.0,
+Guadalajara de Buga,Maíz,Transitorio,transitorio,MIXTO_OTRO,2.074235807860262,-35.24941442836918,-33.906334596643205,inspeccion_manual
+Guadalajara de Buga,Mora,Permanente,permanente,REVISION_PROPORCIONAL,20.0,12.5,35.0,revision_fuente_real
+Guadalajara de Buga,Naranja,Permanente,permanente,REVISION_PROPORCIONAL,38.2059800664452,0.05983644704474497,38.28867761452032,revision_fuente_real
+Guadalajara de Buga,Otras hortalizas,Transitorio,transitorio,MIXTO_OTRO,25.0,635.0,818.75,inspeccion_manual
+Guadalajara de Buga,Papa,Transitorio,transitorio,MIXTO_OTRO,0.0,31.818181818181806,31.818181818181817,inspeccion_manual
+Guadalajara de Buga,Pimentón,Transitorio,transitorio,PATRON_LULO,0.0,60.00000000000001,60.00000000000001,quiebre_definicion_no_validado
+Guadalajara de Buga,Piña,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Guadalajara de Buga,Plátano,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Guadalajara de Buga,Tomate,Transitorio,transitorio,MIXTO_OTRO,170.0,188.8888888888889,680.0,inspeccion_manual
+Guadalajara de Buga,Tomate de árbol,Permanente,permanente,SIN_QUIEBRE,0.0,-5.555555555555555,-5.555555555555555,
+Guadalajara de Buga,Yuca,Transitorio,transitorio,SIN_QUIEBRE,0.0,-4.0,-4.0,
+Jamundí,Aguacate,Permanente,permanente,SIN_QUIEBRE,0.0,14.285714285714285,14.285714285714285,
+Jamundí,Ahuyama,Transitorio,transitorio,REVISION_PROPORCIONAL,-28.57142857142857,14.1304347826087,-18.478260869565215,revision_fuente_real
+Jamundí,Arazá,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Jamundí,Arroz,Transitorio,transitorio,SIN_QUIEBRE,-0.6459948320413437,-8.702729481705154,-9.292505131048149,
+Jamundí,Banano,Permanente,permanente,REVISION_PROPORCIONAL,100.0,0.0,100.0,revision_fuente_real
+Jamundí,Cacao,Permanente,permanente,REVISION_PROPORCIONAL,0.0,-16.666666666666664,-16.666666666666664,revision_fuente_real
+Jamundí,Café,Permanente,permanente,SIN_QUIEBRE,4.550006052003216,-7.418281551348957,-3.205807758886755,
+Jamundí,Caña,Permanente,permanente,SIN_QUIEBRE,0.016143787332508208,-0.007313364227541032,0.008829242450997704,
+Jamundí,Cilantro,Transitorio,transitorio,REVISION_PROPORCIONAL,-54.54545454545454,20.576923076923073,-45.19230769230769,revision_fuente_real
+Jamundí,Frijol,Transitorio,transitorio,REVISION_PROPORCIONAL,-27.27272727272727,10.000000000000004,-20.0,revision_fuente_real
+Jamundí,Guanábana,Permanente,permanente,REVISION_PROPORCIONAL,-16.666666666666664,0.0,-16.666666666666664,revision_fuente_real
+Jamundí,Guayaba,Permanente,permanente,SIN_QUIEBRE,3.571428571428571,0.0,3.571428571428571,
+Jamundí,Habichuela,Transitorio,transitorio,SIN_QUIEBRE,0.0,-2.75689223057645,-2.756892230576441,
+Jamundí,Limón,Permanente,permanente,SIN_QUIEBRE,10.277492291880781,-0.015413862200066127,10.260494271181216,
+Jamundí,Lulo,Permanente,permanente,SIN_QUIEBRE,0.0,10.0,10.0,
+Jamundí,Mandarina,Permanente,permanente,SIN_QUIEBRE,-1.8083182640144666,0.008220304151254795,-1.800246609124545,
+Jamundí,Mango,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Jamundí,Maracuyá,Permanente,permanente,REVISION_PROPORCIONAL,-53.65853658536586,0.0,-53.65853658536586,revision_fuente_real
+Jamundí,Maíz,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Jamundí,Mora,Permanente,permanente,MIXTO_OTRO,0.0,33.33333333333333,33.33333333333333,inspeccion_manual
+Jamundí,Naranja,Permanente,permanente,SIN_QUIEBRE,-2.3020257826887662,-12.500296215550133,-14.514561956444465,
+Jamundí,Otras hortalizas,Transitorio,transitorio,MIXTO_OTRO,-25.0,-42.483660130718945,-56.86274509803921,inspeccion_manual
+Jamundí,Papaya,Permanente,permanente,REVISION_PROPORCIONAL,-50.0,-14.285714285714285,-57.14285714285714,revision_fuente_real
+Jamundí,Piña,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Jamundí,Plátano,Permanente,permanente,REVISION_PROPORCIONAL,0.0,-16.666666666666664,-16.666666666666664,revision_fuente_real
+Jamundí,Tomate,Transitorio,transitorio,REVISION_PROPORCIONAL,-78.57142857142857,-4.273504273504271,-79.48717948717949,revision_fuente_real
+Jamundí,Tomate de árbol,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Jamundí,Yuca,Transitorio,transitorio,REVISION_PROPORCIONAL,-76.92307692307693,0.0,-76.92307692307693,revision_fuente_real
+Jamundí,Zapote,Permanente,permanente,REVISION_PROPORCIONAL,-33.33333333333333,0.0,-33.33333333333333,revision_fuente_real
+La Cumbre,Aguacate,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+La Cumbre,Ahuyama,Transitorio,transitorio,SIN_QUIEBRE,-4.050632911392409,-6.59353530519329,-10.377088305489265,
+La Cumbre,Ají,Transitorio,transitorio,MIXTO_OTRO,20.000000000000004,66.66666666666666,100.0,inspeccion_manual
+La Cumbre,Banano,Permanente,permanente,SIN_QUIEBRE,0.2661934338952947,0.0,0.2661934338952905,
+La Cumbre,Café,Permanente,permanente,SIN_QUIEBRE,-3.0239916690030775,-6.798742057196988,-9.617140332793412,
+La Cumbre,Caña,Permanente,permanente,SIN_QUIEBRE,5.05050505050505,0.0,5.05050505050505,
+La Cumbre,Cilantro,Transitorio,transitorio,SIN_QUIEBRE,0.0,-1.4814814814814894,-1.481481481481485,
+La Cumbre,Frijol,Transitorio,transitorio,MIXTO_OTRO,75.23809523809523,-19.641798418972336,40.818181818181806,inspeccion_manual
+La Cumbre,Granadilla,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+La Cumbre,Habichuela,Transitorio,transitorio,REVISION_PROPORCIONAL,66.66666666666666,0.0,66.66666666666666,revision_fuente_real
+La Cumbre,Lechuga,Transitorio,transitorio,REVISION_PROPORCIONAL,46.590909090909086,2.4335197723481365,50.15822784810127,revision_fuente_real
+La Cumbre,Lulo,Permanente,permanente,SIN_QUIEBRE,-4.566210045662101,0.0,-4.566210045662101,
+La Cumbre,Maíz,Transitorio,transitorio,SIN_QUIEBRE,-14.893617021276595,3.47580645161291,-11.935483870967738,
+La Cumbre,Papaya,Permanente,permanente,SIN_QUIEBRE,-4.761904761904765,0.0,-4.761904761904762,
+La Cumbre,Pepino Cohombro,Transitorio,transitorio,MIXTO_OTRO,50.0,-19.166666666666664,21.25,inspeccion_manual
+La Cumbre,Piña,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+La Cumbre,Plantas aromáticas,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+La Cumbre,Plátano,Permanente,permanente,SIN_QUIEBRE,0.2687449610319806,0.0,0.2687449610319806,
+La Cumbre,Repollo,Transitorio,transitorio,MIXTO_OTRO,238.0,-5.94021363252132,217.92207792207793,inspeccion_manual
+La Cumbre,Tomate,Transitorio,transitorio,MIXTO_OTRO,32.53012048192771,38.059947299077734,82.97101449275362,inspeccion_manual
+La Cumbre,Té,Permanente,permanente,SIN_QUIEBRE,1.1198208286674132,0.0,1.1198208286674132,
+La Cumbre,Yuca,Transitorio,transitorio,MIXTO_OTRO,75.0,-40.74074074074075,3.7037037037037033,inspeccion_manual
+La Unión,Aguacate,Permanente,permanente,PATRON_LULO,10.92896174863388,53.84615384615383,70.65994115174442,quiebre_definicion_no_validado
+La Unión,Ají,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+La Unión,Arracacha,Transitorio,transitorio,REVISION_PROPORCIONAL,32.49999999999999,0.0,32.5,revision_fuente_real
+La Unión,Banano,Permanente,permanente,MIXTO_OTRO,52.10594876248371,149.3773687060098,279.31781266919336,inspeccion_manual
+La Unión,Berenjena,Transitorio,transitorio,MIXTO_OTRO,-17.647058823529413,30.769230769230777,7.6923076923076925,inspeccion_manual
+La Unión,Cacao,Permanente,permanente,PATRON_LULO,0.0,49.999999999999964,49.99999999999998,quiebre_definicion_no_validado
+La Unión,Café,Permanente,permanente,SIN_QUIEBRE,0.7566716603610741,3.14541863757224,3.9258907893635406,
+La Unión,Caña,Permanente,permanente,SIN_QUIEBRE,0.0,-0.7812499999999931,-0.7812499999999933,
+La Unión,Cilantro,Transitorio,transitorio,MIXTO_OTRO,43.75,149.99999999999997,259.375,inspeccion_manual
+La Unión,Guanábana,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+La Unión,Guayaba,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+La Unión,Lulo,Permanente,permanente,MIXTO_OTRO,-13.386880856760374,25.0,8.266398929049528,inspeccion_manual
+La Unión,Mandarina,Permanente,permanente,SIN_QUIEBRE,0.0,3.759219605044012,3.759219605044012,
+La Unión,Maracuyá,Permanente,permanente,REVISION_PROPORCIONAL,-41.47226542249871,0.0,-41.47226542249871,revision_fuente_real
+La Unión,Maíz,Transitorio,transitorio,SIN_QUIEBRE,-4.381918819188193,12.910458838555453,7.962814193877055,
+La Unión,Melón,Transitorio,transitorio,SIN_QUIEBRE,-9.67741935483871,0.0,-9.67741935483871,
+La Unión,Naranja,Permanente,permanente,SIN_QUIEBRE,0.0,3.7000089070989564,3.7000089070989546,
+La Unión,Papaya,Permanente,permanente,MIXTO_OTRO,-6.289308176100629,-44.00000000000001,-47.522012578616355,inspeccion_manual
+La Unión,Patilla,Transitorio,transitorio,MIXTO_OTRO,41.17647058823529,94.2857142857143,174.28571428571428,inspeccion_manual
+La Unión,Pimentón,Transitorio,transitorio,SIN_QUIEBRE,9.523809523809524,-6.976744186046507,1.8826135105204904,
+La Unión,Pitahaya,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+La Unión,Piña,Permanente,permanente,REVISION_PROPORCIONAL,-71.42857142857143,0.0,-71.42857142857143,revision_fuente_real
+La Unión,Plátano,Permanente,permanente,MIXTO_OTRO,0.0,25.0,24.999999999999993,inspeccion_manual
+La Unión,Tomate,Transitorio,transitorio,MIXTO_OTRO,-12.5,36.58536585365854,19.51219512195122,inspeccion_manual
+La Unión,Uva,Permanente,permanente,SIN_QUIEBRE,-1.3039509714434738,-9.090909090909092,-10.27631906494862,
+La Unión,Yuca,Transitorio,transitorio,PATRON_LULO,0.0,88.67924528301887,88.67924528301887,quiebre_definicion_no_validado
+La Victoria,Aguacate,Permanente,permanente,MIXTO_OTRO,0.0,-45.0,-45.0,inspeccion_manual
+La Victoria,Banano,Permanente,permanente,PATRON_LULO,0.0,66.66666666666666,66.66666666666666,quiebre_definicion_no_validado
+La Victoria,Berenjena,Transitorio,transitorio,MIXTO_OTRO,0.0,-33.33333333333333,-33.33333333333333,inspeccion_manual
+La Victoria,Cacao,Permanente,permanente,MIXTO_OTRO,-13.043478260869565,-50.0,-56.52173913043478,inspeccion_manual
+La Victoria,Café,Permanente,permanente,REVISION_PROPORCIONAL,-3.837016168029771,-13.51081232215144,-16.829416436948097,revision_fuente_real
+La Victoria,Caña,Permanente,permanente,REVISION_PROPORCIONAL,0.0,15.750808110490741,15.750808110490745,revision_fuente_real
+La Victoria,Frijol,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+La Victoria,Guanábana,Permanente,permanente,MIXTO_OTRO,0.0,-85.71428571428571,-85.71428571428571,inspeccion_manual
+La Victoria,Guayaba,Permanente,permanente,PATRON_LULO,0.0,200.0,200.0,quiebre_definicion_no_validado
+La Victoria,Limón,Permanente,permanente,MIXTO_OTRO,76.80945347119645,4588.365650969529,8189.473684210526,inspeccion_manual
+La Victoria,Mandarina,Permanente,permanente,PATRON_LULO,0.0,207.6775385796914,207.67753857969134,quiebre_definicion_no_validado
+La Victoria,Mango,Permanente,permanente,MIXTO_OTRO,0.0,-33.33333333333333,-33.33333333333333,inspeccion_manual
+La Victoria,Maracuyá,Permanente,permanente,MIXTO_OTRO,206.0,256.29453681710214,990.2612826603325,inspeccion_manual
+La Victoria,Maíz,Transitorio,transitorio,REVISION_PROPORCIONAL,-19.983833303395006,-14.316898535015351,-31.439666700956685,revision_fuente_real
+La Victoria,Naranja,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+La Victoria,Papaya,Permanente,permanente,MIXTO_OTRO,-58.139534883720934,399.1993594875901,108.9671737389912,inspeccion_manual
+La Victoria,Patilla,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+La Victoria,Pimentón,Transitorio,transitorio,REVISION_PROPORCIONAL,66.66666666666666,0.0,66.66666666666666,revision_fuente_real
+La Victoria,Plátano,Permanente,permanente,MIXTO_OTRO,22.5,20.0,47.0,inspeccion_manual
+La Victoria,Romero,Permanente,permanente,MIXTO_OTRO,0.0,-89.33333333333333,-89.33333333333334,inspeccion_manual
+La Victoria,Soya,Transitorio,transitorio,REVISION_PROPORCIONAL,-80.0,0.0,-80.0,revision_fuente_real
+La Victoria,Tomate,Transitorio,transitorio,MIXTO_OTRO,17.391304347826104,299.9999999999999,369.5652173913044,inspeccion_manual
+La Victoria,Uva,Permanente,permanente,PATRON_LULO,-9.090909090909092,334.99999999999994,295.45454545454544,quiebre_definicion_no_validado
+La Victoria,Yuca,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Obando,Aguacate,Permanente,permanente,SIN_QUIEBRE,-6.25,0.0,-6.25,
+Obando,Banano,Permanente,permanente,SIN_QUIEBRE,4.444444444444445,0.0,4.444444444444445,
+Obando,Café,Permanente,permanente,SIN_QUIEBRE,2.7220592510372925,-7.891538361373468,-5.384291460351101,
+Obando,Caña,Permanente,permanente,REVISION_PROPORCIONAL,-21.179862497227766,-1.8779826309816154,-22.66009098924566,revision_fuente_real
+Obando,Frijol,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Obando,Guanábana,Permanente,permanente,REVISION_PROPORCIONAL,16.666666666666664,0.0,16.666666666666664,revision_fuente_real
+Obando,Guayaba,Permanente,permanente,MIXTO_OTRO,12.5,-20.0,-10.0,inspeccion_manual
+Obando,Limón,Permanente,permanente,MIXTO_OTRO,0.0,-62.670123136746604,-62.670123136746604,inspeccion_manual
+Obando,Mango,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Obando,Maracuyá,Permanente,permanente,REVISION_PROPORCIONAL,25.0,0.0,25.0,revision_fuente_real
+Obando,Maíz,Transitorio,transitorio,MIXTO_OTRO,0.18262987012987011,-21.1586739800168,-21.01468616869784,inspeccion_manual
+Obando,Naranja,Permanente,permanente,MIXTO_OTRO,0.0,-24.9829196082897,-24.98291960828969,inspeccion_manual
+Obando,Otras hortalizas,Transitorio,transitorio,MIXTO_OTRO,-46.470588235294116,36.00000000000001,-27.199999999999996,inspeccion_manual
+Obando,Papaya,Permanente,permanente,SIN_QUIEBRE,12.5,0.0,12.5,
+Obando,Plátano,Permanente,permanente,SIN_QUIEBRE,9.919571045576408,-0.41493775933609084,9.463473240408046,
+Obando,Sorgo,Transitorio,transitorio,REVISION_PROPORCIONAL,-16.666666666666664,0.0,-16.666666666666664,revision_fuente_real
+Obando,Soya,Transitorio,transitorio,MIXTO_OTRO,-6.25,-55.15151515151515,-57.95454545454546,inspeccion_manual
+Obando,Tomate,Transitorio,transitorio,MIXTO_OTRO,0.0,26.76056338028168,26.76056338028169,inspeccion_manual
+Obando,Yuca,Transitorio,transitorio,PATRON_LULO,-12.5,1500.0,1300.0,quiebre_definicion_no_validado
+Palmira,Aguacate,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Palmira,Ahuyama,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Palmira,Arracacha,Transitorio,transitorio,REVISION_PROPORCIONAL,-50.0,0.0,-50.0,revision_fuente_real
+Palmira,Arveja,Transitorio,transitorio,REVISION_PROPORCIONAL,-46.0,0.019290123456786972,-45.989583333333336,revision_fuente_real
+Palmira,Banano,Permanente,permanente,SIN_QUIEBRE,-0.3991291727140866,1.6148698540002278e-14,-0.3991291727140754,
+Palmira,Cacao,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Palmira,Café,Permanente,permanente,REVISION_PROPORCIONAL,4.091954022988508,-16.645054624436742,-13.234208583781507,revision_fuente_real
+Palmira,Caña,Permanente,permanente,SIN_QUIEBRE,0.0,-0.6338076053779037,-0.6338076053779171,
+Palmira,Cebolla de bulbo,Transitorio,transitorio,REVISION_PROPORCIONAL,-48.369565217391305,-0.6315789473684141,-48.69565217391305,revision_fuente_real
+Palmira,Cebolla de rama,Transitorio,transitorio,REVISION_PROPORCIONAL,-76.57142857142858,0.7317073170731803,-76.4,revision_fuente_real
+Palmira,Cilantro,Transitorio,transitorio,REVISION_PROPORCIONAL,-48.00000000000001,0.0,-48.0,revision_fuente_real
+Palmira,Curuba,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Palmira,Frijol,Transitorio,transitorio,REVISION_PROPORCIONAL,-40.36666666666667,4.341345258058525,-37.77777777777777,revision_fuente_real
+Palmira,Granadilla,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Palmira,Guayaba,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Palmira,Habichuela,Transitorio,transitorio,REVISION_PROPORCIONAL,-48.95833333333333,0.0,-48.95833333333333,revision_fuente_real
+Palmira,Limón,Permanente,permanente,SIN_QUIEBRE,0.0,-0.06852444038373946,-0.06852444038373946,
+Palmira,Lulo,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Palmira,Mandarina,Permanente,permanente,SIN_QUIEBRE,0.0,-0.006699718611811079,-0.006699718611812211,
+Palmira,Maracuyá,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Palmira,Maíz,Transitorio,transitorio,REVISION_PROPORCIONAL,-32.517770795730556,-14.318450202943673,-42.18018018018019,revision_fuente_real
+Palmira,Mora,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Palmira,Naranja,Permanente,permanente,SIN_QUIEBRE,0.0,0.004630647943425712,0.004630647943422432,
+Palmira,Pepino Cohombro,Transitorio,transitorio,REVISION_PROPORCIONAL,-50.0,0.0,-50.0,revision_fuente_real
+Palmira,Pimentón,Transitorio,transitorio,REVISION_PROPORCIONAL,-47.833333333333336,-2.747603833865802,-49.266666666666666,revision_fuente_real
+Palmira,Plantas aromáticas,Transitorio,transitorio,SIN_QUIEBRE,9.586776859504134,0.0,9.586776859504127,
+Palmira,Plátano,Permanente,permanente,SIN_QUIEBRE,-0.6124999999999936,0.0031442585838270527,-0.609375,
+Palmira,Repollo,Transitorio,transitorio,REVISION_PROPORCIONAL,-37.4,0.0,-37.4,revision_fuente_real
+Palmira,Tomate,Transitorio,transitorio,SIN_QUIEBRE,0.0,-0.9863878477017122,-0.9863878477017163,
+Palmira,Tomate de árbol,Permanente,permanente,SIN_QUIEBRE,0.0,-3.0303030303030094,-3.030303030303018,
+Palmira,Uva,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Palmira,Yuca,Transitorio,transitorio,REVISION_PROPORCIONAL,-45.45454545454545,-11.11111111111111,-51.515151515151516,revision_fuente_real
+Palmira,Zapote,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Pradera,Aguacate,Permanente,permanente,REVISION_PROPORCIONAL,11.363636363636363,6.666666666666667,18.787878787878785,revision_fuente_real
+Pradera,Ají,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Pradera,Arveja,Transitorio,transitorio,MIXTO_OTRO,0.0,20.622568093385222,20.62256809338522,inspeccion_manual
+Pradera,Banano,Permanente,permanente,SIN_QUIEBRE,0.0,-10.0,-10.0,
+Pradera,Brócoli,Transitorio,transitorio,REVISION_PROPORCIONAL,100.0,0.0,100.0,revision_fuente_real
+Pradera,Cacao,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Pradera,Café,Permanente,permanente,MIXTO_OTRO,2.608760097828504,-28.215530326162185,-26.3428457248733,inspeccion_manual
+Pradera,Caña,Permanente,permanente,SIN_QUIEBRE,-0.09442870632672333,0.8409806103410441,0.7457577769035194,
+Pradera,Cebolla de rama,Transitorio,transitorio,REVISION_PROPORCIONAL,87.5,0.0,87.5,revision_fuente_real
+Pradera,Cilantro,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Pradera,Coliflor,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Pradera,Frijol,Transitorio,transitorio,SIN_QUIEBRE,5.263157894736842,-5.000000000000001,0.0,
+Pradera,Guanábana,Permanente,permanente,SIN_QUIEBRE,0.0,7.719928186714554,7.719928186714546,
+Pradera,Guayaba,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Pradera,Habichuela,Transitorio,transitorio,SIN_QUIEBRE,4.166666666666666,-3.296703296703297,0.7326007326007326,
+Pradera,Limón,Permanente,permanente,SIN_QUIEBRE,0.0,-8.477119279819957,-8.477119279819956,
+Pradera,Lulo,Permanente,permanente,REVISION_PROPORCIONAL,16.666666666666664,0.0,16.666666666666664,revision_fuente_real
+Pradera,Mandarina,Permanente,permanente,SIN_QUIEBRE,0.0,-6.728847435043306,-6.728847435043303,
+Pradera,Mora,Permanente,permanente,REVISION_PROPORCIONAL,-50.0,-20.0,-60.0,revision_fuente_real
+Pradera,Naranja,Permanente,permanente,MIXTO_OTRO,0.0,-30.676892297432477,-30.676892297432477,inspeccion_manual
+Pradera,Pepino Cohombro,Transitorio,transitorio,SIN_QUIEBRE,11.11111111111111,0.0,11.11111111111111,
+Pradera,Pimentón,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Pradera,Piña,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Pradera,Plátano,Permanente,permanente,MIXTO_OTRO,0.0,33.33333333333333,33.33333333333333,inspeccion_manual
+Pradera,Tomate,Transitorio,transitorio,SIN_QUIEBRE,11.11111111111111,-1.531728665207879,9.409190371991247,
+Pradera,Tomate de árbol,Permanente,permanente,PATRON_LULO,0.0,150.0,150.0,quiebre_definicion_no_validado
+Restrepo,Aguacate,Permanente,permanente,SIN_QUIEBRE,-1.3850415512465373,0.0,-1.3850415512465375,
+Restrepo,Ahuyama,Transitorio,transitorio,REVISION_PROPORCIONAL,18.58407079646018,0.0,18.58407079646018,revision_fuente_real
+Restrepo,Ají,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Restrepo,Banano,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Restrepo,Café,Permanente,permanente,SIN_QUIEBRE,-0.632506398897419,-0.18815631848980952,-0.8194726166328526,
+Restrepo,Caña,Permanente,permanente,MIXTO_OTRO,0.0,23.076923076923077,23.076923076923077,inspeccion_manual
+Restrepo,Cimarrón,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Restrepo,Frijol,Transitorio,transitorio,REVISION_PROPORCIONAL,1.2755102040816326,-19.04141972554038,-18.008784773060032,revision_fuente_real
+Restrepo,Granadilla,Permanente,permanente,REVISION_PROPORCIONAL,-40.0,0.0,-40.0,revision_fuente_real
+Restrepo,Guayaba,Permanente,permanente,REVISION_PROPORCIONAL,-23.076923076923077,0.0,-23.076923076923077,revision_fuente_real
+Restrepo,Habichuela,Transitorio,transitorio,REVISION_PROPORCIONAL,38.46153846153847,5.925925925925917,46.666666666666664,revision_fuente_real
+Restrepo,Limón,Permanente,permanente,SIN_QUIEBRE,0.0,-0.46656298600311047,-0.4665629860031097,
+Restrepo,Lulo,Permanente,permanente,SIN_QUIEBRE,4.716981132075472,0.0,4.716981132075472,
+Restrepo,Macadamia,Permanente,permanente,SIN_QUIEBRE,0.0,-10.0,-10.0,
+Restrepo,Mandarina,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Restrepo,Maracuyá,Permanente,permanente,REVISION_PROPORCIONAL,-26.666666666666668,0.0,-26.666666666666668,revision_fuente_real
+Restrepo,Maíz,Transitorio,transitorio,MIXTO_OTRO,2.34375,-66.89058524173028,-66.11458333333333,inspeccion_manual
+Restrepo,Mora,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Restrepo,Naranja,Permanente,permanente,SIN_QUIEBRE,-5.46448087431694,0.024596212183327904,-5.4412287174441865,
+Restrepo,Pepino Cohombro,Transitorio,transitorio,REVISION_PROPORCIONAL,25.0,0.0,25.0,revision_fuente_real
+Restrepo,Pimentón,Transitorio,transitorio,REVISION_PROPORCIONAL,58.18181818181818,0.0,58.18181818181818,revision_fuente_real
+Restrepo,Pitahaya,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Restrepo,Piña,Permanente,permanente,SIN_QUIEBRE,0.6382978723404255,0.16700810282596132,0.8063719843333443,
+Restrepo,Tomate,Transitorio,transitorio,SIN_QUIEBRE,11.0,3.2760032760032747,14.636363636363637,
+Restrepo,Tomate de árbol,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Restrepo,Yuca,Transitorio,transitorio,SIN_QUIEBRE,-14.500000000000002,0.0,-14.500000000000002,
+Riofrío,Aguacate,Permanente,permanente,REVISION_PROPORCIONAL,18.181818181818183,0.0,18.181818181818183,revision_fuente_real
+Riofrío,Banano,Permanente,permanente,SIN_QUIEBRE,9.22509225092251,0.0,9.22509225092251,
+Riofrío,Cacao,Permanente,permanente,MIXTO_OTRO,83.33333333333334,185.71428571428572,423.8095238095238,inspeccion_manual
+Riofrío,Café,Permanente,permanente,SIN_QUIEBRE,6.637207456418334,-14.516416282324766,-8.842693489801622,
+Riofrío,Caña,Permanente,permanente,SIN_QUIEBRE,11.210762331838566,-0.05586876812880006,11.148630248897119,
+Riofrío,Frijol,Transitorio,transitorio,REVISION_PROPORCIONAL,-25.0,0.0,-25.0,revision_fuente_real
+Riofrío,Guanábana,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Riofrío,Guayaba,Permanente,permanente,REVISION_PROPORCIONAL,0.0,16.27906976744186,16.27906976744187,revision_fuente_real
+Riofrío,Limón,Permanente,permanente,SIN_QUIEBRE,0.0,-0.08970621215520613,-0.08970621215520576,
+Riofrío,Lulo,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Riofrío,Mandarina,Permanente,permanente,SIN_QUIEBRE,0.0,-4.974546753594694,-4.974546753594707,
+Riofrío,Mango,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Riofrío,Maracuyá,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Riofrío,Maíz,Transitorio,transitorio,REVISION_PROPORCIONAL,-38.70967741935484,17.748890298034244,-27.831325301204824,revision_fuente_real
+Riofrío,Mora,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Riofrío,Naranja,Permanente,permanente,SIN_QUIEBRE,0.0,-1.7059924875859043,-1.7059924875859056,
+Riofrío,Pitahaya,Permanente,permanente,SIN_QUIEBRE,0.0,-6.417112299465254,-6.417112299465246,
+Riofrío,Piña,Permanente,permanente,SIN_QUIEBRE,0.0,-8.163265306122454,-8.16326530612245,
+Riofrío,Plátano,Permanente,permanente,SIN_QUIEBRE,5.23149359142035,0.0,5.23149359142035,
+Riofrío,Stevia,Permanente,permanente,SIN_QUIEBRE,0.0,-2.499999999999991,-2.500000000000002,
+Riofrío,Tomate,Transitorio,transitorio,REVISION_PROPORCIONAL,-22.22222222222222,-0.5263157894736824,-22.63157894736842,revision_fuente_real
+Roldanillo,Aguacate,Permanente,permanente,MIXTO_OTRO,29.508196721311474,25.0,61.885245901639344,inspeccion_manual
+Roldanillo,Ahuyama,Transitorio,transitorio,REVISION_PROPORCIONAL,66.38381201044385,1.1842378929335004e-14,66.38381201044386,revision_fuente_real
+Roldanillo,Ají,Transitorio,transitorio,REVISION_PROPORCIONAL,-25.555555555555546,-22.719594594594604,-42.469031531531535,revision_fuente_real
+Roldanillo,Arracacha,Transitorio,transitorio,REVISION_PROPORCIONAL,-60.0,0.0,-60.0,revision_fuente_real
+Roldanillo,Arroz,Transitorio,transitorio,REVISION_PROPORCIONAL,1.4492753623188466,-15.964924490222012,-14.74702484515276,revision_fuente_real
+Roldanillo,Arveja,Transitorio,transitorio,REVISION_PROPORCIONAL,-50.0,0.0,-50.0,revision_fuente_real
+Roldanillo,Banano,Permanente,permanente,SIN_QUIEBRE,3.8793103448275863,0.0,3.8793103448275863,
+Roldanillo,Berenjena,Transitorio,transitorio,REVISION_PROPORCIONAL,-31.185185185185194,1.4210854715202004e-14,-31.185185185185183,revision_fuente_real
+Roldanillo,Cacao,Permanente,permanente,REVISION_PROPORCIONAL,33.5,0.031210986267182772,33.54166666666668,revision_fuente_real
+Roldanillo,Café,Permanente,permanente,SIN_QUIEBRE,-0.9275695242073093,-12.204675999929727,-13.019038669033447,
+Roldanillo,Caña,Permanente,permanente,SIN_QUIEBRE,11.895184029474795,-9.770946624133382,0.9619653229789974,
+Roldanillo,Cebolla de bulbo,Transitorio,transitorio,SIN_QUIEBRE,11.42857142857144,0.0,11.428571428571429,
+Roldanillo,Cebolla de rama,Transitorio,transitorio,SIN_QUIEBRE,0.0,-0.6896551724137967,-0.6896551724138006,
+Roldanillo,Cilantro,Transitorio,transitorio,REVISION_PROPORCIONAL,66.66666666666667,0.0,66.66666666666666,revision_fuente_real
+Roldanillo,Espinaca,Transitorio,transitorio,MIXTO_OTRO,263.6363636363636,-20.0,190.9090909090909,inspeccion_manual
+Roldanillo,Fresa,Permanente,permanente,MIXTO_OTRO,199.99999999999997,-95.34883720930233,-86.04651162790698,inspeccion_manual
+Roldanillo,Frijol,Transitorio,transitorio,MIXTO_OTRO,13.111111111111107,-37.5,-29.305555555555557,inspeccion_manual
+Roldanillo,Granadilla,Permanente,permanente,MIXTO_OTRO,33.33333333333333,-20.0,6.666666666666667,inspeccion_manual
+Roldanillo,Guanábana,Permanente,permanente,SIN_QUIEBRE,0.0,13.636363636363635,13.636363636363635,
+Roldanillo,Guayaba,Permanente,permanente,MIXTO_OTRO,17.91628210000543,50.0,76.87442315000813,inspeccion_manual
+Roldanillo,Habichuela,Transitorio,transitorio,MIXTO_OTRO,13.924050632911387,-30.0,-20.253164556962027,inspeccion_manual
+Roldanillo,Lechuga,Transitorio,transitorio,REVISION_PROPORCIONAL,-42.85714285714285,-1.6148698540002275e-14,-42.857142857142854,revision_fuente_real
+Roldanillo,Limón,Permanente,permanente,MIXTO_OTRO,1700.6802721088438,6.009615384615378,1808.8942307692307,inspeccion_manual
+Roldanillo,Lulo,Permanente,permanente,MIXTO_OTRO,41.66666666666667,15.0,62.916666666666664,inspeccion_manual
+Roldanillo,Mandarina,Permanente,permanente,MIXTO_OTRO,0.0,-25.035953978907,-25.035953978907,inspeccion_manual
+Roldanillo,Maracuyá,Permanente,permanente,MIXTO_OTRO,74.39093484419266,-16.66666666666668,45.3257790368272,inspeccion_manual
+Roldanillo,Maíz,Transitorio,transitorio,SIN_QUIEBRE,3.564591120430295,6.451564225329977,10.246127231265238,
+Roldanillo,Melón,Transitorio,transitorio,REVISION_PROPORCIONAL,-19.55555555555556,-15.653775322283614,-32.148148148148145,revision_fuente_real
+Roldanillo,Mora,Permanente,permanente,SIN_QUIEBRE,-16.666666666666664,10.0,-8.333333333333332,
+Roldanillo,Papaya,Permanente,permanente,MIXTO_OTRO,178.08219178082192,-56.25,21.660958904109588,inspeccion_manual
+Roldanillo,Patilla,Transitorio,transitorio,MIXTO_OTRO,131.11111111111111,-24.999999999999993,73.33333333333334,inspeccion_manual
+Roldanillo,Pepino Cohombro,Transitorio,transitorio,MIXTO_OTRO,-4.545454545454546,-25.0,-28.40909090909091,inspeccion_manual
+Roldanillo,Pimentón,Transitorio,transitorio,REVISION_PROPORCIONAL,-25.09316770186335,-16.666666666666664,-37.577639751552795,revision_fuente_real
+Roldanillo,Pitahaya,Permanente,permanente,MIXTO_OTRO,-68.0,-33.33333333333333,-78.66666666666666,inspeccion_manual
+Roldanillo,Plátano,Permanente,permanente,MIXTO_OTRO,14.285714285714285,38.46153846153847,58.24175824175825,inspeccion_manual
+Roldanillo,Remolacha,Transitorio,transitorio,REVISION_PROPORCIONAL,-50.0,9.090909090909092,-45.45454545454545,revision_fuente_real
+Roldanillo,Repollo,Transitorio,transitorio,REVISION_PROPORCIONAL,-58.333333333333336,-10.697674418604647,-62.7906976744186,revision_fuente_real
+Roldanillo,Soya,Transitorio,transitorio,REVISION_PROPORCIONAL,-84.67349336914553,0.0,-84.67349336914553,revision_fuente_real
+Roldanillo,Tomate,Transitorio,transitorio,REVISION_PROPORCIONAL,-51.724137931034484,-11.11111111111111,-57.08812260536399,revision_fuente_real
+Roldanillo,Uva,Permanente,permanente,SIN_QUIEBRE,3.861003861003861,-10.0,-6.525096525096531,
+Roldanillo,Yuca,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+San Pedro,Aguacate,Permanente,permanente,REVISION_PROPORCIONAL,-67.85714285714286,8.69565217391303,-65.06211180124224,revision_fuente_real
+San Pedro,Ahuyama,Transitorio,transitorio,REVISION_PROPORCIONAL,-41.17647058823529,11.309523809523805,-34.523809523809526,revision_fuente_real
+San Pedro,Ají,Transitorio,transitorio,SIN_QUIEBRE,0.0,13.076923076923066,13.076923076923078,
+San Pedro,Arracacha,Transitorio,transitorio,REVISION_PROPORCIONAL,80.0,-4.444444444444446,72.0,revision_fuente_real
+San Pedro,Banano,Permanente,permanente,SIN_QUIEBRE,8.450704225352112,0.0,8.450704225352112,
+San Pedro,Cacao,Permanente,permanente,MIXTO_OTRO,30.0,19.999999999999996,55.99999999999999,inspeccion_manual
+San Pedro,Café,Permanente,permanente,MIXTO_OTRO,2.8440256131448547,-55.33341861814096,-54.063089603124695,inspeccion_manual
+San Pedro,Caña,Permanente,permanente,MIXTO_OTRO,16.49612078003774,-20.79442995790782,-7.7285834592469005,inspeccion_manual
+San Pedro,Cilantro,Transitorio,transitorio,MIXTO_OTRO,-33.33333333333333,-27.777777777777775,-51.85185185185185,inspeccion_manual
+San Pedro,Frijol,Transitorio,transitorio,REVISION_PROPORCIONAL,-48.275862068965516,23.354388651396253,-36.19600586996746,revision_fuente_real
+San Pedro,Guanábana,Permanente,permanente,REVISION_PROPORCIONAL,-18.181818181818183,-5.88235294117647,-22.994652406417114,revision_fuente_real
+San Pedro,Habichuela,Transitorio,transitorio,REVISION_PROPORCIONAL,-45.0,-5.681818181818176,-48.125,revision_fuente_real
+San Pedro,Limón,Permanente,permanente,SIN_QUIEBRE,0.0,-14.285714285714285,-14.285714285714285,
+San Pedro,Lulo,Permanente,permanente,PATRON_LULO,0.0,265.8536585365854,265.8536585365854,quiebre_definicion_no_validado
+San Pedro,Mandarina,Permanente,permanente,REVISION_PROPORCIONAL,13.966480446927374,8.320726172465957,23.44931921331315,revision_fuente_real
+San Pedro,Mango,Permanente,permanente,SIN_QUIEBRE,-10.0,0.0,-10.0,
+San Pedro,Maracuyá,Permanente,permanente,SIN_QUIEBRE,0.0,7.142857142857142,7.142857142857142,
+San Pedro,Maíz,Transitorio,transitorio,SIN_QUIEBRE,-16.666666666666664,13.199581151832469,-5.667015706806283,
+San Pedro,Mora,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+San Pedro,Papaya,Permanente,permanente,REVISION_PROPORCIONAL,-40.0,-6.666666666666667,-44.0,revision_fuente_real
+San Pedro,Pepino Cohombro,Transitorio,transitorio,REVISION_PROPORCIONAL,-75.0,-11.999999999999993,-78.0,revision_fuente_real
+San Pedro,Pimentón,Transitorio,transitorio,REVISION_PROPORCIONAL,-65.51724137931035,0.0,-65.51724137931035,revision_fuente_real
+San Pedro,Plátano,Permanente,permanente,REVISION_PROPORCIONAL,6.0,-16.666666666666664,-11.666666666666666,revision_fuente_real
+San Pedro,Repollo,Transitorio,transitorio,REVISION_PROPORCIONAL,25.0,2.6666666666666687,28.333333333333332,revision_fuente_real
+San Pedro,Tomate,Transitorio,transitorio,MIXTO_OTRO,-65.51724137931035,33.33333333333333,-54.02298850574713,inspeccion_manual
+San Pedro,Tomate de árbol,Permanente,permanente,REVISION_PROPORCIONAL,-34.5679012345679,0.0,-34.5679012345679,revision_fuente_real
+San Pedro,Uva,Permanente,permanente,REVISION_PROPORCIONAL,-60.0,0.0,-60.0,revision_fuente_real
+San Pedro,Yuca,Transitorio,transitorio,REVISION_PROPORCIONAL,-17.24137931034483,0.0,-17.24137931034483,revision_fuente_real
+Santiago de Cali,Acelga,Transitorio,transitorio,MIXTO_OTRO,0.0,-25.0,-25.0,inspeccion_manual
+Santiago de Cali,Aguacate,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Santiago de Cali,Ahuyama,Transitorio,transitorio,REVISION_PROPORCIONAL,-16.666666666666664,0.0,-16.666666666666664,revision_fuente_real
+Santiago de Cali,Ají,Transitorio,transitorio,REVISION_PROPORCIONAL,25.0,0.0,25.0,revision_fuente_real
+Santiago de Cali,Arveja,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Santiago de Cali,Café,Permanente,permanente,SIN_QUIEBRE,2.716474377545639,-9.53998539077874,-7.082662271995205,
+Santiago de Cali,Caña,Permanente,permanente,SIN_QUIEBRE,0.0,0.010001000100015117,0.010001000100010001,
+Santiago de Cali,Cebolla de rama,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Santiago de Cali,Cilantro,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Santiago de Cali,Frijol,Transitorio,transitorio,SIN_QUIEBRE,7.6923076923076925,-14.309523809523805,-7.717948717948713,
+Santiago de Cali,Guayaba,Permanente,permanente,MIXTO_OTRO,0.0,-33.33333333333333,-33.33333333333333,inspeccion_manual
+Santiago de Cali,Habichuela,Transitorio,transitorio,PATRON_LULO,0.0,66.66666666666666,66.66666666666666,quiebre_definicion_no_validado
+Santiago de Cali,Lechuga,Transitorio,transitorio,SIN_QUIEBRE,-5.263157894736842,0.0,-5.263157894736842,
+Santiago de Cali,Limón,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Santiago de Cali,Mandarina,Permanente,permanente,SIN_QUIEBRE,0.0,-0.03481894150417722,-0.03481894150417134,
+Santiago de Cali,Mango,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Santiago de Cali,Maíz,Transitorio,transitorio,MIXTO_OTRO,40.0,-66.66666666666666,-53.333333333333336,inspeccion_manual
+Santiago de Cali,Mora,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Santiago de Cali,Naranja,Permanente,permanente,SIN_QUIEBRE,0.0,0.006493928177148454,0.006493928177148454,
+Santiago de Cali,Perejil,Transitorio,transitorio,SIN_QUIEBRE,-11.11111111111111,0.0,-11.11111111111111,
+Santiago de Cali,Pimentón,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Santiago de Cali,Plantas aromáticas,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Santiago de Cali,Plátano,Permanente,permanente,SIN_QUIEBRE,-6.0606060606060606,0.0,-6.0606060606060606,
+Santiago de Cali,Repollo,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Santiago de Cali,Tomate,Transitorio,transitorio,REVISION_PROPORCIONAL,11.76470588235294,10.028449502133727,22.972972972972975,revision_fuente_real
+Santiago de Cali,Tomate de árbol,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Santiago de Cali,Yuca,Transitorio,transitorio,SIN_QUIEBRE,-18.75,7.692307692307701,-12.5,
+Santiago de Cali,Zanahoria,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Sevilla,Aguacate,Permanente,permanente,PATRON_LULO,6.841505131128849,124.86375053876783,140.24781556992644,quiebre_definicion_no_validado
+Sevilla,Ají,Transitorio,transitorio,REVISION_PROPORCIONAL,-50.0,0.0,-50.0,revision_fuente_real
+Sevilla,Arveja,Transitorio,transitorio,SIN_QUIEBRE,-13.157894736842104,-0.0017065720088110285,-13.159376759902393,
+Sevilla,Banano,Permanente,permanente,PATRON_LULO,1.8115942028985508,266.66666666666663,273.30917874396135,quiebre_definicion_no_validado
+Sevilla,Cacao,Permanente,permanente,MIXTO_OTRO,0.0,-41.66666666666667,-41.66666666666667,inspeccion_manual
+Sevilla,Café,Permanente,permanente,PATRON_LULO,0.9190752734546469,56.05282483169882,57.48706775825446,quiebre_definicion_no_validado
+Sevilla,Caña,Permanente,permanente,PATRON_LULO,-11.16751269035533,63.07391721431681,44.86261681474845,quiebre_definicion_no_validado
+Sevilla,Cebolla de rama,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Sevilla,Cilantro,Transitorio,transitorio,MIXTO_OTRO,0.0,22.22222222222222,22.22222222222222,inspeccion_manual
+Sevilla,Fresa,Permanente,permanente,REVISION_PROPORCIONAL,-80.0,11.11111111111111,-77.77777777777779,revision_fuente_real
+Sevilla,Frijol,Transitorio,transitorio,SIN_QUIEBRE,0.0,-6.319466497300741,-6.319466497300737,
+Sevilla,Granadilla,Permanente,permanente,PATRON_LULO,0.0,120.0,120.0,quiebre_definicion_no_validado
+Sevilla,Guanábana,Permanente,permanente,MIXTO_OTRO,0.0,37.5,37.5,inspeccion_manual
+Sevilla,Guayaba,Permanente,permanente,MIXTO_OTRO,40.0,44.230769230769226,101.92307692307692,inspeccion_manual
+Sevilla,Habichuela,Transitorio,transitorio,SIN_QUIEBRE,0.0,-11.930585683297169,-11.930585683297181,
+Sevilla,Limón,Permanente,permanente,MIXTO_OTRO,77.40152038700761,61.11636331634451,185.82287811545015,inspeccion_manual
+Sevilla,Lulo,Permanente,permanente,PATRON_LULO,0.0,50.42979942693411,50.429799426934096,quiebre_definicion_no_validado
+Sevilla,Mandarina,Permanente,permanente,REVISION_PROPORCIONAL,0.0,19.435541736426675,19.435541736426686,revision_fuente_real
+Sevilla,Maracuyá,Permanente,permanente,MIXTO_OTRO,0.0,40.0,40.0,inspeccion_manual
+Sevilla,Maíz,Transitorio,transitorio,REVISION_PROPORCIONAL,-16.0,20.0,0.8,revision_fuente_real
+Sevilla,Mora,Permanente,permanente,PATRON_LULO,0.0,66.66666666666666,66.66666666666666,quiebre_definicion_no_validado
+Sevilla,Naranja,Permanente,permanente,PATRON_LULO,0.16837284482758622,78.57207285759813,78.87273973673608,quiebre_definicion_no_validado
+Sevilla,Papa,Transitorio,transitorio,SIN_QUIEBRE,2.1739130434782608,4.115226337448561,6.378600823045268,
+Sevilla,Papaya,Permanente,permanente,PATRON_LULO,0.0,66.66666666666666,66.66666666666666,quiebre_definicion_no_validado
+Sevilla,Pepino Cohombro,Transitorio,transitorio,REVISION_PROPORCIONAL,10.0,9.625668449197867,20.588235294117645,revision_fuente_real
+Sevilla,Pimentón,Transitorio,transitorio,SIN_QUIEBRE,6.0,4.3478260869565215,10.608695652173914,
+Sevilla,Pitahaya,Permanente,permanente,SIN_QUIEBRE,0.0,11.11111111111111,11.11111111111111,
+Sevilla,Piña,Permanente,permanente,MIXTO_OTRO,111.11111111111111,-16.666666666666664,75.92592592592592,inspeccion_manual
+Sevilla,Plátano,Permanente,permanente,PATRON_LULO,0.6986492780624126,156.77603423680458,158.56999814623728,quiebre_definicion_no_validado
+Sevilla,Repollo,Transitorio,transitorio,REVISION_PROPORCIONAL,-20.0,-12.5,-30.0,revision_fuente_real
+Sevilla,Tomate,Transitorio,transitorio,REVISION_PROPORCIONAL,3.8461538461538463,16.37076229668823,20.84656084656085,revision_fuente_real
+Sevilla,Tomate de árbol,Permanente,permanente,SIN_QUIEBRE,0.0,-5.88235294117647,-5.88235294117647,
+Sevilla,Uva,Permanente,permanente,SIN_QUIEBRE,0.0,-10.0,-10.0,
+Sevilla,Yuca,Transitorio,transitorio,REVISION_PROPORCIONAL,-16.666666666666664,-2.285714285714289,-18.571428571428573,revision_fuente_real
+Sevilla,Zanahoria,Transitorio,transitorio,MIXTO_OTRO,66.66666666666666,-37.0,5.0,inspeccion_manual
+Toro,Aguacate,Permanente,permanente,SIN_QUIEBRE,12.5,0.0,12.5,
+Toro,Ají,Transitorio,transitorio,REVISION_PROPORCIONAL,-40.0,0.0,-40.0,revision_fuente_real
+Toro,Banano,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Toro,Cacao,Permanente,permanente,SIN_QUIEBRE,11.11111111111111,-1.850371707708594e-14,11.111111111111104,
+Toro,Café,Permanente,permanente,SIN_QUIEBRE,1.3830115489729298,-13.323783784629613,-12.12504170415829,
+Toro,Caña,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Toro,Frijol,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Toro,Granadilla,Permanente,permanente,REVISION_PROPORCIONAL,50.0,0.0,50.0,revision_fuente_real
+Toro,Guanábana,Permanente,permanente,REVISION_PROPORCIONAL,-16.666666666666664,0.0,-16.666666666666664,revision_fuente_real
+Toro,Guayaba,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Toro,Limón,Permanente,permanente,MIXTO_OTRO,4515.384615384615,-1.2658227848101222,4456.962025316456,inspeccion_manual
+Toro,Lulo,Permanente,permanente,REVISION_PROPORCIONAL,-50.0,0.0,-50.0,revision_fuente_real
+Toro,Maracuyá,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Toro,Maíz,Transitorio,transitorio,SIN_QUIEBRE,-2.666666666666667,-2.5768645357686437,-5.174814814814807,
+Toro,Melón,Transitorio,transitorio,REVISION_PROPORCIONAL,-50.0,0.0,-50.0,revision_fuente_real
+Toro,Papaya,Permanente,permanente,REVISION_PROPORCIONAL,-40.0,0.0,-40.0,revision_fuente_real
+Toro,Pimentón,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Toro,Plátano,Permanente,permanente,SIN_QUIEBRE,3.6764705882352944,0.0,3.6764705882352944,
+Toro,Tomate,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Toro,Uva,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Trujillo,Aguacate,Permanente,permanente,MIXTO_OTRO,889.8876404494382,-14.571409494558326,745.6470588235294,inspeccion_manual
+Trujillo,Ají,Transitorio,transitorio,SIN_QUIEBRE,0.0,-14.285714285714285,-14.285714285714285,
+Trujillo,Banano,Permanente,permanente,PATRON_LULO,-4.857621440536013,100.0,90.28475711892797,quiebre_definicion_no_validado
+Trujillo,Berenjena,Transitorio,transitorio,SIN_QUIEBRE,0.0,-7.204610951008641,-7.204610951008646,
+Trujillo,Cacao,Permanente,permanente,MIXTO_OTRO,201.36986301369865,-16.66666666666668,151.1415525114155,inspeccion_manual
+Trujillo,Café,Permanente,permanente,REVISION_PROPORCIONAL,-12.837553471485021,-14.69155376189103,-25.64307116340132,revision_fuente_real
+Trujillo,Caña,Permanente,permanente,SIN_QUIEBRE,10.497237569060779,-5.814479638009047,4.072398190045249,
+Trujillo,Frijol,Transitorio,transitorio,SIN_QUIEBRE,-17.647058823529413,7.884615384615401,-11.15384615384615,
+Trujillo,Granadilla,Permanente,permanente,REVISION_PROPORCIONAL,60.00000000000001,-7.142857142857142,48.57142857142858,revision_fuente_real
+Trujillo,Guanábana,Permanente,permanente,MIXTO_OTRO,-52.42718446601942,-25.0,-64.32038834951457,inspeccion_manual
+Trujillo,Guayaba,Permanente,permanente,MIXTO_OTRO,133.33333333333331,60.0,273.3333333333333,inspeccion_manual
+Trujillo,Habichuela,Transitorio,transitorio,SIN_QUIEBRE,5.4545454545454515,-3.5087719298245585,1.7543859649122806,
+Trujillo,Limón,Permanente,permanente,REVISION_PROPORCIONAL,1900.0,-0.12300123001230273,1897.539975399754,revision_fuente_real
+Trujillo,Lulo,Permanente,permanente,MIXTO_OTRO,16.949152542372882,166.66666666666669,211.86440677966104,inspeccion_manual
+Trujillo,Maracuyá,Permanente,permanente,REVISION_PROPORCIONAL,-16.666666666666664,-14.285714285714285,-28.57142857142857,revision_fuente_real
+Trujillo,Maíz,Transitorio,transitorio,MIXTO_OTRO,-61.26696832579186,-34.206570476309025,-74.51621010304098,inspeccion_manual
+Trujillo,Mora,Permanente,permanente,MIXTO_OTRO,77.11962833914055,-20.0,41.69570267131243,inspeccion_manual
+Trujillo,Papaya,Permanente,permanente,REVISION_PROPORCIONAL,-36.58536585365853,-23.333333333333353,-51.38211382113821,revision_fuente_real
+Trujillo,Pimentón,Transitorio,transitorio,REVISION_PROPORCIONAL,45.45454545454545,-3.9825422804146227,39.661756683033275,revision_fuente_real
+Trujillo,Pitahaya,Permanente,permanente,REVISION_PROPORCIONAL,-28.315412186379923,0.0,-28.315412186379923,revision_fuente_real
+Trujillo,Plátano,Permanente,permanente,SIN_QUIEBRE,0.8581235697940504,10.0,10.943935926773456,
+Trujillo,Tomate,Transitorio,transitorio,PATRON_LULO,-0.9999999999999963,55.05965753082719,53.50906095551894,quiebre_definicion_no_validado
+Trujillo,Uva,Permanente,permanente,SIN_QUIEBRE,0.0,-13.043478260869565,-13.043478260869563,
+Trujillo,Yuca,Transitorio,transitorio,REVISION_PROPORCIONAL,100.0,-1.4285714285714362,97.14285714285712,revision_fuente_real
+Tuluá,Aguacate,Permanente,permanente,REVISION_PROPORCIONAL,66.66666666666666,0.0,66.66666666666666,revision_fuente_real
+Tuluá,Ahuyama,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Tuluá,Arracacha,Transitorio,transitorio,REVISION_PROPORCIONAL,-20.0,0.0,-20.0,revision_fuente_real
+Tuluá,Arveja,Transitorio,transitorio,SIN_QUIEBRE,-14.634146341463413,-0.02505219206682487,-14.65553235908144,
+Tuluá,Banano,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Tuluá,Cacao,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Tuluá,Café,Permanente,permanente,SIN_QUIEBRE,3.546306262601768,-3.95301765315198,-0.5468975031456967,
+Tuluá,Caña,Permanente,permanente,SIN_QUIEBRE,-0.1347543795173343,-0.8853970067562401,-1.018958275030858,
+Tuluá,Cebolla de bulbo,Transitorio,transitorio,REVISION_PROPORCIONAL,-22.727272727272727,0.0,-22.727272727272727,revision_fuente_real
+Tuluá,Cebolla de rama,Transitorio,transitorio,REVISION_PROPORCIONAL,-20.0,0.0,-20.0,revision_fuente_real
+Tuluá,Cilantro,Transitorio,transitorio,REVISION_PROPORCIONAL,-22.22222222222222,0.0,-22.22222222222222,revision_fuente_real
+Tuluá,Cimarrón,Transitorio,transitorio,REVISION_PROPORCIONAL,-25.0,-1.3333333333333286,-26.0,revision_fuente_real
+Tuluá,Curuba,Permanente,permanente,REVISION_PROPORCIONAL,-20.0,0.0,-20.0,revision_fuente_real
+Tuluá,Fresa,Permanente,permanente,SIN_QUIEBRE,-4.761904761904762,0.0,-4.761904761904762,
+Tuluá,Frijol,Transitorio,transitorio,REVISION_PROPORCIONAL,-21.818181818181817,0.0,-21.818181818181817,revision_fuente_real
+Tuluá,Granadilla,Permanente,permanente,REVISION_PROPORCIONAL,-20.0,0.0,-20.0,revision_fuente_real
+Tuluá,Habichuela,Transitorio,transitorio,REVISION_PROPORCIONAL,-15.0,0.0,-15.0,revision_fuente_real
+Tuluá,Lechuga,Transitorio,transitorio,REVISION_PROPORCIONAL,-25.0,0.0,-25.0,revision_fuente_real
+Tuluá,Lulo,Permanente,permanente,REVISION_PROPORCIONAL,-16.51376146788991,0.0,-16.51376146788991,revision_fuente_real
+Tuluá,Maracuyá,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Tuluá,Maíz,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Tuluá,Mora,Permanente,permanente,REVISION_PROPORCIONAL,-16.30901287553648,0.0,-16.30901287553648,revision_fuente_real
+Tuluá,Papa,Transitorio,transitorio,SIN_QUIEBRE,3.632478632478633,0.0,3.632478632478633,
+Tuluá,Papaya,Permanente,permanente,REVISION_PROPORCIONAL,-17.857142857142858,0.0,-17.857142857142858,revision_fuente_real
+Tuluá,Pepino Cohombro,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Tuluá,Pimentón,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Tuluá,Plátano,Permanente,permanente,SIN_QUIEBRE,-0.6396588486140725,0.0,-0.6396588486140725,
+Tuluá,Repollo,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Tuluá,Tomate,Transitorio,transitorio,SIN_QUIEBRE,-5.47945205479452,0.0,-5.47945205479452,
+Tuluá,Tomate de árbol,Permanente,permanente,REVISION_PROPORCIONAL,-33.33333333333333,0.0,-33.33333333333333,revision_fuente_real
+Tuluá,Yuca,Transitorio,transitorio,SIN_QUIEBRE,0.0,-1.9999999999999931,-2.0,
+Tuluá,Zanahoria,Transitorio,transitorio,SIN_QUIEBRE,-8.620689655172415,0.07618876887913154,-8.551068883610451,
+Ulloa,Aguacate,Permanente,permanente,REVISION_PROPORCIONAL,-27.522935779816514,0.0,-27.522935779816514,revision_fuente_real
+Ulloa,Banano,Permanente,permanente,REVISION_PROPORCIONAL,-15.822784810126583,0.0,-15.822784810126583,revision_fuente_real
+Ulloa,Cacao,Permanente,permanente,SIN_QUIEBRE,9.059233449477357,0.0,9.059233449477366,
+Ulloa,Café,Permanente,permanente,SIN_QUIEBRE,0.5192833889232904,-11.38458109178027,-10.924415941365096,
+Ulloa,Limón,Permanente,permanente,SIN_QUIEBRE,0.0,0.07067137809187038,0.07067137809186878,
+Ulloa,Macadamia,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Ulloa,Mandarina,Permanente,permanente,REVISION_PROPORCIONAL,-74.62686567164178,0.0,-74.6268656716418,revision_fuente_real
+Ulloa,Maíz,Transitorio,transitorio,MIXTO_OTRO,-29.411764705882355,-51.8691983122363,-66.0253164556962,inspeccion_manual
+Ulloa,Naranja,Permanente,permanente,SIN_QUIEBRE,0.0,-0.003352592112484576,-0.0033525921124779455,
+Ulloa,Piña,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Ulloa,Plátano,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Versalles,Aguacate,Permanente,permanente,REVISION_PROPORCIONAL,1279.7281993204983,0.0,1279.7281993204983,revision_fuente_real
+Versalles,Ahuyama,Transitorio,transitorio,REVISION_PROPORCIONAL,-16.666666666666664,-4.0000000000000036,-20.0,revision_fuente_real
+Versalles,Arracacha,Transitorio,transitorio,SIN_QUIEBRE,-7.5,0.0,-7.5,
+Versalles,Arveja,Transitorio,transitorio,SIN_QUIEBRE,0.0,-1.0752688172043021,-1.0752688172043021,
+Versalles,Banano,Permanente,permanente,REVISION_PROPORCIONAL,-22.22222222222222,0.0,-22.22222222222222,revision_fuente_real
+Versalles,Berenjena,Transitorio,transitorio,SIN_QUIEBRE,0.0,-4.0000000000000036,-4.0,
+Versalles,Cacao,Permanente,permanente,REVISION_PROPORCIONAL,-57.14285714285714,-16.666666666666664,-64.28571428571428,revision_fuente_real
+Versalles,Café,Permanente,permanente,REVISION_PROPORCIONAL,2.344927502365964,-19.148134618019085,-17.25221699050111,revision_fuente_real
+Versalles,Caña,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Versalles,Cilantro,Transitorio,transitorio,REVISION_PROPORCIONAL,100.0,0.0,100.0,revision_fuente_real
+Versalles,Frijol,Transitorio,transitorio,REVISION_PROPORCIONAL,-27.083333333333332,-19.05283471548532,-40.97602531337471,revision_fuente_real
+Versalles,Granadilla,Permanente,permanente,REVISION_PROPORCIONAL,-23.121387283236995,0.0,-23.121387283236995,revision_fuente_real
+Versalles,Guayaba,Permanente,permanente,REVISION_PROPORCIONAL,-33.33333333333333,0.0,-33.33333333333333,revision_fuente_real
+Versalles,Habichuela,Transitorio,transitorio,REVISION_PROPORCIONAL,-50.0,-14.285714285714283,-57.14285714285714,revision_fuente_real
+Versalles,Lulo,Permanente,permanente,MIXTO_OTRO,19.607843137254903,-35.0,-22.254901960784313,inspeccion_manual
+Versalles,Maracuyá,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Versalles,Maíz,Transitorio,transitorio,REVISION_PROPORCIONAL,-44.44444444444444,-16.666666666666664,-53.70370370370371,revision_fuente_real
+Versalles,Mora,Permanente,permanente,SIN_QUIEBRE,-3.53356890459364,0.0,-3.533568904593639,
+Versalles,Pepino Cohombro,Transitorio,transitorio,REVISION_PROPORCIONAL,-50.0,-18.867924528301888,-59.43396226415094,revision_fuente_real
+Versalles,Pimentón,Transitorio,transitorio,MIXTO_OTRO,-43.47826086956522,54.16533673795085,-12.863070539419086,inspeccion_manual
+Versalles,Pitahaya,Permanente,permanente,REVISION_PROPORCIONAL,90.9090909090909,0.0,90.9090909090909,revision_fuente_real
+Versalles,Plátano,Permanente,permanente,SIN_QUIEBRE,-0.4406256884776382,0.0,-0.4406256884776382,
+Versalles,Repollo,Transitorio,transitorio,REVISION_PROPORCIONAL,-22.22222222222222,0.0,-22.22222222222222,revision_fuente_real
+Versalles,Tomate,Transitorio,transitorio,MIXTO_OTRO,-26.666666666666668,27.272727272727266,-6.666666666666667,inspeccion_manual
+Versalles,Yuca,Transitorio,transitorio,REVISION_PROPORCIONAL,-50.0,0.0,-50.0,revision_fuente_real
+Vijes,Aguacate,Permanente,permanente,REVISION_PROPORCIONAL,48.888888888888886,-5.88235294117647,40.130718954248366,revision_fuente_real
+Vijes,Ají,Transitorio,transitorio,SIN_QUIEBRE,0.0,-11.646586345381529,-11.646586345381527,
+Vijes,Arracacha,Transitorio,transitorio,MIXTO_OTRO,-14.285714285714285,-25.757575757575758,-36.36363636363637,inspeccion_manual
+Vijes,Arveja,Transitorio,transitorio,MIXTO_OTRO,0.0,-33.359746434231376,-33.359746434231376,inspeccion_manual
+Vijes,Banano,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Vijes,Café,Permanente,permanente,MIXTO_OTRO,-2.0954279794366526,-23.875668018220413,-25.470798569725872,inspeccion_manual
+Vijes,Caña,Permanente,permanente,SIN_QUIEBRE,5.699481865284974,0.0,5.699481865284974,
+Vijes,Cebolla de bulbo,Transitorio,transitorio,MIXTO_OTRO,0.0,-21.538461538461544,-21.53846153846154,inspeccion_manual
+Vijes,Cebolla de rama,Transitorio,transitorio,SIN_QUIEBRE,0.0,-1.9230769230769162,-1.9230769230769231,
+Vijes,Cilantro,Transitorio,transitorio,REVISION_PROPORCIONAL,7.6923076923076925,8.333333333333332,16.666666666666664,revision_fuente_real
+Vijes,Frijol,Transitorio,transitorio,SIN_QUIEBRE,-5.88235294117647,-0.5943251533742369,-6.4417177914110475,
+Vijes,Habichuela,Transitorio,transitorio,SIN_QUIEBRE,-11.538461538461538,0.0,-11.538461538461538,
+Vijes,Limón,Permanente,permanente,REVISION_PROPORCIONAL,0.0,-16.48351648351648,-16.483516483516482,revision_fuente_real
+Vijes,Lulo,Permanente,permanente,REVISION_PROPORCIONAL,25.0,0.0,25.0,revision_fuente_real
+Vijes,Mandarina,Permanente,permanente,SIN_QUIEBRE,22.573363431151243,-9.062916966026895,11.464641280919622,
+Vijes,Mango,Permanente,permanente,SIN_QUIEBRE,3.3333333333333335,-9.090909090909092,-6.0606060606060606,
+Vijes,Maracuyá,Permanente,permanente,SIN_QUIEBRE,-4.3478260869565215,-6.25,-10.326086956521738,
+Vijes,Maíz,Transitorio,transitorio,SIN_QUIEBRE,-8.47457627118644,5.548390178656722,-3.3963886500429945,
+Vijes,Naranja,Permanente,permanente,SIN_QUIEBRE,0.0,-13.054949272060062,-13.05494927206006,
+Vijes,Papaya,Permanente,permanente,MIXTO_OTRO,0.0,-25.925925925925924,-25.925925925925924,inspeccion_manual
+Vijes,Pepino Cohombro,Transitorio,transitorio,SIN_QUIEBRE,0.0,1.2658227848101267,1.2658227848101267,
+Vijes,Pimentón,Transitorio,transitorio,SIN_QUIEBRE,-2.380952380952381,2.710027100271005,0.26455026455026454,
+Vijes,Piña,Permanente,permanente,SIN_QUIEBRE,0.3215434083601286,-2.371487902719813,-2.0575698573909382,
+Vijes,Plátano,Permanente,permanente,SIN_QUIEBRE,7.333333333333333,0.0,7.333333333333333,
+Vijes,Tomate,Transitorio,transitorio,SIN_QUIEBRE,7.6923076923076925,2.06660048732064,9.917877447883765,
+Vijes,Yuca,Transitorio,transitorio,SIN_QUIEBRE,8.108108108108109,-1.046511627906972,6.976744186046512,
+Yotoco,Acelga,Transitorio,transitorio,MIXTO_OTRO,33.33333333333333,19.999999999999996,60.0,inspeccion_manual
+Yotoco,Aguacate,Permanente,permanente,SIN_QUIEBRE,0.0,-2.985074626865669,-2.9850746268656714,
+Yotoco,Ahuyama,Transitorio,transitorio,MIXTO_OTRO,29.411764705882355,-21.818181818181824,1.1764705882352942,inspeccion_manual
+Yotoco,Cacao,Permanente,permanente,MIXTO_OTRO,150.0,-65.14285714285715,-12.857142857142852,inspeccion_manual
+Yotoco,Café,Permanente,permanente,MIXTO_OTRO,-0.7633949739212961,-76.72622102669774,-76.90389188562149,inspeccion_manual
+Yotoco,Caña,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Yotoco,Cilantro,Transitorio,transitorio,SIN_QUIEBRE,0.0,0.0,0.0,
+Yotoco,Frijol,Transitorio,transitorio,SIN_QUIEBRE,11.11111111111111,0.0,11.11111111111111,
+Yotoco,Guanábana,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Yotoco,Guayaba,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Yotoco,Habichuela,Transitorio,transitorio,REVISION_PROPORCIONAL,78.57142857142857,0.0,78.57142857142857,revision_fuente_real
+Yotoco,Limón,Permanente,permanente,PATRON_LULO,0.0,100.0780031201248,100.07800312012478,quiebre_definicion_no_validado
+Yotoco,Lulo,Permanente,permanente,REVISION_PROPORCIONAL,100.0,0.0,100.0,revision_fuente_real
+Yotoco,Mandarina,Permanente,permanente,MIXTO_OTRO,0.0,20.06917565675699,20.069175656756983,inspeccion_manual
+Yotoco,Mango,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Yotoco,Maracuyá,Permanente,permanente,REVISION_PROPORCIONAL,57.14285714285714,0.0,57.14285714285714,revision_fuente_real
+Yotoco,Maíz,Transitorio,transitorio,SIN_QUIEBRE,-6.539682539682547,1.0423539727739919,-5.565495207667735,
+Yotoco,Naranja,Permanente,permanente,SIN_QUIEBRE,0.0,-14.294775231903593,-14.2947752319036,
+Yotoco,Papaya,Permanente,permanente,MIXTO_OTRO,0.0,-28.57142857142857,-28.57142857142857,inspeccion_manual
+Yotoco,Perejil,Transitorio,transitorio,REVISION_PROPORCIONAL,50.0,0.0,50.0,revision_fuente_real
+Yotoco,Pimentón,Transitorio,transitorio,REVISION_PROPORCIONAL,28.57142857142857,0.0,28.57142857142857,revision_fuente_real
+Yotoco,Pitahaya,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Yotoco,Piña,Permanente,permanente,REVISION_PROPORCIONAL,-31.25,0.0,-31.25,revision_fuente_real
+Yotoco,Plátano,Permanente,permanente,SIN_QUIEBRE,-12.780915287244401,0.0,-12.780915287244396,
+Yotoco,Tomate,Transitorio,transitorio,REVISION_PROPORCIONAL,48.148148148148145,0.0,48.148148148148145,revision_fuente_real
+Yotoco,Uva,Permanente,permanente,PATRON_LULO,4.878048780487805,94.44444444444444,103.92953929539294,quiebre_definicion_no_validado
+Yotoco,Yuca,Transitorio,transitorio,MIXTO_OTRO,25.0,100.0,150.0,inspeccion_manual
+Yumbo,Aguacate,Permanente,permanente,SIN_QUIEBRE,18.808777429467085,-8.333333333333346,8.908045977011485,
+Yumbo,Ahuyama,Transitorio,transitorio,REVISION_PROPORCIONAL,19.24999999999999,0.0,19.249999999999996,revision_fuente_real
+Yumbo,Ají,Transitorio,transitorio,MIXTO_OTRO,60.0,-50.0,-20.0,inspeccion_manual
+Yumbo,Arracacha,Transitorio,transitorio,REVISION_PROPORCIONAL,57.89473684210527,-0.4761904761904736,57.14285714285714,revision_fuente_real
+Yumbo,Arveja,Transitorio,transitorio,MIXTO_OTRO,17.647058823529417,-26.428571428571423,-13.445378151260497,inspeccion_manual
+Yumbo,Banano,Permanente,permanente,REVISION_PROPORCIONAL,16.286644951140065,1.7763568394002505e-14,16.28664495114008,revision_fuente_real
+Yumbo,Cacao,Permanente,permanente,MIXTO_OTRO,-6.896551724137923,-50.617283950617285,-54.02298850574713,inspeccion_manual
+Yumbo,Café,Permanente,permanente,MIXTO_OTRO,0.7804963606068583,-35.5308507134065,-35.02767134951043,inspeccion_manual
+Yumbo,Caña,Permanente,permanente,SIN_QUIEBRE,-2.42306760358614,13.607438371690364,10.85465333724186,
+Yumbo,Cebolla de bulbo,Transitorio,transitorio,PATRON_LULO,5.555555555555555,56.25,64.93055555555556,quiebre_definicion_no_validado
+Yumbo,Cebolla de rama,Transitorio,transitorio,MIXTO_OTRO,8.108108108108103,-30.0,-24.324324324324326,inspeccion_manual
+Yumbo,Cilantro,Transitorio,transitorio,REVISION_PROPORCIONAL,-23.333333333333332,20.0,-8.0,revision_fuente_real
+Yumbo,Frijol,Transitorio,transitorio,MIXTO_OTRO,-10.0,25.10425354462051,12.593828190158462,inspeccion_manual
+Yumbo,Granadilla,Permanente,permanente,MIXTO_OTRO,96.15384615384615,-16.666666666666664,63.461538461538446,inspeccion_manual
+Yumbo,Guanábana,Permanente,permanente,MIXTO_OTRO,19.083969465648853,-33.33333333333333,-20.61068702290076,inspeccion_manual
+Yumbo,Guayaba,Permanente,permanente,REVISION_PROPORCIONAL,15.094339622641506,0.0,15.09433962264151,revision_fuente_real
+Yumbo,Habichuela,Transitorio,transitorio,REVISION_PROPORCIONAL,125.00000000000003,0.0,125.0,revision_fuente_real
+Yumbo,Lechuga,Transitorio,transitorio,REVISION_PROPORCIONAL,56.249999999999986,0.0,56.25,revision_fuente_real
+Yumbo,Limón,Permanente,permanente,MIXTO_OTRO,1080.357142857143,20.17883755588675,1318.5394932935917,inspeccion_manual
+Yumbo,Mandarina,Permanente,permanente,REVISION_PROPORCIONAL,63.15789473684211,-0.41928721174004907,62.47379454926624,revision_fuente_real
+Yumbo,Mango,Permanente,permanente,SIN_QUIEBRE,-6.6298342541436615,0.0,-6.629834254143656,
+Yumbo,Maracuyá,Permanente,permanente,REVISION_PROPORCIONAL,120.00000000000001,-1.4210854715202004e-14,120.0,revision_fuente_real
+Yumbo,Maíz,Transitorio,transitorio,MIXTO_OTRO,-18.75,-74.90000789716956,-79.60625641645026,inspeccion_manual
+Yumbo,Mora,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Yumbo,Naranja,Permanente,permanente,SIN_QUIEBRE,11.456628477905083,0.0036371571979313096,11.460682330690329,
+Yumbo,Otras hortalizas,Transitorio,transitorio,MIXTO_OTRO,-80.0,233.33333333333334,-33.33333333333333,inspeccion_manual
+Yumbo,Papaya,Permanente,permanente,REVISION_PROPORCIONAL,-77.54010695187166,0.5818116720372726,-77.40943267259057,revision_fuente_real
+Yumbo,Pimentón,Transitorio,transitorio,REVISION_PROPORCIONAL,150.0,0.0,150.0,revision_fuente_real
+Yumbo,Piña,Permanente,permanente,REVISION_PROPORCIONAL,-80.0,0.0,-80.0,revision_fuente_real
+Yumbo,Plantas aromáticas,Transitorio,transitorio,MIXTO_OTRO,-10.140405616224639,25.0,12.324492979719198,inspeccion_manual
+Yumbo,Plátano,Permanente,permanente,REVISION_PROPORCIONAL,18.348623853211006,7.142857142857157,26.80209698558323,revision_fuente_real
+Yumbo,Sábila,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Yumbo,Tomate,Transitorio,transitorio,MIXTO_OTRO,161.45833333333334,32.858041518137966,247.3684210526316,inspeccion_manual
+Yumbo,Uva,Permanente,permanente,REVISION_PROPORCIONAL,-22.451317296678116,0.0,-22.451317296678116,revision_fuente_real
+Yumbo,Yuca,Transitorio,transitorio,MIXTO_OTRO,850.0,-2.5563909774436,825.7142857142858,inspeccion_manual
+Yumbo,Zapote,Permanente,permanente,REVISION_PROPORCIONAL,0.0,-16.666666666666664,-16.666666666666664,revision_fuente_real
+Zarzal,Cacao,Permanente,permanente,REVISION_PROPORCIONAL,0.0,-16.666666666666664,-16.666666666666657,revision_fuente_real
+Zarzal,Caña,Permanente,permanente,REVISION_PROPORCIONAL,-35.15439429928741,1.6805884524360457,-34.06460653796903,revision_fuente_real
+Zarzal,Guanábana,Permanente,permanente,SIN_QUIEBRE,0.0,0.0,0.0,
+Zarzal,Guayaba,Permanente,permanente,REVISION_PROPORCIONAL,-69.23076923076923,0.0,-69.23076923076923,revision_fuente_real
+Zarzal,Limón,Permanente,permanente,SIN_QUIEBRE,6.091370558375629,0.09314929291219386,6.19019391989161,
+Zarzal,Mandarina,Permanente,permanente,SIN_QUIEBRE,0.0,-0.032785908020624234,-0.03278590802062938,
+Zarzal,Mango,Permanente,permanente,MIXTO_OTRO,0.0,-33.33333333333333,-33.33333333333333,inspeccion_manual
+Zarzal,Maíz,Transitorio,transitorio,SIN_QUIEBRE,-4.710920770877944,0.0,-4.710920770877944,
+Zarzal,Naranja,Permanente,permanente,SIN_QUIEBRE,5.5696918292338315,0.0,5.569691829233827,
+Zarzal,Plátano,Permanente,permanente,MIXTO_OTRO,0.0,-40.00000000000001,-40.0,inspeccion_manual
+Zarzal,Soya,Transitorio,transitorio,SIN_QUIEBRE,-6.926406926406926,0.0,-6.926406926406919,
+Zarzal,Uva,Permanente,permanente,REVISION_PROPORCIONAL,554.2056074766355,1.7763568394002508e-14,554.2056074766356,revision_fuente_real
+Zarzal,Yuca,Transitorio,transitorio,SIN_QUIEBRE,-8.791208791208776,-5.263157894736842,-13.591671486408316,
