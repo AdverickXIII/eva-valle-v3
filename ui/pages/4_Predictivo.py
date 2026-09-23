@@ -12,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from config.settings import settings
 from core.analytics.forecast import (elegir_mejor, proyectar_con_ic,
                                       proyectar_estable_con_ic)
+from core.analytics.calidad_datos import NOTA_PANEL_D1, flag_quiebre_2021_2022
 from core.reports.predictivo_pdf import build_predictivo_pdf
 from ui.components.loading_states import render_empty_state
 from ui.services.error_handler import run_safe
@@ -70,6 +71,21 @@ def main() -> None:
     if len(serie) < 4:
         st.error("Serie demasiado corta (se necesitan al menos 4 anos).")
         return
+
+    # AUD-UI-025: flag de quiebre de definicion 2021-2022 para esta serie
+    area_col = next((c for c in ("area_ha", "area_cosechada_ha", "area")
+                     if c in df.columns), None)
+    serie_area = (df_c.groupby("ano")[area_col].sum().sort_index()
+                  if area_col else None)
+    flag_quiebre, detalle_quiebre = flag_quiebre_2021_2022(serie, serie_area)
+    if flag_quiebre:
+        st.warning(
+            f"**Quiebre de definicion 2021-2022 sin validar** en esta serie "
+            f"({detalle_quiebre}). La fuente cambio de 'siembras del periodo' a "
+            f"'cosechas efectivas' (UPRA); en cultivos permanentes el salto no esta "
+            f"validado con la fuente. La proyeccion oficial usa el nivel "
+            f"post-quiebre como piso honesto; interprete tendencias con cautela."
+        )
 
     # ---------- PROYECCION DUAL (AUD-UI-022) ----------
     res_estable, res_ensemble = _proyectar_cacheado(serie, horizonte)
@@ -157,6 +173,7 @@ def main() -> None:
         "y no supero al naive (WAPE mediano anual 17.3% vs 11.1%; semestral 39.5% "
         "vs 33.3%). Se documenta como resultado negativo en la auditoria."
     )
+    st.caption(NOTA_PANEL_D1)
 
     # ---------- RANKING DE MODELOS (backtest del ensemble) ----------
     with st.expander("🔬 Comparativa de modelos (backtest del ensemble)"):
@@ -184,7 +201,9 @@ def main() -> None:
     with d2:
         st.download_button(
             "⬇️ Descargar proyeccion (PDF)",
-            data=build_predictivo_pdf(cultivo, muni, serie, res_ensemble, horizonte),
+            data=build_predictivo_pdf(cultivo, muni, serie, res_ensemble,
+                                   horizonte,
+                                   nota_quiebre=(detalle_quiebre or None)),
             file_name=f"proyeccion_{cultivo}_{muni}.pdf".lower().replace(" ", "_"),
             mime="application/pdf", use_container_width=True)
 

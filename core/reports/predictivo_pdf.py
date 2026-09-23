@@ -16,6 +16,7 @@ from reportlab.platypus import (Image as RLImage, Paragraph, SimpleDocTemplate,
 
 from core.reports import meta
 from core.analytics.forecast import proyectar_estable_con_ic
+from core.analytics.calidad_datos import NOTA_PANEL_D1
 
 VERDE = "#2E8B57"
 NARANJA = "#DD6B20"
@@ -72,7 +73,8 @@ def _forecast_png(serie, res_estable, res_ensemble) -> bytes:
     return _png(fig)
 
 
-def build_predictivo_pdf(cultivo, muni, serie, res, horizonte) -> bytes:
+def build_predictivo_pdf(cultivo, muni, serie, res, horizonte,
+                         nota_quiebre: str | None = None) -> bytes:
     buf = io.BytesIO()
     doc = SimpleDocTemplate(buf, onPage=pagina_con_logo, pagesize=letter, title="Proyeccion Agricola")
     st_ = getSampleStyleSheet()
@@ -167,6 +169,13 @@ def build_predictivo_pdf(cultivo, muni, serie, res, horizonte) -> bytes:
         "naive y 16.5% del ensemble local; en semestral 39.5% vs 33.3% y "
         "37.3%. Al no superar al baseline en ninguna rama, no se exhibe como "
         "pronostico: se documenta como resultado negativo en la auditoria.", body))
+    story.append(Paragraph(NOTA_PANEL_D1, body))
+    if nota_quiebre:
+        story.append(Paragraph(
+            "<b>Calidad de datos (D1) - esta serie:</b> presenta un quiebre de "
+            f"definicion entre 2021 y 2022 ({nota_quiebre}) no validado con la "
+            "fuente. La proyeccion oficial usa el nivel post-quiebre como piso "
+            "honesto; interprete las tendencias con cautela.", body))
     story.append(Spacer(1, 0.3 * cm))
     story.append(Paragraph(
         f"Fuente: UPRA - EVA 2019-2025. {meta.firma()}.",
