@@ -191,6 +191,36 @@ def main() -> None:
 
     # ---------- EXPORTACION ----------
     st.markdown("---")
+    # AUD-UI-026: fichas v5 como entregable oficial (pipeline auditado)
+    from pathlib import Path as _Path
+    _fichas_v5 = None
+    for _p in ("entregables/fichas_valle_del_cauca_v5.pdf",
+               "outputs_v5/fichas_cultivos/fichas_valle_del_cauca.pdf"):
+        if _Path(_p).exists():
+            _fichas_v5 = _Path(_p)
+            break
+    if _fichas_v5:
+        st.download_button(
+            "📊 Descargar FICHAS OFICIALES v5 (pipeline auditado, 47/47 PASS)",
+            data=_fichas_v5.read_bytes(),
+            file_name="fichas_valle_del_cauca_v5.pdf",
+            mime="application/pdf",
+        )
+        st.caption(
+            "**Entregable oficial:** las fichas v5 salen del pipeline auditado "
+            "(47/47 pruebas PASS; ningun modelo supera a naive con IC95%; central "
+            "forzado a pool_A_full como decision rotulada; bandas calibradas y "
+            "semaforo con sensibilidad D1). Esta pagina conserva el motor historico "
+            "(naive + IC sqrt(t)) como referencia operativa."
+        )
+    else:
+        st.info(
+            "📊 **Fichas oficiales v5 no disponibles en este entorno.** Generelas "
+            "con el notebook explore_base_agricola_v5_2_fichas.ipynb (Kernel > "
+            "Restart & Run All). Incluyen portada, indice, 78 fichas con bandas "
+            "80/95%, escenarios y semaforo de confianza con nota D1."
+        )
+
     d1, d2 = st.columns(2)
     with d1:
         st.download_button(
