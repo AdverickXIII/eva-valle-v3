@@ -34,3 +34,8 @@ test_logo.pdf
 cartas_institucionales/
 cartas_comerciales/
 scripts/generar_cartas_institucionales.py
+outputs_v5/data_quality/
+outputs_v5/diagnostics/
+outputs_v5/fichas_cultivos/por_cultivo_*/
+*.ipynb_checkpoints/
+Untitled.ipynb
