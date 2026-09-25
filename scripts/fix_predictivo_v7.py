@@ -1,4 +1,19 @@
-"""Pagina Predictivo v7 — portal de artefactos del pipeline v5 (notebook shock-aware).
+"""AUD-V5-005: reescribir 4_Predictivo.py con mapeo real de columnas,
+slug con guion bajo, y filtro municipal real usando forecast_series_level.csv.
+Fail-safe: backup, rollback, autotest estatico, sintaxis.
+"""
+import shutil
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+import json
+import py_compile
+
+RAIZ = Path(__file__).resolve().parent.parent
+UI = RAIZ / "ui" / "pages" / "4_Predictivo.py"
+LOG = RAIZ / "logs" / "audit_hotfix.jsonl"
+
+PREDICTIVO_V7 = r'''"""Pagina Predictivo v7 — portal de artefactos del pipeline v5 (notebook shock-aware).
 No ejecuta ningun modelo: lee outputs_v5/ producido por explore_base_agricola_v5_2_fichas (1).ipynb
 (47/47 pruebas PASS, naive imbatible, central forzado a pool_A_full, D1 integrado).
 AUD-V5-005.
@@ -278,3 +293,61 @@ cosechas efectivas; por eso solo 2022-2025 es comparable en transitorios.
 """)
 
 st.caption("AUD-V5-005 · portal de artefactos v5 · motor legacy archivado")
+'''
+
+
+def audit(evento, estado, detalle=""):
+    LOG.parent.mkdir(exist_ok=True)
+    with open(LOG, "a", encoding="utf-8") as f:
+        f.write(json.dumps({"ts": datetime.now(timezone.utc).isoformat(),
+                            "evento": evento, "estado": estado,
+                            "detalle": detalle}, ensure_ascii=False) + "\n")
+
+
+def fail(motivo):
+    audit("AUD-V5-005", "FALLO", motivo)
+    print(f"[ERROR] {motivo}")
+    return 1
+
+
+def main():
+    if not UI.exists():
+        return fail(f"no existe {UI}")
+
+    # 1) backup
+    bak = UI.with_suffix(".py.bak.v6")
+    shutil.copy2(UI, bak)
+
+    # 2) escribir portal v7
+    UI.write_text(PREDICTIVO_V7, encoding="utf-8")
+    print(f"[OK] {UI.name} reescrito (v7: slug _ y filtro municipal) | backup: {bak.name}")
+
+    # 3) autotest estatico
+    texto = UI.read_text(encoding="utf-8")
+    tokens = ("outputs_v5", "meta_series.csv", "forecast_series_level.csv",
+              "sensitivity_D1_exclude_quiebre", "AUD-V5-005", "st.download_button",
+              "pronostico_{_slug(crop_sel)}.png",
+              "fc_series[\"muni_code\"] == scope_code")
+    for token in tokens:
+        if token not in texto:
+            shutil.copy2(bak, UI)
+            return fail(f"autotest: falta {token}")
+    print(f"[OK] autotest: {len(tokens)} tokens v7 presentes")
+
+    # 4) sintaxis
+    try:
+        py_compile.compile(str(UI), doraise=True)
+    except py_compile.PyCompileError as e:
+        shutil.copy2(bak, UI)
+        audit("AUD-V5-005", "ROLLBACK", str(e)[:200])
+        return fail(f"sintaxis invalida: {e}")
+    print("[OK] sintaxis valida")
+
+    audit("AUD-V5-005", "OK", "portal v7 desplegado")
+    print("\n[OK] AUD-V5-005 aplicado.")
+    print("Siguiente: verificar local con `streamlit run app.py` y luego commitear.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
