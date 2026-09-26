@@ -73,19 +73,44 @@ def test_shannon_columnas_faltantes_devuelve_vacio():
     assert calculate_shannon_diversity(pd.DataFrame({"municipio": ["A"]})).empty
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason="Bug conocido: cultivos_distintos usa nunique sobre area_sembrada_ha "
-           "(valores de area distintos), no sobre cultivos distintos.",
-)
 def test_shannon_cultivos_distintos_cuenta_cultivos_no_valores_de_area():
+    # Regresion: antes hacia nunique sobre area_sembrada_ha, asi que dos cultivos
+    # con la misma area contaban como uno.
     df = pd.DataFrame({
-        "municipio": ["A", "A"],
-        "cultivo": ["Maiz", "Frijol"],
-        "area_sembrada_ha": [10.0, 10.0],   # dos cultivos con la misma area
+        "municipio": ["A", "A", "B"],
+        "cultivo": ["Maiz", "Frijol", "Maiz"],
+        "area_sembrada_ha": [10.0, 10.0, 7.0],
     })
     res = calculate_shannon_diversity(df).set_index("municipio")
     assert res.loc["A", "cultivos_distintos"] == 2
+    assert res.loc["B", "cultivos_distintos"] == 1
+
+
+def test_shannon_cultivos_distintos_repite_cultivo_en_varios_anos():
+    df = pd.DataFrame({
+        "municipio": ["A", "A", "A"],
+        "cultivo": ["Maiz", "Maiz", "Frijol"],
+        "area_sembrada_ha": [10.0, 12.0, 5.0],
+    })
+    res = calculate_shannon_diversity(df).set_index("municipio")
+    assert res.loc["A", "cultivos_distintos"] == 2
+
+
+def test_shannon_sin_columna_cultivo_cuenta_filas_con_area_positiva():
+    df = pd.DataFrame({
+        "municipio": ["A", "A", "A", "B"],
+        "area_sembrada_ha": [10.0, 10.0, 0.0, 4.0],
+    })
+    res = calculate_shannon_diversity(df).set_index("municipio")
+    assert res.loc["A", "cultivos_distintos"] == 2
+    assert res.loc["B", "cultivos_distintos"] == 1
+
+
+def test_shannon_conserva_orden_de_columnas():
+    df = pd.DataFrame({"municipio": ["A"], "area_sembrada_ha": [1.0]})
+    assert list(calculate_shannon_diversity(df).columns) == [
+        "municipio", "cultivos_distintos", "shannon_wiener", "area_total",
+    ]
 
 
 # --- lq_top --------------------------------------------------------------------
@@ -125,18 +150,19 @@ def test_lq_top_excluye_cana(panel_prod):
     assert "GC" not in set(sin["grupo_cultivo"])
 
 
-@pytest.mark.xfail(
-    strict=True,
-    raises=KeyError,
-    reason="Bug conocido: si tras el filtro no queda ninguna fila, "
-           "sort_values('lq') falla con KeyError sobre un DataFrame vacio.",
-)
-def test_lq_top_sin_filas_tras_filtrar_devuelve_vacio():
+def test_lq_top_sin_filas_tras_filtrar_devuelve_vacio_con_columnas():
+    # Regresion: antes fallaba con KeyError('lq'). 2_Descriptivo.py accede a
+    # df_lq['share_municipio_pct'], asi que el vacio debe conservar las columnas.
     df = pd.DataFrame({
         "municipio": ["M1"], "grupo_cultivo": ["GC"], "cultivo": ["Caña"],
         "produccion_t": [100.0],
     })
-    assert lq_top(df, excluye_cana=True).empty
+    res = lq_top(df, excluye_cana=True)
+    assert res.empty
+    assert list(res.columns) == [
+        "municipio", "grupo_cultivo", "share_municipio_pct", "share_valle_pct", "lq",
+    ]
+    assert res[res["share_municipio_pct"] >= 5].empty   # lo que hace la UI
 
 
 # --- calculate_descriptive_statistics ------------------------------------------------
