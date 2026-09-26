@@ -1,3 +1,4 @@
+# Desarrollo y CI: dependencias de ejecucion + herramientas de calidad.
 -r requirements.txt
 
 pytest>=7.4.0
