@@ -34,7 +34,7 @@ def _stats(df_m: pd.DataFrame, df_all: pd.DataFrame) -> dict:
     cos = float(df_m["area_cosechada_ha"].sum())
     g = df_m.groupby("cultivo")["produccion_t"].sum()
     g = g[g > 0]
-    p = g / g.sum() if g.sum() else p
+    p = g / g.sum() if g.sum() else g  # g queda vacio si no hay produccion
     shannon = float(-(p * np.log(p)).sum()) if len(p) else 0.0
     anual = df_m.groupby("ano")["produccion_t"].sum().sort_index()
     cagr = 0.0
