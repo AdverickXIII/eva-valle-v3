@@ -5,7 +5,6 @@ area estable < 15% y salto de rendimiento > 40% (en valor absoluto).
 """
 from __future__ import annotations
 
-import numpy as np
 import pandas as pd
 
 U_AREA = 15.0

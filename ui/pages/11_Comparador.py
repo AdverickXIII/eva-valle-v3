@@ -1,18 +1,20 @@
 """Pagina 11: Comparador de municipios (cara a cara profesional)."""
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
-from pathlib import Path
-import sys
+
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from config.settings import settings
-from ui.components.loading_states import render_empty_state
 from core.reports.comparador_pdf import build_comparador_pdf
+from ui.components.loading_states import render_empty_state
 
 st.set_page_config(page_title="Comparador | EVA Valle", page_icon="⚖️", layout="wide")
 

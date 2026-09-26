@@ -5,7 +5,6 @@ normalizar); capa de entrada reducida de 5 a 3 (nombre acorde en AUD-ML-006).
 AUD-MLP-002: residuos leave-one-out trazables (loo_fitted_) reemplazan el
 bucle de re-entrenamiento degenerado; clip [0, 3x max historico] (AUD-MLP-001)."""
 import numpy as np
-import pandas as pd
 
 MLP_CAP_MULTIPLIER = 3.0
 

@@ -1,9 +1,10 @@
 """Pagina 18: Validacion Satelital v4 (mosaico estetico)."""
-import streamlit as st
+from pathlib import Path
+
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-from pathlib import Path
+import streamlit as st
 
 st.set_page_config(page_title="Validacion Satelital | EVA Valle", page_icon="🛰️", layout="wide")
 

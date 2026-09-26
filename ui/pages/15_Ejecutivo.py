@@ -1,18 +1,26 @@
 """Pagina 15: Resumen ejecutivo (estandar profesional) con analisis dual."""
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
-from pathlib import Path
-import sys
+
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from config.settings import settings
 from core.analytics.executive import executive_summary
-from core.analytics.pareto import (conc_metrics, pareto, quality,
-                                   recomendaciones, territorial, tiering)
+from core.analytics.pareto import (
+    conc_metrics,
+    pareto,
+    quality,
+    recomendaciones,
+    territorial,
+    tiering,
+)
 from core.reports.executive_report import build_executive_pdf
 from ui.components.loading_states import render_empty_state
 

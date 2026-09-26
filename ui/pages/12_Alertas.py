@@ -1,15 +1,17 @@
 """Pagina 12: Centro de Alertas (filtros, radar, tabla y exportacion)."""
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
-from pathlib import Path
-import sys
+
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from config.settings import settings
-from core.analytics.alerts import (generate_alerts, indice_riesgo_municipal)
+from core.analytics.alerts import generate_alerts, indice_riesgo_municipal
 from core.reports.riesgo_report import build_riesgo_pdf
 from ui.components.loading_states import render_empty_state
 

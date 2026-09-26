@@ -4,7 +4,7 @@ from __future__ import annotations
 import pandas as pd
 
 from core.analytics.alerts import generate_alerts
-from core.reports.crop_data import _gini, interpretar_gini
+from core.reports.crop_data import _gini
 
 
 def _pct(new: float, old: float) -> float:

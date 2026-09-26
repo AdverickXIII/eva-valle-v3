@@ -6,24 +6,30 @@ from datetime import date
 from pathlib import Path
 
 import pandas as pd
-from core.reports.branding import pagina_con_logo, build_con_logo
-from reportlab.graphics.charts.barcharts import HorizontalBarChart
-from reportlab.graphics.shapes import Drawing
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import cm
-from reportlab.platypus import (KeepTogether, Paragraph, SimpleDocTemplate,
-                                Spacer, Table, TableStyle)
+from reportlab.platypus import (
+    Paragraph,
+    SimpleDocTemplate,
+    Spacer,
+    Table,
+    TableStyle,
+)
 
 from config.settings import settings
 from core.analytics.narrative_engine import (
-    frase_de_la_agricultura, generar_insights,
+    frase_de_la_agricultura,
+    generar_insights,
 )
 from core.analytics.strategic_matrices import (
-    matriz_cultivos, matriz_municipios, resumen_matrices,
+    matriz_cultivos,
+    matriz_municipios,
+    resumen_matrices,
 )
 from core.reports import meta
+from core.reports.branding import build_con_logo, pagina_con_logo
 
 VERDE = colors.HexColor("#2E8B57")
 GRIS = colors.HexColor("#4A5568")
@@ -155,8 +161,7 @@ def build_storytelling(df: pd.DataFrame) -> bytes:
     story.append(Spacer(1, 0.3 * cm))
     story.append(Paragraph(
         "<b>La pregunta clave:</b> La agricultura esta creciendo, pero el crecimiento es "
-        "modesto (+{:.1f}% anual promedio). La pregunta es: ¿que esta impulsando este crecimiento?".format(
-            crecimiento_total / (ultimo - anos[0])), body))
+        f"modesto (+{crecimiento_total / (ultimo - anos[0]):.1f}% anual promedio). La pregunta es: ¿que esta impulsando este crecimiento?", body))
 
     # --- CAPITULO 3: QUE IMPULSA EL CRECIMIENTO ---
     story.append(Paragraph("3. ¿Que impulsa el crecimiento?", h1))
@@ -279,8 +284,8 @@ def build_storytelling(df: pd.DataFrame) -> bytes:
     ter = territorial(df)
 
     story.append(Paragraph(
-        f"La produccion agricola presenta <b>alta concentracion</b> tanto productiva como "
-        f"territorial:", body))
+        "La produccion agricola presenta <b>alta concentracion</b> tanto productiva como "
+        "territorial:", body))
     story.append(Spacer(1, 0.3 * cm))
 
     d7 = [["Indicador", "Valor", "Interpretacion"],

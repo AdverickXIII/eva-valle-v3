@@ -18,7 +18,10 @@ import pandas as pd
 from adapters.storage.csv_storage import CsvStorage
 from config.settings import settings
 from core.diagnostics.comparison import compare_cycles
-from core.diagnostics.correlation import calculate_bivariate_stats, calculate_correlation_matrix
+from core.diagnostics.correlation import (
+    calculate_bivariate_stats,
+    calculate_correlation_matrix,
+)
 from core.diagnostics.root_cause import find_root_causes
 from core.diagnostics.segmentation import segment_municipalities
 from core.diagnostics.shock import analyze_shock

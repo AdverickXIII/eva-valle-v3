@@ -13,13 +13,11 @@ Uso:
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Optional
 
 
 class EvaValleError(Exception):
     """Excepcion base del proyecto. Todas las demas heredan de esta."""
 
-    pass
 
 
 class DatasetNotFoundError(EvaValleError, FileNotFoundError):
@@ -46,7 +44,7 @@ class AuditError(EvaValleError):
 class DownloaderError(EvaValleError):
     """Se lanza cuando falla la descarga desde el portal UPRA."""
 
-    def __init__(self, file_key: str, reason: str, url: Optional[str] = None) -> None:
+    def __init__(self, file_key: str, reason: str, url: str | None = None) -> None:
         self.file_key = file_key
         self.url = url
         msg = f"Descarga fallida para '{file_key}': {reason}"

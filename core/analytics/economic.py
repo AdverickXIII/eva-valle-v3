@@ -1,6 +1,6 @@
 """Modelo economico v0: valorizacion con precios de referencia (supuesto declarado)."""
-from functools import lru_cache
 import unicodedata
+from functools import lru_cache
 
 import pandas as pd
 

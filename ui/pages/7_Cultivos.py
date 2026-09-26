@@ -1,24 +1,31 @@
 """Pagina 7: Cultivos (fusion panoramica + analisis profundo + exportacion)."""
 from __future__ import annotations
-import streamlit as st
+
+import sys
+from pathlib import Path
+
 import pandas as pd
 import plotly.graph_objects as go
-from pathlib import Path
-import sys
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-from ui.services.error_handler import run_safe
+import streamlit as st
 
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from config.settings import settings
-from ui.components.metrics_cards import render_kpi_row
-from ui.components.loading_states import render_empty_state
-from ui.components.download_section import render_download_button
-from ui.charts.theme import PALETTE
-from ui.charts.growth_decomp import (descomponer_crecimiento, plot_cuadrantes,
-                                      plot_motor_barras)
-from ui.charts.growth import plot_cagr_divergente
-from ui.charts.crop_card import (diagnostic_subset, plot_crop_indice,
-                                 plot_crop_serie, plot_top_municipios)
 from core.reports.ficha_pdf import build_ficha_pdf
+from ui.charts.crop_card import (
+    diagnostic_subset,
+    plot_crop_indice,
+    plot_crop_serie,
+    plot_top_municipios,
+)
+from ui.charts.growth import plot_cagr_divergente
+from ui.charts.growth_decomp import (
+    descomponer_crecimiento,
+    plot_motor_barras,
+)
+from ui.charts.theme import PALETTE
+from ui.components.loading_states import render_empty_state
+from ui.components.metrics_cards import render_kpi_row
+from ui.services.error_handler import run_safe
 
 st.set_page_config(page_title="Cultivos | EVA Valle", page_icon="🌱", layout="wide")
 

@@ -1,10 +1,16 @@
 """Pagina 24: Selector de modelos por bandits (puente M3 a produccion)."""
-import streamlit as st
-import plotly.graph_objects as go
 import pandas as pd
+import plotly.graph_objects as go
+import streamlit as st
 
-from core.analytics.model_selector import (recomendar, municipios, cultivos_de,
-                                           ARMS, EPS, CRITICOS)
+from core.analytics.model_selector import (
+    ARMS,
+    CRITICOS,
+    EPS,
+    cultivos_de,
+    municipios,
+    recomendar,
+)
 
 st.set_page_config(page_title="Selector de Modelos | EVA Valle", page_icon="\U0001F3B0",
                    layout="wide")

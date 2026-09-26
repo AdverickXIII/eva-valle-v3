@@ -11,13 +11,12 @@ Migrado del Notebook 1 (Downloader v3.2) con las siguientes mejoras:
 """
 from __future__ import annotations
 
-import hashlib
 import json
 import time
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 import requests
 from bs4 import BeautifulSoup
@@ -66,13 +65,13 @@ class DownloadResult:
     clave: str
     exitoso: bool = False
     saltado: bool = False
-    url_descarga: Optional[str] = None
-    filepath: Optional[str] = None
-    tamanio_bytes: Optional[int] = None
-    checksum_sha256: Optional[str] = None
+    url_descarga: str | None = None
+    filepath: str | None = None
+    tamanio_bytes: int | None = None
+    checksum_sha256: str | None = None
     valido_excel: bool = False
     timestamp: str = field(default_factory=lambda: datetime.now().isoformat())
-    error: Optional[str] = None
+    error: str | None = None
 
 
 class UpraDownloader:
@@ -235,7 +234,7 @@ class UpraDownloader:
                 continue
         raise DownloaderError(tab_keyword, f"No se encontro la pestana '{tab_keyword}'")
 
-    def _extract_url(self, driver, file_keyword: str) -> Optional[str]:
+    def _extract_url(self, driver, file_keyword: str) -> str | None:
         soup = BeautifulSoup(driver.page_source, "lxml")
         base_domain = "https://upra.gov.co"
         for a in soup.find_all("a", href=True):
@@ -247,7 +246,7 @@ class UpraDownloader:
                     return url
         return None
 
-    def _download_file(self, url: str, nombre_base: str) -> Optional[Path]:
+    def _download_file(self, url: str, nombre_base: str) -> Path | None:
         for intento in range(1, settings.DOWNLOAD_RETRIES + 1):
             filepath = settings.DATA_RAW_PATH / f"{nombre_base}.xlsx"
             try:
@@ -265,7 +264,7 @@ class UpraDownloader:
                             bytes_escritos += len(chunk)
 
                 if content_length and bytes_escritos < content_length:
-                    raise IOError(
+                    raise OSError(
                         f"Descarga incompleta: {bytes_escritos / 1024**2:.1f} MB "
                         f"de {content_length / 1024**2:.1f} MB esperados."
                     )
@@ -273,7 +272,7 @@ class UpraDownloader:
                 log.info("Descarga completada: %s (%.1f MB)", filepath.name, bytes_escritos / 1024**2)
                 return filepath
 
-            except (requests.exceptions.RequestException, IOError) as e:
+            except (OSError, requests.exceptions.RequestException) as e:
                 if filepath.exists():
                     filepath.unlink()
                 log.warning("Intento %d/%d fallo: %s", intento, settings.DOWNLOAD_RETRIES, e)

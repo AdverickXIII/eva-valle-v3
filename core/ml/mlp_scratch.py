@@ -6,8 +6,8 @@ Autor: Moises Zuñiga Grueso
 Sin PyTorch, sin TensorFlow. Solo NumPy.
 Cada linea tiene justificacion matematica.
 """
+
 import numpy as np
-from typing import List, Tuple, Callable
 
 # ============================================================
 # 1) FUNCIONES DE ACTIVACION Y SUS DERIVADAS
@@ -93,7 +93,7 @@ class MLP:
     of training deep feedforward neural networks", AISTATS.
     """
     
-    def __init__(self, layer_dims: List[int], activations: List[str], seed: int = 42):
+    def __init__(self, layer_dims: list[int], activations: list[str], seed: int = 42):
         """
         Args:
             layer_dims:   [input_dim, hidden1, hidden2, ..., output_dim]
@@ -109,8 +109,8 @@ class MLP:
         self.act_names = activations
         
         # Inicializacion Xavier/Glorot
-        self.W: List[np.ndarray] = []
-        self.b: List[np.ndarray] = []
+        self.W: list[np.ndarray] = []
+        self.b: list[np.ndarray] = []
         for l in range(self.L):
             fan_in, fan_out = layer_dims[l], layer_dims[l + 1]
             std = np.sqrt(2.0 / (fan_in + fan_out))  # Xavier
@@ -118,7 +118,7 @@ class MLP:
             self.b.append(np.zeros((fan_out, 1)))
         
         # Cache para backprop
-        self._cache: List[Tuple[np.ndarray, np.ndarray]] = []
+        self._cache: list[tuple[np.ndarray, np.ndarray]] = []
         self._input: np.ndarray = np.array([])
         
         # Historial de entrenamiento
@@ -343,7 +343,7 @@ if __name__ == "__main__":
     
     pred = net.predict(X_xor)
     print(f"\nPredicciones XOR: {pred.round(3).flatten()}")
-    print(f"Esperado:          [0, 1, 1, 0]")
+    print("Esperado:          [0, 1, 1, 0]")
     
     # Test 2: Gradient check
     print("\n--- Test 2: Gradient Check ---")

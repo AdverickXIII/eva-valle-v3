@@ -1,11 +1,13 @@
 """Pagina 13: Treemap de cultivos (jerarquia grupo -> cultivo)."""
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
 import pandas as pd
 import plotly.express as px
 import streamlit as st
-from pathlib import Path
-import sys
+
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from config.settings import settings

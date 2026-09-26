@@ -1,7 +1,6 @@
 """Funciones de integracion para aplicar seguridad en login."""
+from core.security.input_validator import sanitize_password, sanitize_username
 from core.security.rate_limiter import login_limiter
-from core.security.session_manager import check_session_timeout
-from core.security.input_validator import sanitize_username, sanitize_password
 
 
 def secure_login_attempt(username: str, password: str, ip: str = "unknown") -> dict:

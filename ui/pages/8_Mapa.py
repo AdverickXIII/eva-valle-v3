@@ -1,17 +1,19 @@
 """Pagina 8: Mapa - Coropletico estatico y animado por ano."""
 from __future__ import annotations
 
-import numpy as np
-import streamlit as st
-import pandas as pd
-from pathlib import Path
 import sys
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+import streamlit as st
+
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from config.settings import settings
-from ui.components.loading_states import render_empty_state
-from ui.components.download_section import render_download_button
 from ui.charts.spatial_map import plot_choropleth_municipios
+from ui.components.download_section import render_download_button
+from ui.components.loading_states import render_empty_state
 
 st.set_page_config(page_title="Mapa | EVA Valle", page_icon="\U0001F5FA\uFE0F", layout="wide")
 

@@ -1,18 +1,20 @@
 """Pagina 1: Dashboard - Vista general."""
 from __future__ import annotations
-import streamlit as st
-import pandas as pd
-from pathlib import Path
-import sys
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-from ui.services.error_handler import run_safe
 
+import sys
+from pathlib import Path
+
+import pandas as pd
+import streamlit as st
+
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from config.settings import settings
-from ui.components.filter_panel import render_filter_panel, apply_filters
-from ui.components.metrics_cards import render_kpi_row
-from ui.charts.historical import plot_historico_cruces, plot_rendimiento_historico
 from ui.charts.concentration import plot_pareto_concentracion
+from ui.charts.historical import plot_historico_cruces, plot_rendimiento_historico
+from ui.components.filter_panel import apply_filters, render_filter_panel
 from ui.components.loading_states import render_empty_state
+from ui.components.metrics_cards import render_kpi_row
+from ui.services.error_handler import run_safe
 
 st.set_page_config(page_title="Dashboard | EVA Valle", page_icon="\U0001F4CA", layout="wide")
 

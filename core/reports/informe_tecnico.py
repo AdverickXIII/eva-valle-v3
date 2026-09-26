@@ -6,22 +6,31 @@ from datetime import date
 from pathlib import Path
 
 import pandas as pd
-from core.reports.branding import pagina_con_logo, build_con_logo
 from reportlab.graphics.charts.barcharts import HorizontalBarChart
 from reportlab.graphics.shapes import Drawing
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import cm
-from reportlab.platypus import (KeepTogether, Paragraph, SimpleDocTemplate,
-                                Spacer, Table, TableStyle)
+from reportlab.platypus import (
+    Paragraph,
+    SimpleDocTemplate,
+    Spacer,
+    Table,
+    TableStyle,
+)
 
 from config.settings import settings
 from core.analytics.informe_indicators import (
-    brechas, concentracion_cr, correlaciones, diversificacion_municipal,
-    dinamica_temporal, idam, tabla_lq,
+    brechas,
+    concentracion_cr,
+    correlaciones,
+    diversificacion_municipal,
+    idam,
+    tabla_lq,
 )
 from core.reports import meta
+from core.reports.branding import build_con_logo, pagina_con_logo
 
 VERDE = colors.HexColor("#2E8B57")
 GRIS = colors.HexColor("#4A5568")
@@ -261,8 +270,8 @@ def build_informe(df: pd.DataFrame) -> bytes:
     cr_mun = concentracion_cr(df, "municipio")
     cr_cul = concentracion_cr(df, "cultivo")
     story.append(Paragraph(
-        f"La produccion agricola departamental presenta alta concentracion tanto "
-        f"territorial como productiva:", body))
+        "La produccion agricola departamental presenta alta concentracion tanto "
+        "territorial como productiva:", body))
     d7 = [["Nivel", "CR1", "CR4", "CR10", "Interpretacion"],
           ["Municipios", f"{cr_mun['cr1']}%", f"{cr_mun['cr4']}%",
            f"{cr_mun['cr10']}%", "Top 4 concentran ~45%"],
@@ -271,8 +280,8 @@ def build_informe(df: pd.DataFrame) -> bytes:
     story.append(_tabla(d7, [3*cm, 2.5*cm, 2.5*cm, 2.5*cm, 6*cm]))
     story.append(Spacer(1, 0.2 * cm))
     story.append(Paragraph(
-        f"El <b>Gini territorial (0.64)</b> indica alta desigualdad espacial en la "
-        f"produccion. El <b>HHI territorial</b> confirma concentracion moderada a alta.",
+        "El <b>Gini territorial (0.64)</b> indica alta desigualdad espacial en la "
+        "produccion. El <b>HHI territorial</b> confirma concentracion moderada a alta.",
         body))
 
     # --- 8. ESPECIALIZACION Y DIVERSIFICACION ---

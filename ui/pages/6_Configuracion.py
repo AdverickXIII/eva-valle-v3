@@ -1,13 +1,15 @@
 """Pagina 6: Configuracion - Estado y acciones."""
 from __future__ import annotations
-import streamlit as st
-from pathlib import Path
-import sys
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-from ui.services.error_handler import run_safe
-from ui.services.auth import current_role, is_authenticated
 
+import sys
+from pathlib import Path
+
+import streamlit as st
+
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from config.settings import settings
+from ui.services.auth import current_role, is_authenticated
+from ui.services.error_handler import run_safe
 
 st.set_page_config(page_title="Configuracion | EVA Valle", page_icon="\u2699\uFE0F", layout="wide")
 
@@ -47,8 +49,8 @@ def main() -> None:
         if st.button("\U0001F504 Paso 1+2: Carga y Auditoria"):
             with st.spinner("Ejecutando..."):
                 try:
-                    from core.audit.loader import load_and_standardize
                     from core.audit import run_all_audits
+                    from core.audit.loader import load_and_standardize
                     from core.audit.report import generate_audit_report
                     df_valle, _ = load_and_standardize()
                     findings = run_all_audits(df_valle)

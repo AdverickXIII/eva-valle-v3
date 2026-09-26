@@ -1,13 +1,20 @@
 """Ficha tecnica oficial (estandar BID) + presentacion ejecutiva de EVA Valle."""
 from reportlab.lib import colors
-from reportlab.lib.pagesizes import letter, landscape
+from reportlab.lib.pagesizes import landscape, letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import cm
-from reportlab.platypus import (Image as RLImage, PageBreak, Paragraph,
-                                SimpleDocTemplate, Spacer, Table, TableStyle)
+from reportlab.platypus import Image as RLImage
+from reportlab.platypus import (
+    PageBreak,
+    Paragraph,
+    SimpleDocTemplate,
+    Spacer,
+    Table,
+    TableStyle,
+)
 
 from core.reports import meta
-from core.reports.branding import LOGO, pagina_con_logo, build_con_logo
+from core.reports.branding import LOGO, build_con_logo, pagina_con_logo
 
 VERDE = colors.HexColor("#2E8B57")
 VERDE_OSC = colors.HexColor("#1F5B41")

@@ -1,9 +1,12 @@
 """Graficos historicos: areas vs produccion y rendimiento."""
 from __future__ import annotations
+
 import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+
 from ui.charts.theme import COLOR_POSITIVO, PALETTE, apply_theme
+
 
 def plot_historico_cruces(df: pd.DataFrame) -> go.Figure:
     hist = df.groupby("ano").agg(

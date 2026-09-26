@@ -44,7 +44,7 @@ def indicadores_por_zona(df: pd.DataFrame, excluye_cana: bool = False) -> pd.Dat
         df = df[df["cultivo"] != "Caña"]
     filas = []
     total = df["produccion_t"].sum()
-    for zona in ZONAS.keys():
+    for zona in ZONAS:
         sub = df[df["zona"] == zona]
         if sub.empty:
             continue

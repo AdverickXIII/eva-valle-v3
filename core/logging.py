@@ -21,8 +21,6 @@ from __future__ import annotations
 import logging
 import sys
 from logging.handlers import RotatingFileHandler
-from pathlib import Path
-from typing import Optional
 
 # Flag global para garantizar configuracion unica
 _CONFIGURED: bool = False
@@ -83,7 +81,7 @@ def _configure_once() -> None:
     _CONFIGURED = True
 
 
-def get_logger(name: Optional[str] = None) -> logging.Logger:
+def get_logger(name: str | None = None) -> logging.Logger:
     """
     Retorna un logger con el nombre dado, configurando el sistema si es necesario.
 

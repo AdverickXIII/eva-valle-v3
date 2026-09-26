@@ -160,7 +160,7 @@ def _resumen_municipio(df, muni):
 
 
 def _ranking_cultivo(df, cult, muni=None, q=""):
-    m = re.search(r"top\s+(\d+)", q or "", re.I)
+    m = re.search(r"top\s+(\d+)", q or "", re.IGNORECASE)
     n = int(m.group(1)) if m else 5
     n = max(1, min(n, 42))
     sub = df[df["cultivo"] == cult].groupby("municipio")["produccion_t"].sum()

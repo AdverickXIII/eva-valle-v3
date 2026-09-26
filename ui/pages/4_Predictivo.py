@@ -3,12 +3,13 @@ No ejecuta ningun modelo: lee outputs_v5/ producido por explore_base_agricola_v5
 (47/47 pruebas PASS, naive imbatible, central forzado a pool_A_full, D1 integrado).
 AUD-V5-005.
 """
-import streamlit as st
-import pandas as pd
-import numpy as np
-from pathlib import Path
 import re
 import unicodedata
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+import streamlit as st
 
 st.set_page_config(page_title="Predictivo", page_icon="📈", layout="wide")
 OUT = Path("outputs_v5")

@@ -1,17 +1,24 @@
 """Pagina 14: Ficha tecnica por cultivo."""
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
 import pandas as pd
 import plotly.express as px
 import streamlit as st
-from pathlib import Path
-import sys
+
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from config.settings import settings
-from core.reports.crop_data import (crop_concentration, crop_kpis,
-                                    crop_top_municipios, crop_yearly,
-                                    filter_cultivo, interpretar_gini)
+from core.reports.crop_data import (
+    crop_concentration,
+    crop_kpis,
+    crop_top_municipios,
+    crop_yearly,
+    filter_cultivo,
+    interpretar_gini,
+)
 from core.reports.crop_report import build_crop_excel, build_crop_pdf
 from ui.charts.spatial_map import plot_choropleth_municipios
 from ui.components.loading_states import render_empty_state

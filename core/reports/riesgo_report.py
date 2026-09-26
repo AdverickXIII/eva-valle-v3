@@ -2,7 +2,6 @@
 import io
 
 import pandas as pd
-from core.reports.branding import pagina_con_logo, build_con_logo
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -10,6 +9,7 @@ from reportlab.lib.units import cm
 from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
 from core.reports import meta
+from core.reports.branding import build_con_logo, pagina_con_logo
 
 VERDE = colors.HexColor("#2E8B57")
 

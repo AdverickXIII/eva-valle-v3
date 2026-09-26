@@ -26,7 +26,10 @@ from core.analytics.growth import calculate_cagr
 from core.analytics.inferential import run_inferential_test
 from core.analytics.outliers import detect_multivariate_outliers
 from core.analytics.seasonality import test_seasonality_ab
-from core.analytics.spatial import calculate_location_quotient, calculate_shannon_diversity
+from core.analytics.spatial import (
+    calculate_location_quotient,
+    calculate_shannon_diversity,
+)
 from core.analytics.time_series import analyze_time_series
 from core.logging import get_logger, log_section
 

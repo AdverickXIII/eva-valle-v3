@@ -1,8 +1,11 @@
 """Graficos de crecimiento: CAGR divergente."""
 from __future__ import annotations
+
 import pandas as pd
 import plotly.graph_objects as go
+
 from ui.charts.theme import COLOR_NEGATIVO, COLOR_POSITIVO, apply_theme
+
 
 def plot_cagr_divergente(df: pd.DataFrame, min_prod: float = 1000) -> go.Figure:
     anos = sorted(df["ano"].dropna().unique())

@@ -4,9 +4,10 @@ y la 'frase de la agricultura' como cierre memorable.
 from __future__ import annotations
 
 import pandas as pd
+
 from core.analytics.executive import executive_summary
+from core.analytics.informe_indicators import brechas
 from core.analytics.pareto import conc_metrics, territorial
-from core.analytics.informe_indicators import idam, brechas
 from core.analytics.strategic_matrices import matriz_cultivos, matriz_municipios
 
 
@@ -48,7 +49,7 @@ def generar_insights(df: pd.DataFrame) -> list[dict]:
     insights.append({
         "dato": f"La produccion crecio {var_pct:+.1f}% entre {anterior} y {ultimo}.",
         "interpretacion": f"Paso de {p_ant:,.0f} a {p_ult:,.0f} toneladas.",
-        "implicacion": "El crecimiento es modesto (+{:.1f}% anual promedio).".format(var_pct / (ultimo - anterior))
+        "implicacion": f"El crecimiento es modesto (+{var_pct / (ultimo - anterior):.1f}% anual promedio)."
         if var_pct > 0 else "La produccion se contrajo, requiriendo analisis de causas.",
     })
     

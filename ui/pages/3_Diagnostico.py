@@ -1,26 +1,26 @@
 """Pagina 3: Diagnostico - Por que ocurrio?"""
 from __future__ import annotations
-import streamlit as st
-import pandas as pd
-import numpy as np
-from pathlib import Path
+
 import sys
+from pathlib import Path
+
+import pandas as pd
+import streamlit as st
+
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-from ui.services.performance import (cached_outliers, cached_time_series, cached_seasonality, cached_segmentation, cached_root_cause)
-from ui.services.error_handler import run_safe
+import plotly.express as px
+import plotly.graph_objects as go
 
 from config.settings import settings
-from ui.components.filter_panel import render_filter_panel, apply_filters
-from ui.components.loading_states import render_empty_state
-from ui.components.download_section import render_download_button
-from ui.charts.diagnostics import plot_correlation_heatmap, plot_scatter_bivariado
-from core.diagnostics.correlation import calculate_correlation_matrix
 from core.diagnostics.comparison import compare_cycles
-from core.diagnostics.segmentation import segment_municipalities
-from core.diagnostics.root_cause import find_root_causes
+from core.diagnostics.correlation import calculate_correlation_matrix
 from core.diagnostics.shock import analyze_shock
-import plotly.graph_objects as go
-import plotly.express as px
+from ui.charts.diagnostics import plot_correlation_heatmap, plot_scatter_bivariado
+from ui.components.download_section import render_download_button
+from ui.components.filter_panel import apply_filters, render_filter_panel
+from ui.components.loading_states import render_empty_state
+from ui.services.error_handler import run_safe
+from ui.services.performance import cached_root_cause, cached_segmentation
 
 st.set_page_config(page_title="Diagnostico | EVA Valle", page_icon="\U0001F52C", layout="wide")
 

@@ -1,6 +1,6 @@
 """Pagina 22: Recomendador prescriptivo en dos direcciones (IRS)."""
-import streamlit as st
 import plotly.graph_objects as go
+import streamlit as st
 
 from core.analytics.irs import build_irs, load_df
 

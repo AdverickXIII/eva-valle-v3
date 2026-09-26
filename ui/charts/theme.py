@@ -1,5 +1,6 @@
 """Tema visual claro para graficos Plotly."""
 from __future__ import annotations
+
 import plotly.graph_objects as go
 
 PRIMARY_COLOR = "#2E8B57"

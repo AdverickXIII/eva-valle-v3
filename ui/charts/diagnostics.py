@@ -1,9 +1,12 @@
 """Graficos de diagnostico: correlacion y scatter."""
 from __future__ import annotations
+
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
+
 from ui.charts.theme import PALETTE, apply_theme
+
 
 def plot_correlation_heatmap(corr_matrix: pd.DataFrame) -> go.Figure:
     fig = go.Figure()

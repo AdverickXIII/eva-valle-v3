@@ -1,37 +1,41 @@
 """Pagina 2: Descriptivo - 12 analisis del Paso 4."""
 from __future__ import annotations
-import streamlit as st
-import pandas as pd
-from pathlib import Path
-import sys
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-from ui.services.performance import (cached_outliers, cached_time_series, cached_seasonality, cached_segmentation, cached_root_cause)
-from ui.services.error_handler import run_safe
 
+import sys
+from pathlib import Path
+
+import pandas as pd
+import streamlit as st
+
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from config.settings import settings
-from ui.components.filter_panel import render_filter_panel, apply_filters
-from ui.components.loading_states import render_empty_state
-from ui.components.download_section import render_download_button
-from ui.charts.distributions import plot_distribuciones_log
-from ui.charts.concentration import plot_ex_cana_donuts
-from ui.charts.growth import plot_cagr_divergente
-from ui.charts.crop_card import crop_diagnostic, plot_crop_serie, plot_crop_motor
-from ui.charts.growth_decomp import (descomponer_crecimiento, plot_cuadrantes,
-                                      plot_motor_barras)
-from ui.charts.ts_charts import (plot_serie_produccion, plot_shocks, plot_estacionalidad_ab)
-from ui.charts.spatial import plot_lq_heatmap, plot_shannon_barras
+from core.analytics.concentration import calculate_concentration
 from core.analytics.descriptive import calculate_descriptive_statistics
 from core.analytics.distributions import fit_distributions
-from core.analytics.outliers import detect_multivariate_outliers
-from core.analytics.concentration import calculate_concentration
-from core.analytics.time_series import analyze_time_series
-from core.analytics.seasonality import test_seasonality_ab
-from core.analytics.spatial import calculate_location_quotient, calculate_shannon_diversity
-from core.analytics.lq_table import lq_top
 from core.analytics.elasticity import calculate_elasticity
-from core.analytics.inferential import run_inferential_test
-from core.analytics.growth import calculate_cagr
-from core.analytics.ex_cana import analyze_ex_cana
+from core.analytics.lq_table import lq_top
+from ui.charts.concentration import plot_ex_cana_donuts
+from ui.charts.distributions import plot_distribuciones_log
+from ui.charts.growth import plot_cagr_divergente
+from ui.charts.growth_decomp import (
+    descomponer_crecimiento,
+    plot_motor_barras,
+)
+from ui.charts.spatial import plot_lq_heatmap, plot_shannon_barras
+from ui.charts.ts_charts import (
+    plot_estacionalidad_ab,
+    plot_serie_produccion,
+    plot_shocks,
+)
+from ui.components.download_section import render_download_button
+from ui.components.filter_panel import apply_filters, render_filter_panel
+from ui.components.loading_states import render_empty_state
+from ui.services.error_handler import run_safe
+from ui.services.performance import (
+    cached_outliers,
+    cached_seasonality,
+    cached_time_series,
+)
 
 st.set_page_config(page_title="Descriptivo | EVA Valle", page_icon="\U0001F4C8", layout="wide")
 

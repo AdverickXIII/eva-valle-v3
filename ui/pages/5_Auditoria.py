@@ -1,18 +1,21 @@
 """Pagina 5: Auditoria - Calidad de datos."""
 from __future__ import annotations
-import streamlit as st
-import pandas as pd
-from pathlib import Path
+
 import sys
+from pathlib import Path
+
+import pandas as pd
+import streamlit as st
+
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-from ui.services.error_handler import run_safe
-from ui.services.auth import current_role, is_authenticated
+import plotly.express as px
 
 from config.settings import settings
-from ui.components.metrics_cards import render_kpi_row
-from ui.components.loading_states import render_empty_state
 from ui.components.download_section import render_download_button
-import plotly.express as px
+from ui.components.loading_states import render_empty_state
+from ui.components.metrics_cards import render_kpi_row
+from ui.services.auth import current_role, is_authenticated
+from ui.services.error_handler import run_safe
 
 st.set_page_config(page_title="Auditoria | EVA Valle", page_icon="\U0001F50D", layout="wide")
 

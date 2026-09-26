@@ -7,8 +7,6 @@ descripcion, valores, fuente de origen y notas.
 """
 from __future__ import annotations
 
-from typing import Any
-
 import pandas as pd
 
 # Diccionario de variables (18 entradas)

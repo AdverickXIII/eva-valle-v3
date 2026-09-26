@@ -1,10 +1,11 @@
 """Pagina 0: Inicio - Hub de navegacion."""
 from __future__ import annotations
-import streamlit as st
 
 # ---------- Hero banner (visible aun sin imagen) ----------
 import base64 as _b64
 from pathlib import Path as _Path
+
+import streamlit as st
 
 
 def _nav_card(col, page_path: str, icon: str, label: str, desc: str, min_rol: int = 0) -> None:

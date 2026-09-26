@@ -13,8 +13,6 @@ fit() solo con train, transform() con train y test.
 """
 from __future__ import annotations
 
-from typing import Any
-
 import pandas as pd
 
 from core.logging import get_logger

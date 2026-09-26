@@ -21,7 +21,6 @@ from adapters.storage.excel_storage import ExcelStorage
 from config.constants import (
     CODIGO_DANE_VALLE,
     HEADER_ROW_AGRICOLA,
-    NOMBRE_DEPTO_VALLE,
     SHEET_NAME_AGRICOLA,
 )
 from config.settings import settings

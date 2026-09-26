@@ -47,7 +47,7 @@ def conc_metrics(df: pd.DataFrame, exclude_cana: bool = False) -> dict:
         "top1_pct": round(float(shares.max()), 1),
         "top1": str(desc.idxmax()),
         "n80": n80,
-        "cultivos": int(len(g)),
+        "cultivos": len(g),
     }
 
 
@@ -60,7 +60,7 @@ def territorial(df: pd.DataFrame) -> dict:
         "hhi": round(float((shares ** 2).sum()), 0),
         "top": str(g.idxmax()),
         "top_pct": round(float(shares.max()), 1),
-        "municipios": int(len(g)),
+        "municipios": len(g),
     }
 
 

@@ -6,7 +6,6 @@ Umbrales = mediana (robusto a la dominancia de la cana).
 """
 from __future__ import annotations
 
-import numpy as np
 import pandas as pd
 
 

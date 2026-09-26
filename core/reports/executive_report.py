@@ -4,17 +4,23 @@ from __future__ import annotations
 import io
 
 import pandas as pd
-from core.reports.branding import pagina_con_logo, build_con_logo
 from reportlab.graphics.charts.barcharts import HorizontalBarChart
 from reportlab.graphics.shapes import Drawing
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import cm
-from reportlab.platypus import (KeepTogether, Paragraph, SimpleDocTemplate,
-                                Spacer, Table, TableStyle)
+from reportlab.platypus import (
+    KeepTogether,
+    Paragraph,
+    SimpleDocTemplate,
+    Spacer,
+    Table,
+    TableStyle,
+)
 
 from core.reports import meta
+from core.reports.branding import build_con_logo, pagina_con_logo
 
 VERDE = colors.HexColor("#2E8B57")
 GRIS = colors.HexColor("#4A5568")

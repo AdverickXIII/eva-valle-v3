@@ -1,17 +1,19 @@
 """Pagina 10: Centro de Reportes (ejecutivos + municipales + paquetes de datos)."""
 from __future__ import annotations
 
-import streamlit as st
-import pandas as pd
-from pathlib import Path
 import sys
+from pathlib import Path
+
+import pandas as pd
+import streamlit as st
+
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from config.settings import settings
-from ui.components.loading_states import render_empty_state
-from ui.components.metrics_cards import render_kpi_row
 from core.reports import build_municipality_excel, build_municipality_pdf
 from core.reports.data import kpis
+from ui.components.loading_states import render_empty_state
+from ui.components.metrics_cards import render_kpi_row
 
 st.set_page_config(page_title="Reportes | EVA Valle", page_icon="📑", layout="wide")
 
@@ -130,8 +132,10 @@ def main() -> None:
         st.markdown("**Contenido:** ficha en estandar BID (que es, problema, como funciona, "
                     "ODS, estandares abiertos) + presentacion de 10 laminas para sustentacion.")
         st.markdown("**Audiencia:** Secretaria de Agricultura, Gobernacion, catalogo BID.")
-        from core.reports.presentacion_oficial import (build_ficha_tecnica_pdf,
-                                                        build_presentacion_pdf)
+        from core.reports.presentacion_oficial import (
+            build_ficha_tecnica_pdf,
+            build_presentacion_pdf,
+        )
         _c1, _c2 = st.columns(2)
         _c1.download_button("\u2b07\ufe0f Ficha Tecnica (PDF)",
                             data=build_ficha_tecnica_pdf(),

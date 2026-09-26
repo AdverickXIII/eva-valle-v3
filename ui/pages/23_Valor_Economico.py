@@ -1,8 +1,8 @@
 """Pagina 23: Valor economico (PIB agro) con precios de referencia v0."""
-import streamlit as st
 import plotly.graph_objects as go
+import streamlit as st
 
-from core.analytics.economic import serie_pib, tabla_rank, productividad_ha
+from core.analytics.economic import productividad_ha, serie_pib, tabla_rank
 
 st.set_page_config(page_title="Valor economico | EVA Valle", page_icon="\U0001F4B0",
                    layout="wide")

@@ -10,13 +10,12 @@ Uso:
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Optional
 
 # Importacion diferida para evitar dependencia circular con config.constants
 # (ROOT_MARKERS se usa aqui pero se define en constants)
 
 
-def find_project_root(start: Optional[Path] = None) -> Path:
+def find_project_root(start: Path | None = None) -> Path:
     """
     Sube el arbol de directorios buscando marcadores de raiz del proyecto.
 
@@ -46,7 +45,7 @@ def find_project_root(start: Optional[Path] = None) -> Path:
     return candidate
 
 
-def get_paths(root: Optional[Path] = None) -> dict[str, Path]:
+def get_paths(root: Path | None = None) -> dict[str, Path]:
     """
     Construye un diccionario con todas las rutas estandar del proyecto.
 

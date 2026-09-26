@@ -14,19 +14,19 @@ Uso:
     df_features = create_features_ml(df)
     encoding_maps = fit_target_encoding(df_train)
 """
-from core.ml.pipeline import run_all_ml
-from core.ml.features import create_features_ml
-from core.ml.target_encoding import fit_target_encoding, apply_target_encoding
-from core.ml.regression import train_regression
 from core.ml.classification import train_classification
+from core.ml.features import create_features_ml
 from core.ml.forecasting import forecast_time_series
+from core.ml.pipeline import run_all_ml
+from core.ml.regression import train_regression
+from core.ml.target_encoding import apply_target_encoding, fit_target_encoding
 
 __all__ = [
-    "run_all_ml",
+    "apply_target_encoding",
     "create_features_ml",
     "fit_target_encoding",
-    "apply_target_encoding",
-    "train_regression",
-    "train_classification",
     "forecast_time_series",
+    "run_all_ml",
+    "train_classification",
+    "train_regression",
 ]

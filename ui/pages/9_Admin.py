@@ -1,14 +1,22 @@
 """Pagina 9: Panel de Administracion (solo admin)."""
 from __future__ import annotations
 
-import streamlit as st
-import pandas as pd
-from pathlib import Path
 import sys
+from pathlib import Path
+
+import pandas as pd
+import streamlit as st
+
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from config.settings import settings
-from ui.services.auth import add_user, current_role, has_secret_users, list_users, remove_user
+from ui.services.auth import (
+    add_user,
+    current_role,
+    has_secret_users,
+    list_users,
+    remove_user,
+)
 
 st.set_page_config(page_title="Admin | EVA Valle", page_icon="\U0001F510", layout="wide")
 

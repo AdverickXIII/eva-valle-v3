@@ -61,7 +61,7 @@ def crop_concentration(df_c: pd.DataFrame) -> dict:
         "gini": round(_gini(g.values), 3),
         "hhi": round(float((shares ** 2).sum()), 1),
         "top1_pct": round(float(shares.max()), 1),
-        "municipios": int(len(g)),
+        "municipios": len(g),
     }
 
 

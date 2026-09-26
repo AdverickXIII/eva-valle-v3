@@ -1,9 +1,12 @@
 """Graficos espaciales: Heatmap LQ y Shannon-Wiener."""
 from __future__ import annotations
+
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
+
 from ui.charts.theme import PALETTE, apply_theme
+
 
 def plot_lq_heatmap(df: pd.DataFrame, top_n: int = 15, excluye_cana: bool = True) -> go.Figure:
     """Heatmap LQ legible: municipios en Y, grupos en X, un valor por celda."""

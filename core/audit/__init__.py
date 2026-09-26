@@ -13,32 +13,32 @@ Uso:
     # Paso 2: Auditoria completa
     findings = run_all_audits(df_valle)
 """
-from core.audit.models import AuditFinding
-from core.audit.loader import load_and_standardize
-from core.audit.structure import audit_structure
-from core.audit.nulls import audit_nulls
 from core.audit.duplicates import audit_duplicates
-from core.audit.territory import audit_territory
-from core.audit.temporal import audit_temporal
-from core.audit.ranges import audit_ranges
+from core.audit.loader import load_and_standardize
 from core.audit.logic import audit_logic
+from core.audit.models import AuditFinding
+from core.audit.nulls import audit_nulls
+from core.audit.ranges import audit_ranges
 from core.audit.report import generate_audit_report
+from core.audit.structure import audit_structure
+from core.audit.temporal import audit_temporal
+from core.audit.territory import audit_territory
 from core.logging import get_logger, log_section
 
 log = get_logger("core.audit")
 
 __all__ = [
     "AuditFinding",
+    "audit_duplicates",
+    "audit_logic",
+    "audit_nulls",
+    "audit_ranges",
+    "audit_structure",
+    "audit_temporal",
+    "audit_territory",
+    "generate_audit_report",
     "load_and_standardize",
     "run_all_audits",
-    "audit_structure",
-    "audit_nulls",
-    "audit_duplicates",
-    "audit_territory",
-    "audit_temporal",
-    "audit_ranges",
-    "audit_logic",
-    "generate_audit_report",
 ]
 
 

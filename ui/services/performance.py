@@ -6,7 +6,6 @@ import streamlit as st
 
 from ui.components.download_section import render_download_button
 
-
 # ═══════════════════════════════════════════════════════════
 # WRAPPERS CACHEADOS: calculan una sola vez por sesion
 # ═══════════════════════════════════════════════════════════

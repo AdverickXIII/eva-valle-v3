@@ -19,18 +19,19 @@ import pandas as pd
 from adapters.storage.csv_storage import CsvStorage
 from adapters.storage.json_storage import JsonStorage
 from config.settings import settings
-from core.audit.models import AuditFinding
 from core.logging import get_logger, log_section
-from core.modeling.classifications import get_classifications, get_classifications_dataframe
-from core.modeling.conceptual_map import get_conceptual_map
-from core.modeling.data_dictionary import get_data_dictionary, get_data_dictionary_dataframe
+from core.modeling.classifications import (
+    get_classifications_dataframe,
+)
+from core.modeling.data_dictionary import (
+    get_data_dictionary_dataframe,
+)
 from core.modeling.hierarchies import (
     generate_crop_hierarchy,
     generate_temporal_hierarchy,
     generate_territorial_hierarchy,
 )
 from core.modeling.surrogate_key import (
-    NATURAL_KEY_COLUMNS,
     generate_surrogate_key,
     validate_natural_key,
 )
