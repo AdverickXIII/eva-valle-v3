@@ -1,43 +1,43 @@
 ﻿municipio,Cluster,Perfil,area_total,rendimiento_medio,diversidad,shannon_wiener
-Alcalá,1,Pequenos / Diversos,21097.39,16.0,28,3.707725920566669
-Andalucía,2,Medianos / Especializados,32797.97,8.0,23,2.8383066677590727
-Ansermanuevo,2,Medianos / Especializados,43919.5,10.0,35,3.350992900357287
-Argelia,2,Medianos / Especializados,20559.7,8.0,26,3.3034142877270236
-Bolívar,1,Pequenos / Diversos,54225.78,12.0,45,4.079629158927865
-Buenaventura,2,Medianos / Especializados,27709.0,4.0,16,3.515266447416754
-Bugalagrande,2,Medianos / Especializados,84968.25,10.0,30,3.303356986165647
-Caicedonia,2,Medianos / Especializados,70619.23,9.0,27,3.8810028480530945
-Calima,1,Pequenos / Diversos,8383.54,11.1,38,4.332026589460736
-Candelaria,0,Grandes / Monocultores,158478.12,12.115,20,2.0526505297329725
-Cartago,2,Medianos / Especializados,44353.950000000004,7.5,24,3.366500383707046
-Dagua,1,Pequenos / Diversos,34093.7,12.0,38,4.581040595350872
-El Cairo,2,Medianos / Especializados,35987.59,7.845000000000001,23,2.9659277645348707
-El Cerrito,0,Grandes / Monocultores,110415.01,13.0,22,2.248975839527585
-El Dovio,1,Pequenos / Diversos,15015.67,14.0,26,4.741509319214901
-El Águila,2,Medianos / Especializados,42246.26,8.0,35,2.5835663389767163
-Florida,2,Medianos / Especializados,83266.97,9.0,41,2.752445097864666
-Ginebra,2,Medianos / Especializados,28897.91,7.5,31,3.03926814193147
-Guacarí,2,Medianos / Especializados,97217.48,8.5,35,2.76449277910179
-Guadalajara de Buga,2,Medianos / Especializados,59261.57,9.34,48,2.7936737631407453
-Jamundí,2,Medianos / Especializados,87295.57,10.0,33,3.0877343191702264
-La Cumbre,2,Medianos / Especializados,12162.95,10.0,24,4.246847155309611
-La Unión,2,Medianos / Especializados,28129.6,9.0,37,4.001142041016401
-La Victoria,2,Medianos / Especializados,19300.83,10.0,38,3.5667410408563063
-Obando,2,Medianos / Especializados,80621.41,6.0,27,3.279512127987309
-Palmira,0,Grandes / Monocultores,216435.48,10.0,43,2.1962034319352655
-Pradera,2,Medianos / Especializados,68616.74,8.0,32,2.2574212346131355
-Restrepo,1,Pequenos / Diversos,16938.18,12.0,39,4.4189193356422525
-Riofrío,2,Medianos / Especializados,61135.95,7.0,33,3.27167637276912
-Roldanillo,1,Pequenos / Diversos,46350.44,18.0,60,4.048526637633574
-San Pedro,2,Medianos / Especializados,42013.61,9.0,37,2.9449784235500394
-Santiago de Cali,2,Medianos / Especializados,34001.74,6.0,35,2.601533535294837
-Sevilla,1,Pequenos / Diversos,83505.9,13.0,49,3.5897831165803926
-Toro,2,Medianos / Especializados,25761.37,10.0,35,3.5115989776441574
-Trujillo,2,Medianos / Especializados,55047.0,10.0,35,3.268761488658218
-Tuluá,2,Medianos / Especializados,82779.13,10.0,39,3.2313484432057074
-Ulloa,2,Medianos / Especializados,7247.8099999999995,8.0,23,3.359389897952986
-Versalles,2,Medianos / Especializados,20537.79,10.0,32,3.6971820423579898
-Vijes,1,Pequenos / Diversos,11583.04,12.0,34,4.342755543199518
-Yotoco,2,Medianos / Especializados,33160.85,9.0,39,3.34426680504367
-Yumbo,1,Pequenos / Diversos,17395.76,15.0,49,3.2406876953878037
-Zarzal,0,Grandes / Monocultores,108300.55,10.0,21,2.017663141629672
+Alcalá,2,Pequenos / Diversos,24774.46,16.0,28,1.914565079409389
+Andalucía,0,Medianos / Especializados,38473.08,8.0,23,1.072374569962878
+Ansermanuevo,0,Medianos / Especializados,52017.58,10.0,35,1.4640301226575285
+Argelia,0,Medianos / Especializados,24317.51,8.0,26,1.4109437681486756
+Bolívar,2,Pequenos / Diversos,63226.4,12.0,45,2.1434097179722853
+Buenaventura,0,Medianos / Especializados,30324.0,4.0,16,1.8215775438267356
+Bugalagrande,0,Medianos / Especializados,100508.28,10.0,30,1.2721912575061354
+Caicedonia,0,Medianos / Especializados,82380.8,9.0,27,2.0202350673897187
+Calima,2,Pequenos / Diversos,9737.36,11.1,38,2.3525859793051374
+Candelaria,1,Grandes / Monocultores,185340.74,12.5,20,0.06326539637438573
+Cartago,0,Medianos / Especializados,52196.200000000004,7.5,24,1.3434096700734384
+Dagua,2,Pequenos / Diversos,39700.62,12.0,38,2.6972299456007285
+El Cairo,0,Medianos / Especializados,42010.67,7.69,23,1.1342592247513597
+El Cerrito,1,Grandes / Monocultores,128715.52,13.0,22,0.43076886562566447
+El Dovio,2,Pequenos / Diversos,17362.1,14.0,26,2.651847802340285
+El Águila,0,Medianos / Especializados,50237.98,8.0,35,0.7980413018731157
+Florida,0,Medianos / Especializados,99142.73000000001,9.0,41,0.9195233968355556
+Ginebra,0,Medianos / Especializados,33602.34,7.5,31,1.1803037409492971
+Guacarí,0,Medianos / Especializados,113171.83,9.0,36,0.8946139961641922
+Guadalajara de Buga,0,Medianos / Especializados,69674.38,10.0,49,0.8711178129355189
+Jamundí,0,Medianos / Especializados,101932.65,10.0,33,1.145578950724535
+La Cumbre,2,Pequenos / Diversos,14440.85,10.0,24,2.278869246676081
+La Unión,2,Pequenos / Diversos,32887.07,9.0,37,1.9322169360515908
+La Victoria,2,Pequenos / Diversos,22674.06,10.0,38,1.6870826055445969
+Obando,0,Medianos / Especializados,93872.72,6.0,27,1.0774971468121697
+Palmira,1,Grandes / Monocultores,252756.41,10.0,43,0.35690147481883994
+Pradera,0,Medianos / Especializados,79965.58,8.0,32,0.44261890255534864
+Restrepo,2,Pequenos / Diversos,20092.94,12.0,39,2.4844905401246695
+Riofrío,0,Medianos / Especializados,71369.09,7.0,33,1.4286297163340183
+Roldanillo,2,Pequenos / Diversos,53946.82,18.0,60,1.8933628710555748
+San Pedro,0,Medianos / Especializados,48886.9,8.75,37,1.0178220212183513
+Santiago de Cali,0,Medianos / Especializados,39668.4,6.0,36,0.79198869004394
+Sevilla,2,Pequenos / Diversos,97782.46,13.0,49,1.7873084411458164
+Toro,2,Pequenos / Diversos,30157.54,10.0,36,1.6375222059762748
+Trujillo,0,Medianos / Especializados,64560.24,10.0,35,1.432656720721831
+Tuluá,0,Medianos / Especializados,96531.55,10.0,39,1.3796802237515478
+Ulloa,0,Medianos / Especializados,8242.19,8.0,25,1.6434171582423867
+Versalles,2,Pequenos / Diversos,23971.4,10.0,32,1.8100618512085922
+Vijes,2,Pequenos / Diversos,13757.66,12.0,34,2.4109357990174485
+Yotoco,0,Medianos / Especializados,38592.46,9.0,39,1.4231002791794267
+Yumbo,2,Pequenos / Diversos,20085.72,15.0,49,1.4199379194277806
+Zarzal,1,Grandes / Monocultores,126313.92,11.0,22,0.20378934784127267
