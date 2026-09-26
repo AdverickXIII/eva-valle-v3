@@ -26,7 +26,7 @@ def _shannon_index(s: pd.Series) -> float:
     """Calcula el indice de Shannon-Wiener de una serie."""
     p = s / s.sum()
     p = p[p > 0]
-    return float(-np.sum(p * np.log(p)))
+    return max(0.0, float(-np.sum(p * np.log(p))))  # max evita -0.0
 
 
 def find_optimal_clusters(
@@ -76,6 +76,15 @@ def segment_municipalities(
     if faltantes:
         return {"error": f"Columnas faltantes: {faltantes}"}
 
+    # Shannon sobre el area por cultivo (no por fila cultivo x ano x ciclo):
+    # misma definicion que core.analytics.spatial.calculate_shannon_diversity.
+    col_cultivo = "cultivo" if "cultivo" in df.columns else "desagregacion_cultivo"
+    shannon = (
+        df.groupby(["municipio", col_cultivo])["area_sembrada_ha"].sum()
+        .groupby(level=0).agg(_shannon_index)
+        .rename("shannon_wiener")
+    )
+
     # Construir features por municipio
     features = (
         df.groupby("municipio")
@@ -83,8 +92,8 @@ def segment_municipalities(
             area_total=("area_sembrada_ha", "sum"),
             rendimiento_medio=("rendimiento_t_ha", "median"),
             diversidad=("desagregacion_cultivo", "nunique"),
-            shannon_wiener=("area_sembrada_ha", _shannon_index),
         )
+        .join(shannon)
         .dropna()
     )
 

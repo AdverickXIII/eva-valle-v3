@@ -63,14 +63,20 @@ def calculate_shannon_diversity(df: pd.DataFrame) -> pd.DataFrame:
 
     Mayor indice = menor dependencia de un solo cultivo.
 
+    Las categorias del indice son los cultivos: el area se suma por
+    (municipio, cultivo) antes de calcular las proporciones. Cada fila del
+    dataset es un cultivo x ano x ciclo, asi que usar las filas como categorias
+    infla el indice por encima de ln(n_cultivos).
+
     Args:
         df: DataFrame con columnas municipio, area_sembrada_ha. Si trae
-            `cultivo`, cultivos_distintos cuenta cultivos distintos; si no,
-            cuenta las filas con area positiva (las categorias del indice).
+            `cultivo`, se agrega por cultivo; si no, cada fila cuenta como una
+            categoria (comportamiento heredado, solo para datos ya agregados).
 
     Returns:
-        DataFrame con columnas: municipio, cultivos_distintos,
-        shannon_wiener, area_total. Ordenado por shannon_wiener desc.
+        DataFrame con columnas: municipio, cultivos_distintos (categorias con
+        area positiva), shannon_wiener (0 a ln(cultivos_distintos)), area_total.
+        Ordenado por shannon_wiener desc.
     """
     required_cols = ["municipio", "area_sembrada_ha"]
     faltantes = [c for c in required_cols if c not in df.columns]
@@ -81,21 +87,19 @@ def calculate_shannon_diversity(df: pd.DataFrame) -> pd.DataFrame:
     def shannon_index(s: pd.Series) -> float:
         p = s / s.sum()
         p = p[p > 0]
-        return float(-np.sum(p * np.log(p)))
+        return max(0.0, float(-np.sum(p * np.log(p))))  # max evita -0.0
 
-    por_municipio = df.groupby("municipio")
     if "cultivo" in df.columns:
-        cultivos = por_municipio["cultivo"].nunique()
+        area = df.groupby(["municipio", "cultivo"])["area_sembrada_ha"].sum()
     else:
-        cultivos = (df[df["area_sembrada_ha"] > 0].groupby("municipio").size()
-                    .reindex(por_municipio.size().index, fill_value=0))
+        area = df.set_index("municipio")["area_sembrada_ha"]
+    por_municipio = area.groupby(level=0)
 
-    diversidad = por_municipio["area_sembrada_ha"].agg(
-        shannon_wiener=shannon_index,
-        area_total="sum",
-    )
-    diversidad.insert(0, "cultivos_distintos", cultivos)
-    diversidad = diversidad.reset_index()
+    diversidad = pd.DataFrame({
+        "cultivos_distintos": por_municipio.agg(lambda s: int((s > 0).sum())),
+        "shannon_wiener": por_municipio.agg(shannon_index),
+        "area_total": df.groupby("municipio")["area_sembrada_ha"].sum(),
+    }).rename_axis("municipio").reset_index()
 
     resultado = diversidad.sort_values("shannon_wiener", ascending=False)
     log.info("Shannon-Wiener calculado para %d municipios.", len(resultado))
