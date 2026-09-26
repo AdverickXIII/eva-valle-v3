@@ -64,7 +64,9 @@ def calculate_shannon_diversity(df: pd.DataFrame) -> pd.DataFrame:
     Mayor indice = menor dependencia de un solo cultivo.
 
     Args:
-        df: DataFrame con columnas municipio, area_sembrada_ha.
+        df: DataFrame con columnas municipio, area_sembrada_ha. Si trae
+            `cultivo`, cultivos_distintos cuenta cultivos distintos; si no,
+            cuenta las filas con area positiva (las categorias del indice).
 
     Returns:
         DataFrame con columnas: municipio, cultivos_distintos,
@@ -81,11 +83,19 @@ def calculate_shannon_diversity(df: pd.DataFrame) -> pd.DataFrame:
         p = p[p > 0]
         return float(-np.sum(p * np.log(p)))
 
-    diversidad = df.groupby("municipio")["area_sembrada_ha"].agg(
-        cultivos_distintos="nunique",
+    por_municipio = df.groupby("municipio")
+    if "cultivo" in df.columns:
+        cultivos = por_municipio["cultivo"].nunique()
+    else:
+        cultivos = (df[df["area_sembrada_ha"] > 0].groupby("municipio").size()
+                    .reindex(por_municipio.size().index, fill_value=0))
+
+    diversidad = por_municipio["area_sembrada_ha"].agg(
         shannon_wiener=shannon_index,
         area_total="sum",
-    ).reset_index()
+    )
+    diversidad.insert(0, "cultivos_distintos", cultivos)
+    diversidad = diversidad.reset_index()
 
     resultado = diversidad.sort_values("shannon_wiener", ascending=False)
     log.info("Shannon-Wiener calculado para %d municipios.", len(resultado))

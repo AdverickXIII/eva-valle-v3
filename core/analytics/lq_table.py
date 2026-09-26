@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import pandas as pd
 
+COLUMNAS = ["municipio", "grupo_cultivo", "share_municipio_pct", "share_valle_pct", "lq"]
+
 
 def lq_top(df: pd.DataFrame, top_n: int = 20, excluye_cana: bool = False) -> pd.DataFrame:
     if excluye_cana:
@@ -23,5 +25,7 @@ def lq_top(df: pd.DataFrame, top_n: int = 20, excluye_cana: bool = False) -> pd.
                 "share_valle_pct": sd,
                 "lq": sm / sd,
             })
+    if not rows:
+        return pd.DataFrame(columns=COLUMNAS)
     out = pd.DataFrame(rows).sort_values("lq", ascending=False)
     return out.head(top_n).reset_index(drop=True)
