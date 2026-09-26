@@ -39,3 +39,8 @@ outputs_v5/diagnostics/
 outputs_v5/fichas_cultivos/por_cultivo_*/
 *.ipynb_checkpoints/
 Untitled.ipynb
+outputs_v5/data_quality/
+outputs_v5/diagnostics/
+outputs_v5/fichas_cultivos/por_cultivo_*/
+*.ipynb_checkpoints/
+Untitled.ipynb
