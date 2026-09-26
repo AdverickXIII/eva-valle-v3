@@ -44,3 +44,6 @@ outputs_v5/diagnostics/
 outputs_v5/fichas_cultivos/por_cultivo_*/
 *.ipynb_checkpoints/
 Untitled.ipynb
+
+# Credenciales (hashes de usuarios): NUNCA al repositorio. Usar st.secrets en Cloud.
+config/users.json

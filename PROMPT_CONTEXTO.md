@@ -66,7 +66,7 @@ No re-expliques el proyecto; continúa desde el estado actual.
 
 \## 5. SEGURIDAD IMPLEMENTADA
 
-\- Auth con roles (admin/usuario) en config/users.json (sha256+salt).
+\- Auth con roles (admin/analista/usuario): hashes scrypt en st.secrets['users'] (Cloud) o config/users.json local (ignorado por git).
 
 \- Rate limiting: 5 intentos / 15 min (core/security/rate\_limiter.py).
 

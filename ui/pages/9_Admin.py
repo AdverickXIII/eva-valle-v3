@@ -8,7 +8,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from config.settings import settings
-from ui.services.auth import add_user, current_role, list_users, remove_user
+from ui.services.auth import add_user, current_role, has_secret_users, list_users, remove_user
 
 st.set_page_config(page_title="Admin | EVA Valle", page_icon="\U0001F510", layout="wide")
 
@@ -24,6 +24,13 @@ tab1, tab2 = st.tabs(["\U0001F465 Usuarios", "\u2699\uFE0F Sistema"])
 
 with tab1:
     st.subheader("Usuarios registrados")
+    if has_secret_users():
+        st.info(
+            "Los usuarios provienen de **Secrets**. Los cambios hechos en este panel se guardan "
+            "en un archivo local que se **pierde al reiniciar o redesplegar** la app, y un usuario "
+            "definido en Secrets no se puede borrar desde aqui. Para cambios permanentes edita "
+            "Secrets (usa `scripts/generar_hash.py` para crear el hash)."
+        )
     usuarios = list_users()
     df_users = pd.DataFrame(
         [{"usuario": u, "rol": r} for u, r in usuarios.items()]

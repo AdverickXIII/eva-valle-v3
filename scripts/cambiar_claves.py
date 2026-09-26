@@ -1,24 +1,20 @@
-"""Cambia las contrasenas de admin y usuario (guarda solo hashes)."""
-import hashlib
-import json
-import secrets
+"""Cambia contrasenas en config/users.json (solo desarrollo local; guarda hashes scrypt).
+
+En Streamlit Cloud los usuarios van en Secrets: usa scripts/generar_hash.py.
+"""
+from __future__ import annotations
+
+import getpass
+import sys
 from pathlib import Path
 
-USERS = Path("config/users.json")
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from ui.services.auth import add_user, list_users  # noqa: E402
 
-def _hash(pw: str, salt: str) -> str:
-    return hashlib.sha256((salt + pw).encode("utf-8")).hexdigest()
+for usuario, rol in list_users().items():
+    nueva = getpass.getpass(f"Nueva contrasena para '{usuario}' (Enter = dejar igual): ").strip()
+    if nueva:
+        add_user(usuario, nueva, role=rol)
+        print(f"[OK] contrasena de '{usuario}' actualizada")
 
-users = json.loads(USERS.read_text(encoding="utf-8"))
-
-for u in ("admin", "usuario"):
-    if u in users:
-        nueva = input(f"Nueva contrasena para '{u}' (Enter = dejar igual): ").strip()
-        if nueva:
-            salt = secrets.token_hex(8)
-            users[u]["salt"] = salt
-            users[u]["hash"] = _hash(nueva, salt)
-            print(f"[OK] contrasena de '{u}' actualizada")
-
-USERS.write_text(json.dumps(users, indent=2), encoding="utf-8")
 print("\nListo. Anota tus nuevas contrasenas en un lugar seguro.")
