@@ -1,0 +1,18 @@
+# Configuracion de ruff. La usa `make lint` y el CI.
+#
+# El CI aplica solo reglas de ERRORES REALES (sintaxis, nombres indefinidos,
+# comparaciones invalidas): el codigo actual las cumple y un fallo aqui es un bug.
+# Las reglas de estilo/limpieza NO bloquean el CI; para verlas todas:
+#   make lint-strict     (ruff con el conjunto amplio por defecto, ignorando este archivo)
+#
+# Para endurecer el CI de forma gradual, agrega reglas a `select` cuando el codigo
+# ya las cumpla (por ejemplo F401 imports sin usar, F841 variables sin usar).
+target-version = "py314"
+
+[lint]
+select = [
+    "E9",   # errores de sintaxis
+    "F63",  # comparaciones / asserts invalidos
+    "F7",   # sentencias mal ubicadas (return/yield/break fuera de contexto)
+    "F82",  # nombres indefinidos (F821, F822) y variables locales usadas antes de asignar (F823)
+]

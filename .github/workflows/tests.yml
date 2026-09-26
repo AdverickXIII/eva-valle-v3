@@ -9,6 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
 
@@ -30,9 +31,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
 
+      - name: Lint (ruff, errores reales; ver ruff.toml)
+        run: |
+          ruff check app.py core adapters ui config tests
+
       - name: Run tests
         run: |
           python -m pytest tests/unit -v --tb=short
+
+      - name: Smoke test (app y paginas)
+        run: |
+          python -m pytest tests/smoke -v --tb=short
 
       - name: Test coverage
         run: |
